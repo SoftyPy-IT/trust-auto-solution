@@ -153,7 +153,7 @@ const Dashboard = () => {
             <div className="valueWrap firstCard">
               <div className="leftValue">
                 <div className="text-xl font-bold">Running Services</div>
-                <span className="text-2xl font-bold">5699 $</span>
+                <span className="text-2xl font-bold">99 </span>
               </div>
               <div className="valueRight">
                 <img src={service} alt="" />
@@ -164,7 +164,7 @@ const Dashboard = () => {
             <div className="valueWrap secondCard">
               <div className="leftValue">
                 <div className="text-xl font-bold">Completed Services</div>
-                <span className=" text-2xl font-bold">50$</span>
+                <span className=" text-2xl font-bold">50</span>
               </div>
               <div className="valueRight">
               <img src={service2} alt="" />
@@ -188,7 +188,7 @@ const Dashboard = () => {
             <div className="valueWrap firstCard">
               <div className="leftValue">
                 <div className="text-xl font-bold">Due Service Bill </div>
-                <span className="text-2xl font-bold">{totalSalse} $</span>
+                <span className="text-2xl font-bold">856৳</span>
               </div>
               <div className="valueRight">
                 <img src={bill} alt="" />
@@ -199,7 +199,7 @@ const Dashboard = () => {
             <div className="valueWrap secondCard">
               <div className="leftValue">
                 <div className="text-xl font-bold">Paid Services Bill </div>
-                <span className=" text-2xl font-bold">{salesData.length}</span>
+                <span className=" text-2xl font-bold">989৳</span>
               </div>
               <div className="valueRight">
               <img src={bill} alt="" />
@@ -210,8 +210,7 @@ const Dashboard = () => {
             <div className="valueWrap thirdCard">
               <div className="leftValue">
                 <div className="text-xl font-bold">About Company </div>
-                <span className="text-2xl font-bold">$65,000</span>
-                <span className=" p-1 rounded ml-3">+5.9%</span>
+                <span className="text-2xl font-bold">Best Auto Solution </span>
               </div>
               <div className="valueRight">
                 <img src={service4} alt="" />

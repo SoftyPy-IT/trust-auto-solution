@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.drawer-content {
+  position: absolute !important;
+  right: 0px !important;
+  width: 76%;
+}
+.drawerflex {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+}
+.drawwerLeftSide {
+  width: 24% !important;
+}

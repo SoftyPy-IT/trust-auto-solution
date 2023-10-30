@@ -14,7 +14,7 @@ body{
 .drawer-content {
   position: absolute !important;
   right: 0px !important;
-  width: 76%;
+  width: 80%;
 }
 .drawerflex {
   width: 100% !important;
@@ -22,5 +22,25 @@ body{
   justify-content: space-between;
 }
 .drawwerLeftSide {
-  width: 24% !important;
+  width: 20% !important;
+}
+/* .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+  box-shadow: none !important;
+} */
+.menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  padding-left: 0rem !important;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0rem !important;
+}
+
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 0px 0px 0px !important;
+  padding-bottom: 0px !important;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+  min-height: 33px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: greenyellow !important; 
 }

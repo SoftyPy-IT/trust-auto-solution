@@ -7,6 +7,15 @@ import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import Services from "../pages/Dashboard/Services";
 import AddJobCard from "../pages/Dashboard/AddJobCard/AddJobCard";
 import ViewJobCard from "../pages/Dashboard/AddJobCard/ViewJobCard";
+import Profile from "../pages/Dashboard/Profile/Profile";
+import Invoice from "../pages/Dashboard/AddJobCard/Invoice";
+import AddInvoice from "../pages/Dashboard/AddJobCard/AddInvoice";
+import AddProduct from "../pages/Dashboard/Products/AddProduct";
+import Product from "../pages/Dashboard/Products/Product";
+import Customer from "../pages/Dashboard/Customer/Customer";
+import AddCustomer from "../pages/Dashboard/Customer/AddCustomer";
+import Expense from "../pages/Dashboard/Expense/Expense";
+import AddExpense from "../pages/Dashboard/Expense/AddExpense";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +54,42 @@ export const router = createBrowserRouter([
         {
           path: 'view-job',
           element: <ViewJobCard/>
+        },
+        {
+          path: 'profile',
+          element: <Profile/>
+        },
+        {
+          path: 'invoice',
+          element: <Invoice/>
+        },
+        {
+          path: 'add-invoice',
+          element: <AddInvoice/>
+        },
+        {
+          path: 'add-product',
+          element: <AddProduct/>
+        },
+        {
+          path: 'product',
+          element: <Product/>
+        },
+        {
+          path: 'customer',
+          element: <Customer/>
+        },
+        {
+          path: 'add-customer',
+          element: <AddCustomer/>
+        },
+        {
+          path: 'expense',
+          element: <Expense/>
+        },
+        {
+          path: 'add-expense',
+          element: <AddExpense/>
         },
       ]
     }

@@ -25,7 +25,7 @@ const DashboardLayout = () => {
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
-        <div className="fixed overflow-y-scroll overflow-x-hidden  drawwerLeftSide h-screen text-lg font-semibold  bg-red-700 text-white">
+        <div className="fixed overflow-y-scroll overflow-x-hidden  drawwerLeftSide h-screen text-lg font-semibold  bg-[#351E98] text-white">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <Link to="/" className="shadow-md z-10">
             {/* <img src={logo} className="h-20"/> */}
@@ -62,6 +62,9 @@ const DashboardLayout = () => {
                   </Typography>
                   <Typography className="dashboardItemList">
                     <NavLink to="/dashboard/view-job">View Job Card</NavLink>
+                  </Typography>
+                  <Typography className="dashboardItemList">
+                    <NavLink to="/dashboard/invoice">Invoice Card</NavLink>
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -115,7 +118,7 @@ const DashboardLayout = () => {
                 </AccordionSummary>
                 <AccordionDetails className="dashboardAccordionDetails">
                   <Typography className="dashboardItemList">
-                    Add product
+                     <NavLink to="/dashboard/product">All Product List </NavLink>
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -123,11 +126,11 @@ const DashboardLayout = () => {
             <li>
               <Link to="/dashboard/services">
                 <FaUserTie />
-                <span>Customer List</span>
+                <NavLink to="/dashboard/customer">Customer List </NavLink>
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/services">
+              <Link to="/dashboard/expense">
                 <FaCriticalRole />
                 <span> Expense </span>
               </Link>
@@ -151,7 +154,7 @@ const DashboardLayout = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/services">
+              <Link to="/dashboard/profile">
                 <FaUsersCog />
                 <span> Profile</span>
               </Link>

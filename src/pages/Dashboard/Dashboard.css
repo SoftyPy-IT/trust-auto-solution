@@ -129,7 +129,7 @@
   transition:all .5s ease-in-out;
   }
 .menu li:hover{
-background:#896EFF;
+background:#654FC3;
 padding-left:10px;
 color:#fff !important;
 }

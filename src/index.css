@@ -44,3 +44,47 @@ body{
 ::-webkit-scrollbar-thumb {
   background: greenyellow !important; 
 }
+
+table {
+  width: 100%;
+}
+.table :where(thead, tfoot) {
+  white-space: pre-wrap;
+  font-size: 0.7rem;
+  line-height: 1.5rem;
+  font-weight: 300;
+  color: hsl(var(--bc) / 0.6);
+}
+
+.table :where(th, td) {
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  vertical-align: middle;
+  white-space: pre-wrap;
+}
+.table :where(td) {
+  border-right: 1px solid #ddd;
+  text-align: center;
+  font-size: 12px;
+  border-bottom:1px solid #351E98;
+}
+.table :where(td):nth-last-of-type() {
+  border-bottom: 3px solid #ddd !important;
+}
+.table :where(th) {
+  border: 1px solid #fff;
+  text-align: center;
+  background: #351E98;
+  font-size: 14px;
+  color: white;
+
+}
+.table {
+  width: 100%;
+  text-align: left;
+  font-size: 0.6em;
+  line-height: 1.75rem;
+  border-radius: var(--rounded-box, 1rem);
+}

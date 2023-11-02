@@ -144,7 +144,7 @@ const Dashboard = () => {
       <div className="dashBoardRight  ">
         <div className="nameWrap px-3 py-3">
           <div className="projectName">
-            <h2 className="text-secondary">Admin Dashboard</h2>
+            <h2 className="text-[#654FC3]">Admin Dashboard</h2>
           </div>
         </div>
        
@@ -241,7 +241,7 @@ const Dashboard = () => {
               <Bar dataKey="uv" fill="#82ca9d" />
             </BarChart>
 
-            <h2 className="text-xl centerText font-bold text-secondary">
+            <h2 className="text-xl centerText font-bold text-[#654FC3]">
               Yearly Income Chart
             </h2>
           </div>
@@ -266,7 +266,7 @@ const Dashboard = () => {
                 label
               />
             </PieChart>
-            <h2 className="text-xl centerText center font-bold text-secondary">
+            <h2 className="text-xl centerText center font-bold text-[#654FC3]">
               Monthly Income Chart
             </h2>
           </div>

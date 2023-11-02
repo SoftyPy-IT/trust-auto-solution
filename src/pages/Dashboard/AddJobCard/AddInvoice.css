@@ -1,0 +1,59 @@
+
+.addServicesWrap{
+  width: 900px;
+  margin: 20px auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 50px;
+  border-radius: 5px;
+
+}
+.singleForm{
+  margin-bottom:15px;
+}
+.submitBtn{
+  width: 50%;
+  background: #351E98;
+  margin: 0 auto;
+  color: white;
+  height: 37px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.singleForm :where(input, textarea){
+    border: 1px solid #351E98;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.singleForm textarea{
+    height:150px;
+    resize: none;
+}
+.singleForm label{
+    display: block;
+}
+.singleForm textarea, .inputField:focus{
+  outline: none;
+
+}
+@media only screen and (max-width:768px) {
+  .addServicesWrap {
+    width: 700px;
+  }
+  
+}
+@media only screen and (max-width:500px) {
+  .addServicesWrap {
+    width: 400px;
+    padding:20px 15px;
+  }
+  
+}
+@media only screen and (max-width:400px) {
+  .addServicesWrap {
+    width: 300px;
+  }
+  
+}

@@ -1,0 +1,64 @@
+.editIcon,
+.deleteIcon {
+  font-size: 25px;
+  color: #351E98;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.deleteIcon {
+  color: red;
+}
+.addHotel button {
+    background: #351E98;
+    color: white;
+    border: 1px solid #fff;
+    transition: all 0.5s cubic-bezier(0, 0.01, 0.98, 0.93);
+    border-radius: 25px;
+    padding: 10px 15px;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .paginationBtn button{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #351E98;
+    color: #351E98;
+    border-radius: 50%;
+    margin-right: 5px;
+    font-size: 12px;
+    transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+  
+  
+  }
+  .paginationBtn button:hover{
+    background-color: #351E98;
+    color:white;
+  
+  }
+  .arrowLeft, .arrowRight{
+    color: #351E98 !important;
+    font-size: 15px !important;
+  }
+  .arrowLeft:hover, .arrowRight:hover{
+    color:white !important;
+  }
+  .paginationBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .singleForm{
+    width:100%;
+  }

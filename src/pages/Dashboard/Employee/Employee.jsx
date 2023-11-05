@@ -1,18 +1,17 @@
-import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import img from "../../../../public/assets/team.png";
+import {  FaArrowRight, FaArrowLeft, FaTrashAlt, FaEdit } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-
-const Customer = () => {
+import img from "../../../../public/assets/team.png";
+const Employee = () => {
     return (
         <div className="mt-5 mb-24 w-full">
         <div className="flex items-center justify-between px-8 mb-5">
           <TextField id="outlined-basic" label="Search " variant="outlined" />
-          <h3 className="text-3xl font-bold">All Customer List </h3>
+          <h3 className="text-3xl font-bold">Employee List </h3>
           <div className='addHotel'>
-            <Link to='/dashboard/add-customer'>
+            <Link to='/dashboard/add-expense'>
             <button>
-              <span className="text-xl font-bold">+</span> Add Customer
+              <span className="text-xl font-bold">+</span> Add Employee
             </button>
             </Link>
           </div>
@@ -21,16 +20,24 @@ const Customer = () => {
           <table className="table ">
             <thead className='tableWrap'>
               <tr>
-                <th>Profile</th>
-                <th>Name </th>
-                <th>Email </th>
-                <th>Phone Number</th>
-                <th>Role</th>
-                <th colSpan={2}>Action</th>
+                <th>SL No</th>
+                <th>Image</th>
+                <th> Name </th>
+                <th>Employee Id </th>
+                <th>Department </th>
+                <th>Designation </th>
+                <th>Total Salary </th>
+                <th>Contact Number </th>
+                <th>Date of Birth  </th>
+                <th>Joining Date  </th>
+                <th>Status  </th>
+                <th colSpan={2}>Action  </th>
+               
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>1</td>
                 <td>
                   <div className="mask   h-[100px] w-[100px] mx-auto ">
                     <img
@@ -40,10 +47,15 @@ const Customer = () => {
                     />
                   </div>
                 </td>
-                <td>Ibrahim Sikder </td>
-                <td>ibrahimsikder@gmail.com</td>
-                <td>018575585 </td>
-                <td>User</td>
+                <td>Robioul </td>
+                <td>56 </td>
+                <td>Car Service</td>
+                <td>Bkash </td>
+                <td>13000</td>
+                <td>1000</td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td>Reported </td>
                 <td >
                  <div className='editIconWrap'>
                  <Link to='/dashboard/update-customer'> 
@@ -82,4 +94,4 @@ const Customer = () => {
     );
 };
 
-export default Customer;
+export default Employee;

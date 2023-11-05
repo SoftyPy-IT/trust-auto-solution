@@ -3,7 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import AddItem from "../pages/Dashboard/AddItem/AddItem";
+import AddItem from "../pages/Dashboard/Employee/Employee";
 import Services from "../pages/Dashboard/Services";
 import AddJobCard from "../pages/Dashboard/AddJobCard/AddJobCard";
 import ViewJobCard from "../pages/Dashboard/AddJobCard/ViewJobCard";
@@ -16,6 +16,10 @@ import Customer from "../pages/Dashboard/Customer/Customer";
 import AddCustomer from "../pages/Dashboard/Customer/AddCustomer";
 import Expense from "../pages/Dashboard/Expense/Expense";
 import AddExpense from "../pages/Dashboard/Expense/AddExpense";
+import UpdateCustomer from "../pages/Dashboard/Customer/UpdateCustomer";
+import Employee from "../pages/Dashboard/Employee/Employee";
+import Role from "../pages/Dashboard/Role/Role";
+import AddRole from "../pages/Dashboard/Role/AddRole";
 
 
 export const router = createBrowserRouter([
@@ -90,6 +94,22 @@ export const router = createBrowserRouter([
         {
           path: 'add-expense',
           element: <AddExpense/>
+        },
+        {
+          path: 'update-customer',
+          element: <UpdateCustomer/>
+        },
+        {
+          path: 'employee',
+          element: <Employee/>
+        },
+        {
+          path: 'role',
+          element: <Role/>
+        },
+        {
+          path: 'add-role',
+          element: <AddRole/>
         },
       ]
     }

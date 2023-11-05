@@ -136,7 +136,7 @@ const DashboardLayout = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/services">
+              <Link to="/dashboard/role">
                 <FaCriticalRole />
                 <span> Role </span>
               </Link>
@@ -148,7 +148,7 @@ const DashboardLayout = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/services">
+              <Link to="/dashboard/employee">
                 <FaUsers />
                 <span>Employee</span>
               </Link>

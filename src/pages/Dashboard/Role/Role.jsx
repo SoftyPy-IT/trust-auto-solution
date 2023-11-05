@@ -1,18 +1,16 @@
-import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import img from "../../../../public/assets/team.png";
+import {  FaArrowRight, FaArrowLeft, FaTrashAlt, FaEdit,FaEye } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-
-const Customer = () => {
+const Role = () => {
     return (
         <div className="mt-5 mb-24 w-full">
         <div className="flex items-center justify-between px-8 mb-5">
           <TextField id="outlined-basic" label="Search " variant="outlined" />
-          <h3 className="text-3xl font-bold">All Customer List </h3>
-          <div className='addHotel'>
-            <Link to='/dashboard/add-customer'>
+          <h3 className="text-3xl font-bold">Make Role </h3>
+          <div>
+            <Link to='/dashboard/add-role'>
             <button>
-              <span className="text-xl font-bold">+</span> Add Customer
+              <span className="text-xl font-bold">+</span> Add Role
             </button>
             </Link>
           </div>
@@ -20,30 +18,29 @@ const Customer = () => {
         <div className="overflow-x-auto ">
           <table className="table ">
             <thead className='tableWrap'>
-              <tr>
-                <th>Profile</th>
-                <th>Name </th>
-                <th>Email </th>
-                <th>Phone Number</th>
-                <th>Role</th>
-                <th colSpan={2}>Action</th>
+              <tr>              		 	 	 
+                <th> SL No </th>
+                <th>Name  </th>
+                <th>Role </th>
+                <th>Created By </th>
+                <th>Status </th>
+                <th colSpan={3}>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <div className="mask   h-[100px] w-[100px] mx-auto ">
-                    <img
-                      className=" h-full w-full object-cover text-center"
-                      src={img}
-                      alt="img"
-                    />
-                  </div>
-                </td>
-                <td>Ibrahim Sikder </td>
-                <td>ibrahimsikder@gmail.com</td>
-                <td>018575585 </td>
-                <td>User</td>
+                <td>01</td>
+                <td>Md Karim </td>
+                <td>Admin</td>
+                <td>Rubel </td>
+                <td>Active</td>
+               <td>
+               <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEye className='editIcon' />
+                 </Link>
+                 </div>
+               </td>
                 <td >
                  <div className='editIconWrap'>
                  <Link to='/dashboard/update-customer'> 
@@ -55,7 +52,7 @@ const Customer = () => {
                   <div className='editIconWrap'>
                   <FaTrashAlt className='deleteIcon' />
                   </div>
-                  
+                 
                 </td>
               </tr>
             
@@ -82,4 +79,4 @@ const Customer = () => {
     );
 };
 
-export default Customer;
+export default Role;

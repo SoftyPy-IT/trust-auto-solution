@@ -14,8 +14,6 @@ const Qutation = () => {
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
 
-
-
   const handleremove = (index) => {
     const list = [...inputList];
     list.splice(index, 1);
@@ -119,17 +117,18 @@ const Qutation = () => {
                       placeholder="Amount"
                     />
                   </div>
-                  <div >
-                  {inputList.length !== 1 && (
-                     <button onClick={() => handleremove(i)} className="btn w-[65px] bg-[#351E98] hover:bg-[#351E98] text-white">
-                     Remove
-                   </button>
-                  )}
-
+                  <div>
+                    {inputList.length !== 1 && (
+                      <button
+                        onClick={() => handleremove(i)}
+                        className="btn w-[65px] bg-[#351E98] hover:bg-[#351E98] text-white"
+                      >
+                        Remove
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div>
-                  
                   {inputList.length - 1 === i && (
                     <div
                       onClick={handleaddclick}
@@ -141,20 +140,20 @@ const Qutation = () => {
                     </div>
                   )}
                 </div>
-             
               </div>
-              
             );
           })}
-             <div className="submitQutationBtn">
-                    <button className="">Add To Qutation </button>
-                </div>
+          <div className="submitQutationBtn">
+            <button className="">Add To Qutation </button>
+          </div>
           <div className="buttonGroup mt-8">
-          <Link to='/dashboard/details'><button>Preview</button></Link>
-          <button>Download </button>
-          <button>Print </button>
-          <button>Invoice </button>
-        </div>
+            <Link to="/dashboard/details">
+              <button>Preview</button>
+            </Link>
+            <button>Download </button>
+            <button>Print </button>
+            <button>Invoice </button>
+          </div>
         </form>
       </div>
       <div className="overflow-x-auto mt-20">
@@ -172,7 +171,7 @@ const Qutation = () => {
             </tr>
           </thead>
           <tbody>
-          <tr>
+            <tr>
               <td>01</td>
               <td>Aminul</td>
               <td>055</td>

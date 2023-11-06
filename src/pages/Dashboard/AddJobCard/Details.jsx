@@ -63,7 +63,7 @@ const Details = () => {
             <td className="hideBorder"></td>
             <td  className="hideBorder"></td>
             <td  className="hideBorder2"></td>
-            <td>Tax</td>
+            <td>Discount</td>
             <td>500</td>
            </tr>
            <tr>
@@ -77,7 +77,7 @@ const Details = () => {
             <td className="hideBorder"></td>
             <td  className="hideBorder"></td>
             <td  className="hideBorder2"></td>
-            <td>Net </td>
+            <td>Net Total </td>
             <td>444789</td>
            </tr>
           </tbody>

@@ -20,6 +20,8 @@ import UpdateCustomer from "../pages/Dashboard/Customer/UpdateCustomer";
 import Employee from "../pages/Dashboard/Employee/Employee";
 import Role from "../pages/Dashboard/Role/Role";
 import AddRole from "../pages/Dashboard/Role/AddRole";
+import Qutation from "../pages/Dashboard/AddJobCard/Qutation";
+import Details from "../pages/Dashboard/AddJobCard/Details";
 
 
 export const router = createBrowserRouter([
@@ -110,6 +112,14 @@ export const router = createBrowserRouter([
         {
           path: 'add-role',
           element: <AddRole/>
+        },
+        {
+          path: 'qutation',
+          element: <Qutation/>
+        },
+        {
+          path: 'details',
+          element: <Details/>
         },
       ]
     }

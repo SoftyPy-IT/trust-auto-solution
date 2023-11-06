@@ -61,6 +61,9 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard/addjob">Add job card</NavLink>
                   </Typography>
                   <Typography className="dashboardItemList">
+                    <NavLink to="/dashboard/qutation">Qutations</NavLink>
+                  </Typography>
+                  <Typography className="dashboardItemList">
                     <NavLink to="/dashboard/view-job">View Job Card</NavLink>
                   </Typography>
                   <Typography className="dashboardItemList">

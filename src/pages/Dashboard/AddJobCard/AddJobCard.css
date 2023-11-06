@@ -106,7 +106,7 @@ height: 100px;
     justify-content: end;
 }
 .buttonGroup button{
-    background: #896EFF;
+    background: #351E98;
     color: #fff;
     margin-right: 5px;
     width: 100px;
@@ -149,4 +149,52 @@ height: 100px;
 .addInvoic button:hover{
     background-color: #351E98;
     color:#fff;  
+}
+.textEditor{
+    border: 1px solid #351E98;
+    height:200px;
+    border-radius:10px;
+}
+.textEditor:nth-child(2), .textEditor:nth-child(3){
+    height:235px;
+}
+.qutationForm{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:10px;
+}
+.qutationForm input{
+    border: 1px solid #351E98;
+    border-radius:5px;
+    padding: 10px 5px;
+}
+
+.qutationForm input:focus{
+    outline:none;
+}
+.labelWrap label{
+    position: relative;
+    left: -65px;
+    font-weight: bold;
+
+}
+.submitQutationBtn{
+    width:200px;
+    margin:0 auto;
+    text-align: center;
+}
+.submitQutationBtn button{
+    background: #351E98;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+}
+.hideBorder{
+ border:none;
+}
+.hideBorder2{
+    border-left:none;
+    border-bottom:none;
 }

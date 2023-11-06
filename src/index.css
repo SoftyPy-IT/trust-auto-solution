@@ -88,3 +88,6 @@ table {
   line-height: 1.75rem;
   border-radius: var(--rounded-box, 1rem);
 }
+.ql-container.ql-snow {
+  border: none !important;
+}

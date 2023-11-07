@@ -1,3 +1,4 @@
+import './Role.css'
 const AddRole = () => {
     return (
         <div className="mt-5 mb-24 w-full">
@@ -44,11 +45,46 @@ const AddRole = () => {
                 <td><input type="checkbox" /></td>
                 <td><input type="checkbox" /></td>
               </tr>
-            
+              <tr>
+              <td><input type="checkbox" /></td>
+                <td>01</td>
+                <td>Invoice</td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+              </tr>
+              <tr>
+              <td><input type="checkbox" /></td>
+                <td>01</td>
+                <td>Invoice</td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+              </tr>
+              <tr>
+              <td><input type="checkbox" /></td>
+                <td>01</td>
+                <td>Invoice</td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+              </tr>
+              <tr>
+              <td><input type="checkbox" /></td>
+                <td>01</td>
+                <td>Invoice</td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div className="mt-10 w-[500px] mx-auto">
+        <div className="rolebtnWrap">
             <button className="submitBtn" type="submit">
              Create Role
             </button>

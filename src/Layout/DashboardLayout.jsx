@@ -11,6 +11,8 @@ import {
   FaDatabase,
   FaHeadset,
   FaDyalog,
+  FaPlus,
+  FaThLarge
 } from "react-icons/fa";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -58,21 +60,86 @@ const DashboardLayout = () => {
                 </AccordionSummary>
                 <AccordionDetails className="dashboardAccordionDetails">
                   <Typography className="dashboardItemList">
+                   <span className="flex items-center">
+                   <FaPlus className="mr-2"/>
                     <NavLink to="/dashboard/addjob">Add job card</NavLink>
+                   </span>
                   </Typography>
                   <Typography className="dashboardItemList">
-                    <NavLink to="/dashboard/qutation">Qutations</NavLink>
-                  </Typography>
-                  <Typography className="dashboardItemList">
+                    <span className="flex items-center">
+                    <FaThLarge className="mr-2"/>
                     <NavLink to="/dashboard/view-job">View Job Card</NavLink>
-                  </Typography>
-                  <Typography className="dashboardItemList">
-                    <NavLink to="/dashboard/invoice">Invoice Card</NavLink>
+                    </span>
                   </Typography>
                 </AccordionDetails>
               </Accordion>
             </li>
-
+                <li>
+                <Accordion className="dashboardAccordion">
+                <AccordionSummary
+                  expandIcon={
+                    <ExpandMoreIcon className="accordionExpandIcon" />
+                  }
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  className="dashboardAccordionSummary"
+                >
+                  <Typography className="accordionName">
+                    <div className="flex items-center justify-center">
+                      <FaCarAlt />
+                      <span className="ml-2">Invoice Card</span>
+                    </div>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="dashboardAccordionDetails">
+                  <Typography className="dashboardItemList">
+                    <span className="flex items-center">
+                    <FaPlus className="mr-2"/>
+                    <NavLink to="/dashboard/invoice">Add Invoice Card</NavLink>
+                    </span>
+                  </Typography>
+                  <Typography className="dashboardItemList">
+                   <span className="flex items-center">
+                   <FaThLarge className="mr-2"/>
+                    <NavLink to="/dashboard/detail">View Invoice</NavLink>
+                   </span>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+                </li>
+                <li>
+                <Accordion className="dashboardAccordion">
+                <AccordionSummary
+                  expandIcon={
+                    <ExpandMoreIcon className="accordionExpandIcon" />
+                  }
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  className="dashboardAccordionSummary"
+                >
+                  <Typography className="accordionName">
+                    <div className="flex items-center justify-center">
+                      <FaCarAlt />
+                      <span className="ml-2">Qutation Card</span>
+                    </div>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className="dashboardAccordionDetails">
+                  <Typography className="dashboardItemList">
+                    <span className="flex items-center">
+                    <FaPlus className="mr-2"/>
+                    <NavLink to="/dashboard/qutation">Add Qutation Card</NavLink>
+                    </span>
+                  </Typography>
+                  <Typography className="dashboardItemList">
+                    <span className="flex items-center">
+                    <FaThLarge className="mr-2"/>
+                    <NavLink to="/dashboard/details">View Qutation </NavLink>
+                    </span>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+                </li>
             <li>
               <Accordion className="dashboardAccordion">
                 <AccordionSummary
@@ -111,12 +178,10 @@ const DashboardLayout = () => {
                   className="dashboardAccordionSummary"
                 >
                   <Typography className="accordionName2">
-                    <Link to="/dashboard/services">
-                      <div className="flex items-center justify-center">
+                  <span className="flex items-center justify-center">
                         <FaProductHunt />
                         <span className="ml-2"> Product List </span>
-                      </div>
-                    </Link>
+                      </span>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails className="dashboardAccordionDetails">

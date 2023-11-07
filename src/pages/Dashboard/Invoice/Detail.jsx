@@ -1,6 +1,6 @@
 import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
-const Details = () => {
+const Detail = () => {
   return (
     <div className="py-10 px-5">
       <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98]">
@@ -17,7 +17,7 @@ const Details = () => {
       </div>
       <div></div>
       <div>
-        <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">Qutation </h3>
+        <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">Invoice </h3>
         <div className="px-5 mt-20 mb-5">
           <div className="flex items-center justify-between">
             <div>
@@ -27,8 +27,8 @@ const Details = () => {
               <small className=" block ">Mobile Number: </small>
             </div>
            <div>
-          <small className="block"> QUTATION NO : 23102901</small>
-            <small>QUTATION DATE : 29-10-2023</small>
+          <small className="block"> INVOICE NO : 23102901</small>
+            <small>INVOICE DATE : 29-10-2023</small>
            </div>
           </div>
         </div>
@@ -103,4 +103,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default Detail;

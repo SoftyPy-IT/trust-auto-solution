@@ -62,3 +62,35 @@
   .singleForm{
     width:100%;
   }
+  .addProductWrap{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 900px;
+    padding: 30px;
+  }
+  .addProductWrap label{
+    display: block;
+  }
+  .addProductWrap input{
+
+  }
+  .addproductForm{
+    display: flex;
+    justify-content: space-between;
+  }
+  .addproductForm input{
+    border: 1px solid #351E98;
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom:20px;
+
+  }
+.addProductBtn{
+  width: 300px;
+  height: 50px;
+  background: #351E98;
+  color: #fff;
+  border-radius: 20px;
+  margin:0 auto;
+}

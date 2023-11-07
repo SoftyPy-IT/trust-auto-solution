@@ -13,10 +13,11 @@ const AddProduct = () => {
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold text-center">Add Product </h2>
-      <div className="w-full mx-auto addServicesWrap">
+      <div className="w-full mx-auto mt-8 addProductWrap">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="formControl">
-            <div className="singleForm">
+          <div className="formControl ">
+            <div className="addproductForm">
+              <div>
               <label>Vehicle Name </label>
               <input
                {...register("name", { required: true })}
@@ -26,8 +27,9 @@ const AddProduct = () => {
                 className="inputField"
                 autoComplete="off"
               />
-            </div>
-            <div className="singleForm">
+              
+              </div>
+              <div>
               <label> Vehicle No </label>
               <input
                {...register("title", { required: true })}
@@ -37,9 +39,11 @@ const AddProduct = () => {
                 className="inputField"
                  autoComplete="off"
               />
+              </div>
             </div>
-            <div className="singleForm">
-              <label>Address </label>
+            <div className="addproductForm">
+             <div>
+             <label>Address </label>
               <input
                 {...register("productsDescription", { required: true })}
                 name="productsDescription"
@@ -48,8 +52,8 @@ const AddProduct = () => {
                 className="inputField"
                  autoComplete="off"
               />
-            </div>
-            <div className="singleForm">
+             </div>
+             <div>
               <label>Mileage </label>
               <input
                 {...register("productsDescription", { required: true })}
@@ -60,27 +64,12 @@ const AddProduct = () => {
                  autoComplete="off"
               />
             </div>
-            <div className="mt-1 rounded-md shadow-sm">
-            <label>Image Upload </label>
-                  <input
-                    id="text"
-                    type="file"
-                    name="image "
-                    className="file-input file-input-bordered  w-full  appearance-none block  border border-[#351E98]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                    autoComplete="off"
-                  />
-                </div>
-            <div className="singleForm">
-                <label> Description </label> 
-                <textarea
-                 {...register("description", { required: true })}
-                name="description" placeholder="Description" id="" cols="30" rows="10"  autoComplete="off"></textarea>
             </div>
           </div>
 
-          <div className="formControl">
-            <button className="submitBtn" type="submit">
-              Submit
+          <div className="w-[400px] mx-auto ">
+            <button className="addProductBtn" type="submit">
+              Add Product
             </button>
           </div>
         </form>

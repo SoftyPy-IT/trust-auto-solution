@@ -8,8 +8,6 @@ import Services from "../pages/Dashboard/Services";
 import AddJobCard from "../pages/Dashboard/AddJobCard/AddJobCard";
 import ViewJobCard from "../pages/Dashboard/AddJobCard/ViewJobCard";
 import Profile from "../pages/Dashboard/Profile/Profile";
-import Invoice from "../pages/Dashboard/AddJobCard/Invoice";
-import AddInvoice from "../pages/Dashboard/AddJobCard/AddInvoice";
 import AddProduct from "../pages/Dashboard/Products/AddProduct";
 import Product from "../pages/Dashboard/Products/Product";
 import Customer from "../pages/Dashboard/Customer/Customer";
@@ -22,6 +20,9 @@ import Role from "../pages/Dashboard/Role/Role";
 import AddRole from "../pages/Dashboard/Role/AddRole";
 import Qutation from "../pages/Dashboard/AddJobCard/Qutation";
 import Details from "../pages/Dashboard/AddJobCard/Details";
+import Invoice from "../pages/Dashboard/Invoice/Invoice";
+import Detail from "../pages/Dashboard/Invoice/Detail";
+import AddEmployee from "../pages/Dashboard/Employee/AddEmployee";
 
 
 export const router = createBrowserRouter([
@@ -70,10 +71,6 @@ export const router = createBrowserRouter([
           element: <Invoice/>
         },
         {
-          path: 'add-invoice',
-          element: <AddInvoice/>
-        },
-        {
           path: 'add-product',
           element: <AddProduct/>
         },
@@ -120,6 +117,18 @@ export const router = createBrowserRouter([
         {
           path: 'details',
           element: <Details/>
+        },
+        {
+          path: 'invoice',
+          element: <Invoice/>
+        },
+        {
+          path: 'detail',
+          element: <Detail/>
+        },
+        {
+          path: 'add-employee',
+          element: <AddEmployee/>
         },
       ]
     }

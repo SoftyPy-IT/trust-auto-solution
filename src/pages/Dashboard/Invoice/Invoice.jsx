@@ -9,7 +9,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 import { useState } from "react";
-const Qutation = () => {
+const Invoice = () => {
   const [inputList, setinputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
@@ -74,7 +74,7 @@ const Qutation = () => {
               <input autoComplete="off" type="text" placeholder="Date" />
             </div>
           </div>
-          <h3 className="text-3xl font-bold text-center my-5"> Qutation </h3>
+          <h3 className="text-3xl font-bold text-center my-5"> Invoice </h3>
           <div className="flex items-center justify-around labelWrap">
             <label className="block">SL No </label>
             <label className="block">Description </label>
@@ -144,20 +144,19 @@ const Qutation = () => {
             );
           })}
           <div className="submitQutationBtn">
-            <button className="">Add To Qutation </button>
+            <button className="">Add To Invoice </button>
           </div>
           <div className="buttonGroup mt-8">
-            <Link to="/dashboard/details">
+            <Link to="/dashboard/detail">
               <button>Preview</button>
             </Link>
             <button>Download </button>
             <button>Print </button>
-            <button>Invoice </button>
           </div>
         </form>
       </div>
       <div className="overflow-x-auto mt-20">
-      <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
+      <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
         <div className="flex items-center justify-between searchGroup mb-5">
         <div>
             <label className="block">SL No</label>
@@ -203,14 +202,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -230,14 +229,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -352,4 +351,4 @@ const Qutation = () => {
   );
 };
 
-export default Qutation;
+export default Invoice;

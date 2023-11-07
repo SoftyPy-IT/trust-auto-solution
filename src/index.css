@@ -91,3 +91,6 @@ table {
 .ql-container.ql-snow {
   border: none !important;
 }
+select:focus, input:focus{
+  outline:none;
+}

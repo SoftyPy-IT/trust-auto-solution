@@ -246,6 +246,29 @@ const AddJobCard = () => {
       </form>
       <div className="overflow-x-auto mt-20">
         <h3 className="text-3xl font-bold mb-3">Job Card List:</h3>
+        <div className="flex items-center justify-between searchGroup mb-5">
+        <div>
+            <label className="block">SL No</label>
+          <input autoComplete="off" type="text" placeholder="Search here" />
+          </div>
+          <div>
+            <label className="block">Customer Name</label>
+          <input autoComplete="off" type="text" placeholder="Search here" />
+          </div>
+         
+          <div>
+            <label className="block">Order Number </label>
+          <input autoComplete="off" type="text" placeholder="Search here" />
+          </div>
+          <div>
+            <label className="block">Car Number </label>
+          <input autoComplete="off" type="text" placeholder="Search here" />
+          </div>
+          <div>
+            <label className="block">Mobile Number </label>
+          <input autoComplete="off" type="text" placeholder="Search here" />
+          </div>
+        </div>
         <table className="table ">
           <thead className="tableWrap">
             <tr>

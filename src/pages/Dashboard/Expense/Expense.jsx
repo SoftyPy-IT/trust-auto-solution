@@ -14,6 +14,7 @@ const Expense = () => {
             </button>
             </Link>
           </div>
+          
         </div>
         <div className="overflow-x-auto ">
           <table className="table ">

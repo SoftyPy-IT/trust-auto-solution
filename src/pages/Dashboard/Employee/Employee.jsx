@@ -9,7 +9,7 @@ const Employee = () => {
           <TextField id="outlined-basic" label="Search " variant="outlined" />
           <h3 className="text-3xl font-bold">Employee List </h3>
           <div className='addHotel'>
-            <Link to='/dashboard/add-expense'>
+            <Link to='/dashboard/add-employee'>
             <button>
               <span className="text-xl font-bold">+</span> Add Employee
             </button>
@@ -70,7 +70,142 @@ const Employee = () => {
                   
                 </td>
               </tr>
-            
+              <tr>
+                <td>1</td>
+                <td>
+                  <div className="mask   h-[100px] w-[100px] mx-auto ">
+                    <img
+                      className=" h-full w-full object-cover text-center"
+                      src={img}
+                      alt="img"
+                    />
+                  </div>
+                </td>
+                <td>Robioul </td>
+                <td>56 </td>
+                <td>Car Service</td>
+                <td>Bkash </td>
+                <td>13000</td>
+                <td>1000</td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>
+                  <div className="mask   h-[100px] w-[100px] mx-auto ">
+                    <img
+                      className=" h-full w-full object-cover text-center"
+                      src={img}
+                      alt="img"
+                    />
+                  </div>
+                </td>
+                <td>Robioul </td>
+                <td>56 </td>
+                <td>Car Service</td>
+                <td>Bkash </td>
+                <td>13000</td>
+                <td>1000</td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>
+                  <div className="mask   h-[100px] w-[100px] mx-auto ">
+                    <img
+                      className=" h-full w-full object-cover text-center"
+                      src={img}
+                      alt="img"
+                    />
+                  </div>
+                </td>
+                <td>Robioul </td>
+                <td>56 </td>
+                <td>Car Service</td>
+                <td>Bkash </td>
+                <td>13000</td>
+                <td>1000</td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>
+                  <div className="mask   h-[100px] w-[100px] mx-auto ">
+                    <img
+                      className=" h-full w-full object-cover text-center"
+                      src={img}
+                      alt="img"
+                    />
+                  </div>
+                </td>
+                <td>Robioul </td>
+                <td>56 </td>
+                <td>Car Service</td>
+                <td>Bkash </td>
+                <td>13000</td>
+                <td>1000</td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td>Reported </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                  
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

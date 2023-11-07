@@ -13,22 +13,24 @@ const AddCustomer = () => {
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold text-center">Add Customer </h2>
-      <div className="w-full mx-auto addServicesWrap">
+      <div className="w-full mx-auto mt-8 addProductWrap">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="formControl">
-            <div className="singleForm">
-              <label>Customer Name </label>
+          <div className="formControl ">
+            <div className="addproductForm">
+              <div>
+              <label> Name </label>
               <input
                {...register("name", { required: true })}
                 name="name"
-                placeholder="Customer Name"
+                placeholder=" Name"
                 type="text"
                 className="inputField"
                 autoComplete="off"
               />
-            </div>
-            <div className="singleForm">
-              <label>Email</label>
+              
+              </div>
+              <div>
+              <label> Email </label>
               <input
                {...register("title", { required: true })}
                 name="title"
@@ -37,19 +39,34 @@ const AddCustomer = () => {
                 className="inputField"
                  autoComplete="off"
               />
+              </div>
             </div>
-            <div className="singleForm">
-              <label>Address </label>
+            <div className="addproductForm">
+             <div>
+             <label>Phone Number </label>
               <input
                 {...register("productsDescription", { required: true })}
                 name="productsDescription"
-                placeholder="Address"
+                placeholder="Phone Number"
+                type="text"
+                className="inputField"
+                 autoComplete="off"
+              />
+             </div>
+             <div>
+              <label>Role </label>
+              <input
+                {...register("productsDescription", { required: true })}
+                name="productsDescription"
+                placeholder="Role"
                 type="text"
                 className="inputField"
                  autoComplete="off"
               />
             </div>
-            <div className="mt-1 rounded-md shadow-sm">
+            </div>
+          </div>
+          <div className="mt-1 rounded-md shadow-sm">
             <label>Image Upload </label>
                   <input
                     id="text"
@@ -59,17 +76,9 @@ const AddCustomer = () => {
                     autoComplete="off"
                   />
                 </div>
-            <div className="singleForm">
-                <label> Description </label> 
-                <textarea
-                 {...register("description", { required: true })}
-                name="description" placeholder="Description" id="" cols="30" rows="10"  autoComplete="off"></textarea>
-            </div>
-          </div>
-
-          <div className="formControl">
-            <button className="submitBtn" type="submit">
-              Submit
+          <div className="w-[400px] mx-auto mt-8">
+            <button className="addProductBtn" type="submit">
+              Add Customer
             </button>
           </div>
         </form>

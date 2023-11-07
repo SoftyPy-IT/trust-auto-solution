@@ -7,7 +7,7 @@ const Role = () => {
         <div className="flex items-center justify-between px-8 mb-5">
           <TextField id="outlined-basic" label="Search " variant="outlined" />
           <h3 className="text-3xl font-bold">Make Role </h3>
-          <div>
+          <div className='addHotel'>
             <Link to='/dashboard/add-role'>
             <button>
               <span className="text-xl font-bold">+</span> Add Role
@@ -55,7 +55,114 @@ const Role = () => {
                  
                 </td>
               </tr>
-            
+              <tr>
+                <td>01</td>
+                <td>Md Karim </td>
+                <td>Admin</td>
+                <td>Rubel </td>
+                <td>Active</td>
+               <td>
+               <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEye className='editIcon' />
+                 </Link>
+                 </div>
+               </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                 
+                </td>
+              </tr>
+              <tr>
+                <td>01</td>
+                <td>Md Karim </td>
+                <td>Admin</td>
+                <td>Rubel </td>
+                <td>Active</td>
+               <td>
+               <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEye className='editIcon' />
+                 </Link>
+                 </div>
+               </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                 
+                </td>
+              </tr>
+              <tr>
+                <td>01</td>
+                <td>Md Karim </td>
+                <td>Admin</td>
+                <td>Rubel </td>
+                <td>Active</td>
+               <td>
+               <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEye className='editIcon' />
+                 </Link>
+                 </div>
+               </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                 
+                </td>
+              </tr>
+              <tr>
+                <td>01</td>
+                <td>Md Karim </td>
+                <td>Admin</td>
+                <td>Rubel </td>
+                <td>Active</td>
+               <td>
+               <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEye className='editIcon' />
+                 </Link>
+                 </div>
+               </td>
+                <td >
+                 <div className='editIconWrap'>
+                 <Link to='/dashboard/update-customer'> 
+                  <FaEdit className='editIcon' />
+                 </Link>
+                 </div>
+                </td>
+                <td>
+                  <div className='editIconWrap'>
+                  <FaTrashAlt className='deleteIcon' />
+                  </div>
+                 
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

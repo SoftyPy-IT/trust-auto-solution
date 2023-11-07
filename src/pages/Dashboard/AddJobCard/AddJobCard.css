@@ -198,3 +198,12 @@ height: 100px;
     border-left:none;
     border-bottom:none;
 }
+.searchGroup input:focus{
+    outline:none;
+}
+.searchGroup input{
+    border: 1px solid #351E98;
+    padding: 5px;
+    border-radius: 5px;
+
+}

@@ -71,6 +71,12 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard/view-job">View Job Card</NavLink>
                     </span>
                   </Typography>
+                  <Typography className="dashboardItemList">
+                    <span className="flex items-center">
+                    <FaThLarge className="mr-2"/>
+                    <NavLink to="/dashboard/jobcard-list">Job Card List </NavLink>
+                    </span>
+                  </Typography>
                 </AccordionDetails>
               </Accordion>
             </li>

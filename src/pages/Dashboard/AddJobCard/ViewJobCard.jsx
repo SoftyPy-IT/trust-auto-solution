@@ -17,74 +17,66 @@ const ViewJobCard = () => {
       </div>
       <div></div>
       <div>
-        <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">Job Card </h3>
-        <div className="px-5 mt-20 mb-5">
+        <h3 className="text-3xl font-bold text-center border-b-2 w-[200px] border-[#351E98] mx-auto">
+          Job Card{" "}
+        </h3>
+        <div className="px-5 mb-5">
           <div className="flex items-center justify-between">
             <div>
-              <small className=" block">Order Number:  </small>
-              <small className=" block">Customer Name: Jahangir Alom </small>
-              <small className=" ">Car Number: </small>
-              <small className=" block ">Mobile Number: </small>
+              <b className=" block">Order Number: </b>
+              <b className=" block">Customer Name: Jahangir Alom </b>
+              <b className=" ">Car Number: </b>
+              <b className=" block ">Mobile Number: </b>
             </div>
-           <div>
-          <small className="block"> JOB CARD NO : 23102901</small>
-            <small>JOB CARD DATE : 29-10-2023</small>
-           </div>
+            <div>
+              <b className="block"> JOB CARD NO : 23102901</b>
+              <b className="block">JOB CARD DATE : 29-10-2023</b>
+              <b>Technician Name </b>
+            </div>
+          </div>
+          <div className="flex justify-between mt-14 ">
+            <div>
+              <div>
+                <b className=" block ">
+                  Vehicle Interior Parts, Papers, Tools, Meter Light & Others:{" "}
+                </b>
+                <ol className="interiorList">
+                  <li> Center Console.</li>
+                  <li> Glove Compartment.</li>
+                  <li>Power Window or Door Lock Control.</li>
+                  <li>Interior Door Handle.</li>
+                </ol>
+              </div>
+              <div className="m-3">
+                <b className=" block ">Reported Defect: </b>
+                <ol className="interiorList">
+                  <li> Priority</li>
+                  <li> Severity.</li>
+                  <li>Category.</li>
+                  <li>Defect.</li>
+                  <li>Environment.</li>
+                </ol>
+              </div>
+            </div>
+            <div>
+              <div>
+                <b className=" block ">Reported Action : </b>
+                <ol className="interiorList">
+                  <li> Center Console.</li>
+                  <li> Glove Compartment.</li>
+                  <li>Power Window or Door Lock Control.</li>
+                  <li>Interior Door Handle.</li>
+                </ol>
+              </div>
+              <div className="mt-3">
+                <b className=" block ">Vehicle Body Report Comments: </b>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <table className="table ">
-          <thead className="tableWrap">
-            <tr>
-              <th>SL No</th>
-              <th>Description</th>
-              <th>Quantity </th>
-              <th>Amount </th>
-              <th>Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-           <tr>
-            <td>02</td>
-            <td>BMW</td>
-            <td>50</td>
-            <td>46000</td>
-            <td>500</td>
-           </tr>
-           <tr>
-            <td className="hideBorder"></td>
-            <td  className="hideBorder"></td>
-            <td  className="hideBorder2"></td>
-            <td>Total</td>
-            <td>55500</td>
-           </tr>
-           <tr>
-            <td className="hideBorder"></td>
-            <td  className="hideBorder"></td>
-            <td  className="hideBorder2"></td>
-            <td>Discount</td>
-            <td>500</td>
-           </tr>
-           <tr>
-            <td className="hideBorder"></td>
-            <td  className="hideBorder"></td>
-            <td  className="hideBorder2"></td>
-            <td>Vat</td>
-            <td>500</td>
-           </tr>
-           <tr>
-            <td className="hideBorder"></td>
-            <td  className="hideBorder"></td>
-            <td  className="hideBorder2"></td>
-            <td>Net Total </td>
-            <td>444789</td>
-           </tr>
-          </tbody>
-        </table>
-
       <div className="flex items-center justify-between signature mt-16 px-5">
-        <b>Customer Signature </b>
+        <b>Technician Signature </b>
         <b>Trust Auto Solution</b>
       </div>
       <hr className="my-3" />

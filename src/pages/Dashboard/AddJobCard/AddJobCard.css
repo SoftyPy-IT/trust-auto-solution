@@ -103,7 +103,8 @@ height: 100px;
 }
 .buttonGroup{
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
 }
 .buttonGroup button{
     background: #351E98;
@@ -206,4 +207,8 @@ height: 100px;
     padding: 5px;
     border-radius: 5px;
 
+}
+.interiorList{
+    list-style: number;
+    padding-left:25px;
 }

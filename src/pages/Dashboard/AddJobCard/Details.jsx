@@ -26,6 +26,7 @@ const Details = () => {
               <small className=" ">Car Number: </small>
               <small className=" block ">Mobile Number: </small>
             </div>
+        
            <div>
           <small className="block"> QUTATION NO : 23102901</small>
             <small>QUTATION DATE : 29-10-2023</small>

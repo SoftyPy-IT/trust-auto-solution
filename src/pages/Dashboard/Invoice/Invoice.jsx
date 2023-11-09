@@ -6,10 +6,12 @@ import {
   FaEdit,
   FaArrowRight,
   FaArrowLeft,
-  FaEye,
+  FaEye
 } from "react-icons/fa";
 import { useState } from "react";
+import "./Invoice.css";
 const Invoice = () => {
+  const [select, setSelect] = useState(null)
   const [inputList, setinputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
@@ -39,7 +41,7 @@ const Invoice = () => {
       </div>
       <div>
         <form>
-          <div className="qutationForm">
+          <div className="qutationForm invoicForm">
             <div>
               <label className="block">Order Number </label>
               <input
@@ -85,7 +87,7 @@ const Invoice = () => {
           {inputList.map((x, i) => {
             return (
               <div key={i}>
-                <div className="qutationForm">
+                <div className="qutationForm invoicForm ">
                   <div>
                     <input
                       autoComplete="off"
@@ -156,29 +158,23 @@ const Invoice = () => {
         </form>
       </div>
       <div className="overflow-x-auto mt-20">
-      <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
-        <div className="flex items-center justify-between searchGroup mb-5">
-        <div>
-            <label className="block">SL No</label>
-          <input autoComplete="off" type="text" placeholder="Search here" />
-          </div>
-          <div>
-            <label className="block">Customer Name</label>
-          <input autoComplete="off" type="text" placeholder="Search here" />
-          </div>
-         
-          <div>
-            <label className="block">Order Number </label>
-          <input autoComplete="off" type="text" placeholder="Search here" />
-          </div>
-          <div>
-            <label className="block">Car Number </label>
-          <input autoComplete="off" type="text" placeholder="Search here" />
-          </div>
-          <div>
-            <label className="block">Mobile Number </label>
-          <input autoComplete="off" type="text" placeholder="Search here" />
-          </div>
+        <div className="flex items-center justify-between mb-5">
+        <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
+        <div className="flex items-center searcList">
+          <select
+          onChange={(e)=>setSelect(e.target.value)}
+          >
+            <option value="SL No"> SL No</option>
+            <option value="Customer Name"> Customer Name</option>
+            <option value="Order Number"> Order Number</option>
+            <option value="Car Number"> Car Number</option>
+            <option value="Mobile Number"> Mobile Number</option>
+          </select>
+        <div className="searchGroup">
+          <input autoComplete="off" type="text" placeholder={select} />
+        </div>
+        <button className="SearchBtn ">Search </button>
+        </div>
         </div>
         <table className="table ">
           <thead className="tableWrap">

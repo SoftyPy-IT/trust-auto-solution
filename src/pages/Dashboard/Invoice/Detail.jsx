@@ -1,8 +1,19 @@
+import { useRef } from "react";
 import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
+import { useReactToPrint } from 'react-to-print';
+import { usePDF } from 'react-to-pdf';
+import { Link } from "react-router-dom";
 const Detail = () => {
+  const componentRef = useRef();
+  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
   return (
-    <div className="py-10 px-5">
+    <div ref={componentRef} className="invoicePrintWrap">
+     
+      <div ref={targetRef} className="py-10 px-5 invoicePrint">
       <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98]">
         <h2 className="text-4xl font-bold">Trust Auto Solution </h2>
         <div className="flex items-center justify-between">
@@ -17,6 +28,7 @@ const Detail = () => {
       </div>
       <div></div>
       <div>
+       
         <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">Invoice </h3>
         <div className="px-5 mt-20 mb-5">
           <div className="flex items-center justify-between">
@@ -98,6 +110,13 @@ const Detail = () => {
           <b>Mobile:</b> 01821-216465, 01972-216465 , <b>Email:</b>{" "}
           trustautosolution@gmail.com{" "}
         </p>
+      </div>
+    </div>
+    <div className="printInvoiceBtnGroup">
+      <button onClick={handlePrint}>Print </button>
+        <button onClick={() => toPDF()}>Pdf </button>
+        <button onClick={() => toPDF()}>Edit </button>
+        <Link to='/dashboard/invoice'><button onClick={() => toPDF()}> Create Invoice </button></Link>
       </div>
     </div>
   );

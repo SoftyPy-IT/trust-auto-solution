@@ -1,17 +1,38 @@
-.invoicForm input{
-    width:190px;
+.invoicePrintWrap {
+  background-color: #ddd;
+  padding: 100px 0;
 }
-.SearchBtn{
-    width: 100px;
-    height: 40px;
-    background: #351E98;
-    color: #fff;
-    border-radius: 5px;
-    margin-left:10px;
+.printInvoiceBtnGroup {
+    margin-left: 145px;
+    margin-top: 30px;
 }
-.searcList select{
-    border: 1px solid #351E98;
-    padding: 5px;
-    border-radius: 5px;
-    margin-right:5px;
+.invoicePrintWrap button {
+  background: #351e98;
+  color: #fff;
+  margin-right: 5px;
+  padding: 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.invoicePrint {
+  max-width: 790px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.invoicForm input {
+  width: 190px;
+}
+.SearchBtn {
+  width: 100px;
+  height: 40px;
+  background: #351e98;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.searcList select {
+  border: 1px solid #351e98;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
 }

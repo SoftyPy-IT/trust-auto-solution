@@ -29,6 +29,7 @@ import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
 import QutationList from "../pages/Dashboard/AddJobCard/QutationList";
 import UpdateJobCard from "../pages/Dashboard/AddJobCard/UpdateJobCard";
 import UpdateQutation from "../pages/Dashboard/AddJobCard/UpdateQutation";
+import UpdateInvoice from "../pages/Dashboard/Invoice/UpdateInvoice";
 
 export const router = createBrowserRouter([
   {
@@ -140,6 +141,10 @@ export const router = createBrowserRouter([
       {
         path: "invoice",
         element: <Invoice />,
+      },
+      {
+        path: "update-invoice",
+        element: <UpdateInvoice/>,
       },
       {
         path: "detail",

@@ -1,7 +1,7 @@
 import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
 import { useState } from "react";
-const UpdateQutation = () => {
+const UpdateInvoice = () => {
   const [inputList, setinputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
@@ -66,7 +66,7 @@ const UpdateQutation = () => {
               <input autoComplete="off" type="text" placeholder="Date" />
             </div>
           </div>
-          <h3 className="text-3xl font-bold text-center my-5"> Qutation </h3>
+          <h3 className="text-3xl font-bold text-center my-5"> Update Invoice </h3>
           <div className="flex items-center justify-around labelWrap">
             <label className="block">SL No </label>
             <label className="block">Description </label>
@@ -136,7 +136,7 @@ const UpdateQutation = () => {
             );
           })}
           <div className="submitQutationBtn">
-            <button className="">Update Qutation </button>
+            <button className="">Update Invoice </button>
           </div>
         </form>
       </div>
@@ -144,4 +144,4 @@ const UpdateQutation = () => {
   );
 };
 
-export default UpdateQutation;
+export default UpdateInvoice;

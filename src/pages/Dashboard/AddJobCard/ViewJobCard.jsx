@@ -3,6 +3,7 @@ import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
+import { Link } from "react-router-dom";
 const Detail = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
@@ -108,8 +109,8 @@ const Detail = () => {
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
         <button onClick={() => toPDF()}>Edit </button>
-        <button>Create Qutation </button>
-        <button>Create Invoice </button>
+        <Link to='/dashboard/qutation'><button>Create Qutation </button> </Link>
+        <Link to='/dashboard/invoice'><button>Create Invoice  </button> </Link>
       </div>
     </div>
   );

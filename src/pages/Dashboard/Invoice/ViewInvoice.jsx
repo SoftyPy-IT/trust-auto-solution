@@ -57,7 +57,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -84,7 +84,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -111,7 +111,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -138,7 +138,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -165,7 +165,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -192,7 +192,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

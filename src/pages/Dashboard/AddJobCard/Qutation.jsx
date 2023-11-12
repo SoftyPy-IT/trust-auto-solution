@@ -159,7 +159,7 @@ const Qutation = () => {
       </div>
       <div className="overflow-x-auto mt-20">
       <div className="flex items-center justify-between mb-5">
-        <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
+        <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
         <div className="flex items-center searcList">
           <select
           onChange={(e)=>setSelect(e.target.value)}
@@ -198,7 +198,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -225,7 +225,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -252,7 +252,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -279,7 +279,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -306,7 +306,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>

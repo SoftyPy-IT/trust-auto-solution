@@ -26,6 +26,8 @@ import SignUp from "../pages/Signup/SignUp";
 import Login from "../pages/Login/Login";
 import JobCardList from "../pages/Dashboard/AddJobCard/JobCardList";
 import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
+import QutationList from "../pages/Dashboard/AddJobCard/QutationList";
+import UpdateJobCard from "../pages/Dashboard/AddJobCard/UpdateJobCard";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "view-job",
         element: <ViewJobCard />,
+      },
+      {
+        path: "update-job-card",
+        element: <UpdateJobCard/>,
       },
       {
         path: "profile",
@@ -121,6 +127,10 @@ export const router = createBrowserRouter([
       {
         path: "details",
         element: <Details />,
+      },
+      {
+        path: "qutation-view",
+        element: <QutationList/>,
       },
       {
         path: "invoice",

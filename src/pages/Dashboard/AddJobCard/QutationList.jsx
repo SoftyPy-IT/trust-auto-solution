@@ -7,7 +7,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const JobCardList = () => {
+const QutationList = () => {
   const [select, setSelect] = useState(null);
   return (
     <div>
@@ -50,7 +50,7 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -77,7 +77,7 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -104,7 +104,7 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -131,7 +131,7 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -158,7 +158,34 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/dashboard/details">
+                    <FaEye className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="">
+                    <FaEdit className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <FaTrashAlt className="deleteIcon" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>Aminul</td>
+              <td>055</td>
+              <td>79797</td>
+              <td>018575585 </td>
+              <td>10-05-2023</td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/dashboard/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -199,4 +226,4 @@ const JobCardList = () => {
   );
 };
 
-export default JobCardList;
+export default QutationList;

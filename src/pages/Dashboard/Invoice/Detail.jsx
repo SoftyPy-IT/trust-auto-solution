@@ -3,7 +3,6 @@ import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
-import { Link } from "react-router-dom";
 const Detail = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
@@ -18,7 +17,7 @@ const Detail = () => {
           <div className="flex items-center justify-between">
             <img className="w-40 h-32" src={logo} alt="logo" />
             <p className="w-3/6 mx-auto ">
-              It is trusted computerized Ogranizetion for all the kinds of
+              It is trusted computerized Ogranization for all the kinds of
               vehicle check up & maintenance such as computerized Engine
               Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical
               Works & Car Wash.
@@ -117,9 +116,6 @@ const Detail = () => {
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
         <button onClick={() => toPDF()}>Edit </button>
-        <Link to="/dashboard/invoice">
-          <button onClick={() => toPDF()}> Create Invoice </button>
-        </Link>
       </div>
     </div>
   );

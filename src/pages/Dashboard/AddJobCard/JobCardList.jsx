@@ -57,7 +57,7 @@ const JobCardList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-job-card">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -84,7 +84,7 @@ const JobCardList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-job-card">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -111,7 +111,7 @@ const JobCardList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-job-card">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -138,7 +138,7 @@ const JobCardList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-job-card">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -165,7 +165,34 @@ const JobCardList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/update-job-card">
+                    <FaEdit className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <FaTrashAlt className="deleteIcon" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>Aminul</td>
+              <td>055</td>
+              <td>79797</td>
+              <td>018575585 </td>
+              <td>10-05-2023</td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/dashboard/view-job">
+                    <FaEye className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/dashboard/update-job-card">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

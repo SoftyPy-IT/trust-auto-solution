@@ -3,15 +3,8 @@ import car from "../../../../public/assets/car.png";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  FaTrashAlt,
-  FaEdit,
-  FaEye,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 const UpdateJobCard = () => {
-  const [select, setSelect] = useState(null)
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
@@ -82,7 +75,7 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Referance Number</label>
+              <label> Referance Number</label>
               <input
                 {...register("referance", { required: true })}
                 name="referance"
@@ -125,7 +118,7 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Color</label>
+              <label> Color </label>
               <input
                 {...register("color", { required: true })}
                 name="color"
@@ -135,7 +128,7 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Comapny Name </label>
+              <label> Comapny Name </label>
               <input
                 {...register("cname", { required: true })}
                 name="cname"
@@ -147,7 +140,7 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Customer/User name </label>
+              <label> Customer/User name </label>
               <input
                 {...register("username", { required: true })}
                 name="username"

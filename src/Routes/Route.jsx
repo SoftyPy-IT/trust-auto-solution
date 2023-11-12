@@ -28,6 +28,7 @@ import JobCardList from "../pages/Dashboard/AddJobCard/JobCardList";
 import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
 import QutationList from "../pages/Dashboard/AddJobCard/QutationList";
 import UpdateJobCard from "../pages/Dashboard/AddJobCard/UpdateJobCard";
+import UpdateQutation from "../pages/Dashboard/AddJobCard/UpdateQutation";
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ export const router = createBrowserRouter([
       {
         path: "qutation",
         element: <Qutation />,
+      },
+      {
+        path: "update-qutation",
+        element: <UpdateQutation/>,
       },
       {
         path: "details",

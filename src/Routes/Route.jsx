@@ -25,6 +25,7 @@ import AddEmployee from "../pages/Dashboard/Employee/AddEmployee";
 import SignUp from "../pages/Signup/SignUp";
 import Login from "../pages/Login/Login";
 import JobCardList from "../pages/Dashboard/AddJobCard/JobCardList";
+import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
 
 export const router = createBrowserRouter([
   {
@@ -128,6 +129,10 @@ export const router = createBrowserRouter([
       {
         path: "detail",
         element: <Detail />,
+      },
+      {
+        path: "invoice-view",
+        element: <ViewInvoice/>,
       },
       {
         path: "add-employee",

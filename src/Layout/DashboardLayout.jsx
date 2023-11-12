@@ -107,7 +107,7 @@ const DashboardLayout = () => {
                   <Typography className="dashboardItemList">
                    <span className="flex items-center">
                    <FaThLarge className="mr-2"/>
-                    <NavLink to="/dashboard/detail">View Invoice List </NavLink>
+                    <NavLink to="/dashboard/invoice-view">View Invoice List </NavLink>
                    </span>
                   </Typography>
                 </AccordionDetails>

@@ -22,7 +22,6 @@ import Details from "../pages/Dashboard/AddJobCard/Details";
 import Invoice from "../pages/Dashboard/Invoice/Invoice";
 import Detail from "../pages/Dashboard/Invoice/Detail";
 import AddEmployee from "../pages/Dashboard/Employee/AddEmployee";
-import SignUp from "../pages/Signup/SignUp";
 import Login from "../pages/Login/Login";
 import JobCardList from "../pages/Dashboard/AddJobCard/JobCardList";
 import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
@@ -30,6 +29,7 @@ import QutationList from "../pages/Dashboard/AddJobCard/QutationList";
 import UpdateJobCard from "../pages/Dashboard/AddJobCard/UpdateJobCard";
 import UpdateQutation from "../pages/Dashboard/AddJobCard/UpdateQutation";
 import UpdateInvoice from "../pages/Dashboard/Invoice/UpdateInvoice";
+import Home from "../pages/Home/Home";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <SignUp />,
+        element: <Home></Home>
       },
       {
         path: "/login",

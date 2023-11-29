@@ -1,5 +1,6 @@
 import "./AddJobCard.css";
-import car from "../../../../public/assets/car.png";
+import car from "../../../../public/assets/car.jpeg";
+import logo from "../../../../public/assets/logo.png";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -23,7 +24,11 @@ const AddJobCard = () => {
   };
   return (
     <div className="addJobCardWraps">
-      <h2 className="text-4xl font-bold text-center">Trust Auto Solution </h2>
+      <div className="flex items-center justify-center">
+        <img src={logo} alt="logo" className="w-[120px]" />
+        <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className=" jobCardFormWrap">
@@ -83,16 +88,7 @@ const AddJobCard = () => {
                 placeholder="Car Model"
               />
             </div>
-            <div>
-              <label>Referance Number</label>
-              <input
-                {...register("referance", { required: true })}
-                name="referance"
-                autoComplete="off"
-                type="text"
-                placeholder="Referance Number"
-              />
-            </div>
+
             <div>
               <label>Car Make </label>
               <input
@@ -103,8 +99,6 @@ const AddJobCard = () => {
                 placeholder="Car Make"
               />
             </div>
-          </div>
-          <div className="jobCardSingleForm">
             <div>
               <label>Mileage </label>
               <input
@@ -113,6 +107,19 @@ const AddJobCard = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Mileage"
+              />
+            </div>
+          </div>
+          <div className="jobCardSingleForm">
+
+            <div>
+              <label>Color</label>
+              <input
+                {...register("color", { required: true })}
+                name="color"
+                autoComplete="off"
+                type="text"
+                placeholder="Color "
               />
             </div>
             <div>
@@ -127,13 +134,13 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Color</label>
+              <label>Referance Number</label>
               <input
-                {...register("color", { required: true })}
-                name="color"
+                {...register("referance", { required: true })}
+                name="referance"
                 autoComplete="off"
                 type="text"
-                placeholder="Color "
+                placeholder="Referance Number"
               />
             </div>
             <div>
@@ -190,40 +197,41 @@ const AddJobCard = () => {
               />
             </div>
           </div>
-          <div className="mt-5 vehicleTextField">
-            <b className="block">
-              {" "}
-              Vehicle Interior Parts, Papers, Tools, Meter Light & Others{" "}
-            </b>
-            <ReactQuill
-              value={value}
-              className="textEditor"
-              onChange={setValue}
-              modules={{
-                toolbar: [
-                  [{ font: [] }],
-                  [{ size: ["small", false, "large", "huge"] }],
-                  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-                  [{ color: [] }, { background: [] }],
-                  [{ align: [] }],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["bold", "italic", "underline"],
-                  [{ align: [] }],
-                  ["link", "image"],
-                  ["video"],
-                  ["clean"],
-                  ["blockquote", "code-block"],
-                  ["direction"],
-                  ["formula"],
-                  ["strike"],
-                ],
-              }}
-            />
-          </div>
-          <div className="vehicleReport">
+
+          <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">
-              <div>
-                <b className="block"> Reported Defect </b>
+              <div className=" vehicleTextField">
+                <b className="block mb-3">
+                  {" "}
+                  Vehicle Interior Parts, Papers, Tools, Meter Light & Others{" "}
+                </b>
+                <ReactQuill
+                  value={value}
+                  className="textEditor"
+                  onChange={setValue}
+                  modules={{
+                    toolbar: [
+                      [{ font: [] }],
+                      [{ size: ["small", false, "large", "huge"] }],
+                      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                      [{ color: [] }, { background: [] }],
+                      [{ align: [] }],
+                      [{ list: "ordered" }, { list: "bullet" }],
+                      ["bold", "italic", "underline"],
+                      [{ align: [] }],
+                      ["link", "image"],
+                      ["video"],
+                      ["clean"],
+                      ["blockquote", "code-block"],
+                      ["direction"],
+                      ["formula"],
+                      ["strike"],
+                    ],
+                  }}
+                />
+              </div>
+              <div className="mt-5">
+                <b className="block mb-1"> Reported Defect </b>
                 <ReactQuill
                   value={value2}
                   className="textEditor"
@@ -242,8 +250,8 @@ const AddJobCard = () => {
                   }}
                 />
               </div>
-              <div>
-                <b className="block"> Reported Action </b>
+              <div className="mt-5">
+                <b className="block mb-1"> Reported Action </b>
                 <ReactQuill
                   value={value3}
                   className="textEditor"
@@ -264,15 +272,15 @@ const AddJobCard = () => {
               </div>
             </div>
             <div className="vehicleReportRightSide">
-              <b htmlFor="" className="block">
+              <b htmlFor="" className="block mb-3">
                 {" "}
                 Vehicle Body Report (Mark with X where damage )
               </b>
               <div className="imgWrap mt-2">
                 <img src={car} alt="car" />
               </div>
-              <div>
-                <b className="block"> Vehicle Body Report Comments</b>
+              <div className="mt-5">
+                <b className="block mb-1 "> Vehicle Body Report Comments</b>
                 <textarea></textarea>
               </div>
               <b className="carSideBar">LEFT</b>
@@ -316,8 +324,8 @@ const AddJobCard = () => {
             <div>
               <label>For Vehicle Owner</label>
               <input
-               {...register("vehicleowner", { required: true })}
-               name='vehicleowner'
+                {...register("vehicleowner", { required: true })}
+                name='vehicleowner'
                 autoComplete="off"
                 type="text"
                 placeholder="For Vehicle Owner"
@@ -327,39 +335,39 @@ const AddJobCard = () => {
           <div className="mt-3">
             <b>This is not an invoice, all estimates are valid for 30 days </b>
           </div>
-         
+
           <div className="buttonGroup mt-5">
-          <div className="submitQutationBtn">
-            <button type='submit' className="">Add To Job Card </button>
-          </div>
+            <div className="submitQutationBtn">
+              <button type='submit' className="">Add To Job Card </button>
+            </div>
             <div>
-            <button>Preview</button>
-            <button>Download </button>
-            <button>Print </button>
-            <button>Qutation</button>
-            <button>Invoice </button>
+              <button>Preview</button>
+              <button>Download </button>
+              <button>Print </button>
+              <button>Qutation</button>
+              <button>Invoice </button>
             </div>
           </div>
         </div>
         <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
-        <h3 className="text-3xl font-bold mb-3">Job Card List:</h3>
-        <div className="flex items-center searcList">
-          <select
-          onChange={(e)=>setSelect(e.target.value)}
-          >
-            <option value="SL No"> SL No</option>
-            <option value="Customer Name"> Customer Name</option>
-            <option value="Order Number"> Order Number</option>
-            <option value="Car Number"> Car Number</option>
-            <option value="Mobile Number"> Mobile Number</option>
-          </select>
-        <div className="searchGroup">
-          <input autoComplete="off" type="text" placeholder={select} />
-        </div>
-        <button className="SearchBtn ">Search </button>
-        </div>
-        </div>
+          <div className="flex items-center justify-between mb-5">
+            <h3 className="text-3xl font-bold mb-3">Job Card List:</h3>
+            <div className="flex items-center searcList">
+              <select
+                onChange={(e) => setSelect(e.target.value)}
+              >
+                <option value="SL No"> SL No</option>
+                <option value="Customer Name"> Customer Name</option>
+                <option value="Order Number"> Order Number</option>
+                <option value="Car Number"> Car Number</option>
+                <option value="Mobile Number"> Mobile Number</option>
+              </select>
+              <div className="searchGroup">
+                <input autoComplete="off" type="text" placeholder={select} />
+              </div>
+              <button className="SearchBtn ">Search </button>
+            </div>
+          </div>
           <table className="table ">
             <thead className="tableWrap">
               <tr>

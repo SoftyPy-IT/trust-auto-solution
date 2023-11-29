@@ -1,5 +1,5 @@
 import "./AddJobCard.css";
-import car from "../../../../public/assets/car.png";
+import car from "../../../../public/assets/car.jpeg";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -307,8 +307,8 @@ const UpdateJobCard = () => {
             <div>
               <label>For Vehicle Owner</label>
               <input
-               {...register("vehicleowner", { required: true })}
-               name='vehicleowner'
+                {...register("vehicleowner", { required: true })}
+                name='vehicleowner'
                 autoComplete="off"
                 type="text"
                 placeholder="For Vehicle Owner"
@@ -318,16 +318,16 @@ const UpdateJobCard = () => {
           <div className="mt-3">
             <b>This is not an invoice, all estimates are valid for 30 days </b>
           </div>
-         
+
           <div className="buttonGroup mt-5">
-          <div className="submitQutationBtn">
-            <button type='submit' className="">Update Job Card </button>
-          </div>
+            <div className="submitQutationBtn">
+              <button type='submit' className="">Update Job Card </button>
+            </div>
           </div>
         </div>
         <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
-        </div>
+          <div className="flex items-center justify-between mb-5">
+          </div>
         </div>
       </form>
     </div>

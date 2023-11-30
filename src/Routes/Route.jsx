@@ -1,35 +1,33 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import DashboardLayout from "../Layout/DashboardLayout";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import AddItem from "../pages/Dashboard/Employee/Employee";
-import Services from "../pages/Dashboard/Services";
-import AddJobCard from "../pages/Dashboard/AddJobCard/AddJobCard";
-import ViewJobCard from "../pages/Dashboard/AddJobCard/ViewJobCard";
-import Profile from "../pages/Dashboard/Profile/Profile";
-import AddProduct from "../pages/Dashboard/Products/AddProduct";
-import Product from "../pages/Dashboard/Products/Product";
-import Customer from "../pages/Dashboard/Customer/Customer";
-import AddCustomer from "../pages/Dashboard/Customer/AddCustomer";
-import Expense from "../pages/Dashboard/Expense/Expense";
-import AddExpense from "../pages/Dashboard/Expense/AddExpense";
-import UpdateCustomer from "../pages/Dashboard/Customer/UpdateCustomer";
-import Employee from "../pages/Dashboard/Employee/Employee";
-import Role from "../pages/Dashboard/Role/Role";
-import AddRole from "../pages/Dashboard/Role/AddRole";
-import Qutation from "../pages/Dashboard/AddJobCard/Qutation";
-import Details from "../pages/Dashboard/AddJobCard/Details";
-import Invoice from "../pages/Dashboard/Invoice/Invoice";
-import Detail from "../pages/Dashboard/Invoice/Detail";
-import AddEmployee from "../pages/Dashboard/Employee/AddEmployee";
-import Login from "../pages/Login/Login";
-import JobCardList from "../pages/Dashboard/AddJobCard/JobCardList";
-import ViewInvoice from "../pages/Dashboard/Invoice/ViewInvoice";
-import QutationList from "../pages/Dashboard/AddJobCard/QutationList";
-import UpdateJobCard from "../pages/Dashboard/AddJobCard/UpdateJobCard";
-import UpdateQutation from "../pages/Dashboard/AddJobCard/UpdateQutation";
-import UpdateInvoice from "../pages/Dashboard/Invoice/UpdateInvoice";
 import Home from "../pages/Home/Home";
+import JobCardList from "../pages/Home/AddJobCard/JobCardList";
+import AddEmployee from "../pages/Home/Employee/AddEmployee";
+import ViewInvoice from "../pages/Home/Invoice/ViewInvoice";
+import Detail from "../pages/Home/Invoice/Detail";
+import UpdateInvoice from "../pages/Home/Invoice/UpdateInvoice";
+import Invoice from "../pages/Home/Invoice/Invoice";
+import QutationList from "../pages/Home/AddJobCard/QutationList";
+import Details from "../pages/Home/AddJobCard/Details";
+import UpdateQutation from "../pages/Home/AddJobCard/UpdateQutation";
+import Qutation from "../pages/Home/AddJobCard/Qutation";
+import AddRole from "../pages/Home/Role/AddRole";
+import Role from "../pages/Home/Role/Role";
+import Employee from "../pages/Home/Employee/Employee";
+import UpdateCustomer from "../pages/Home/Customer/UpdateCustomer";
+import AddExpense from "../pages/Home/Expense/AddExpense";
+import Expense from "../pages/Home/Expense/Expense";
+import AddCustomer from "../pages/Home/Customer/AddCustomer";
+import Customer from "../pages/Home/Customer/Customer";
+import Product from "../pages/Home/Products/Product";
+import AddProduct from "../pages/Home/Products/AddProduct";
+import Profile from "../pages/Home/Profile/Profile";
+import UpdateJobCard from "../pages/Home/AddJobCard/UpdateJobCard";
+import PreviewJobCard from "../pages/Home/AddJobCard/PreviewJobCard";
+import ViewJobCard from "../pages/Home/AddJobCard/ViewJobCard";
+import AddJobCard from "../pages/Home/AddJobCard/AddJobCard";
+import Services from "../pages/Home/Services";
+
 
 export const router = createBrowserRouter([
   {
@@ -38,26 +36,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-    ],
-  },
-  {
-    path: "dashboard",
-    element: <DashboardLayout />,
-    children: [
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "additem",
-        element: <AddItem />,
-      },
+      // {
+      //   path: "additem",
+      //   element: <AddItem/>,
+      // },
       {
         path: "services",
         element: <Services />,
@@ -71,8 +55,12 @@ export const router = createBrowserRouter([
         element: <ViewJobCard />,
       },
       {
+        path: "preview",
+        element: <PreviewJobCard />
+      },
+      {
         path: "update-job-card",
-        element: <UpdateJobCard/>,
+        element: <UpdateJobCard />,
       },
       {
         path: "profile",
@@ -128,7 +116,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "update-qutation",
-        element: <UpdateQutation/>,
+        element: <UpdateQutation />,
       },
       {
         path: "details",
@@ -136,7 +124,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "qutation-view",
-        element: <QutationList/>,
+        element: <QutationList />,
       },
       {
         path: "invoice",
@@ -144,7 +132,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "update-invoice",
-        element: <UpdateInvoice/>,
+        element: <UpdateInvoice />,
       },
       {
         path: "detail",
@@ -152,7 +140,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "invoice-view",
-        element: <ViewInvoice/>,
+        element: <ViewInvoice />,
       },
       {
         path: "add-employee",

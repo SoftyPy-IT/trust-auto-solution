@@ -19,22 +19,32 @@ body{
   scroll-behavior: smooth;
   font-family: 'Poppins', sans-serif;
 }
-.drawer-content {
-  position: absolute !important;
-  right: 0px !important;
-  width: 80%;
-}
+
 .drawerflex {
   width: 100% !important;
   display: flex;
   justify-content: space-between;
 }
-.drawwerLeftSide {
+.drawwerLeftSide, .activeSideBar {
   width: 20% !important;
+  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-/* .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
-  box-shadow: none !important;
-} */
+.sideBarActive{
+  width:0% !important;
+  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+.drawer-content {
+  position: absolute !important;
+  right: 0px !important;
+  width: 80%;
+  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+.activeDrawer{
+  width: 95%;
+  position: absolute !important;
+  right: 0px !important;
+  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
 .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
   padding-left: 0rem !important;
   padding-right: 1rem;

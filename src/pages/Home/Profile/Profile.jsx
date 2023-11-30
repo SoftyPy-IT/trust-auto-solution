@@ -1,6 +1,5 @@
 import img from "../../../../public/assets/team.png";
 import { FaCheckCircle } from "react-icons/fa";
-
 const Profile = () => {
   return (
     <div>

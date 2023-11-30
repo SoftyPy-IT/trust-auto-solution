@@ -1,0 +1,47 @@
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    transition:all .3s ease-in-out;
+	-webkit-transition:all .3s ease-in-out;
+	-moz-transition:all .3s ease-in-out;
+	-ms-transition:all .3s ease-in-out;
+	-o-transition:all .3s ease-in-out;
+    background:white !important;
+  }
+  .active .bar:nth-child(2){
+    opacity:0;
+  }
+  .active .bar:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+    -webkit-transform:translateY(8px) rotate(45deg);
+    -moz-transform:translateY(8px) rotate(45deg);
+    -ms-transform:translateY(8px) rotate(45deg);
+    -o-transform:translateY(8px) rotate(45deg);
+  }
+  .active .bar:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg)	;
+    -webkit-transform:translateY(-8px) rotate(-45deg)	;
+    -moz-transform:translateY(-8px) rotate(-45deg)	;
+    -ms-transform:translateY(-8px) rotate(-45deg)	;
+    -o-transform:translateY(-8px) rotate(-45deg)	;
+  }
+.active, .activeToggle{
+    position: fixed;
+    background: #351E98;
+    left: 3px;
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width:50px;
+    transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+.activeToggle {
+    position: fixed;
+    left: 252px;
+    transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+  .activeSideBar{
+   
+  }

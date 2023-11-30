@@ -1,0 +1,42 @@
+.trustAutoTitle{
+    font-family: 'Merriweather', serif;
+    font-size: 54px;
+    font-weight: 900;
+    color: #110255;
+    margin-right: 72px;
+}
+.carImgWrap{
+    height:200px;
+    width:300px;
+    overflow: hidden;
+}
+.carImgWrap img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.leftSide label{
+    display: block;
+    margin-bottom:5px;
+}
+.leftSide textarea, .rightSide textarea{
+    width:100%;
+    border:1px solid #351E98;
+    border-radius: 5px;
+    padding:10px;
+    resize: none;
+}
+.leftSide textarea:focus, .rightSide textarea:focus{
+    outline:none;
+}
+.inputGroup input{
+    border: 1px solid #351E98;
+    padding: 5px;
+    margin-right: 3px;
+    border-radius: 5px;
+    height: 35px;
+    width:130px;
+}
+.inputGroup label{
+    font-size: 12px;
+}

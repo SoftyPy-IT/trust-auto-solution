@@ -50,7 +50,7 @@ outline:none;
     padding: 5px;
 }
 
-.vehicleCard{
+.vehicleCard, .vehicleCard2{
     box-shadow: #896EFF 0px 3px 2px 3px;
     font-size: 2rem;
     font-weight: bold;
@@ -58,6 +58,10 @@ outline:none;
     border-radius: 8px;
     width: 20rem;
     text-align: center;
+}
+.vehicleCard2{
+width:18rem;
+font-size: 1.5rem;
 }
 .vehicleTextField textarea, .vehicleReportLeftSide textarea, .vehicleReportRightSide textarea{
     width:100%;

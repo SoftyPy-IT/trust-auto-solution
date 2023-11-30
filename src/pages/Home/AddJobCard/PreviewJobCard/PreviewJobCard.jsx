@@ -1,101 +1,143 @@
-import { useRef } from "react";
+import { useContext } from "react";
 import logo from "../../../../../public/assets/logo.png";
-import { useReactToPrint } from "react-to-print";
-import { usePDF } from "react-to-pdf";
+import './PreviewJobCard.css'
+import { PrintContext } from "../../../context/PrintProvider";
+import CommonButton from "../../../../components/CommonButton/CommonButton";
+import car from "../../../../../public/assets/car.jpeg";
 const PreviewJobCard = () => {
-    const componentRef = useRef();
-    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
+    const { componentRef, targetRef } = useContext(PrintContext)
+    // const componentRef = useRef();
+    // const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    // const handlePrint = useReactToPrint({
+    //     content: () => componentRef.current,
+    // });
     return (
-        <div ref={componentRef} className="invoicePrintWrap">
-            <div ref={targetRef} className="py-10 px-5 invoicePrint">
+        <div ref={componentRef} className="invoicePrintWrap" >
+            <div ref={targetRef} className="py-10 px-5 invoicePrint" >
                 <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
 
-                    <div className="flex  justify-between">
-                        <img className="w-[90px] " src={logo} alt="logo" />
-                        <div className="text-justify ml-8">
-                            <h2 className="text-4xl font-bold">Trust Auto Solution </h2>
-                            <p >
-                                It is trusted computerized Ogranization for all the kinds of
-                                vehicle check up & maintenance such as computerized Engine
-                                Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical
-                                Works & Car Wash.
-                            </p>
-                        </div>
+                    <div className="flex  justify-between items-center mb-3">
+                        <img className="w-[110px] " src={logo} alt="logo" />
+                        <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
 
                     </div>
                 </div>
                 <div></div>
                 <div>
-                    <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
-                        Invoice{" "}
-                    </h3>
-                    <div className="px-5 mt-20 mb-5">
-                        <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between">
+                        <input type="text" placeholder="Job No" className="input w-[150px]  input-bordered input-primary " />
+                        <div className="vehicleCard2 mx-2 uppercase">Vehicle Job Card </div>
+                        <input type="text" placeholder="Date" className="input w-[150px] input-bordered input-primary" />
+                    </div>
+                    <div className="flex items-center my-8 justify-between inputGroup">
+
+                        <div>
+                            <label className="block">VIN No</label>
+                            <input type="text" placeholder="VIN No" />
+                        </div>
+                        <div>
+                            <label className="block">Car Registration No</label>
+                            <input type="text" placeholder="Registration" />
+                        </div>
+                        <div>
+                            <label className="block">Car Model </label>
+                            <input type="text" placeholder="Car Model" />
+                        </div>
+                        <div>
+                            <label className="block">Car Make </label>
+                            <input type="text" placeholder="Car Make" />
+                        </div>
+                        <div>
+                            <label className="block">Mileage</label>
+                            <input type="text" placeholder="Mileage" />
+                        </div>
+
+
+
+
+                    </div>
+                    <div className="flex items-center my-8 justify-between ">
+
+                        <div>
+                            <label className="block">Color</label>
+                            <input type="text" placeholder="Color" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Engine No</label>
+                            <input type="text" placeholder="Engine No" className="input w-[270px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Referance Number </label>
+                            <input type="text" placeholder="Referance Number" className="input w-[200px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Comapny Name</label>
+                            <input type="text" placeholder="Comapny Name" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Mileage</label>
+                            <input type="text" placeholder="Mileage" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+
+
+
+
+                    </div>
+                    <div className="flex items-center my-8 justify-between ">
+
+                        <div>
+                            <label className="block">Customer Name</label>
+                            <input type="text" placeholder="Customer Name" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Contact No</label>
+                            <input type="text" placeholder="Contact No" className="input w-[270px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Car Driver Name </label>
+                            <input type="text" placeholder="Car Driver Name " className="input w-[200px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Comapny Name</label>
+                            <input type="text" placeholder="Comapny Name" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+                        <div>
+                            <label className="block">Phone No</label>
+                            <input type="text" placeholder="Phone No" className="input w-[150px]  input-bordered input-primary " />
+                        </div>
+
+
+
+
+                    </div>
+                    <div className="flex items-center justify-between ">
+                        <div className="leftSide">
+
                             <div>
-                                <small className=" block">Order Number: </small>
-                                <small className=" block">Customer Name: Jahangir Alom </small>
-                                <small className=" ">Car Number: </small>
-                                <small className=" block ">Mobile Number: </small>
+                                <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
+                                <textarea></textarea>
                             </div>
                             <div>
-                                <small className="block"> INVOICE NO : 23102901</small>
-                                <small>INVOICE DATE : 29-10-2023</small>
+                                <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
+                                <textarea></textarea>
+                            </div>
+                            <div>
+                                <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="rightSide">
+                            <div className="carImgWrap">
+                                <img src={car} alt="car" />
+                            </div>
+                            <div className="mt-3">
+                                <label> Vehicle Interior Parts,</label>
+                                <textarea></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <table className="table ">
-                    <thead className="tableWrap">
-                        <tr>
-                            <th>SL No</th>
-                            <th>Description</th>
-                            <th>Quantity </th>
-                            <th>Amount </th>
-                            <th>Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>02</td>
-                            <td>BMW</td>
-                            <td>50</td>
-                            <td>46000</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder2"></td>
-                            <td>Total</td>
-                            <td>55500</td>
-                        </tr>
-                        <tr>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder2"></td>
-                            <td>Discount</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder2"></td>
-                            <td>Vat</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder"></td>
-                            <td className="hideBorder2"></td>
-                            <td>Net Total </td>
-                            <td>444789</td>
-                        </tr>
-                    </tbody>
-                </table>
 
                 <div className="flex items-center justify-between signature mt-16 px-5">
                     <b>Customer Signature </b>
@@ -114,11 +156,7 @@ const PreviewJobCard = () => {
                     </p>
                 </div>
             </div>
-            <div className="printInvoiceBtnGroup">
-                <button onClick={handlePrint}>Print </button>
-                <button onClick={() => toPDF()}>Pdf </button>
-                <button onClick={() => toPDF()}>Edit </button>
-            </div>
+            <CommonButton />
         </div>
     );
 };

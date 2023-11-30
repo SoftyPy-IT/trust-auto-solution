@@ -1,7 +1,7 @@
 import "./AddJobCard.css";
 import car from "../../../../public/assets/car.jpeg";
 import logo from "../../../../public/assets/logo.png";
-import { useState } from "react";
+import {  useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -22,14 +22,15 @@ const AddJobCard = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
+
   return (
-    <div className="addJobCardWraps">
+    <div  className="addJobCardWraps">
       <div className="flex items-center justify-center">
         <img src={logo} alt="logo" className="w-[120px]" />
         <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
 
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className=" jobCardFormWrap">
             <div>
@@ -346,6 +347,7 @@ const AddJobCard = () => {
               <button>Print </button>
               <button>Qutation</button>
               <button>Invoice </button>
+          
             </div>
           </div>
         </div>
@@ -370,7 +372,7 @@ const AddJobCard = () => {
           </div>
 
         </div>
-      </form>
+      </div>
       <table className="table ">
         <thead className="tableWrap">
           <tr>

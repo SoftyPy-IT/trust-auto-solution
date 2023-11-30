@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import logo from "../../../../public/assets/logo.png";
+import logo from "../../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
 const PreviewJobCard = () => {

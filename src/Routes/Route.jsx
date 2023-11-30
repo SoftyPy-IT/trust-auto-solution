@@ -23,10 +23,10 @@ import Product from "../pages/Home/Products/Product";
 import AddProduct from "../pages/Home/Products/AddProduct";
 import Profile from "../pages/Home/Profile/Profile";
 import UpdateJobCard from "../pages/Home/AddJobCard/UpdateJobCard";
-import PreviewJobCard from "../pages/Home/AddJobCard/PreviewJobCard";
 import ViewJobCard from "../pages/Home/AddJobCard/ViewJobCard";
 import AddJobCard from "../pages/Home/AddJobCard/AddJobCard";
 import Services from "../pages/Home/Services";
+import PreviewJobCard from "../pages/Home/AddJobCard/PreviewJobCard/PreviewJobCard";
 
 
 export const router = createBrowserRouter([

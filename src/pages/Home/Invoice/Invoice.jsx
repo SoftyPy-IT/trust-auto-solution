@@ -149,7 +149,7 @@ const Invoice = () => {
             <button className="">Add To Invoice </button>
           </div>
           <div className="buttonGroup mt-8">
-            <Link to="/dashboard/detail">
+            <Link to="/detail">
               <button>Preview</button>
             </Link>
             <button>Download </button>
@@ -159,22 +159,22 @@ const Invoice = () => {
       </div>
       <div className="overflow-x-auto mt-20">
         <div className="flex items-center justify-between mb-5">
-        <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
-        <div className="flex items-center searcList">
-          <select
-          onChange={(e)=>setSelect(e.target.value)}
-          >
-            <option value="SL No"> SL No</option>
-            <option value="Customer Name"> Customer Name</option>
-            <option value="Order Number"> Order Number</option>
-            <option value="Car Number"> Car Number</option>
-            <option value="Mobile Number"> Mobile Number</option>
-          </select>
-        <div className="searchGroup">
-          <input autoComplete="off" type="text" placeholder={select} />
-        </div>
-        <button className="SearchBtn ">Search </button>
-        </div>
+          <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
+          <div className="flex items-center searcList">
+            <select
+              onChange={(e) => setSelect(e.target.value)}
+            >
+              <option value="SL No"> SL No</option>
+              <option value="Customer Name"> Customer Name</option>
+              <option value="Order Number"> Order Number</option>
+              <option value="Car Number"> Car Number</option>
+              <option value="Mobile Number"> Mobile Number</option>
+            </select>
+            <div className="searchGroup">
+              <input autoComplete="off" type="text" placeholder={select} />
+            </div>
+            <button className="SearchBtn ">Search </button>
+          </div>
         </div>
         <table className="table ">
           <thead className="tableWrap">
@@ -198,7 +198,7 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -252,14 +252,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -279,14 +279,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -306,14 +306,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-customer">
+                  <Link to="/update-customer">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

@@ -50,14 +50,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -77,14 +77,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -104,14 +104,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -131,14 +131,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -158,14 +158,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -185,14 +185,14 @@ const ViewInvoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/detail">
+                  <Link to="/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-invoice">
+                  <Link to="/update-invoice">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

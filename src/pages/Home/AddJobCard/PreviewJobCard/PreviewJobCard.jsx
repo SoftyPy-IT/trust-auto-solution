@@ -29,7 +29,7 @@ const PreviewJobCard = () => {
                         <div className="vehicleCard2 mx-2 uppercase">Vehicle Job Card </div>
                         <input type="text" placeholder="Date" className="input w-[150px] input-bordered input-primary" />
                     </div>
-                    <div className="flex items-center my-8 justify-between inputGroup">
+                    <div className="flex items-center my-3 justify-between inputGroup">
 
                         <div>
                             <label className="block">VIN No</label>
@@ -56,54 +56,55 @@ const PreviewJobCard = () => {
 
 
                     </div>
-                    <div className="flex items-center my-8 justify-between ">
+                    <div className="flex items-center mb-3 justify-between inputGroup">
 
                         <div>
                             <label className="block">Color</label>
-                            <input type="text" placeholder="Color" className="input w-[150px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Color" />
                         </div>
                         <div>
                             <label className="block">Engine No</label>
-                            <input type="text" placeholder="Engine No" className="input w-[270px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Engine No" />
                         </div>
                         <div>
                             <label className="block">Referance Number </label>
-                            <input type="text" placeholder="Referance Number" className="input w-[200px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Referance Number" />
                         </div>
                         <div>
-                            <label className="block">Comapny Name</label>
-                            <input type="text" placeholder="Comapny Name" className="input w-[150px]  input-bordered input-primary " />
+                            <label className="block">Company Name </label>
+                            <input type="text" placeholder="Company Name " />
                         </div>
                         <div>
                             <label className="block">Mileage</label>
-                            <input type="text" placeholder="Mileage" className="input w-[150px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Mileage" />
                         </div>
 
 
 
 
                     </div>
-                    <div className="flex items-center my-8 justify-between ">
+                   
+                    <div className="flex items-center mb-3 justify-between inputGroup">
 
                         <div>
                             <label className="block">Customer Name</label>
-                            <input type="text" placeholder="Customer Name" className="input w-[150px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Customer Name" />
                         </div>
                         <div>
                             <label className="block">Contact No</label>
-                            <input type="text" placeholder="Contact No" className="input w-[270px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Contact No" />
                         </div>
                         <div>
                             <label className="block">Car Driver Name </label>
-                            <input type="text" placeholder="Car Driver Name " className="input w-[200px]  input-bordered input-primary " />
+                            <input type="text" placeholder="Car Driver Name" />
                         </div>
                         <div>
-                            <label className="block">Comapny Name</label>
-                            <input type="text" placeholder="Comapny Name" className="input w-[150px]  input-bordered input-primary " />
+                            <label className="block">Company Name </label>
+                            <input type="text" placeholder="Company Name " />
                         </div>
                         <div>
-                            <label className="block">Phone No</label>
-                            <input type="text" placeholder="Phone No" className="input w-[150px]  input-bordered input-primary " />
+                            <label className="block">Phone </label>
+                            <input type="text" placeholder="Phone" />
                         </div>
 
 

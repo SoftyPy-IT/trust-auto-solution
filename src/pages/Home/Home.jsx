@@ -36,6 +36,7 @@ import customer from '../../../public/assets/customer.png'
 import bill from '../../../public/assets/bill.png'
 import './Home.css'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Home = () => {
   const [expanded, setExpanded] = React.useState(false);
   const [salesData, setSalesData] = useState([]);
@@ -140,17 +141,28 @@ const Home = () => {
 
 
 
-  
+
   return (
     <div className='mt-10'>
       <div className="dashBoardRight  ">
-     
+        <div className="flex items-center justify-between p-3">
+          <div className="searchGroup">
+            <input autoComplete="off" type="text" placeholder='Search' />
+            <button className="SearchBtn ">Search </button>
+          </div>
+          <div>
+          
+          <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
+         <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>
+         <Link to='/invoice'> <button className="SearchBtn ">Invoice</button></Link>
+          </div>
+        </div>
         <div className="nameWrap px-3 py-3">
           <div className="projectName">
             <h2 className="text-[#654FC3]">Admin Dashboard</h2>
           </div>
         </div>
-       
+
         <div className="nameWrap downWrap  px-3">
           <div className="value">
             <div className="valueWrap firstCard">
@@ -170,7 +182,7 @@ const Home = () => {
                 <span className=" text-2xl font-bold">50</span>
               </div>
               <div className="valueRight">
-              <img src={service2} alt="" />
+                <img src={service2} alt="" />
               </div>
             </div>
           </div>
@@ -205,7 +217,7 @@ const Home = () => {
                 <span className=" text-2xl font-bold">989৳</span>
               </div>
               <div className="valueRight">
-              <img src={bill} alt="" />
+                <img src={bill} alt="" />
               </div>
             </div>
           </div>
@@ -221,7 +233,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-     
+
         <div className="chart px-5">
           <div className="barChart">
             <BarChart

@@ -115,9 +115,9 @@ const Main = () => {
                     <Typography className="dashboardItemList">
                       <span className="flex items-center">
                         <FaThLarge className="mr-2" />
-                        <NavLink to="/qutation-view">
+                        <Link to="/qutation-view">
                           View Qutation List
-                        </NavLink>
+                        </Link>
                       </span>
                     </Typography>
                   </AccordionDetails>
@@ -144,17 +144,17 @@ const Main = () => {
                     <Typography className="dashboardItemList">
                       <span className="flex items-center">
                         <FaPlus className="mr-2" />
-                        <NavLink to="/invoice">
+                        <Link to="/invoice">
                           Add Invoice Card
-                        </NavLink>
+                        </Link>
                       </span>
                     </Typography>
                     <Typography className="dashboardItemList">
                       <span className="flex items-center">
                         <FaThLarge className="mr-2" />
-                        <NavLink to="/invoice-view">
+                        <Link to="/invoice-view">
                           View Invoice List{" "}
-                        </NavLink>
+                        </Link>
                       </span>
                     </Typography>
                   </AccordionDetails>
@@ -180,7 +180,7 @@ const Main = () => {
                   </AccordionSummary>
                   <AccordionDetails className="dashboardAccordionDetails">
                     <Typography className="dashboardItemList">
-                      <NavLink to="/addjob">Add job card</NavLink>
+                      <Link to="/addjob">Add job card</Link>
                     </Typography>
                     <Typography className="dashboardItemList">
                       View Job Card
@@ -207,7 +207,7 @@ const Main = () => {
                   </AccordionSummary>
                   <AccordionDetails className="dashboardAccordionDetails">
                     <Typography className="dashboardItemList">
-                      <NavLink to="/product">All Product List </NavLink>
+                      <Link to="/product">All Product List </Link>
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -215,7 +215,7 @@ const Main = () => {
               <li>
                 <Link to="/services">
                   <FaUserTie />
-                  <NavLink to="/customer">Customer List </NavLink>
+                  <Link to="/customer">Customer List </Link>
                 </Link>
               </li>
               <li>

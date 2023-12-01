@@ -136,6 +136,9 @@ background:#654FC3;
 padding-left:10px;
 color:#fff !important;
 }
+.searchGroup input{
+padding:8px !important;
+}
 
   
   @media only screen and (max-width: 768px) {

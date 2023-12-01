@@ -145,16 +145,16 @@ const Home = () => {
   return (
     <div className='mt-10'>
       <div className="dashBoardRight  ">
-        <div className="flex items-center justify-between p-3">
+        <div className="flex items-center justify-between p-[18px]">
           <div className="searchGroup">
             <input autoComplete="off" type="text" placeholder='Search' />
             <button className="SearchBtn ">Search </button>
           </div>
           <div>
-          
-          <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
-         <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>
-         <Link to='/invoice'> <button className="SearchBtn ">Invoice</button></Link>
+
+            <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
+            <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>
+            <Link to='/invoice'> <button className="SearchBtn ">Invoice</button></Link>
           </div>
         </div>
         <div className="nameWrap px-3 py-3">

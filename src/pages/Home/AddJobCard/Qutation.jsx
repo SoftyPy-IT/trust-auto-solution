@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import bar from "../../../../public/assets/bar.png";
 import logo from "../../../../public/assets/logo.png";
 import {
   FaTrashAlt,
@@ -26,17 +25,20 @@ const Qutation = () => {
   };
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98]">
-        <h2 className="text-5xl font-bold">Trust Auto Solution </h2>
-        <div className="flex items-center justify-between">
-          <img className="w-40 h-32" src={logo} alt="logo" />
-          <p className="w-3/6 mx-auto ">
+     <div className=" mb-5 pb-3 mx-auto text-center border-b-2 border-[#351E98]">
+        <div className="flex items-center justify-center">
+        <img src={logo} alt="logo" className="w-[160px]" />
+       <div className="text-justify ml-5">
+       <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+        <p className=" ">
             It is trusted computerized Ogranizetion for all the kinds of vehicle
             check up & maintenance such as computerized Engine Analysis Engine
             tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
           </p>
-          <img className="w-24 h-24" src={bar} alt="logo" />
-        </div>
+       </div>
+
+
+      </div>
       </div>
       <div>
         <form>

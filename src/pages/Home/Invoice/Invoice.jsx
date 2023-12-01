@@ -138,6 +138,32 @@ const Invoice = () => {
                     )}
                   </div>
                 </div>
+                <div className="discountFieldWrap">
+                <div>
+                  <b> Discount: </b>
+                    <input
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Discount"
+                    />
+                  </div>
+                  <div>
+                  <b>Vat: </b>
+                    <input
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Vat"
+                    />
+                  </div>
+                  <div>
+                    <b>Net Total: </b>
+                    <input
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Net"
+                    />
+                  </div>
+                </div>
                 <div>
                   {inputList.length - 1 === i && (
                     <div

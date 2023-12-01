@@ -3,7 +3,7 @@ import logo from "../../../../../public/assets/logo.png";
 import './PreviewJobCard.css'
 import { PrintContext } from "../../../context/PrintProvider";
 import CommonButton from "../../../../components/CommonButton/CommonButton";
-import car from "../../../../../public/assets/car.jpeg";
+import car from "../../../../../public/assets/car3.jpeg";
 const PreviewJobCard = () => {
     const { componentRef, targetRef } = useContext(PrintContext)
     // const componentRef = useRef();
@@ -12,8 +12,8 @@ const PreviewJobCard = () => {
     //     content: () => componentRef.current,
     // });
     return (
-        <div ref={componentRef} className="invoicePrintWrap" >
-            <div ref={targetRef} className="py-10 px-5 invoicePrint" >
+        <div ref={componentRef} className="jobCardViewWrap" >
+            <div ref={targetRef} className="py-10 px-5 jobCardPrint" >
                 <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
 
                     <div className="flex  justify-between items-center mb-3">
@@ -83,7 +83,7 @@ const PreviewJobCard = () => {
 
 
                     </div>
-                   
+
                     <div className="flex items-center mb-3 justify-between inputGroup">
 
                         <div>
@@ -139,6 +139,30 @@ const PreviewJobCard = () => {
                     </div>
                 </div>
 
+                <div className="flex items-center mb-3 justify-between inputGroup">
+
+                    <div>
+                        <label className="block">Tecnician Name</label>
+                        <input type="text" placeholder="Tecnician Name" />
+                    </div>
+                    <div>
+                        <label className="block">Tecnician Signature </label>
+                        <input type="text" placeholder="Tecnician Signature" />
+                    </div>
+                    <div>
+                        <label className="block">Date </label>
+                        <input type="text" placeholder="Date" />
+                    </div>
+                    <div>
+                        <label className="block">For Vehicle Owner </label>
+                        <input type="text" placeholder="For Vehicle Owner " />
+                    </div>
+
+
+
+
+
+                </div>
 
                 <div className="flex items-center justify-between signature mt-16 px-5">
                     <b>Customer Signature </b>

@@ -5,9 +5,18 @@
     color: #110255;
     margin-right: 72px;
 }
+.jobCardViewWrap{
+    background-color: #ddd;
+    padding: 10px 0;
+}
+.jobCardPrint {
+    max-width: 790px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
 .carImgWrap{
-    height:200px;
-    width:300px;
+    
+    width:180px;
     overflow: hidden;
 }
 .carImgWrap img{
@@ -37,6 +46,6 @@
     height: 35px;
     width:130px;
 }
-.inputGroup label{
-    font-size: 12px;
+.inputGroup label, .leftSide label, .rightSide label{
+    font-size: 10px;
 }

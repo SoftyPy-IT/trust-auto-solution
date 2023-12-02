@@ -20,8 +20,14 @@
   margin: 0 auto;
   background-color: #fff;
 }
-.invoicForm input {
-  width: 190px;
+.firstInputField{
+  width:80px;
+}
+.thirdInputField{
+  width:150px;
+}
+.secondInputField{
+  width:470px;
 }
 .SearchBtn {
   width: 100px;
@@ -48,4 +54,58 @@
   height: 45px;
   border-radius: 5px;
   padding-left: 5px;
+}
+.addInvoiceItem{
+  position:absolute;
+}
+
+.labelWrap label{
+  display: block;
+  position:absolute;
+}
+.labelWrap label:nth-child(1){
+  left: -51px !important;
+}
+.labelWrap label:nth-child(2){
+  left: -137px !important;
+}
+.labelWrap label:nth-child(3){
+  left: 114px !important;
+}
+.labelWrap label:nth-child(4){
+  left: 0px !important;
+}
+.labelWrap label:nth-child(5){
+  left: -13px !important;
+}
+.buttonGroup{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:10px;
+}
+
+.buttonGroup button{
+  background: #351E98;
+  color: #fff;
+  margin-right: 5px;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  transition:all .3s ease-in-out;
+}
+.buttonGroup button:hover{
+  background-color: #B91C1C;
+
+}
+.submitQutationBtn{
+  width:200px;
+  text-align: center;
+}
+.submitQutationBtn button{
+  background: #351E98;
+  color: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
 }

@@ -145,12 +145,12 @@ const Home = () => {
   return (
     <div className='mt-10'>
       <div className="dashBoardRight  ">
-        <div className="flex items-center justify-between p-[18px]">
+        <div className="md:flex items-center justify-between p-[18px]">
           <div className="searchGroup">
             <input autoComplete="off" type="text" placeholder='Search' />
             <button className="SearchBtn ">Search </button>
           </div>
-          <div>
+          <div className="mt-3 md:mt-0 flex items-center">
 
             <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
             <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>

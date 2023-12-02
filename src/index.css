@@ -112,3 +112,11 @@ table {
 select:focus, input:focus{
   outline:none;
 }
+
+@media only screen and (max-width:1024px){
+  .activeDrawer, .drawer-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+}

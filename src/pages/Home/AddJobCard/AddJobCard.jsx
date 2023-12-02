@@ -26,7 +26,7 @@ const AddJobCard = () => {
   return (
     <div className="addJobCardWraps">
       <div className="flex items-center justify-center">
-        <img src={logo} alt="logo" className="w-[120px]" />
+        <img src={logo} alt="logo" className="lg:w-[120px] w-[100px]" />
         <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
 
       </div>
@@ -338,9 +338,7 @@ const AddJobCard = () => {
           </div>
 
           <div className="buttonGroup mt-5">
-            <div className="submitQutationBtn">
-              <button type='submit' className="">Add To Job Card </button>
-            </div>
+
             <div>
               <Link to='/preview'><button>Preview</button></Link>
               <button>Download </button>
@@ -349,11 +347,14 @@ const AddJobCard = () => {
               <button>Invoice </button>
 
             </div>
+            <div className="submitQutationBtn">
+              <button type='submit' className="">Add To Job Card </button>
+            </div>
           </div>
         </div>
         <div className="overflow-x-auto mt-20">
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-3xl font-bold mb-3">Job Card List:</h3>
+            <h3 className="text-sm lg:text-3xl font-bold mb-3">Job Card List:</h3>
             <div className="flex items-center searcList">
               <select
                 onChange={(e) => setSelect(e.target.value)}

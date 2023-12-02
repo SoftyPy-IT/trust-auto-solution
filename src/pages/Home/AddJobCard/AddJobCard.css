@@ -218,12 +218,39 @@ height: 100px;
         width: 100% !important;
     }
 }
+@media only screen and (max-width:1024px){
+    .jobCardSingleForm label {
+        font-size: 12px;
+    }
+  
+}
 @media only screen and (max-width:768px){
     .trustAuto {
-        font-size: 40px;
+        font-size: 36px;
         margin-left: 0px;
     }
     .qutationForm{
         justify-content: left;
     }
+    .vehicleCard, .vehicleCard2 {
+        font-size: 19px;
+        width: 12rem;
+    }
+    .jobCardFormWrap input {
+        width: 105px;
+    }
+    .buttonGroup button {
+        margin-bottom: 8px;
+    }
+    .buttonGroup {
+        align-items: normal;
+    }
+    .SearchBtn {
+        width: 55px;
+        font-size: 13px;
+    }
+    .jobCardSingleForm label {
+        font-size: 11px;
+    }
+
 }

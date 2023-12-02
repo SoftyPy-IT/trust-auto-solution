@@ -65,7 +65,7 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <div className="w-[400px] mx-auto ">
+          <div className=" ">
             <button className="addProductBtn" type="submit">
               Add Product
             </button>

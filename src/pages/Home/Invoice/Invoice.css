@@ -142,7 +142,24 @@
 .secondInputField {
   width: 345px;
 }
-
+.labelWrap label {
+  font-size: 12px;
+}
+.labelWrap label:nth-child(5) {
+  left: 14px !important;
+}
+.labelWrap label:nth-child(4) {
+  left: 52px !important;
+}
+.labelWrap label:nth-child(3) {
+  left: 133px !important;
+}
+.labelWrap label:nth-child(2) {
+  left: -37px !important;
+}
+.labelWrap label:nth-child(1) {
+  left: 20px !important;
+}
 
 
 }
@@ -153,6 +170,19 @@
   gap: 5px;
 }
 
+.trustAuto {
+  font-size: 30px;
+  margin-left: 0px;
+}
+.discountFieldWrap input {
+  width: 118px;
+}
+.discountFieldWrap b{
+  font-size: 12px;
+}
+.labelWrap label {
+  display: none;
+}
 
 
 }

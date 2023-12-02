@@ -41,18 +41,25 @@
 .active {
   left: 88px;
 }
+
 .activeToggle {
     position: fixed;
     left: 252px;
     transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.rightSideBarWrap {
+.activeRightSideBarWrap{
   width: 89px;
   background: #351E98;
   height: 100% !important;
   position: fixed;
   display: flex;
   justify-content: center;
+  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+.rightSideBarWrap {
+display: none;
+transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+
 }
 .toolTipWrap{
   position:relative;
@@ -60,7 +67,7 @@
 }
 .toolTip{
   position: absolute;
-  left: 59px;
+  left: 57px;
   z-index: 999999999 !important;
   background: #351E98;
   width: 119px;
@@ -77,4 +84,10 @@
 .tooltipIcon{
   font-size: 25px !important;
   color:#fff !important;
+}
+
+@media only screen and (max-width:1024px){
+  .activeToggle{
+    left:204px ;
+  }
 }

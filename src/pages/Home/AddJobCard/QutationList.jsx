@@ -50,14 +50,14 @@ const QutationList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/details">
+                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-qutation">
+                  <Link to="/update-qutation">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -77,14 +77,14 @@ const QutationList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/details">
+                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-qutation">
+                  <Link to="/update-qutation">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -104,14 +104,14 @@ const QutationList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/details">
+                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-qutation">
+                  <Link to="/update-qutation">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -131,14 +131,14 @@ const QutationList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/details">
+                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-qutation">
+                  <Link to="/update-qutation">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -158,14 +158,14 @@ const QutationList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/details">
+                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-qutation">
+                  <Link to="/update-qutation">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

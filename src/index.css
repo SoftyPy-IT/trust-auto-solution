@@ -119,4 +119,13 @@ select:focus, input:focus{
     margin: 0 auto;
     padding: 0 20px;
 }
+
+}
+@media only screen and (max-width:768px){
+.drawwerLeftSide, .activeSideBar {
+  width: 32% !important;
+}
+.activeToggle {
+  left: 246px;
+}
 }

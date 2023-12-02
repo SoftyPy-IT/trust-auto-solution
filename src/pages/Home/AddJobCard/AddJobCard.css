@@ -222,6 +222,9 @@ height: 100px;
     .jobCardSingleForm label {
         font-size: 12px;
     }
+    .vehicleCard {
+        font-size: 23px;
+    }
   
 }
 @media only screen and (max-width:768px){

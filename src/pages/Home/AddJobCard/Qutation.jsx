@@ -32,7 +32,7 @@ const Qutation = () => {
   return (
     <div className="py-10 px-5">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
-        <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
           <div className="invoiceHead">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
@@ -42,8 +42,6 @@ const Qutation = () => {
               tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
             </p>
           </div>
-
-
         </div>
       </div>
       <div className="mt-5">

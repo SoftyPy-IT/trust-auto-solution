@@ -136,6 +136,12 @@
   flex-wrap: wrap;
   gap: 5px;
 }
+.thirdInputField {
+  width: 95px;
+}
+.secondInputField {
+  width: 345px;
+}
 
 
 

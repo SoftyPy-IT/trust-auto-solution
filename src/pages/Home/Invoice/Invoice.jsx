@@ -16,9 +16,15 @@ const Invoice = () => {
   ]);
 
   const handleremove = (index) => {
-    const list = [...inputList];
-    list.splice(index, 0);
-    setinputList(list);
+    if (!index) {
+      const list = [...inputList];
+     
+      setinputList(list);
+    } else {
+      const list = [...inputList];
+      list.splice(index, 1);
+      setinputList(list);
+    }
   };
 
   const handleaddclick = () => {

@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
   FaCarAlt,
   FaProjectDiagram,
@@ -22,6 +22,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FaHome } from "react-icons/fa";
 import { useRef, useState } from "react";
 import './Layout.css'
+import { Home } from "@mui/icons-material";
 const Main = () => {
   const navRef = useRef();
   const [toggle, setToggle] = useState(true)
@@ -268,10 +269,106 @@ const Main = () => {
               </li>
             </ul>
           </div>
-          <div className={`${toggle ? `activeToggle` : `active`}`} ref={navRef} onClick={toggleSideBar}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
+          <div className="rightSideBarWrap">
+            <div className={`${toggle ? `activeToggle` : `active`}`} ref={navRef} onClick={toggleSideBar}>
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </div>
+            <div className="mt-14">
+              <div>
+                <div className="toolTipWrap">
+                  <Home className="tooltipIcon" />
+                  <b className="toolTip">Dashboard </b>
+                </div>
+              </div>
+
+
+              <div className="mt-5">
+                <div className="toolTipWrap">
+                  <FaCarAlt className="tooltipIcon" />
+                  <b className="toolTip">Job Card</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaCarAlt className="tooltipIcon" />
+                  <b className="toolTip">Qutation Card</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaCarAlt className="tooltipIcon" />
+                  <b className="toolTip">Invoice Card</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaProjectDiagram className="tooltipIcon" />
+                  <b className="toolTip">Project</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaProductHunt className="tooltipIcon" />
+                  <b className="toolTip">Product</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaUserTie className="tooltipIcon" />
+                  <b className="toolTip">Customer</b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaCriticalRole className="tooltipIcon" />
+                  <b className="toolTip">Expense </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaCriticalRole className="tooltipIcon" />
+                  <b className="toolTip">Role </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaAlipay className="tooltipIcon" />
+                  <b className="toolTip">Bill Pay </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaUsers className="tooltipIcon" />
+                  <b className="toolTip">Employee </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaUsersCog className="tooltipIcon" />
+                  <b className="toolTip">Profile </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaDatabase className="tooltipIcon" />
+                  <b className="toolTip">Profile </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaHeadset className="tooltipIcon" />
+                  <b className="toolTip">Support </b>
+                </div>
+              </div>
+              <div className="mt-3">
+                <div className="toolTipWrap">
+                  <FaDyalog className="tooltipIcon" />
+                  <b className="toolTip">Log Out </b>
+                </div>
+              </div>
+            </div>
           </div>
         </aside>
       </div>

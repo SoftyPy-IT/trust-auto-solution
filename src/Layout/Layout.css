@@ -38,8 +38,43 @@
     transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
     cursor: pointer;
 }
+.active {
+  left: 88px;
+}
 .activeToggle {
     position: fixed;
     left: 252px;
     transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+}
+.rightSideBarWrap {
+  width: 89px;
+  background: #351E98;
+  height: 100% !important;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+}
+.toolTipWrap{
+  position:relative;
+
+}
+.toolTip{
+  position: absolute;
+  left: 59px;
+  z-index: 999999999 !important;
+  background: #351E98;
+  width: 119px;
+  border-radius: 3px;
+  color: #fff;
+  top: 4px;
+  padding: 5px;
+  display: none;
+}
+.toolTipWrap:hover .toolTip{
+  display:block;
+
+}
+.tooltipIcon{
+  font-size: 25px !important;
+  color:#fff !important;
 }

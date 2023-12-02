@@ -17,7 +17,7 @@ const Invoice = () => {
 
   const handleremove = (index) => {
     const list = [...inputList];
-    list.splice(index, 1);
+    list.splice(index, 0);
     setinputList(list);
   };
 
@@ -26,12 +26,12 @@ const Invoice = () => {
   };
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 pb-3 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
         <div className="flex items-center justify-center">
-          <img src={logo} alt="logo" className="w-[160px]" />
-          <div className="text-justify ml-5">
-            <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
-            <p className=" ">
+          <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
+          <div className="invoiceHead">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+            <p className=" text-sm">
               It is trusted computerized Ogranizetion for all the kinds of vehicle
               check up & maintenance such as computerized Engine Analysis Engine
               tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
@@ -78,20 +78,22 @@ const Invoice = () => {
               <input autoComplete="off" type="text" placeholder="Date" />
             </div>
           </div>
-          <h3 className="text-3xl font-bold text-center my-5"> Invoice </h3>
+
+          <div className="vehicleCard invoiceCard">Invoice Card </div>
           <div className="flex items-center justify-around labelWrap">
-            <label className="firstLabel">SL No </label>
-            <label className="secondLabel">Description </label>
-            <label className="thirdLabel quantityLabel">Quantity </label>
-            <label className="fourthLabel">Rate</label>
-            <label className="">Amount </label>
+            <label>SL No </label>
+            <label >Description </label>
+            <label>Quantity </label>
+            <label>Rate</label>
+            <label>Amount </label>
           </div>
           {inputList.map((x, i) => {
             return (
               <div key={i}>
-                <div className="qutationForm invoicForm ">
+                <div className="qutationForm  ">
+
                   <div>
-                    {inputList.length !== 1 && (
+                    {inputList.length !== 0 && (
                       <button
                         onClick={() => handleremove(i)}
                         className="btn w-[65px] bg-[#351E98] hover:bg-[#351E98] text-white"

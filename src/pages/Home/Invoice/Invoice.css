@@ -6,6 +6,10 @@
     margin-left: 145px;
     margin-top: 30px;
 }
+.invoiceHead{
+  width: 782px;
+  margin-left:20px;
+}
 .invoicePrintWrap button {
   
   background: #351e98;
@@ -64,19 +68,19 @@
   position:absolute;
 }
 .labelWrap label:nth-child(1){
-  left: -51px !important;
+  left: 10px !important;
 }
 .labelWrap label:nth-child(2){
-  left: -137px !important;
+  left: -88px !important;
 }
 .labelWrap label:nth-child(3){
-  left: 114px !important;
+  left: 148px !important;
 }
 .labelWrap label:nth-child(4){
-  left: 0px !important;
+  left: 20px !important;
 }
 .labelWrap label:nth-child(5){
-  left: -13px !important;
+  left: -2px !important;
 }
 .buttonGroup{
   display: flex;
@@ -109,3 +113,60 @@
   height: 40px;
   border-radius: 20px;
 }
+.invoiceCard{
+  text-align: center !important;
+  width: 15rem !important;
+  margin: 28px auto;
+}
+
+@media only screen and (max-width:1024px){
+  .invoiceHead {
+    width: 100%;
+    margin-left: 0px;
+}
+.invoicForm input {
+  width: 182px;
+}
+.qutationForm {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+
+
+}
+
+@media only screen and (max-width:768px){
+.qutationForm {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+
+
+}
+@media only screen and (max-width: 500px){
+
+.trustAuto {
+    font-size: 25px;
+}
+.qutationForm {
+  justify-content: center;
+}
+.invoicForm input {
+  width: 300px;
+}
+.invoicForm input {
+  width: 300px;
+}
+
+
+
+
+
+}
+
+

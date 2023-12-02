@@ -5,7 +5,7 @@ import {
   FaEdit,
   FaArrowRight,
   FaArrowLeft,
-  FaEye,
+  FaEye
 } from "react-icons/fa";
 import { useState } from "react";
 const Qutation = () => {
@@ -25,22 +25,22 @@ const Qutation = () => {
   };
   return (
     <div className="py-10 px-5">
-     <div className=" mb-5 pb-3 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
         <div className="flex items-center justify-center">
-        <img src={logo} alt="logo" className="w-[160px]" />
-       <div className="text-justify ml-5">
-       <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
-        <p className=" ">
-            It is trusted computerized Ogranizetion for all the kinds of vehicle
-            check up & maintenance such as computerized Engine Analysis Engine
-            tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
-          </p>
-       </div>
+          <img src={logo} alt="logo" className="w-[160px]" />
+          <div className="invoiceHead">
+            <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+            <p className=" text-sm">
+              It is trusted computerized Ogranizetion for all the kinds of vehicle
+              check up & maintenance such as computerized Engine Analysis Engine
+              tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
+            </p>
+          </div>
 
 
+        </div>
       </div>
-      </div>
-      <div>
+      <div className="mt-5">
         <form>
           <div className="qutationForm invoicForm">
             <div>
@@ -77,49 +77,18 @@ const Qutation = () => {
               <input autoComplete="off" type="text" placeholder="Date" />
             </div>
           </div>
-          <h3 className="text-3xl font-bold text-center my-5"> Qutation </h3>
+          <h3 className="text-3xl font-bold text-center my-5"> Invoice </h3>
           <div className="flex items-center justify-around labelWrap">
-            <label className="block">SL No </label>
-            <label className="block">Description </label>
-            <label className="block">Quantity </label>
-            <label className="block">Amount</label>
-            <label className="block">Rate </label>
+            <label className="firstLabel">SL No </label>
+            <label className="secondLabel">Description </label>
+            <label className="thirdLabel quantityLabel">Quantity </label>
+            <label className="fourthLabel">Rate</label>
+            <label className="">Amount </label>
           </div>
           {inputList.map((x, i) => {
             return (
               <div key={i}>
-                <div className="qutationForm invoicForm">
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="SL No "
-                    />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Description"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Quantity "
-                    />
-                  </div>
-                  <div>
-                    <input autoComplete="off" type="text" placeholder="Rate " />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Amount"
-                    />
-                  </div>
+                <div className="qutationForm  ">
                   <div>
                     {inputList.length !== 1 && (
                       <button
@@ -130,38 +99,115 @@ const Qutation = () => {
                       </button>
                     )}
                   </div>
+                  <div>
+                    <input
+                      className="firstInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="SL No "
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="secondInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Description"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="firstInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Quantity "
+                    />
+                  </div>
+                  <div>
+                    <input className="thirdInputField" autoComplete="off" type="text" placeholder="Rate " />
+                  </div>
+                  <div>
+                    <input
+                      className="thirdInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Amount"
+                    />
+                  </div>
+
                 </div>
-                <div>
+
+                <div className="addInvoiceItem">
                   {inputList.length - 1 === i && (
                     <div
                       onClick={handleaddclick}
                       className="flex justify-end mt-2"
                     >
                       <button className="btn bg-[#351E98] hover:bg-[#351E98] text-white">
-                        Add Items
+                        Add
                       </button>
                     </div>
                   )}
                 </div>
+
               </div>
             );
           })}
-          <div className="submitQutationBtn">
-            <button className="">Add To Qutation </button>
+          <div className="discountFieldWrap">
+            <div>
+              <b> Total Amount: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Total Amount"
+              />
+            </div>
+            <div>
+              <b> Discount: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Discount"
+              />
+            </div>
+            <div>
+              <b>Vat: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Vat"
+              />
+            </div>
+            <div>
+
+              <div className="ml-3">
+                <b>Net Total: </b>
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Net"
+                />
+              </div>
+            </div>
           </div>
+
           <div className="buttonGroup mt-8">
-            <Link to="/details">
-              <button>Preview</button>
-            </Link>
-            <button>Download </button>
-            <button>Print </button>
-            <button>Invoice </button>
+            <div>
+              <Link to="/detail">
+                <button>Preview</button>
+              </Link>
+              <button>Download </button>
+              <button>Print </button>
+            </div>
+            <div className="submitQutationBtn">
+              <button className="">Add To Invoice </button>
+            </div>
           </div>
         </form>
       </div>
       <div className="overflow-x-auto mt-20">
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
+          <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
           <div className="flex items-center searcList">
             <select
               onChange={(e) => setSelect(e.target.value)}
@@ -200,7 +246,61 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/details">
+                  <Link to="/detail">
+                    <FaEye className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="">
+                    <FaEdit className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <FaTrashAlt className="deleteIcon" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>Aminul</td>
+              <td>055</td>
+              <td>79797</td>
+              <td>018575585 </td>
+              <td>10-05-2023</td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/">
+                    <FaEye className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/">
+                    <FaEdit className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <FaTrashAlt className="deleteIcon" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>Aminul</td>
+              <td>055</td>
+              <td>79797</td>
+              <td>018575585 </td>
+              <td>10-05-2023</td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to="/update-customer">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -227,7 +327,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/details">
+                  <Link to="/update-customer">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -254,61 +354,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/details">
-                    <FaEye className="editIcon" />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className="editIconWrap">
                   <Link to="/update-customer">
-                    <FaEdit className="editIcon" />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className="editIconWrap">
-                  <FaTrashAlt className="deleteIcon" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Aminul</td>
-              <td>055</td>
-              <td>79797</td>
-              <td>018575585 </td>
-              <td>10-05-2023</td>
-              <td>
-                <div className="editIconWrap">
-                  <Link to="/details">
-                    <FaEye className="editIcon" />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className="editIconWrap">
-                  <Link to="/update-customer">
-                    <FaEdit className="editIcon" />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className="editIconWrap">
-                  <FaTrashAlt className="deleteIcon" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>01</td>
-              <td>Aminul</td>
-              <td>055</td>
-              <td>79797</td>
-              <td>018575585 </td>
-              <td>10-05-2023</td>
-              <td>
-                <div className="editIconWrap">
-                  <Link to="/details">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>

@@ -341,10 +341,10 @@ const AddJobCard = () => {
 
             <div>
               <Link to='/preview'><button>Preview</button></Link>
-              <button>Download </button>
-              <button>Print </button>
-              <button>Qutation</button>
-              <button>Invoice </button>
+              <Link to='/preview'><button>Download</button></Link>
+              <Link to='/preview'><button>Print</button></Link>
+              <Link to='/qutation'> <button>Qutation</button></Link>
+              <Link to='/invoice'> <button>Invoice</button></Link>
 
             </div>
             <div className="submitQutationBtn">

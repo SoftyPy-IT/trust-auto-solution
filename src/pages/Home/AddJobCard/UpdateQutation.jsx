@@ -1,15 +1,6 @@
-import { Link } from "react-router-dom";
 import logo from "../../../../public/assets/logo.png";
-import {
-  FaTrashAlt,
-  FaEdit,
-  FaArrowRight,
-  FaArrowLeft,
-  FaEye
-} from "react-icons/fa";
 import { useState } from "react";
 const UpdateQutation = () => {
-  const [select, setSelect] = useState(null)
   const [inputList, setinputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
@@ -82,7 +73,7 @@ const UpdateQutation = () => {
             </div>
           </div>
 
-          <div className="vehicleCard">Update Qutation Card </div>
+          <div className="vehicleCard">Update Qutation</div>
           <div className="flex items-center justify-around labelWrap">
             <label>SL No </label>
             <label >Description </label>

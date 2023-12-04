@@ -113,9 +113,11 @@ const Detail = () => {
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
-        <button onClick={() => toPDF()}>Edit </button>
-        <Link to="/dashboard/invoice">
-          <button onClick={() => toPDF()}> Create Qutation </button>
+        <Link to="/invoice">
+          <button> Edit </button>
+        </Link>
+        <Link to="/qutation">
+          <button > Create Qutation </button>
         </Link>
       </div>
     </main>

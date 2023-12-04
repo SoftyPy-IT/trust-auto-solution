@@ -3,7 +3,7 @@ import logo from "../../../../../public/assets/logo.png";
 import './PreviewJobCard.css'
 import { PrintContext } from "../../../context/PrintProvider";
 import CommonButton from "../../../../components/CommonButton/CommonButton";
-import car from "../../../../../public/assets/car3.jpeg";
+import car from "../../../../../public/assets/car.jpeg";
 const PreviewJobCard = () => {
     const { componentRef, targetRef } = useContext(PrintContext)
     // const componentRef = useRef();
@@ -14,23 +14,22 @@ const PreviewJobCard = () => {
     return (
         <main className="jobCardViewWrap" >
             <div ref={componentRef} >
-                <div ref={targetRef} className="py-10 px-5 jobCardPrint" >
-                    <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+                <div ref={targetRef} className="p-5 jobCardPrint" >
+                    <div className="mx-auto text-center border-b-2 border-[#351E98]">
 
-                        <div className="flex  justify-between items-center mb-3">
-                            <img className="w-[110px] " src={logo} alt="logo" />
-                            <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
+                        <div className="flex  justify-between items-center">
+                            <img className="w-[90px] " src={logo} alt="logo" />
+                            <h2 className="trustAutoTitle">Trust Auto Solution </h2>
 
                         </div>
                     </div>
-                    <div></div>
                     <div>
-                        <div className="flex items-center justify-between">
-                            <input type="text" placeholder="Job No" className="input w-[150px]  input-bordered input-primary " />
-                            <div className="vehicleCard2 mx-2 uppercase">Vehicle Job Card </div>
-                            <input type="text" placeholder="Date" className="input w-[150px] input-bordered input-primary" />
+                        <div className="flex items-center justify-between mt-3 mb-2">
+                            <input disabled type="text" placeholder="Job No" autoComplete="off" className=" jobInput " />
+                            <div className="vehicleJobCard">Vehicle Job Card </div>
+                            <input disabled type="text" placeholder="Date" autoComplete="off" className=" jobInput " />
                         </div>
-                        <div className="flex items-center my-3 justify-between inputGroup">
+                        <div className="flex items-center justify-between inputGroup">
 
                             <div>
                                 <label className="block">VIN No</label>
@@ -38,46 +37,46 @@ const PreviewJobCard = () => {
                             </div>
                             <div>
                                 <label className="block">Car Registration No</label>
-                                <input type="text" placeholder="Registration" />
+                                <input disabled type="text" placeholder="Registration" />
                             </div>
                             <div>
                                 <label className="block">Car Model </label>
-                                <input type="text" placeholder="Car Model" />
+                                <input disabled type="text" placeholder="Car Model" />
                             </div>
                             <div>
                                 <label className="block">Car Make </label>
-                                <input type="text" placeholder="Car Make" />
+                                <input disabled type="text" placeholder="Car Make" />
                             </div>
                             <div>
                                 <label className="block">Mileage</label>
-                                <input type="text" placeholder="Mileage" />
+                                <input disabled type="text" placeholder="Mileage" />
                             </div>
 
 
 
 
                         </div>
-                        <div className="flex items-center mb-3 justify-between inputGroup">
+                        <div className="flex items-center justify-between inputGroup">
 
                             <div>
                                 <label className="block">Color</label>
-                                <input type="text" placeholder="Color" />
+                                <input disabled type="text" placeholder="Color" />
                             </div>
                             <div>
                                 <label className="block">Engine No</label>
-                                <input type="text" placeholder="Engine No" />
+                                <input disabled type="text" placeholder="Engine No" />
                             </div>
                             <div>
                                 <label className="block">Referance Number </label>
-                                <input type="text" placeholder="Referance Number" />
+                                <input disabled type="text" placeholder="Referance Number" />
                             </div>
                             <div>
                                 <label className="block">Company Name </label>
-                                <input type="text" placeholder="Company Name " />
+                                <input disabled type="text" placeholder="Company Name " />
                             </div>
                             <div>
                                 <label className="block">Mileage</label>
-                                <input type="text" placeholder="Mileage" />
+                                <input disabled type="text" placeholder="Mileage" />
                             </div>
 
 
@@ -89,23 +88,23 @@ const PreviewJobCard = () => {
 
                             <div>
                                 <label className="block">Customer Name</label>
-                                <input type="text" placeholder="Customer Name" />
+                                <input disabled type="text" placeholder="Customer Name" />
                             </div>
                             <div>
                                 <label className="block">Contact No</label>
-                                <input type="text" placeholder="Contact No" />
+                                <input disabled type="text" placeholder="Contact No" />
                             </div>
                             <div>
                                 <label className="block">Car Driver Name </label>
-                                <input type="text" placeholder="Car Driver Name" />
+                                <input disabled type="text" placeholder="Car Driver Name" />
                             </div>
                             <div>
                                 <label className="block">Company Name </label>
-                                <input type="text" placeholder="Company Name " />
+                                <input disabled type="text" placeholder="Company Name " />
                             </div>
                             <div>
                                 <label className="block">Phone </label>
-                                <input type="text" placeholder="Phone" />
+                                <input disabled type="text" placeholder="Phone" />
                             </div>
 
 
@@ -117,24 +116,24 @@ const PreviewJobCard = () => {
 
                                 <div>
                                     <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
-                                    <textarea></textarea>
+                                    <textarea disabled></textarea>
                                 </div>
                                 <div>
                                     <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
-                                    <textarea></textarea>
+                                    <textarea disabled></textarea>
                                 </div>
                                 <div>
                                     <label> Vehicle Interior Parts, Papers, Tools, Meter Light & Others</label>
-                                    <textarea></textarea>
+                                    <textarea disabled></textarea>
+                                </div>
+                                <div className="mt-3">
+                                    <label> Vehicle Interior Parts,</label>
+                                    <textarea disabled></textarea>
                                 </div>
                             </div>
                             <div className="rightSide">
                                 <div className="carImgWrap">
                                     <img src={car} alt="car" />
-                                </div>
-                                <div className="mt-3">
-                                    <label> Vehicle Interior Parts,</label>
-                                    <textarea></textarea>
                                 </div>
                             </div>
                         </div>
@@ -144,19 +143,19 @@ const PreviewJobCard = () => {
 
                         <div>
                             <label className="block">Tecnician Name</label>
-                            <input type="text" placeholder="Tecnician Name" />
+                            <input disabled type="text" placeholder="Tecnician Name" />
                         </div>
                         <div>
                             <label className="block">Tecnician Signature </label>
-                            <input type="text" placeholder="Tecnician Signature" />
+                            <input disabled type="text" placeholder="Tecnician Signature" />
                         </div>
                         <div>
                             <label className="block">Date </label>
-                            <input type="text" placeholder="Date" />
+                            <input disabled type="text" placeholder="Date" />
                         </div>
                         <div>
                             <label className="block">For Vehicle Owner </label>
-                            <input type="text" placeholder="For Vehicle Owner " />
+                            <input disabled type="text" placeholder="For Vehicle Owner " />
                         </div>
 
 

@@ -1,6 +1,6 @@
 .trustAutoTitle{
     font-family: 'Merriweather', serif;
-    font-size: 54px;
+    font-size: 20px;
     font-weight: 900;
     color: #110255;
     margin-right: 72px;
@@ -9,15 +9,33 @@
     background-color: #ddd;
     padding: 100px 0;
 }
+
+.jobInput{
+    width: 84px;
+    border: 1px solid #351E98;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 12px;
+}
+.vehicleJobCard{
+    box-shadow: #896EFF 0px 3px 2px 3px;
+    font-size: 15px;
+    width: 167px;
+    text-align: center;
+    text-transform: uppercase;
+}
 .jobCardPrint {
-    max-width: 790px;
+    max-width: 850px;
     margin: 0 auto;
     background-color: #fff;
   }
 .carImgWrap{
-    
-    width:180px;
-    overflow: hidden;
+    width: 380px;
+    height: 500px;
+    border: 1px solid #351E98;
+    padding: 5px;
+    border-radius: 5px;
+  
 }
 .carImgWrap img{
     width:100%;
@@ -29,22 +47,28 @@
     margin-bottom:5px;
 }
 .leftSide textarea, .rightSide textarea{
-    width:100%;
-    border:1px solid #351E98;
+    width: 370px;
+    border: 1px solid #351E98;
     border-radius: 5px;
-    padding:10px;
+    padding: 10px;
     resize: none;
+    height: 100px;
+
 }
 .leftSide textarea:focus, .rightSide textarea:focus{
     outline:none;
 }
 .inputGroup input{
     border: 1px solid #351E98;
-    padding: 5px;
+    padding: 3px;
     margin-right: 3px;
     border-radius: 5px;
-    height: 35px;
-    width:130px;
+    height: 30px;
+    width: 130px;
+    margin-bottom: 3px;
+}
+.inputGroup input::placeholder{
+    font-size: 12px;
 }
 .inputGroup label, .leftSide label, .rightSide label{
     font-size: 10px;

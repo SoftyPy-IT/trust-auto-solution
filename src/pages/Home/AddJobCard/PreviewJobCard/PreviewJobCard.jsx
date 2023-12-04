@@ -3,7 +3,7 @@ import logo from "../../../../../public/assets/logo.png";
 import './PreviewJobCard.css'
 import { PrintContext } from "../../../context/PrintProvider";
 import CommonButton from "../../../../components/CommonButton/CommonButton";
-import car from "../../../../../public/assets/car.jpeg";
+import car from "../../../../../public/assets/car2.jpeg";
 const PreviewJobCard = () => {
     const { componentRef, targetRef } = useContext(PrintContext)
     // const componentRef = useRef();
@@ -157,11 +157,6 @@ const PreviewJobCard = () => {
                             <label className="block">For Vehicle Owner </label>
                             <input disabled type="text" placeholder="For Vehicle Owner " />
                         </div>
-
-
-
-
-
                     </div>
 
                     <div className="flex items-center text-xs justify-between signature mt-10 px-5">

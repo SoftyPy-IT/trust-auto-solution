@@ -199,7 +199,7 @@ const Qutation = () => {
 
           <div className="buttonGroup mt-8">
             <div>
-              <Link to="/detail">
+              <Link to="/details">
                 <button>Preview</button>
               </Link>
               <button>Download </button>

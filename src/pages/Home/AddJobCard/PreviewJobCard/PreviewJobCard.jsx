@@ -164,17 +164,17 @@ const PreviewJobCard = () => {
 
                     </div>
 
-                    <div className="flex items-center justify-between signature mt-10 px-5">
+                    <div className="flex items-center text-xs justify-between signature mt-10 px-5">
                         <b>Customer Signature </b>
                         <b>Trust Auto Solution</b>
                     </div>
                     <hr className="my-3" />
-                    <div className="text-center mt-3">
-                        <p>
+                    <div className="text-center mt-3 ">
+                        <p className="text-xs">
                             <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
                             www.trustautosolution.com
                         </p>
-                        <p>
+                        <p className="text-xs">
                             {" "}
                             <b>Mobile:</b> 01821-216465, 01972-216465 , <b>Email:</b>{" "}
                             trustautosolution@gmail.com{" "}

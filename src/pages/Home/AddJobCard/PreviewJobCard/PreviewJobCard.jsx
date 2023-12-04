@@ -12,8 +12,8 @@ const PreviewJobCard = () => {
     //     content: () => componentRef.current,
     // });
     return (
-        <main className="py-20 bg-[#DDDDDD]">
-            <div ref={componentRef} className="jobCardViewWrap" >
+        <main className="jobCardViewWrap" >
+            <div ref={componentRef} >
                 <div ref={targetRef} className="py-10 px-5 jobCardPrint" >
                     <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
 

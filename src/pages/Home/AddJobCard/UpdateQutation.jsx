@@ -1,15 +1,29 @@
-import bar from "../../../../public/assets/bar.png";
+import { Link } from "react-router-dom";
 import logo from "../../../../public/assets/logo.png";
+import {
+  FaTrashAlt,
+  FaEdit,
+  FaArrowRight,
+  FaArrowLeft,
+  FaEye
+} from "react-icons/fa";
 import { useState } from "react";
 const UpdateQutation = () => {
+  const [select, setSelect] = useState(null)
   const [inputList, setinputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
   ]);
 
   const handleremove = (index) => {
-    const list = [...inputList];
-    list.splice(index, 1);
-    setinputList(list);
+    if (!index) {
+      const list = [...inputList];
+
+      setinputList(list);
+    } else {
+      const list = [...inputList];
+      list.splice(index, 1);
+      setinputList(list);
+    }
   };
 
   const handleaddclick = () => {
@@ -17,19 +31,20 @@ const UpdateQutation = () => {
   };
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98]">
-        <h2 className="text-5xl font-bold">Trust Auto Solution </h2>
-        <div className="flex items-center justify-between">
-          <img className="w-40 h-32" src={logo} alt="logo" />
-          <p className="w-3/6 mx-auto ">
-            It is trusted computerized Ogranizetion for all the kinds of vehicle
-            check up & maintenance such as computerized Engine Analysis Engine
-            tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
-          </p>
-          <img className="w-24 h-24" src={bar} alt="logo" />
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+        <div className="flex items-center justify-center">
+          <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
+          <div className="invoiceHead">
+            <h2 className=" font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+            <p className=" text-sm">
+              It is trusted computerized Ogranizetion for all the kinds of vehicle
+              check up & maintenance such as computerized Engine Analysis Engine
+              tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
+            </p>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="mt-5">
         <form>
           <div className="qutationForm invoicForm">
             <div>
@@ -66,51 +81,22 @@ const UpdateQutation = () => {
               <input autoComplete="off" type="text" placeholder="Date" />
             </div>
           </div>
-          <h3 className="text-3xl font-bold text-center my-5"> Qutation </h3>
+
+          <div className="vehicleCard">Update Qutation Card </div>
           <div className="flex items-center justify-around labelWrap">
-            <label className="block">SL No </label>
-            <label className="block">Description </label>
-            <label className="block">Quantity </label>
-            <label className="block">Amount</label>
-            <label className="block">Rate </label>
+            <label>SL No </label>
+            <label >Description </label>
+            <label>Quantity </label>
+            <label>Rate</label>
+            <label>Amount </label>
           </div>
           {inputList.map((x, i) => {
             return (
               <div key={i}>
-                <div className="qutationForm invoicForm">
+                <div className="qutationForm  ">
+
                   <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="SL No "
-                    />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Description"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Quantity "
-                    />
-                  </div>
-                  <div>
-                    <input autoComplete="off" type="text" placeholder="Rate " />
-                  </div>
-                  <div>
-                    <input
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Amount"
-                    />
-                  </div>
-                  <div>
-                    {inputList.length !== 1 && (
+                    {inputList.length !== 0 && (
                       <button
                         onClick={() => handleremove(i)}
                         className="btn w-[65px] bg-[#351E98] hover:bg-[#351E98] text-white"
@@ -119,24 +105,103 @@ const UpdateQutation = () => {
                       </button>
                     )}
                   </div>
+                  <div>
+                    <input
+                      className="firstInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="SL No "
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="secondInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Description"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="firstInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Quantity "
+                    />
+                  </div>
+                  <div>
+                    <input className="thirdInputField" autoComplete="off" type="text" placeholder="Rate " />
+                  </div>
+                  <div>
+                    <input
+                      className="thirdInputField"
+                      autoComplete="off"
+                      type="text"
+                      placeholder="Amount"
+                    />
+                  </div>
+
                 </div>
-                <div>
+
+                <div className="addInvoiceItem">
                   {inputList.length - 1 === i && (
                     <div
                       onClick={handleaddclick}
                       className="flex justify-end mt-2"
                     >
                       <button className="btn bg-[#351E98] hover:bg-[#351E98] text-white">
-                        Add Items
+                        Add
                       </button>
                     </div>
                   )}
                 </div>
+
               </div>
             );
           })}
-          <div className="submitQutationBtn">
-            <button className="">Update Qutation </button>
+          <div className="discountFieldWrap">
+            <div>
+              <b> Total Amount: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Total Amount"
+              />
+            </div>
+            <div>
+              <b> Discount: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Discount"
+              />
+            </div>
+            <div>
+              <b>Vat: </b>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="Vat"
+              />
+            </div>
+            <div>
+
+              <div className="ml-3">
+                <b>Net Total: </b>
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Net"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="buttonGroup updateJobCardBtn mt-8">
+
+            <div className="submitQutationBtn">
+              <button className="">Update Qutation </button>
+            </div>
           </div>
         </form>
       </div>

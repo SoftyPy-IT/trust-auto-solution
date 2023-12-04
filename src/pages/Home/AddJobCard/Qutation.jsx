@@ -206,7 +206,7 @@ const Qutation = () => {
               <button>Print </button>
             </div>
             <div className="submitQutationBtn">
-              <button className="">Add To Invoice </button>
+              <button className="">Add To Qutation </button>
             </div>
           </div>
         </form>

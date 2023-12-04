@@ -146,16 +146,17 @@ const Home = () => {
     <div className='mt-10'>
       <div className="dashBoardRight  ">
         <div className="md:flex items-center justify-between p-[18px]">
-          <div className="searchGroup">
-            <input autoComplete="off" type="text" placeholder='Search' />
-            <button className="SearchBtn ">Search </button>
-          </div>
           <div className="mt-3 md:mt-0 flex items-center">
 
             <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
             <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>
             <Link to='/invoice'> <button className="SearchBtn ">Invoice</button></Link>
           </div>
+          <div className="searchGroup">
+            <input autoComplete="off" type="text" placeholder='Search' />
+            <button className="SearchBtn ">Search </button>
+          </div>
+
         </div>
         <div className="nameWrap px-3 py-3">
           <div className="projectName">

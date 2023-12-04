@@ -28,6 +28,7 @@ import AddJobCard from "../pages/Home/AddJobCard/AddJobCard";
 import Services from "../pages/Home/Services";
 import PreviewJobCard from "../pages/Home/AddJobCard/PreviewJobCard/PreviewJobCard";
 import UpdateProduct from "../pages/Home/Products/UpdateProduct";
+import UpdateRole from "../pages/Home/Role/UpdateRole";
 
 
 export const router = createBrowserRouter([
@@ -82,7 +83,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "update-product",
-        element: <UpdateProduct/>,
+        element: <UpdateProduct />,
       },
       {
         path: "customer",
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
       {
         path: "add-role",
         element: <AddRole />,
+      },
+      {
+        path: "update-role",
+        element: <UpdateRole />,
       },
       {
         path: "qutation",

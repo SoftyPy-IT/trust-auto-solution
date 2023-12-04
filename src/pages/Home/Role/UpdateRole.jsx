@@ -1,7 +1,7 @@
 import { FaArrowRight, FaArrowLeft, FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-const Role = () => {
+const UpdateRole = () => {
   return (
     <div className="mt-5 mb-24 w-full">
       <div className="flex items-center justify-between px-8 mb-5">
@@ -36,14 +36,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -63,14 +63,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -90,14 +90,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -117,14 +117,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -144,14 +144,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -186,4 +186,4 @@ const Role = () => {
   );
 };
 
-export default Role;
+export default UpdateRole;

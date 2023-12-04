@@ -1,5 +1,6 @@
 import "./AddJobCard.css";
 import car from "../../../../public/assets/car.jpeg";
+import logo from "../../../../public/assets/logo.png";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -12,10 +13,15 @@ const UpdateJobCard = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
+
   return (
     <div className="addJobCardWraps">
-      <h2 className="text-4xl font-bold text-center">Trust Auto Solution </h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex items-center justify-center">
+        <img src={logo} alt="logo" className="lg:w-[120px] w-[100px]" />
+        <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+
+      </div>
+      <div onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className=" jobCardFormWrap">
             <div>
@@ -29,7 +35,7 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <div className="vehicleCard">Vehicle Job Card </div>
+              <div className="vehicleCard">Update Job Card </div>
             </div>
             <div>
               <label>Date </label>
@@ -74,16 +80,7 @@ const UpdateJobCard = () => {
                 placeholder="Car Model"
               />
             </div>
-            <div>
-              <label> Referance Number</label>
-              <input
-                {...register("referance", { required: true })}
-                name="referance"
-                autoComplete="off"
-                type="text"
-                placeholder="Referance Number"
-              />
-            </div>
+
             <div>
               <label>Car Make </label>
               <input
@@ -94,8 +91,6 @@ const UpdateJobCard = () => {
                 placeholder="Car Make"
               />
             </div>
-          </div>
-          <div className="jobCardSingleForm">
             <div>
               <label>Mileage </label>
               <input
@@ -104,6 +99,19 @@ const UpdateJobCard = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Mileage"
+              />
+            </div>
+          </div>
+          <div className="jobCardSingleForm">
+
+            <div>
+              <label>Color</label>
+              <input
+                {...register("color", { required: true })}
+                name="color"
+                autoComplete="off"
+                type="text"
+                placeholder="Color "
               />
             </div>
             <div>
@@ -118,17 +126,17 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label> Color </label>
+              <label>Referance Number</label>
               <input
-                {...register("color", { required: true })}
-                name="color"
+                {...register("referance", { required: true })}
+                name="referance"
                 autoComplete="off"
                 type="text"
-                placeholder="Color "
+                placeholder="Referance Number"
               />
             </div>
             <div>
-              <label> Comapny Name </label>
+              <label>Comapny Name </label>
               <input
                 {...register("cname", { required: true })}
                 name="cname"
@@ -140,7 +148,7 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label> Customer/User name </label>
+              <label>Customer/User name </label>
               <input
                 {...register("username", { required: true })}
                 name="username"
@@ -181,40 +189,41 @@ const UpdateJobCard = () => {
               />
             </div>
           </div>
-          <div className="mt-5 vehicleTextField">
-            <b className="block">
-              {" "}
-              Vehicle Interior Parts, Papers, Tools, Meter Light & Others{" "}
-            </b>
-            <ReactQuill
-              value={value}
-              className="textEditor"
-              onChange={setValue}
-              modules={{
-                toolbar: [
-                  [{ font: [] }],
-                  [{ size: ["small", false, "large", "huge"] }],
-                  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-                  [{ color: [] }, { background: [] }],
-                  [{ align: [] }],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["bold", "italic", "underline"],
-                  [{ align: [] }],
-                  ["link", "image"],
-                  ["video"],
-                  ["clean"],
-                  ["blockquote", "code-block"],
-                  ["direction"],
-                  ["formula"],
-                  ["strike"],
-                ],
-              }}
-            />
-          </div>
-          <div className="vehicleReport">
+
+          <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">
-              <div>
-                <b className="block"> Reported Defect </b>
+              <div className=" vehicleTextField">
+                <b className="block mb-3">
+                  {" "}
+                  Vehicle Interior Parts, Papers, Tools, Meter Light & Others{" "}
+                </b>
+                <ReactQuill
+                  value={value}
+                  className="textEditor"
+                  onChange={setValue}
+                  modules={{
+                    toolbar: [
+                      [{ font: [] }],
+                      [{ size: ["small", false, "large", "huge"] }],
+                      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                      [{ color: [] }, { background: [] }],
+                      [{ align: [] }],
+                      [{ list: "ordered" }, { list: "bullet" }],
+                      ["bold", "italic", "underline"],
+                      [{ align: [] }],
+                      ["link", "image"],
+                      ["video"],
+                      ["clean"],
+                      ["blockquote", "code-block"],
+                      ["direction"],
+                      ["formula"],
+                      ["strike"],
+                    ],
+                  }}
+                />
+              </div>
+              <div className="mt-5">
+                <b className="block mb-1"> Reported Defect </b>
                 <ReactQuill
                   value={value2}
                   className="textEditor"
@@ -233,8 +242,8 @@ const UpdateJobCard = () => {
                   }}
                 />
               </div>
-              <div>
-                <b className="block"> Reported Action </b>
+              <div className="mt-5">
+                <b className="block mb-1"> Reported Action </b>
                 <ReactQuill
                   value={value3}
                   className="textEditor"
@@ -255,15 +264,15 @@ const UpdateJobCard = () => {
               </div>
             </div>
             <div className="vehicleReportRightSide">
-              <b htmlFor="" className="block">
+              <b htmlFor="" className="block mb-3">
                 {" "}
                 Vehicle Body Report (Mark with X where damage )
               </b>
               <div className="imgWrap mt-2">
                 <img src={car} alt="car" />
               </div>
-              <div>
-                <b className="block"> Vehicle Body Report Comments</b>
+              <div className="mt-5">
+                <b className="block mb-1 "> Vehicle Body Report Comments</b>
                 <textarea></textarea>
               </div>
               <b className="carSideBar">LEFT</b>
@@ -319,17 +328,13 @@ const UpdateJobCard = () => {
             <b>This is not an invoice, all estimates are valid for 30 days </b>
           </div>
 
-          <div className="buttonGroup mt-5">
-            <div className="submitQutationBtn">
+          <div className="buttonGroup updateJobCardBtn">
+            <div className="submitQutationBtn flex items-center justify-center">
               <button type='submit' className="">Update Job Card </button>
             </div>
           </div>
         </div>
-        <div className="overflow-x-auto mt-20">
-          <div className="flex items-center justify-between mb-5">
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

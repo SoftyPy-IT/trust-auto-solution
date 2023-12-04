@@ -213,6 +213,11 @@ height: 100px;
     list-style: number;
     padding-left:25px;
 }
+.updateJobCardBtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 33px;
+}
 @media only screen and (max-width:1024px){
 
     .jobCardSingleForm input {

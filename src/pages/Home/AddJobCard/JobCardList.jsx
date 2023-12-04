@@ -50,14 +50,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -77,14 +77,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -104,14 +104,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -131,14 +131,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -158,14 +158,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -185,14 +185,14 @@ const JobCardList = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/view-job">
+                  <Link to="/preview">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/dashboard/update-job-card">
+                  <Link to="/update-jobcard">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

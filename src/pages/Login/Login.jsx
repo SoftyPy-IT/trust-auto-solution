@@ -9,7 +9,7 @@ const Login = () => {
   const handleLogin = event => {
     event.preventDefault()
     console.log(email.current.value, password.current.value)
-    if (email.current.value == 'trust@gmail.com' && password.current.value == '1234') {
+    if (email.current.value == 'trust@gmail.com' && password.current.value == 'trust123') {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -33,7 +33,7 @@ const Login = () => {
     <div>
       <div className="py-5  bg-[#351E98] min-h-screen flex items-center justify-center ">
         <div>
-          <h2 className="text-4xl mb-8 font-bold text-white text-center">
+          <h2 className="text-4xl capitalize mb-8 font-bold text-white text-center">
             Trust Auto Solution !
           </h2>
           <div className="signUnWrap">

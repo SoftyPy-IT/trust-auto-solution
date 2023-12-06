@@ -47,7 +47,7 @@ const DashboardLayout = () => {
                         <ul className="menu p-4 w-80 ">
                             <li></li>
                             <li className="ml-1">
-                                <Link to="/">
+                                <Link to="/dashboard">
                                     <FaHome />
                                     <span>Dashboard</span>
                                 </Link>

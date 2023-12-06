@@ -28,16 +28,29 @@ import Services from "../pages/Home/Services";
 import PreviewJobCard from "../pages/Home/AddJobCard/PreviewJobCard/PreviewJobCard";
 import UpdateProduct from "../pages/Home/Products/UpdateProduct";
 import UpdateRole from "../pages/Home/Role/UpdateRole";
+import Login from "../pages/Login/Login";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main></Main>,
     children: [
       {
-        path: "/",
-        element: <Home />,
+        path: '/login',
+        element: <Login></Login>
+      }
+    ]
+
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Home/>,
       },
       {
         path: "services",

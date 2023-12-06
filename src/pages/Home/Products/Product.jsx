@@ -11,7 +11,7 @@ const Product = () => {
         <TextField id="outlined-basic" label="Search " variant="outlined" />
         <h3 className="text-3xl font-bold">All Products List </h3>
         <div className='addHotel'>
-          <Link to='/add-product'>
+          <Link to='/dashboard/add-product'>
             <button>
               <span className="text-xl font-bold">+</span> Add Product
             </button>
@@ -47,7 +47,7 @@ const Product = () => {
               <td>3/6/23</td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-product'>
+                  <Link to='/dashboard/update-product'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>

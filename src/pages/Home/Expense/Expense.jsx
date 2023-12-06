@@ -8,7 +8,7 @@ const Expense = () => {
         <TextField id="outlined-basic" label="Search " variant="outlined" />
         <h3 className="text-3xl font-bold">Expense List </h3>
         <div className='addHotel'>
-          <Link to='/add-expense'>
+          <Link to='/dashboard/add-expense'>
             <button>
               <span className="text-xl font-bold">+</span> Add Expense
             </button>

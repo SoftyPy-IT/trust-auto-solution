@@ -18,7 +18,7 @@ const Invoice = () => {
   const handleremove = (index) => {
     if (!index) {
       const list = [...inputList];
-     
+
       setinputList(list);
     } else {
       const list = [...inputList];
@@ -202,7 +202,7 @@ const Invoice = () => {
 
           <div className="buttonGroup mt-8">
             <div>
-              <Link to="/detail">
+              <Link to="/dashboard/detail">
                 <button>Preview</button>
               </Link>
               <button>Download </button>
@@ -255,14 +255,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/detail">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="">
+                  <Link to="/dashboard/detail">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -282,14 +282,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/">
+                  <Link to="/dashboard/detail">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -309,14 +309,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -336,14 +336,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -363,14 +363,14 @@ const Invoice = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

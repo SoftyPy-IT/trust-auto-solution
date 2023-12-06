@@ -199,7 +199,7 @@ const Qutation = () => {
 
           <div className="buttonGroup mt-8">
             <div>
-              <Link to="/details">
+              <Link to="/dashboard/details">
                 <button>Preview</button>
               </Link>
               <button>Download </button>
@@ -252,7 +252,7 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/detail">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
@@ -279,14 +279,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/">
+                  <Link to="">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -306,14 +306,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -333,14 +333,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -360,14 +360,14 @@ const Qutation = () => {
               <td>10-05-2023</td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="/dashboard/detail">
                     <FaEye className="editIcon" />
                   </Link>
                 </div>
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to="/update-customer">
+                  <Link to="">
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

@@ -1,186 +1,93 @@
-import { FaArrowRight, FaArrowLeft, FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
-import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import './Role.css'
 const UpdateRole = () => {
   return (
     <div className="mt-5 mb-24 w-full">
-      <div className="flex items-center justify-between px-8 mb-5">
-        <TextField id="outlined-basic" label="Search " variant="outlined" />
-        <h3 className="text-3xl font-bold">Make Role </h3>
-        <div className='addHotel'>
-          <Link to='/add-role'>
-            <button>
-              <span className="text-xl font-bold">+</span> Add Role
-            </button>
-          </Link>
+      <h3 className="text-3xl font-bold text-center">Update Role </h3>
+      <form>
+        <div className="formControl my-5 mx-3">
+          <div className="role">
+            <input
+              name="name"
+              placeholder="Role Name "
+              type="text"
+              autoComplete="off"
+            />
+            <select autoComplete="off" >
+              <option value="">Select Status</option>
+              <option value="">Active </option>
+              <option value="">Inactive</option>
+            </select>
+          </div>
         </div>
-      </div>
+
+
+      </form>
       <div className="overflow-x-auto ">
         <table className="table ">
           <thead className='tableWrap'>
             <tr>
+              <th><input type="checkbox" /></th>
               <th> SL No </th>
-              <th>Name  </th>
-              <th>Role </th>
-              <th>Created By </th>
-              <th>Status </th>
-              <th colSpan={3}>Actions</th>
+              <th>Page Access  </th>
+              <th>Create </th>
+              <th>Edit </th>
+              <th>View </th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td><input type="checkbox" /></td>
               <td>01</td>
-              <td>Md Karim </td>
-              <td>Admin</td>
-              <td>Rubel </td>
-              <td>Active</td>
-              <td>
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEye className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td >
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEdit className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className='editIconWrap'>
-                  <FaTrashAlt className='deleteIcon' />
-                </div>
-
-              </td>
+              <td>Invoice</td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
             <tr>
+              <td><input type="checkbox" /></td>
               <td>01</td>
-              <td>Md Karim </td>
-              <td>Admin</td>
-              <td>Rubel </td>
-              <td>Active</td>
-              <td>
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEye className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td >
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEdit className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className='editIconWrap'>
-                  <FaTrashAlt className='deleteIcon' />
-                </div>
-
-              </td>
+              <td>Invoice</td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
             <tr>
+              <td><input type="checkbox" /></td>
               <td>01</td>
-              <td>Md Karim </td>
-              <td>Admin</td>
-              <td>Rubel </td>
-              <td>Active</td>
-              <td>
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEye className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td >
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEdit className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className='editIconWrap'>
-                  <FaTrashAlt className='deleteIcon' />
-                </div>
-
-              </td>
+              <td>Invoice</td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
             <tr>
+              <td><input type="checkbox" /></td>
               <td>01</td>
-              <td>Md Karim </td>
-              <td>Admin</td>
-              <td>Rubel </td>
-              <td>Active</td>
-              <td>
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEye className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td >
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEdit className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className='editIconWrap'>
-                  <FaTrashAlt className='deleteIcon' />
-                </div>
-
-              </td>
+              <td>Invoice</td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
             <tr>
+              <td><input type="checkbox" /></td>
               <td>01</td>
-              <td>Md Karim </td>
-              <td>Admin</td>
-              <td>Rubel </td>
-              <td>Active</td>
-              <td>
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEye className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td >
-                <div className='editIconWrap'>
-                  <Link to='/update-customer'>
-                    <FaEdit className='editIcon' />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div className='editIconWrap'>
-                  <FaTrashAlt className='deleteIcon' />
-                </div>
-
-              </td>
+              <td>Invoice</td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
+              <td><input type="checkbox" /></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className='pagination'>
-        <div className='paginationBtn'>
-          <button>
-            <FaArrowLeft className='arrowLeft' />
-          </button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>
-            <FaArrowRight className='arrowRight' />
-
-          </button>
-        </div>
+      <div className="rolebtnWrap">
+        <button className="submitBtn" type="submit">
+          Update Role
+        </button>
       </div>
     </div>
   );

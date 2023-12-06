@@ -340,11 +340,11 @@ const AddJobCard = () => {
           <div className="buttonGroup mt-5">
 
             <div>
-              <Link to='/preview'><button>Preview</button></Link>
-              <Link to='/preview'><button>Download</button></Link>
-              <Link to='/preview'><button>Print</button></Link>
-              <Link to='/qutation'> <button>Qutation</button></Link>
-              <Link to='/invoice'> <button>Invoice</button></Link>
+              <Link to='/dashboard/preview'><button>Preview</button></Link>
+              <Link to='/dashboard/preview'><button>Download</button></Link>
+              <Link to='/dashboard/preview'><button>Print</button></Link>
+              <Link to='/dashboard/qutation'> <button>Qutation</button></Link>
+              <Link to='/dashboard/invoice'> <button>Invoice</button></Link>
 
             </div>
             <div className="submitQutationBtn">
@@ -396,14 +396,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>
@@ -423,14 +423,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>
@@ -450,14 +450,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>
@@ -477,14 +477,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>
@@ -504,14 +504,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>
@@ -531,14 +531,14 @@ const AddJobCard = () => {
             <td>10-05-2023</td>
             <td>
               <div className="editIconWrap">
-                <Link to="/preview">
+                <Link to="/dashboard/preview">
                   <FaEye className="editIcon" />
                 </Link>
               </div>
             </td>
             <td>
               <div className="editIconWrap">
-                <Link to="/update-jobcard">
+                <Link to="/dashboard/update-jobcard">
                   <FaEdit className="editIcon" />
                 </Link>
               </div>

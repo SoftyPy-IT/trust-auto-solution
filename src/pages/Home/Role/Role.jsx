@@ -8,7 +8,7 @@ const Role = () => {
         <TextField id="outlined-basic" label="Search " variant="outlined" />
         <h3 className="text-3xl font-bold">Make Role </h3>
         <div className='addHotel'>
-          <Link to='/add-role'>
+          <Link to='/dashboard/add-role'>
             <button>
               <span className="text-xl font-bold">+</span> Add Role
             </button>
@@ -36,14 +36,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -63,14 +63,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -90,14 +90,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -117,14 +117,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>
@@ -144,14 +144,14 @@ const Role = () => {
               <td>Active</td>
               <td>
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap'>
-                  <Link to='/update-role'>
+                  <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>

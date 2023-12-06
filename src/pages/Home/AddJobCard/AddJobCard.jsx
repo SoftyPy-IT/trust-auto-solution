@@ -80,24 +80,24 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Car Model</label>
+              <label>Vehicle Model</label>
               <input
                 {...register("carmodel", { required: true })}
                 name="carmodel"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Model"
+                placeholder="Vehicle Model"
               />
             </div>
 
             <div>
-              <label>Car Make </label>
+              <label>Vehicle Brand </label>
               <input
                 {...register("carmake", { required: true })}
                 name="carmake"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Make"
+                placeholder="Vehicle Brand"
               />
             </div>
             <div>

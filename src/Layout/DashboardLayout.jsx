@@ -181,10 +181,10 @@ const DashboardLayout = () => {
                                     </AccordionSummary>
                                     <AccordionDetails className="dashboardAccordionDetails">
                                         <Typography className="dashboardItemList">
-                                            <Link to="/dashboard/addjob">Add job card</Link>
+                                            <Link to="/dashboard/addjob">Running Project</Link>
                                         </Typography>
                                         <Typography className="dashboardItemList">
-                                            View Job Card
+                                            Completed Project
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -226,10 +226,42 @@ const DashboardLayout = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/dashboard/role">
-                                    <FaCriticalRole />
-                                    <span> Role </span>
-                                </Link>
+
+                                <Accordion className="dashboardAccordion">
+                                    <AccordionSummary
+                                        expandIcon={
+                                            <ExpandMoreIcon className="accordionExpandIcon" />
+                                        }
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        className="dashboardAccordionSummary"
+                                    >
+                                        <Typography className="accordionName">
+                                            <div className="flex items-center justify-center">
+                                                <FaCriticalRole />
+                                                <span className="ml-2">Role</span>
+                                            </div>
+                                        </Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails className="dashboardAccordionDetails">
+                                        <Typography className="dashboardItemList">
+                                            <span className="flex items-center">
+                                                <FaPlus className="mr-2" />
+                                                <Link to="/dashboard/add-role">
+                                                    Add Role
+                                                </Link>
+                                            </span>
+                                        </Typography>
+                                        <Typography className="dashboardItemList">
+                                            <span className="flex items-center">
+                                                <FaThLarge className="mr-2" />
+                                                <Link to="/dashboard/role">
+                                                    View Role
+                                                </Link>
+                                            </span>
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
                             </li>
                             <li>
                                 <Link to="/dashboard/services">

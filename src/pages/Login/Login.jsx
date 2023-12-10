@@ -20,12 +20,11 @@ const Login = () => {
       navigate('/dashboard')
     } else {
       Swal.fire({
+        icon: "error",
         position: 'center',
-        icon: 'success',
-        title: 'Invalid Email & Password',
-        showConfirmButton: false,
-        timer: 1500
-      })
+        title: "Oops....!",
+        text: "Invalid gmail & password!"
+      });
     }
   }
 

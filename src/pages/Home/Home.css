@@ -102,7 +102,11 @@ padding:8px !important;
 }
 @media only screen and (max-width: 1024px) {
   .valueWrap{
-    width:310px;
+    width:265px;
+    margin:5px;
+  }
+  .pieChart {
+    margin-top: 0px;
   }
 }
   

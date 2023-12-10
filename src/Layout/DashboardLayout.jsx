@@ -49,12 +49,12 @@ const DashboardLayout = () => {
                         </div>
 						
 							
-							{/* <Link to="/dashboard">
+							<Link to="/dashboard">
 									<div className="flex items-center dashboardItems">
                                     <FaHome className='dashboardIcon'/>
 									<span>Dashboard</span>
                                     </div>
-								</Link> */}
+								</Link>
 
 							<Accordion className="dashboardAccordion ">
 								<AccordionSummary

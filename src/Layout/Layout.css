@@ -39,7 +39,7 @@
     cursor: pointer;
 }
 .active {
-  left: 88px;
+  left: 24px;
   z-index: 999999 !important;
 }
 

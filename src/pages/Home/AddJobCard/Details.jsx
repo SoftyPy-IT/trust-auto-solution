@@ -1,42 +1,65 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const Details = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const location = useLocation();
+  const job_no = new URLSearchParams(location.search).get("order_no");
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const [quotationPreview, setQuotationPreview] = useState({});
+
+  useEffect(() => {
+    if (job_no) {
+      fetch(`http://localhost:5000/api/v1/quotation/${job_no}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setQuotationPreview(data);
+        });
+    }
+  }, [job_no]);
+
+  console.log(job_no);
   return (
     <main className="invoicePrintWrap">
-      <div ref={componentRef} >
+      <div ref={componentRef}>
         <div ref={targetRef} className="py-10 px-5 invoicePrint">
           <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-
             <div className="flex  justify-between items-center mb-3">
               <img className="w-[110px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
-
             </div>
           </div>
           <div></div>
           <div>
             <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
-              Qutation
+              Quotation
             </h3>
             <div className="px-5 mt-10 mb-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <small className=" block">Order Number: </small>
-                  <small className=" block">Customer Name: Jahangir Alom </small>
-                  <small className=" ">Car Number: </small>
-                  <small className=" block ">Mobile Number: </small>
+                  <small className=" block">
+                    Order Number: {quotationPreview?.job_no}{" "}
+                  </small>
+                  <small className=" block">
+                    Customer Name: {quotationPreview?.customer_name}{" "}
+                  </small>
+                  <small className=" ">
+                    Car Number: {quotationPreview?.car_registration_no}{" "}
+                  </small>
+                  <small className=" block ">
+                    Mobile Number: {quotationPreview?.contact_number}
+                  </small>
                 </div>
                 <div>
-                  <small className="block"> QUTATION NO : 23102901</small>
-                  <small>QUTATION DATE : 29-10-2023</small>
+                  <small className="block"> QUOTATION NO : 23102901</small>
+                  <small>QUOTATION DATE : {quotationPreview?.date}</small>
                 </div>
               </div>
             </div>
@@ -48,45 +71,71 @@ const Details = () => {
                 <th>SL No</th>
                 <th>Description</th>
                 <th>Quantity </th>
-                <th>Amount </th>
                 <th>Rate</th>
+                <th>Amount </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>02</td>
-                <td>BMW</td>
-                <td>50</td>
-                <td>46000</td>
-                <td>500</td>
+                <td>
+                  {Array.isArray(quotationPreview?.descriptions) &&
+                    quotationPreview?.descriptions.map((description, index) => (
+                      <div key={index}>{index + 1}</div>
+                    ))}
+                </td>
+                <td>
+                  {Array.isArray(quotationPreview?.descriptions) &&
+                    quotationPreview?.descriptions.map((description, index) => (
+                      <div key={index}>{description}</div>
+                    ))}
+                </td>
+
+                <td>
+                  {Array.isArray(quotationPreview.quantity) &&
+                    quotationPreview.quantity.map((quantity, index) => (
+                      <div key={index}>{quantity}</div>
+                    ))}
+                </td>
+                <td>
+                  {Array.isArray(quotationPreview.rate) &&
+                    quotationPreview.rate.map((rate, index) => (
+                      <div key={index}>{rate}</div>
+                    ))}
+                </td>
+                <td>
+                  {Array.isArray(quotationPreview.amount) &&
+                    quotationPreview.amount.map((amount, index) => (
+                      <div key={index}>{amount}</div>
+                    ))}
+                </td>
               </tr>
               <tr>
                 <td className="hideBorder"></td>
                 <td className="hideBorder"></td>
                 <td className="hideBorder2"></td>
                 <td>Total</td>
-                <td>55500</td>
+                <td>{quotationPreview.total_amount}</td>
               </tr>
               <tr>
                 <td className="hideBorder"></td>
                 <td className="hideBorder"></td>
                 <td className="hideBorder2"></td>
                 <td>Discount</td>
-                <td>500</td>
+                <td>{quotationPreview.discount}</td>
               </tr>
               <tr>
                 <td className="hideBorder"></td>
                 <td className="hideBorder"></td>
                 <td className="hideBorder2"></td>
                 <td>Vat</td>
-                <td>500</td>
+                <td>{quotationPreview.vat}</td>
               </tr>
               <tr>
                 <td className="hideBorder"></td>
                 <td className="hideBorder"></td>
                 <td className="hideBorder2"></td>
                 <td>Net Total </td>
-                <td>444789</td>
+                <td>{quotationPreview.net_total}</td>
               </tr>
             </tbody>
           </table>
@@ -108,7 +157,6 @@ const Details = () => {
             </p>
           </div>
         </div>
-
       </div>
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>

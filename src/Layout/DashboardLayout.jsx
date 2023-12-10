@@ -10,7 +10,6 @@ import {
 	FaUsersCog,
 	FaDatabase,
 	FaHeadset,
-	FaDyalog,
 	FaPlus,
 	FaThLarge
 } from 'react-icons/fa'
@@ -22,7 +21,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { FaHome } from 'react-icons/fa'
 import { useRef, useState } from 'react'
 import './Layout.css'
-import { Home } from '@mui/icons-material'
+import { Home,Logout,Receipt } from '@mui/icons-material'
 const DashboardLayout = () => {
 	const navRef = useRef()
 	const [ toggle, setToggle ] = useState(false)
@@ -123,7 +122,7 @@ const DashboardLayout = () => {
 								>
 									<Typography>
 										<div className="flex items-center justify-center">
-											<FaCarAlt />
+											<Receipt />
 											<span className="ml-2">Invoice Card</span>
 										</div>
 									</Typography>
@@ -262,7 +261,7 @@ const DashboardLayout = () => {
 							</Link>
 								<Link to="/dashboard/services">
                                 <div className="flex items-center dashboardItems">
-                                <FaHeadset className='dashboardIcon'/>
+                                <Logout className='dashboardIcon'/>
 								<span>Log Out </span>
                                 </div>
 
@@ -298,7 +297,7 @@ const DashboardLayout = () => {
 							</div>
 							<div className="mt-[14px]">
 								<div className="toolTipWrap">
-									<FaCarAlt className="tooltipIcon" />
+									<Receipt className="tooltipIcon" />
 									<b className="toolTip">Invoice Card</b>
 								</div>
 							</div>
@@ -364,7 +363,7 @@ const DashboardLayout = () => {
 							</div>
 							<div className="mt-[14px]">
 								<div className="toolTipWrap">
-									<FaDyalog className="tooltipIcon" />
+									<Logout className="tooltipIcon" />
 									<b className="toolTip">Log Out </b>
 								</div>
 							</div>

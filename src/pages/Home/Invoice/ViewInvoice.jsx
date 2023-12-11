@@ -19,11 +19,11 @@ const ViewInvoice = () => {
   const username = "683231669175";
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/detail?order_no=${e}`);
+    navigate(`/dashboard/detail?id=${e}`);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/invoice/all/${username}`)
+    fetch(`http://localhost:5000/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -153,7 +153,7 @@ const ViewInvoice = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}
@@ -163,7 +163,7 @@ const ViewInvoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
+                  <Link to={`/dashboard/update-invoice?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -230,7 +230,7 @@ const ViewInvoice = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/invoice/all/${username}`)
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -242,7 +242,7 @@ const ViewInvoice = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/invoice/all/${username}`,
+        `http://localhost:5000/api/v1/invoice/all`,
         data
       );
       console.log(response.data);
@@ -256,7 +256,7 @@ const ViewInvoice = () => {
     }
   };
   return (
-    <div>
+   
       <div className="overflow-x-auto mt-20">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
@@ -281,6 +281,7 @@ const ViewInvoice = () => {
             </button>
           </div>
         </div>
+ 
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
             <div className="text-xl text-center flex justify-center items-center h-full">
@@ -332,8 +333,11 @@ const ViewInvoice = () => {
               </section>
             </>
           )}
-        </div>
+ 
+       
       </div>
+
+       
     </div>
   );
 };

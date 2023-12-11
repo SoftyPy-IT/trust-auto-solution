@@ -41,7 +41,7 @@ const AddJobCard = () => {
   const [technicianSignature, setTechnicianSignature] = useState(null);
   const [technicianDate, setTechnicianDate] = useState(null);
   const [owner, setOwner] = useState(null);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const [select, setSelect] = useState("SL No");
   const [value, setValue] = useState("");
@@ -127,7 +127,9 @@ const AddJobCard = () => {
       technician_date: technicianDate,
       vehicle_owner: owner,
     };
-    const hasPreviewNullValues = Object.values(values).some((val) => val === null);
+    const hasPreviewNullValues = Object.values(values).some(
+      (val) => val === null
+    );
 
     if (hasPreviewNullValues) {
       setError("Please fill in all the required fields.");
@@ -141,7 +143,14 @@ const AddJobCard = () => {
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);
       setReload(!reload);
-      navigate(`/dashboard/preview?order_no=${jobNo}`);
+      fetch("http://localhost:5000/api/v1/jobCard/recent")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            navigate(`/dashboard/preview?id=${data._id}`);
+          }
+        });
+
       // formRef.current.reset()
       reset();
     }
@@ -176,7 +185,9 @@ const AddJobCard = () => {
       vehicle_owner: owner,
     };
 
-    const hasQuotationNullValues = Object.values(values).some((val) => val === null);
+    const hasQuotationNullValues = Object.values(values).some(
+      (val) => val === null
+    );
 
     if (hasQuotationNullValues) {
       setError("Please fill in all the required fields.");
@@ -195,8 +206,58 @@ const AddJobCard = () => {
       console.log(response);
     }
   };
+  const handleInvoice = async (e) => {
+    e.preventDefault();
+    const values = {
+      username: username,
+      job_no: jobNo,
+      date: formattedDate,
+      vin_no: vinNo,
+      car_registration_no: registration,
+      car_model: carModel,
+      car_make: carMake,
+      mileage: mileage,
+      color: color,
+      engine_no: engineNo,
+      reference_number: reference,
+      company_name: companyName,
+      customer_name: customerName,
+      contact_number: contactNo,
+      driver_name: driverName,
+      phone_number: phoneNo,
+      vehicle_interior_parts: value,
+      reported_defect: value2,
+      reported_action: value3,
+      vehicle_body_report: vehicleBody,
+      technician_name: technicianName,
+      technician_signature: technicianSignature,
+      technician_date: technicianDate,
+      vehicle_owner: owner,
+    };
+
+    const hasQuotationNullValues = Object.values(values).some(
+      (val) => val === null
+    );
+
+    if (hasQuotationNullValues) {
+      setError("Please fill in all the required fields.");
+      return;
+    }
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/jobCard",
+      values
+    );
+    if (response.data.message === "Successfully add to card post") {
+      const newJobNo = jobNo + 1;
+      setJobNo(newJobNo);
+      setReload(!reload);
+       
+        navigate(`/dashboard/invoice?order_no=${jobNo}`);
+      // formRef.current.reset()
+    }
+  };
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/preview?order_no=${e}`);
+    navigate(`/dashboard/preview?id=${e}`);
   };
 
   useEffect(() => {
@@ -357,7 +418,7 @@ const AddJobCard = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}
@@ -819,7 +880,8 @@ const AddJobCard = () => {
               {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
               <button onClick={handleQuotation}>Quotation</button>
               {/* </Link> */}
-              {/* <Link to="/dashboard/invoice"> */} <button>Invoice</button>
+              {/* <Link to="/dashboard/invoice"> */}{" "}
+              <button onClick={handleInvoice}>Invoice</button>
               {/* </Link> */}
             </div>
             <div className="submitQutationBtn">
@@ -836,9 +898,7 @@ const AddJobCard = () => {
               <button>Invoice </button>
             </div> */}
           </div>
-          <div className="pt-6 text-red-400 text-center">
-            {error}
-          </div>
+          <div className="pt-6 text-red-400 text-center">{error}</div>
         </div>
       </form>
       <div className="overflow-x-auto mt-20">
@@ -915,131 +975,6 @@ const AddJobCard = () => {
           </>
         )}
       </div>
-
-      {/* <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr> */}
-
-      {/* <div className="pagination">
-        <div className="paginationBtn">
-          <button>
-            <FaArrowLeft className="arrowLeft" />
-          </button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>
-            <FaArrowRight className="arrowRight" />
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 };

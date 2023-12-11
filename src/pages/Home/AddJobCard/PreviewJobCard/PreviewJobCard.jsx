@@ -12,18 +12,18 @@ const PreviewJobCard = () => {
   // const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   // const handlePrint = useReactToPrint({
   const location = useLocation();
-  const job_no = new URLSearchParams(location.search).get("order_no");
+  const id = new URLSearchParams(location.search).get("id");
 
   useEffect(() => {
-    if (job_no) {
-      fetch(`http://localhost:5000/api/v1/jobCard/${job_no}`)
+    if (id) {
+      fetch(`http://localhost:5000/api/v1/jobCard/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setPreviewData(data);
           // console.log(data)
         });
     }
-  }, [job_no]);
+  }, [id]);
 
   return (
     <main className="jobCardViewWrap">

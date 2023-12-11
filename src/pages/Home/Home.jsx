@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import {
   FaHouseDamage,
@@ -148,9 +149,9 @@ const Home = () => {
         <div className="md:flex items-center justify-between md:p-[0px] lg:p-[18px]">
           <div className="mt-3 md:mt-0 flex items-center">
 
-            <Link to='/addjob'><button className="SearchBtn ">Job Card </button></Link>
-            <Link to='/qutation'> <button className="SearchBtn ">Qutation</button></Link>
-            <Link to='/invoice'> <button className="SearchBtn ">Invoice</button></Link>
+            <Link to='/dashboard/addjob'><button className="SearchBtn ">Job Card </button></Link>
+            <Link to='/dashboard/qutation'> <button className="SearchBtn ">Qutation</button></Link>
+            <Link to='/dashboard/invoice'> <button className="SearchBtn ">Invoice</button></Link>
           </div>
           <div className="searchGroup">
             <input autoComplete="off" type="text" placeholder='Search' />

@@ -27,7 +27,7 @@ const JobCardList = () => {
   }, [username]);
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/preview?order_no=${e}`);
+    navigate(`/dashboard/preview?id=${e}`);
   };
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(
@@ -151,7 +151,7 @@ const JobCardList = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}

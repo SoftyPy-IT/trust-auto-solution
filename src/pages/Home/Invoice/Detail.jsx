@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 const Detail = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const navigate = useNavigate();
   const location = useLocation();
-  const job_no = new URLSearchParams(location.search).get("order_no");
+  const id = new URLSearchParams(location.search).get("id");
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
@@ -15,16 +17,45 @@ const Detail = () => {
   const [quotationPreview, setQuotationPreview] = useState({});
 
   useEffect(() => {
-    if (job_no) {
-      fetch(`http://localhost:5000/api/v1/invoice/${job_no}`)
+    if (id) {
+      fetch(`http://localhost:5000/api/v1/invoice/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setQuotationPreview(data);
         });
     }
-  }, [job_no]);
+  }, [id]);
 
+  const handleAddToQuotation = async (e) => {
+    e.preventDefault();
+
+    const values = {
+      username: quotationPreview.username,
+      job_no: quotationPreview.job_no,
+      date: quotationPreview.date,
+      car_registration_no: quotationPreview.car_registration_no,
+      customer_name: quotationPreview?.customer_name,
+      contact_number: quotationPreview?.contact_number,
+      descriptions: quotationPreview.descriptions,
+      quantity: quotationPreview.quantity,
+      rate: quotationPreview.rate,
+      amount: quotationPreview.total,
+      total_amount: quotationPreview.total_amount,
+      discount: quotationPreview.discount,
+      vat: quotationPreview.vat,
+      net_total: quotationPreview.net_total,
+    };
+
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/quotation",
+      values
+    );
+
+    if (response.data.message === "Successfully quotation post") {
+      navigate("/dashboard/qutation-view");
+    }
+  };
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
@@ -160,12 +191,13 @@ const Detail = () => {
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
-        <Link to="/qutation">
+
+        <Link to="/dashboard/invoice">
           <button> Edit </button>
         </Link>
-        <Link to="/invoice">
-          <button> Create Quotation </button>
-        </Link>
+        {/* <Link to="/dashboard/qutation"> */}
+        <button onClick={handleAddToQuotation}> Create Qutation </button>
+        {/* </Link> */}
       </div>
     </main>
   );

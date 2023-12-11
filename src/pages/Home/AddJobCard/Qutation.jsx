@@ -28,11 +28,11 @@ const Qutation = () => {
   const [getAllQuotation, setGetAllQuotation] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (job_no) {
-      fetch(`http://localhost:5000/api/v1/jobCard/${job_no}`)
+      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -129,12 +129,12 @@ const Qutation = () => {
   };
 
   const calculateFinalTotal = () => {
-    const discountAsPercentage = discount / 100;
-    const totalAfterDiscount = grandTotal - grandTotal * discountAsPercentage;
+    const discountAsPercentage = discount;
+    const totalAfterDiscount = grandTotal - discountAsPercentage;
 
     const vatAsPercentage = vat / 100;
     const finalTotal =
-      totalAfterDiscount - totalAfterDiscount * vatAsPercentage;
+      totalAfterDiscount + totalAfterDiscount * vatAsPercentage;
 
     return finalTotal;
   };
@@ -218,22 +218,28 @@ const Qutation = () => {
       values
     );
     if (response.data.message === "Successfully quotation post") {
-      navigate(`/dashboard/details?order_no=${job_no}`);
+      fetch("http://localhost:5000/api/v1/quotation")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            navigate(`/dashboard/details?id=${data._id}`);
+          }
+        });
     }
   };
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/details?order_no=${e}`);
+    navigate(`/dashboard/details?id=${e}`);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/quotation/all/${jobCardData?.username}`)
+    fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setGetAllQuotation(data);
       });
-  }, [jobCardData?.username,reload]);
+  }, [reload]);
 
   // pagination
 
@@ -265,7 +271,7 @@ const Qutation = () => {
 
         if (data.message == "Quotation card delete successful") {
           setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id));
-          setReload(!reload)
+          setReload(!reload);
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -333,7 +339,6 @@ const Qutation = () => {
     currentItems = [];
   }
 
- 
   const renderData = (getAllQuotation) => {
     return (
       <table className="table">
@@ -359,7 +364,7 @@ const Qutation = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}
@@ -369,7 +374,7 @@ const Qutation = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
+                  <Link to={`/dashboard/update-qutation?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -434,10 +439,9 @@ const Qutation = () => {
     );
   }
 
-
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/quotation/all/${jobCardData?.username}`)
+      fetch(`http://localhost:5000/api/v1/quotation/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -449,7 +453,7 @@ const Qutation = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/quotation/all/${jobCardData?.username}`,
+        `http://localhost:5000/api/v1/quotation/all`,
         data
       );
       console.log(response.data);
@@ -706,9 +710,16 @@ const Qutation = () => {
               <option value="Mobile Number"> Mobile Number</option>
             </select>
             <div className="searchGroup">
-              <input  onChange={(e) => setFilterType(e.target.value)} autoComplete="off" type="text" placeholder={select} />
+              <input
+                onChange={(e) => setFilterType(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder={select}
+              />
             </div>
-            <button onClick={handleFilterType} className="SearchBtn ">Search </button>
+            <button onClick={handleFilterType} className="SearchBtn ">
+              Search{" "}
+            </button>
           </div>
         </div>
         <div>

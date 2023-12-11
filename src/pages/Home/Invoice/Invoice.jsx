@@ -6,7 +6,7 @@ import {
   FaEdit,
   FaArrowRight,
   FaArrowLeft,
-  FaEye
+  FaEye,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import "./Invoice.css";
@@ -29,11 +29,11 @@ const Invoice = () => {
   const [getAllInvoice, setGetAllInvoice] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (job_no) {
-      fetch(`http://localhost:5000/api/v1/jobCard/${job_no}`)
+      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -58,7 +58,7 @@ const Invoice = () => {
   };
 
   //  add to invoice
- 
+
   const [descriptions, setDescriptions] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [rate, setRate] = useState([]);
@@ -125,12 +125,12 @@ const Invoice = () => {
   };
 
   const calculateFinalTotal = () => {
-    const discountAsPercentage = discount / 100;
-    const totalAfterDiscount = grandTotal - grandTotal * discountAsPercentage;
+    const discountAsPercentage = discount;
+    const totalAfterDiscount = grandTotal - discountAsPercentage;
 
     const vatAsPercentage = vat / 100;
     const finalTotal =
-      totalAfterDiscount - totalAfterDiscount * vatAsPercentage;
+      totalAfterDiscount + totalAfterDiscount * vatAsPercentage;
 
     return finalTotal;
   };
@@ -171,6 +171,7 @@ const Invoice = () => {
       );
 
       if (response.data.message === "Successfully Invoice post") {
+        setReload(!reload);
         setPostError("");
         setError("");
       }
@@ -214,22 +215,28 @@ const Invoice = () => {
       values
     );
     if (response.data.message === "Successfully Invoice post") {
-      navigate(`/dashboard/detail?order_no=${job_no}`);
+      fetch("http://localhost:5000/api/v1/invoice")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            navigate(`/dashboard/detail?id=${data._id}`);
+          }
+        });
     }
   };
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/detail?order_no=${e}`);
+    navigate(`/dashboard/detail?id=${e}`);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/invoice/all/${jobCardData?.username}`)
+    fetch(`http://localhost:5000/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setGetAllInvoice(data);
       });
-  }, [jobCardData?.username,reload]);
+  }, [reload]);
 
   // pagination
 
@@ -261,7 +268,7 @@ const Invoice = () => {
 
         if (data.message == "Invoice card delete successful") {
           setGetAllInvoice(getAllInvoice?.filter((pkg) => pkg._id !== id));
-          setReload(!reload)
+          setReload(!reload);
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -329,7 +336,6 @@ const Invoice = () => {
     currentItems = [];
   }
 
- 
   const renderData = (getAllInvoice) => {
     return (
       <table className="table">
@@ -355,7 +361,7 @@ const Invoice = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}
@@ -365,7 +371,7 @@ const Invoice = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
+                  <Link to={`/dashboard/update-invoice?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -430,10 +436,9 @@ const Invoice = () => {
     );
   }
 
-
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/invoice/all/${jobCardData?.username}`)
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -445,7 +450,7 @@ const Invoice = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/invoice/all/${jobCardData?.username}`,
+        `http://localhost:5000/api/v1/invoice/all`,
         data
       );
       console.log(response.data);
@@ -464,19 +469,20 @@ const Invoice = () => {
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
           <div className="invoiceHead">
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center trustAuto word-sp">
+              Trust Auto Solution{" "}
+            </h2>
             <p className=" text-sm">
-              It is trusted computerized Ogranizetion for all the kinds of vehicle
-              check up & maintenance such as computerized Engine Analysis Engine
-              tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash.
+              It is trusted computerized Ogranizetion for all the kinds of
+              vehicle check up & maintenance such as computerized Engine
+              Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical
+              Works & Car Wash.
             </p>
           </div>
-
-
         </div>
       </div>
       <div className="mt-5">
-      <form>
+        <form>
           <div className="qutationForm invoicForm">
             <div>
               <label className="block">Order Number </label>
@@ -692,9 +698,7 @@ const Invoice = () => {
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
           <div className="flex items-center searcList">
-            <select
-              onChange={(e) => setSelect(e.target.value)}
-            >
+            <select onChange={(e) => setSelect(e.target.value)}>
               <option value="SL No"> SL No</option>
               <option value="Customer Name"> Customer Name</option>
               <option value="Order Number"> Order Number</option>
@@ -702,9 +706,16 @@ const Invoice = () => {
               <option value="Mobile Number"> Mobile Number</option>
             </select>
             <div className="searchGroup">
-              <input onChange={(e) => setFilterType(e.target.value)} autoComplete="off" type="text" placeholder={select} />
+              <input
+                onChange={(e) => setFilterType(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder={select}
+              />
             </div>
-            <button onClick={handleFilterType} className="SearchBtn ">Search </button>
+            <button onClick={handleFilterType} className="SearchBtn ">
+              Search{" "}
+            </button>
           </div>
         </div>
         <div>

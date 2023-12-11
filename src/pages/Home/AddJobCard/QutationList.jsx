@@ -20,10 +20,10 @@ const QutationList = () => {
   const username = "683231669175";
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/details?order_no=${e}`);
+    navigate(`/dashboard/details?id=${e}`);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/quotation/all/${username}`)
+    fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -155,7 +155,7 @@ const QutationList = () => {
               <td>{card.date}</td>
               <td>
                 <div
-                  onClick={() => handleIconPreview(card.job_no)}
+                  onClick={() => handleIconPreview(card._id)}
                   className="editIconWrap"
                 >
                   {/* <Link to="/dashboard/preview"> */}
@@ -165,7 +165,7 @@ const QutationList = () => {
               </td>
               <td>
                 <div className="editIconWrap">
-                  <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
+                  <Link to={`/dashboard/update-qutation?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -233,7 +233,7 @@ const QutationList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/quotation/all/${username}`)
+      fetch(`http://localhost:5000/api/v1/quotation/all `)
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -245,7 +245,7 @@ const QutationList = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/quotation/all/${username}`,
+        `http://localhost:5000/api/v1/quotation/all `,
         data
       );
       console.log(response.data);

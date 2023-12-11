@@ -206,9 +206,11 @@ const Details = () => {
         <Link to="/dashboard/qutation">
           <button> Edit </button>
         </Link>
-        {/* <Link to="/dashboard/invoice"> */}
+ 
         <button onClick={handleAddToInvoice}> Create Invoice </button>
-        {/* </Link> */}
+     
+ 
+        
       </div>
     </main>
   );

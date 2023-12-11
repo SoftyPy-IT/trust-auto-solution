@@ -282,6 +282,7 @@ const ViewInvoice = () => {
           </div>
         </div>
  
+ 
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
             <div className="text-xl text-center flex justify-center items-center h-full">
@@ -335,6 +336,7 @@ const ViewInvoice = () => {
           )}
  
        
+ 
       </div>
 
        

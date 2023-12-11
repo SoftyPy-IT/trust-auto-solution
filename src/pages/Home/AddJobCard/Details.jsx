@@ -113,10 +113,10 @@ const Details = () => {
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
-        <Link to="/qutation">
+        <Link to="/dashboard/qutation">
           <button> Edit </button>
         </Link>
-        <Link to="/invoice">
+        <Link to="/dashboard/invoice">
           <button> Create Invoice </button>
         </Link>
       </div>

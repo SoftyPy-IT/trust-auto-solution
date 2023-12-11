@@ -77,7 +77,6 @@ const UpdateJobCard = () => {
     setFormattedDate(formattedDate);
   };
 
-  console.log(singleCard.date)
   return (
     <div className="addJobCardWraps">
       <div className="flex items-center justify-center">

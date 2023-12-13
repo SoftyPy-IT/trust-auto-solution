@@ -23,7 +23,7 @@ const QutationList = () => {
     navigate(`/dashboard/details?id=${e}`);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/quotation/all`)
+    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -52,7 +52,7 @@ const QutationList = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/quotation/one/${id}`,
+          `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
           {
             method: "DELETE",
           }
@@ -233,7 +233,7 @@ const QutationList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/quotation/all `)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `)
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -245,7 +245,7 @@ const QutationList = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/quotation/all `,
+        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `,
         data
       );
       console.log(response.data);

@@ -16,7 +16,7 @@ const PreviewJobCard = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:5000/api/v1/jobCard/${id}`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setPreviewData(data);

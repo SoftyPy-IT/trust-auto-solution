@@ -22,10 +22,15 @@ const Login = () => {
       Swal.fire({
         icon: "error",
         position: 'center',
-        title: "Oops....!",
-        text: "Invalid gmail & password!"
-      });
-    }
+ 
+      
+        title: 'Invalid Email & Password',
+        showConfirmButton: false,
+        timer: 1500
+      })
+ 
+        
+     }
   }
 
   return (
@@ -45,7 +50,7 @@ const Login = () => {
                     name="email"
                     placeholder="Email"
                     type="email"
-                    className="inputField"
+                    className="inputField text-white"
                     autoComplete="off"
                   />
                 </div>
@@ -56,7 +61,7 @@ const Login = () => {
                     name="password"
                     placeholder="Password"
                     type="password"
-                    className="inputField"
+                    className="inputField text-white"
                     autoComplete="off"
                   />
                 </div>

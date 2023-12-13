@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import "./AddJobCard.css";
 import car from "../../../../public/assets/car.jpeg";
 import logo from "../../../../public/assets/logo.png";
-import { useState } from "react";
+import swal from "sweetalert";
+import { useEffect, useRef, useState } from "react";
+
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -11,33 +14,528 @@ import {
   FaArrowLeft,
   FaEye,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+
 const AddJobCard = () => {
-  const [select, setSelect] = useState(null)
+  const [previousPostData, setPreviousPostData] = useState({});
+  const [jobNo, setJobNo] = useState(previousPostData.job_no);
+  const [allJobCard, setAllJobCard] = useState([]);
+  const [noMatching, setNoMatching] = useState(null);
+  const [vinNo, setVinNo] = useState(null);
+  const [registration, setRegistration] = useState(null);
+  const [carModel, setCarModel] = useState(null);
+  const [carMake, setCarMake] = useState(null);
+  const [mileage, setMileage] = useState(null);
+  const [color, setColor] = useState(null);
+  const [engineNo, setEngineNo] = useState(null);
+  const [reference, setReference] = useState(null);
+  const [companyName, setCompanyName] = useState(null);
+  const [customerName, setCustomerName] = useState(null);
+  const [contactNo, setContactNo] = useState(null);
+  const [driverName, setDriverName] = useState(null);
+  const [phoneNo, setPhoneNo] = useState(null);
+  const [vehicleBody, setVehicleBody] = useState(null);
+  const [technicianName, setTechnicianName] = useState(null);
+  const [technicianSignature, setTechnicianSignature] = useState(null);
+  const [technicianDate, setTechnicianDate] = useState(null);
+  const [owner, setOwner] = useState(null);
+  const [error, setError] = useState(null);
+
+  const [select, setSelect] = useState("SL No");
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const [reload, setReload] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const [formattedDate, setFormattedDate] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const formRef = useRef();
+  const username = "683231669175";
+
+  const handleAddToCard = async (e) => {
+    e.preventDefault();
+    const values = {
+      username: username,
+      job_no: jobNo,
+      date: formattedDate,
+      vin_no: vinNo,
+      car_registration_no: registration,
+      car_model: carModel,
+      car_make: carMake,
+      mileage: mileage,
+      color: color,
+      engine_no: engineNo,
+      reference_number: reference,
+      company_name: companyName,
+      customer_name: customerName,
+      contact_number: contactNo,
+      driver_name: driverName,
+      phone_number: phoneNo,
+      vehicle_interior_parts: value,
+      reported_defect: value2,
+      reported_action: value3,
+      vehicle_body_report: vehicleBody,
+      technician_name: technicianName,
+      technician_signature: technicianSignature,
+      technician_date: technicianDate,
+      vehicle_owner: owner,
+    };
+
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/jobCard",
+      values
+    );
+    if (response.data.message === "Successfully add to card post") {
+      const newJobNo = jobNo + 1;
+      setJobNo(newJobNo);
+      setReload(!reload);
+      // formRef.current.reset()
+      // reset();
+    }
+    // console.log(response);
   };
 
+  const navigate = useNavigate();
+
+  const handlePreview = async (e) => {
+    e.preventDefault();
+    const values = {
+      username: username,
+      job_no: jobNo,
+      date: formattedDate,
+      vin_no: vinNo,
+      car_registration_no: registration,
+      car_model: carModel,
+      car_make: carMake,
+      mileage: mileage,
+      color: color,
+      engine_no: engineNo,
+      reference_number: reference,
+      company_name: companyName,
+      customer_name: customerName,
+      contact_number: contactNo,
+      driver_name: driverName,
+      phone_number: phoneNo,
+      vehicle_interior_parts: value,
+      reported_defect: value2,
+      reported_action: value3,
+      vehicle_body_report: vehicleBody,
+      technician_name: technicianName,
+      technician_signature: technicianSignature,
+      technician_date: technicianDate,
+      vehicle_owner: owner,
+    };
+    const hasPreviewNullValues = Object.values(values).some(
+      (val) => val === null
+    );
+
+    if (hasPreviewNullValues) {
+      setError("Please fill in all the required fields.");
+      return;
+    }
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/jobCard",
+      values
+    );
+    if (response.data.message === "Successfully add to card post") {
+      const newJobNo = jobNo + 1;
+      setJobNo(newJobNo);
+      setReload(!reload);
+      fetch("http://localhost:5000/api/v1/jobCard/recent")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            navigate(`/dashboard/preview?id=${data._id}`);
+          }
+        });
+
+      // formRef.current.reset()
+      reset();
+    }
+    console.log(response);
+  };
+  const handleQuotation = async (e) => {
+    e.preventDefault();
+    const values = {
+      username: username,
+      job_no: jobNo,
+      date: formattedDate,
+      vin_no: vinNo,
+      car_registration_no: registration,
+      car_model: carModel,
+      car_make: carMake,
+      mileage: mileage,
+      color: color,
+      engine_no: engineNo,
+      reference_number: reference,
+      company_name: companyName,
+      customer_name: customerName,
+      contact_number: contactNo,
+      driver_name: driverName,
+      phone_number: phoneNo,
+      vehicle_interior_parts: value,
+      reported_defect: value2,
+      reported_action: value3,
+      vehicle_body_report: vehicleBody,
+      technician_name: technicianName,
+      technician_signature: technicianSignature,
+      technician_date: technicianDate,
+      vehicle_owner: owner,
+    };
+
+    const hasQuotationNullValues = Object.values(values).some(
+      (val) => val === null
+    );
+
+    if (hasQuotationNullValues) {
+      setError("Please fill in all the required fields.");
+      return;
+    }
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/jobCard",
+      values
+    );
+    if (response.data.message === "Successfully add to card post") {
+      const newJobNo = jobNo + 1;
+      setJobNo(newJobNo);
+      setReload(!reload);
+      navigate(`/dashboard/qutation?order_no=${jobNo}`);
+      // formRef.current.reset()
+      console.log(response);
+    }
+  };
+  const handleInvoice = async (e) => {
+    e.preventDefault();
+    const values = {
+      username: username,
+      job_no: jobNo,
+      date: formattedDate,
+      vin_no: vinNo,
+      car_registration_no: registration,
+      car_model: carModel,
+      car_make: carMake,
+      mileage: mileage,
+      color: color,
+      engine_no: engineNo,
+      reference_number: reference,
+      company_name: companyName,
+      customer_name: customerName,
+      contact_number: contactNo,
+      driver_name: driverName,
+      phone_number: phoneNo,
+      vehicle_interior_parts: value,
+      reported_defect: value2,
+      reported_action: value3,
+      vehicle_body_report: vehicleBody,
+      technician_name: technicianName,
+      technician_signature: technicianSignature,
+      technician_date: technicianDate,
+      vehicle_owner: owner,
+    };
+
+    const hasQuotationNullValues = Object.values(values).some(
+      (val) => val === null
+    );
+
+    if (hasQuotationNullValues) {
+      setError("Please fill in all the required fields.");
+      return;
+    }
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/jobCard",
+      values
+    );
+    if (response.data.message === "Successfully add to card post") {
+      const newJobNo = jobNo + 1;
+      setJobNo(newJobNo);
+      setReload(!reload);
+       
+        navigate(`/dashboard/invoice?order_no=${jobNo}`);
+      // formRef.current.reset()
+    }
+  };
+  const handleIconPreview = async (e) => {
+    navigate(`/dashboard/preview?id=${e}`);
+  };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/jobCard`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPreviousPostData(data);
+
+        // console.log(data);
+      });
+  }, [jobNo, reload]);
+  useEffect(() => {
+    if (previousPostData.job_no && !jobNo) {
+      setJobNo(previousPostData.job_no + 1);
+    }
+  }, [previousPostData, jobNo, reload]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/jobCard/all/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        //  console.log(data)
+        setAllJobCard(data);
+      });
+  }, [username, reload]);
+
+  const handleDateChange = (event) => {
+    const rawDate = event.target.value;
+    const parsedDate = new Date(rawDate);
+    const day = parsedDate.getDate().toString().padStart(2, "0");
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
+    const year = parsedDate.getFullYear();
+    const formattedDate = `${day}-${month}-${year}`;
+    setFormattedDate(formattedDate);
+  };
+
+  // pagination
+
+  const [limit, setLimit] = useState(10);
+  const [currentPage, setCurrentPage] = useState(
+    Number(sessionStorage.getItem("job")) || 1
+  );
+  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+
+  const deletePackage = async (id) => {
+    const willDelete = await swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to delete this card?",
+      icon: "warning",
+      dangerMode: true,
+    });
+
+    if (willDelete) {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/api/v1/jobCard/one/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
+        const data = await res.json();
+
+        if (data.message == "Job card delete successful") {
+          setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
+        }
+        swal("Deleted!", "Card delete successful.", "success");
+      } catch (error) {
+        swal("Error", "An error occurred while deleting the card.", "error");
+      }
+    }
+  };
+
+  useEffect(() => {
+    sessionStorage.setItem("job", currentPage.toString());
+  }, [currentPage]);
+  // ...
+
+  useEffect(() => {
+    const storedPage = Number(sessionStorage.getItem("job")) || 1;
+    setCurrentPage(storedPage);
+    setMaxPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
+    );
+    setMinPageNumberLimit(
+      Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
+    );
+  }, [pageNumberLimit]);
+
+  // ...
+
+  const handleClick = (e) => {
+    const pageNumber = Number(e.target.id);
+    setCurrentPage(pageNumber);
+    sessionStorage.setItem("job", pageNumber.toString());
+  };
+  const pages = [];
+  for (let i = 1; i <= Math.ceil(allJobCard?.length / limit); i++) {
+    pages.push(i);
+  }
+
+  const renderPagesNumber = pages?.map((number) => {
+    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+      return (
+        <li
+          key={number}
+          id={number}
+          onClick={handleClick}
+          className={
+            currentPage === number
+              ? "bg-green-500 text-white px-3 rounded-md cursor-pointer"
+              : "cursor-pointer text-black border border-green-500 px-3 rounded-md"
+          }
+        >
+          {number}
+        </li>
+      );
+    } else {
+      return null;
+    }
+  });
+
+  const lastIndex = currentPage * limit;
+  const startIndex = lastIndex - limit;
+
+  let currentItems;
+  if (Array.isArray(allJobCard)) {
+    currentItems = allJobCard.slice(startIndex, lastIndex);
+  } else {
+    currentItems = [];
+  }
+
+  // ...
+
+  const renderData = (allJobCard) => {
+    return (
+      <table className="table">
+        <thead className="tableWrap">
+          <tr>
+            <th>SL No</th>
+            <th>Customer Name</th>
+            <th>Order Number </th>
+            <th>Car Number </th>
+            <th>Mobile Number</th>
+            <th>Date</th>
+            <th colSpan={3}>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allJobCard?.map((card, index) => (
+            <tr key={card._id}>
+              <td>{index + 1}</td>
+              <td>{card.customer_name}</td>
+              <td>{card.job_no}</td>
+              <td>{card.car_registration_no}</td>
+              <td> {card.phone_number} </td>
+              <td>{card.date}</td>
+              <td>
+                <div
+                  onClick={() => handleIconPreview(card._id)}
+                  className="editIconWrap"
+                >
+                  {/* <Link to="/dashboard/preview"> */}
+                  <FaEye className="editIcon" />
+                  {/* </Link> */}
+                </div>
+              </td>
+              <td>
+                <div className="editIconWrap">
+                  <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
+                    <FaEdit className="editIcon" />
+                  </Link>
+                </div>
+              </td>
+              <td>
+                <div
+                  onClick={() => deletePackage(card._id)}
+                  className="editIconWrap"
+                >
+                  <FaTrashAlt className="deleteIcon" />
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  };
+
+  const handlePrevious = () => {
+    const newPage = currentPage - 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("job", newPage.toString());
+
+    if (newPage % pageNumberLimit === 0) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+  const handleNext = () => {
+    const newPage = currentPage + 1;
+    setCurrentPage(newPage);
+    sessionStorage.setItem("job", newPage.toString());
+
+    if (newPage > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+
+  let pageIncrementBtn = null;
+  if (pages?.length > maxPageNumberLimit) {
+    pageIncrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: maxPageNumberLimit + 1 } })}
+        className="cursor-pointer text-black pl-1"
+      >
+        &hellip;
+      </li>
+    );
+  }
+
+  let pageDecrementBtn = null;
+  if (currentPage > pageNumberLimit) {
+    pageDecrementBtn = (
+      <li
+        onClick={() => handleClick({ target: { id: minPageNumberLimit } })}
+        className="cursor-pointer text-black pr-1"
+      >
+        &hellip;
+      </li>
+    );
+  }
+
+  const handleFilterType = async () => {
+    if (select === "SL No") {
+      fetch(`http://localhost:5000/api/v1/jobCard/all/${username}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAllJobCard(data);
+          setNoMatching(null);
+        });
+    } else {
+      const data = {
+        select,
+        filterType,
+      };
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/jobCard/all/${username}`,
+        data
+      );
+      console.log(response.data);
+      if (response.data.message === "Filter successful") {
+        setAllJobCard(response.data.result);
+        setNoMatching(null);
+      }
+      if (response.data.message === "No matching found") {
+        setNoMatching(response.data.message);
+      }
+    }
+  };
   return (
     <div className="addJobCardWraps">
       <div className="flex items-center justify-center">
-        <img src={logo} alt="logo" className="lg:w-[120px] w-[100px]" />
-        <h2 className="text-6xl font-bold text-center trustAuto word-sp">Trust Auto Solution </h2>
-
+        <img src={logo} alt="logo" className="w-[120px]" />
+        <h2 className="text-6xl font-bold text-center trustAuto word-sp">
+          Trust Auto Solution{" "}
+        </h2>
       </div>
-      <div onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <div>
           <div className=" jobCardFormWrap">
             <div>
               <label>Job No:</label>
               <input
-                {...register("jobno", { required: true })}
-                name="jobno"
+                value={jobNo}
+                // name="jobNo"
                 autoComplete="off"
                 type="text"
                 placeholder="Job No"
@@ -48,12 +546,19 @@ const AddJobCard = () => {
             </div>
             <div>
               <label>Date </label>
-              <input
+              {/* <input
                 {...register("date", { required: true })}
-                name="date"
+                // name="date"
                 autoComplete="off"
-                type="text"
-                placeholder="Job No"
+                type="date"
+                placeholder="Date"
+                value={formattedDate}
+              /> */}
+              <input
+                onChange={handleDateChange}
+                autoComplete="off"
+                type="date"
+                placeholder="Date"
               />
             </div>
           </div>
@@ -61,8 +566,10 @@ const AddJobCard = () => {
             <div>
               <label>VIN No </label>
               <input
-                {...register("vinno", { required: true })}
-                name="vinno"
+                onChange={(e) => setVinNo(e.target.value)}
+                required
+                // {...register("vin_no", { required: true })}
+                // name="vin_no"
                 autoComplete="off"
                 type="text"
                 placeholder="VIN No"
@@ -71,8 +578,9 @@ const AddJobCard = () => {
             <div>
               <label>Car Registration No </label>
               <input
-                {...register("rnumber", { required: true })}
-                name="rnumber"
+                // {...register("car_registration_no", { required: true })}
+                onChange={(e) => setRegistration(e.target.value)}
+                required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
@@ -80,31 +588,36 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Vehicle Model</label>
+              <label>Car Model</label>
               <input
-                {...register("carmodel", { required: true })}
-                name="carmodel"
+                // {...register("car_model", { required: true })}
+                onChange={(e) => setCarModel(e.target.value)}
+                required
+                // name="car_model"
                 autoComplete="off"
                 type="text"
-                placeholder="Vehicle Model"
+                placeholder="Car Model"
               />
             </div>
 
             <div>
-              <label>Vehicle Brand </label>
+              <label>Car Make </label>
               <input
-                {...register("carmake", { required: true })}
-                name="carmake"
+                // {...register("car_make", { required: true })}
+                onChange={(e) => setCarMake(e.target.value)}
+                required
+                // name="car_make"
                 autoComplete="off"
                 type="text"
-                placeholder="Vehicle Brand"
+                placeholder="Car Make"
               />
             </div>
             <div>
               <label>Mileage </label>
               <input
-                {...register("meleage", { required: true })}
-                name="meleage"
+                // {...register("mileage", { required: true })}
+                onChange={(e) => setMileage(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Mileage"
@@ -112,12 +625,12 @@ const AddJobCard = () => {
             </div>
           </div>
           <div className="jobCardSingleForm">
-
             <div>
               <label>Color</label>
               <input
-                {...register("color", { required: true })}
-                name="color"
+                // {...register("color", { required: true })}
+                onChange={(e) => setColor(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Color "
@@ -126,8 +639,9 @@ const AddJobCard = () => {
             <div>
               <label>Engine No </label>
               <input
-                {...register("engine", { required: true })}
-                name="engine"
+                // {...register("engine_no", { required: true })}
+                onChange={(e) => setEngineNo(e.target.value)}
+                required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
@@ -135,20 +649,22 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Referance Number</label>
+              <label>Reference Number</label>
               <input
-                {...register("referance", { required: true })}
-                name="referance"
+                // {...register("reference_number", { required: true })}
+                onChange={(e) => setReference(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
-                placeholder="Referance Number"
+                placeholder="Reference Number"
               />
             </div>
             <div>
-              <label>Comapny Name </label>
+              <label>Company Name </label>
               <input
-                {...register("cname", { required: true })}
-                name="cname"
+                // {...register("company_name", { required: true })}
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Company Name"
@@ -159,8 +675,9 @@ const AddJobCard = () => {
             <div>
               <label>Customer/User name </label>
               <input
-                {...register("username", { required: true })}
-                name="username"
+                // {...register("customer_name", { required: true })}
+                onChange={(e) => setCustomerName(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Customer/User name "
@@ -169,8 +686,9 @@ const AddJobCard = () => {
             <div>
               <label>Contact No </label>
               <input
-                {...register("contact", { required: true })}
-                name="contact"
+                // {...register("contact_number", { required: true })}
+                onChange={(e) => setContactNo(e.target.value)}
+                required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
@@ -180,8 +698,9 @@ const AddJobCard = () => {
             <div>
               <label>Driver Name </label>
               <input
-                {...register("driver", { required: true })}
-                name="driver"
+                // {...register("driver_name", { required: true })}
+                onChange={(e) => setDriverName(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Driver Name  "
@@ -190,8 +709,9 @@ const AddJobCard = () => {
             <div>
               <label>Phone No </label>
               <input
-                {...register("Phone", { required: true })}
-                name="Phone"
+                // {...register("phone_number", { required: true })}
+                onChange={(e) => setPhoneNo(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Contact No"
@@ -282,7 +802,12 @@ const AddJobCard = () => {
               </div>
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
-                <textarea></textarea>
+                <textarea
+                  // {...register("vehicle_body_report", { required: true })}
+                  onChange={(e) => setVehicleBody(e.target.value)}
+                  required
+                  autoComplete="off"
+                ></textarea>
               </div>
               <b className="carSideBar">LEFT</b>
               <b className="carSideBar2">REAR</b>
@@ -294,8 +819,9 @@ const AddJobCard = () => {
             <div>
               <label>Technician Name </label>
               <input
-                {...register("tname", { required: true })}
-                name="tname"
+                // {...register("technician_name", { required: true })}
+                onChange={(e) => setTechnicianName(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="Technician Name"
@@ -304,8 +830,9 @@ const AddJobCard = () => {
             <div>
               <label>Technician Signature </label>
               <input
-                {...register("tsignature", { required: true })}
-                name="tsignature"
+                // {...register("technician_signature", { required: true })}
+                onChange={(e) => setTechnicianSignature(e.target.value)}
+                required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
@@ -315,18 +842,20 @@ const AddJobCard = () => {
             <div>
               <label>Date </label>
               <input
-                {...register("tdate", { required: true })}
-                name="tdate"
+                // {...register("technician_date", { required: true })}
+                onChange={(e) => setTechnicianDate(e.target.value)}
+                required
                 autoComplete="off"
-                type="text"
+                type="date"
                 placeholder="Date"
               />
             </div>
             <div>
               <label>For Vehicle Owner</label>
               <input
-                {...register("vehicleowner", { required: true })}
-                name='vehicleowner'
+                // {...register("vehicle_owner", { required: true })}
+                onChange={(e) => setOwner(e.target.value)}
+                required
                 autoComplete="off"
                 type="text"
                 placeholder="For Vehicle Owner"
@@ -338,233 +867,113 @@ const AddJobCard = () => {
           </div>
 
           <div className="buttonGroup mt-5">
-
             <div>
-              <Link to='/dashboard/preview'><button>Preview</button></Link>
-              <Link to='/dashboard/preview'><button>Download</button></Link>
-              <Link to='/dashboard/preview'><button>Print</button></Link>
-              <Link to='/dashboard/qutation'> <button>Qutation</button></Link>
-              <Link to='/dashboard/invoice'> <button>Invoice</button></Link>
-
+              {/* <Link to={`/dashboard/preview?${id}`}> */}
+              <button onClick={handlePreview}>Preview</button>
+              {/* </Link> */}
+              {/* <Link to="/dashboard/preview"> */}
+              <button>Download</button>
+              {/* </Link>
+              <Link to="/dashboard/preview"> */}
+              <button>Print</button>
+              {/* </Link> */}
+              {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
+              <button onClick={handleQuotation}>Quotation</button>
+              {/* </Link> */}
+              {/* <Link to="/dashboard/invoice"> */}{" "}
+              <button onClick={handleInvoice}>Invoice</button>
+              {/* </Link> */}
             </div>
             <div className="submitQutationBtn">
-              <button type='submit' className="">Add To Job Card </button>
+              <button onClick={handleAddToCard} type="submit" className="">
+                Add To Job Card{" "}
+              </button>
             </div>
-          </div>
-        </div>
-        <div className="overflow-x-auto mt-20">
-          <div className="flex items-center justify-between mb-5">
-            <h3 className="text-sm lg:text-3xl font-bold mb-3">Job Card List:</h3>
-            <div className="flex items-center searcList">
-              <select
-                onChange={(e) => setSelect(e.target.value)}
-              >
-                <option value="SL No"> SL No</option>
-                <option value="Customer Name"> Customer Name</option>
-                <option value="Order Number"> Order Number</option>
-                <option value="Car Number"> Car Number</option>
-                <option value="Mobile Number"> Mobile Number</option>
-              </select>
-              <div className="searchGroup">
-                <input autoComplete="off" type="text" placeholder={select} />
-              </div>
-              <button className="SearchBtn ">Search </button>
-            </div>
-          </div>
 
+            {/* <div>
+              <button>Preview</button>
+              <button>Download </button>
+              <button>Print </button>
+              <button>Quotation</button>
+              <button>Invoice </button>
+            </div> */}
+          </div>
+          <div className="pt-6 text-red-400 text-center">{error}</div>
+        </div>
+      </form>
+      <div className="overflow-x-auto mt-20">
+        <div className="flex items-center justify-between mb-5">
+          <h3 className="text-sm lg:text-3xl font-bold mb-3">Job Card List:</h3>
+          <div className="flex items-center searcList">
+            <select onChange={(e) => setSelect(e.target.value)}>
+              <option value="SL No">SL No</option>
+              <option value="Customer Name"> Customer Name</option>
+              <option value="Order Number"> Order Number</option>
+              <option value="Car Number"> Car Number</option>
+              <option value="Mobile Number"> Mobile Number</option>
+            </select>
+            <div className="searchGroup">
+              <input
+                onChange={(e) => setFilterType(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder={select}
+              />
+            </div>
+            <button onClick={handleFilterType} className="SearchBtn ">
+              Search{" "}
+            </button>
+          </div>
         </div>
       </div>
-      <table className="table ">
-        <thead className="tableWrap">
-          <tr>
-            <th>SL No</th>
-            <th>Customer Name</th>
-            <th>Order Number </th>
-            <th>Car Number </th>
-            <th>Mobile Number</th>
-            <th>Date</th>
-            <th colSpan={3}>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>01</td>
-            <td>Aminul</td>
-            <td>055</td>
-            <td>79797</td>
-            <td>018575585 </td>
-            <td>10-05-2023</td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/preview">
-                  <FaEye className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <Link to="/dashboard/update-jobcard">
-                  <FaEdit className="editIcon" />
-                </Link>
-              </div>
-            </td>
-            <td>
-              <div className="editIconWrap">
-                <FaTrashAlt className="deleteIcon" />
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div className="pagination">
-        <div className="paginationBtn">
-          <button>
-            <FaArrowLeft className="arrowLeft" />
-          </button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>
-            <FaArrowRight className="arrowRight" />
-          </button>
-        </div>
+
+      <div>
+        {allJobCard?.length === 0 || currentItems.length === 0 || noMatching ? (
+          <div className="text-xl text-center flex justify-center items-center h-full">
+            No matching card found.
+          </div>
+        ) : (
+          <>
+            <section>
+              {renderData(currentItems)}
+              <ul
+                className={
+                  minPageNumberLimit < 5
+                    ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                    : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
+                }
+              >
+                <button
+                  onClick={handlePrevious}
+                  disabled={currentPage === pages[0] ? true : false}
+                  className={
+                    currentPage === pages[0] ? "text-gray-600" : "text-gray-300"
+                  }
+                >
+                  Previous
+                </button>
+                <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+                  {pageDecrementBtn}
+                </span>
+                {renderPagesNumber}
+                {pageIncrementBtn}
+                <button
+                  onClick={handleNext}
+                  disabled={
+                    currentPage === pages[pages?.length - 1] ? true : false
+                  }
+                  className={
+                    currentPage === pages[pages?.length - 1]
+                      ? "text-gray-700"
+                      : "text-gray-300 pl-1"
+                  }
+                >
+                  Next
+                </button>
+              </ul>
+            </section>
+          </>
+        )}
       </div>
     </div>
   );

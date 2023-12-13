@@ -133,11 +133,24 @@
 }
 .receiptMoneyWrap {
 	background-color: #ddd;
+	padding-bottom: 30px;
 }
 .moneyWraps {
 	width: 900px;
 	background: #fff;
 	border: 1px solid #fff;
+}
+.moneyReceiptBtnGroup {
+	margin-left: 150px;
+}
+.moneyReceiptBtnGroup button {
+	width: 77px;
+	background: #351e97;
+	margin-right: 5px;
+	border-radius: 20px;
+	color: #fff;
+	font-size: 14px;
+	height: 30px;
 }
 
 @media only screen and (max-width: 1024px) {

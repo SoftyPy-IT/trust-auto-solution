@@ -2,10 +2,21 @@
 import './MoneyReceived.css'
 import logo from '../../../../public/assets/logo.png'
 import { Email,Home,WhatsApp,LocalPhone } from '@mui/icons-material'
+import {  useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+import { usePDF } from "react-to-pdf";
+import { Link } from "react-router-dom";
+
 const MoneyReceiptList = () => {
+    const componentRef = useRef();
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
     return (
-       <section className="moneyReceivedWrap receiptMoneyWrap">
-         <div className='moneyFormWrap moneyWraps'>
+       <section className='receiptMoneyWrap'>
+        <div ref={targetRef} className="moneyReceivedWrap ">
+         <div ref={componentRef} className='moneyFormWrap moneyWraps'>
             <div className="moneyRecieved">
              <div className="logoWrap">
              <img className="" src={logo} alt="logo" />
@@ -113,7 +124,17 @@ const MoneyReceiptList = () => {
             </p>
           </div>
         </div>
-        
+      </div>
+      <div className="moneyReceiptBtnGroup">
+        <button onClick={handlePrint}>Print </button>
+        <button onClick={() => toPDF()}>Pdf </button>
+ 
+
+        <Link to="/dashboard/invoice">
+          <button> Edit </button>
+        </Link>
+ 
+      </div>
        </section>
     );
 };

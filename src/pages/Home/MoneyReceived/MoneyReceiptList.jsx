@@ -2,7 +2,7 @@
 import './MoneyReceived.css'
 import logo from '../../../../public/assets/logo.png'
 import { Email,Home,WhatsApp,LocalPhone } from '@mui/icons-material'
-const MoneyReceived = () => {
+const MoneyReceiptList = () => {
     return (
        <section className="moneyReceivedWrap">
          <section className='moneyFormWrap'>
@@ -101,4 +101,4 @@ const MoneyReceived = () => {
     );
 };
 
-export default MoneyReceived;
+export default MoneyReceiptList;

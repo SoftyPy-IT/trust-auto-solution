@@ -142,12 +142,34 @@ const DashboardLayout = () => {
 									</Typography>
 								</AccordionDetails>
 							</Accordion>
-							<Link to="/dashboard/money-receive">
-                            <div className="flex items-center dashboardItems">
-                            <CurrencyExchange className='dashboardIcon'/>
-								<span>Money recieved</span>
-                            </div>
-							</Link>
+							<Accordion className="dashboardAccordion">
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}
+									aria-controls="panel1a-content"
+									id="panel1a-header"
+								>
+									<Typography>
+										<div className="flex items-center justify-center">
+										<CurrencyExchange className='dashboardIcon'/>
+								<span className='ml-2'>Money receipt</span>
+										</div>
+									</Typography>
+								</AccordionSummary>
+								<AccordionDetails>
+									<Typography className='accordionTypoGrapy'>
+										<span className="flex items-center">
+											<FaPlus className="mr-2" />
+											<Link to="/dashboard/money-receive">Add money receipt</Link>
+										</span>
+									</Typography>
+									<Typography className='accordionTypoGrapy'>
+										<span className="flex items-center">
+											<FaThLarge className="mr-2" />
+											<Link to="/dashboard/money-receipt-list">View money receipt </Link>
+										</span>
+									</Typography>
+								</AccordionDetails>
+							</Accordion>
 							<Accordion className="dashboardAccordion">
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}

@@ -7,12 +7,20 @@
 	padding: 30px;
 	border-radius: 5px;
 }
+.logoWrap {
+	width: 170px;
+}
+.logoWrap img {
+	width: 100%;
+	object-fit: cover;
+}
 .moneyRecieved {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 .moneyHead {
-	width: 650px;
+	width: 633px;
 	text-align: center;
 	color: #0950a1;
 }
@@ -116,4 +124,44 @@
 	width: 134px;
 	height: 1px;
 	background-color: #82017f;
+}
+
+@media only screen and (max-width: 1024px) {
+	.moneyHead {
+		width: 432px;
+	}
+	.receivedTitle {
+		font-size: 35px;
+	}
+	.moneyReceivedWrap {
+		padding: 10px 5px;
+	}
+	.advance {
+		width: 351px;
+	}
+	.amount input {
+		width: 250px;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.advance {
+		width: 351px;
+	}
+	.amount input {
+		width: 100%;
+	}
+	.receivedTitle {
+		font-size: 27px;
+	}
+
+	.moneyHead small {
+		font-size: 12px;
+	}
+	.moneyHead {
+		margin: 0 10px;
+	}
+
+	.moneyFormWrap {
+		margin-left: 23px;
+	}
 }

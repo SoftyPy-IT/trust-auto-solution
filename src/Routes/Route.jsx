@@ -31,6 +31,8 @@ import UpdateRole from "../pages/Home/Role/UpdateRole";
 import Login from "../pages/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MoneyReceived from "../pages/Home/MoneyReceived/MoneyReceived";
+import MoneyReceiptList from "../pages/Home/MoneyReceived/MoneyReceiptList";
+import MoneyReceiptView from "../pages/Home/MoneyReceived/MoneyReceiptView";
 
 
 export const router = createBrowserRouter([
@@ -169,6 +171,14 @@ export const router = createBrowserRouter([
       {
         path: "money-receive",
         element: <MoneyReceived/>,
+      },
+      {
+        path: "money-receipt-list",
+        element: <MoneyReceiptList/>,
+      },
+      {
+        path: "money-receipt-view",
+        element: <MoneyReceiptView/>,
       },
     ],
   },

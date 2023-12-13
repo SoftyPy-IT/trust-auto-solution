@@ -4,8 +4,8 @@ import logo from '../../../../public/assets/logo.png'
 import { Email,Home,WhatsApp,LocalPhone } from '@mui/icons-material'
 const MoneyReceiptList = () => {
     return (
-       <section className="moneyReceivedWrap">
-         <section className='moneyFormWrap'>
+       <section className="moneyReceivedWrap receiptMoneyWrap">
+         <div className='moneyFormWrap moneyWraps'>
             <div className="moneyRecieved">
              <div className="logoWrap">
              <img className="" src={logo} alt="logo" />
@@ -43,60 +43,77 @@ const MoneyReceiptList = () => {
             </div>
             <div className='flex receivedField mt-3'>
                 <label className='receivedMoneyText'>Received with thanks from </label>
-                <input  type="text" autoComplete='off' />
+                <input disabled className='moneyViewInputField'  type="text" autoComplete='off' />
             </div>
            <div className=" payAdvance mt-5">
            <div className='flex  receivedField'>
                 <label className='advance'>Advance/Final Payment agint bill no:  </label>
-                <input className='' type="text" autoComplete='off' />
+                <input disabled className=' moneyViewInputField' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
                 <label className='vehicleText'>Vehicle No: </label>
-                <input className='' type="text" autoComplete='off' />
+                <input disabled className=' moneyViewInputField' type="text" autoComplete='off' />
             </div>
            </div>
            <div className="payAdvance mt-5">
            <div className='flex  receivedField'>
                 <label className='checqueText'>Cash/Checque No: </label>
-                <input className='cashInput' type="text" autoComplete='off' />
+                <input disabled className='cashInput moneyViewInputField' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
                 <b className='date'>Date: </b>
-                <input className='dateInput' type="text" autoComplete='off' />
+                <input disabled className='dateInput moneyViewInputField' type="text" autoComplete='off' />
             </div>
            </div>
            <div className=" payAdvance mt-5">
            <div className='flex  receivedField'>
                 <label className='backText'>Bank : </label>
-                <input className='' type="text" autoComplete='off' />
+                <input disabled className=' moneyViewInputField' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
                 <label className='date'>Date : </label>
-                <input className='' type="text" autoComplete='off' />
+                <input disabled className=' moneyViewInputField' type="text" autoComplete='off' />
             </div>
            </div>
            <div className="amount mt-5">
             <div>
                 <label>Total Amount Tk:</label>
-                <input type="text" />
+                <input disabled type="text" />
             </div>
             <div>
                 <label>Advance:</label>
-                <input type="text" />
+                <input disabled type="text" />
             </div>
             <div>
                 <label>Remaining:</label>
-                <input type="text" />
+                <input disabled type="text" />
             </div>
            </div>
            <div className='wordTaka mt-5'> 
             <label>in word (takta) </label>
-            <input type="text" />
+            <input disabled type="text" />
            </div>
            <div className=''>
             <small className='signature'>Authorized Signature</small>
            </div>
-        </section>
+           <div className="flex w-full items-center justify-between signature mt-5 px-5">
+            <p>Customer Signature </p>
+            <p>Trust Auto Solution</p>
+          </div>
+          <hr className="my-3" />
+          <div className="text-center mt-5">
+            <p>
+              <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
+              www.trustautosolution.com
+            </p>
+            <p>
+              {" "}
+              <b>Mobile:</b> 01821-216465, 01972-216465 , <b>Email:</b>{" "}
+              trustautosolution@gmail.com{" "}
+            </p>
+          </div>
+        </div>
+        
        </section>
     );
 };

@@ -33,7 +33,7 @@ const Invoice = () => {
 
   useEffect(() => {
     if (job_no) {
-      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -166,7 +166,7 @@ const Invoice = () => {
         return;
       }
       const response = await axios.post(
-        "http://localhost:5000/api/v1/invoice",
+        "https://trust-auto-solution-server.vercel.app/api/v1/invoice",
         values
       );
 
@@ -211,11 +211,11 @@ const Invoice = () => {
       return;
     }
     const response = await axios.post(
-      "http://localhost:5000/api/v1/invoice",
+      "https://trust-auto-solution-server.vercel.app/api/v1/invoice",
       values
     );
     if (response.data.message === "Successfully Invoice post") {
-      fetch("http://localhost:5000/api/v1/invoice")
+      fetch("https://trust-auto-solution-server.vercel.app/api/v1/invoice")
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -230,7 +230,7 @@ const Invoice = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/invoice/all`)
+    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -259,7 +259,7 @@ const Invoice = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/invoice/one/${id}`,
+          `https://trust-auto-solution-server.vercel.app/api/v1/invoice/one/${id}`,
           {
             method: "DELETE",
           }
@@ -438,7 +438,7 @@ const Invoice = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/invoice/all`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -450,7 +450,7 @@ const Invoice = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/invoice/all`,
+        `https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`,
         data
       );
       console.log(response.data);

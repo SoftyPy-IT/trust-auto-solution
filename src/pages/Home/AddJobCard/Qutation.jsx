@@ -32,7 +32,7 @@ const Qutation = () => {
 
   useEffect(() => {
     if (job_no) {
-      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -170,7 +170,7 @@ const Qutation = () => {
         return;
       }
       const response = await axios.post(
-        "http://localhost:5000/api/v1/quotation",
+        "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
         values
       );
 
@@ -214,11 +214,11 @@ const Qutation = () => {
       return;
     }
     const response = await axios.post(
-      "http://localhost:5000/api/v1/quotation",
+      "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
       values
     );
     if (response.data.message === "Successfully quotation post") {
-      fetch("http://localhost:5000/api/v1/quotation")
+      fetch("https://trust-auto-solution-server.vercel.app/api/v1/quotation")
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -233,7 +233,7 @@ const Qutation = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/quotation/all`)
+    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -262,7 +262,7 @@ const Qutation = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/quotation/one/${id}`,
+          `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
           {
             method: "DELETE",
           }
@@ -441,7 +441,7 @@ const Qutation = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/quotation/all`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -453,7 +453,7 @@ const Qutation = () => {
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/quotation/all`,
+        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`,
         data
       );
       console.log(response.data);

@@ -20,7 +20,7 @@ const UpdateJobCard = () => {
  
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:5000/api/v1/jobCard/one/${id}`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setSingleCard(data);
@@ -59,7 +59,7 @@ const UpdateJobCard = () => {
     };
 
     const response = await axios.put(
-      `http://localhost:5000/api/v1/jobCard/one/${id}`,
+      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
       values
     );
     if (response.data.message === "Successfully update card.") {

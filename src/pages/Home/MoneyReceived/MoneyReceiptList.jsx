@@ -130,7 +130,7 @@ const MoneyReceiptList = () => {
         <button onClick={() => toPDF()}>Pdf </button>
  
 
-        <Link to="/dashboard/invoice">
+        <Link to="/dashboard/money-receive">
           <button> Edit </button>
         </Link>
  

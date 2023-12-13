@@ -71,7 +71,7 @@ const Detail = () => {
             <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
               Invoice
             </h3>
-            <div className="px-5 mt-10 mb-5">
+            <div className="px-5 mb-5">
               <div className="flex items-center justify-between">
                 <div>
                   <small className=" block">
@@ -197,7 +197,7 @@ const Detail = () => {
           <button> Edit </button>
         </Link>
      
-        <button onClick={handleAddToQuotation}> Create Qutation </button>
+       <Link to='/dashboard/qutation'> <button> Create Qutation </button></Link>
  
       </div>
     </main>

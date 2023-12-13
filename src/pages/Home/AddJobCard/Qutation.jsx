@@ -629,16 +629,9 @@ const Qutation = () => {
             );
           })}
           <div className="discountFieldWrap">
-            <div>
+            <div className="flex items-center ">
               <b> Total Amount: </b>
-              {/* <input
-                autoComplete="off"
-                type="text"
-                placeholder="Total Amount ccvcv"
-                defaultValue={grandTotal}
-                readOnly
-              /> */}
-              <span className="border border-blue-900 rounded-md px-[87px] bg-[#3B3B3B] py-[6px]">
+              <span>
                 {grandTotal}
               </span>
             </div>
@@ -663,15 +656,14 @@ const Qutation = () => {
               />
             </div>
             <div>
-              <div className="ml-3">
-                <strong>
+              <div className="ml-3 flex items-center ">
+                <b>
                   Final Total:{" "}
-                  <span className="border border-blue-900 rounded-md px-[87px] bg-[#3B3B3B] py-[6px]">
+                 
+                </b>
+                <span>
                     {calculateFinalTotal()}
                   </span>
-                </strong>
-                {/* <b>Net Total: </b> */}
-                {/* <input autoComplete="off" type="text" placeholder="Net" /> */}
               </div>
             </div>
           </div>

@@ -74,7 +74,7 @@ const Details = () => {
         <div ref={targetRef} className="py-10 px-5 invoicePrint">
           <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
             <div className="flex  justify-between items-center mb-3">
-              <img className="w-[110px] " src={logo} alt="logo" />
+              <img className="w-[120px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Details = () => {
             <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
               Quotation
             </h3>
-            <div className="px-5 mt-10 mb-5">
+            <div className="px-5 mb-5">
               <div className="flex items-center justify-between">
                 <div>
                   <small className=" block">
@@ -207,7 +207,7 @@ const Details = () => {
           <button> Edit </button>
         </Link>
  
-        <button onClick={handleAddToInvoice}> Create Invoice </button>
+      <Link to='/dashboard/invoice'>  <button onClick={handleAddToInvoice}> Create Invoice </button></Link>
      
  
         

@@ -30,6 +30,7 @@ import UpdateProduct from "../pages/Home/Products/UpdateProduct";
 import UpdateRole from "../pages/Home/Role/UpdateRole";
 import Login from "../pages/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
+import MoneyReceived from "../pages/Home/MoneyReceived/MoneyReceived";
 
 
 export const router = createBrowserRouter([
@@ -164,6 +165,10 @@ export const router = createBrowserRouter([
       {
         path: "jobcard-list",
         element: <JobCardList />,
+      },
+      {
+        path: "money-receive",
+        element: <MoneyReceived/>,
       },
     ],
   },

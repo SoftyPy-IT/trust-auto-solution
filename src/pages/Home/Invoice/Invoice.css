@@ -1,210 +1,203 @@
 .invoicePrintWrap {
-  background-color: #ddd;
-  padding: 100px 0;
+	background-color: #ddd;
+	padding: 100px 0;
 }
 .printInvoiceBtnGroup {
-    margin-left: 145px;
-    margin-top: 30px;
+	margin-left: 170px;
+	margin-top: 30px;
 }
-.invoiceHead{
-  width: 782px;
-  margin-left:20px;
+.invoiceHead {
+	width: 782px;
+	margin-left: 20px;
 }
 .invoicePrintWrap button {
-  
-  background: #351e98;
-  color: #fff;
-  margin-right: 5px;
-  padding: 8px;
-  border-radius: 6px;
-  text-transform: uppercase;
+	background: #351e98;
+	color: #fff;
+	margin-right: 5px;
+	padding: 8px;
+	border-radius: 6px;
+	text-transform: uppercase;
 }
 .invoicePrint {
-  max-width: 790px;
-  margin: 0 auto;
-  background-color: #fff;
+	max-width: 790px;
+	margin: 0 auto;
+	background-color: #fff;
 }
-.firstInputField{
-  width:80px;
-}
-.thirdInputField{
-  width:150px;
-}
-.secondInputField{
-  width:470px;
-}
-.SearchBtn {
-  width: 100px;
-  height: 40px;
-  background: #351e98;
-  color: #fff;
-  border-radius: 5px;
-  margin-left: 10px;
-}
-.searcList select {
-  border: 1px solid #351e98;
-  padding: 5px;
-  border-radius: 5px;
-  margin-right: 5px;
-}
-.discountFieldWrap{
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-}
-.discountFieldWrap input{
-  border: 1px solid #351e98;
-  margin-bottom: 7px;
-  height: 45px;
-  border-radius: 5px;
-  padding-left: 5px;
-}
-.addInvoiceItem{
-  position:absolute;
-}
-
-.labelWrap label{
-  display: block;
-  position:absolute;
-}
-.labelWrap label:nth-child(1){
-  left: 10px !important;
-}
-.labelWrap label:nth-child(2){
-  left: -88px !important;
-}
-.labelWrap label:nth-child(3){
-  left: 148px !important;
-}
-.labelWrap label:nth-child(4){
-  left: 20px !important;
-}
-.labelWrap label:nth-child(5){
-  left: -2px !important;
-}
-.buttonGroup{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top:10px;
-}
-
-.buttonGroup button{
-  background: #351E98;
-  color: #fff;
-  margin-right: 5px;
-  width: 100px;
-  height: 40px;
-  border-radius: 20px;
-  transition:all .3s ease-in-out;
-}
-.buttonGroup button:hover{
-  background-color: #B91C1C;
-
-}
-.submitQutationBtn{
-  width:200px;
-  text-align: center;
-}
-.submitQutationBtn button{
-  background: #351E98;
-  color: white;
-  width: 200px;
-  height: 40px;
-  border-radius: 20px;
-}
-.invoiceCard{
-  text-align: center !important;
-  width: 15rem !important;
-  margin: 28px auto;
-}
-
-@media only screen and (max-width:1024px){
-  .invoiceHead {
-    width: 100%;
-}
-.trustAuto {
-  font-size: 50px;
-}
-.invoicForm input {
-  width: 182px;
-}
-.qutationForm {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  gap: 5px;
+.firstInputField {
+	width: 80px;
 }
 .thirdInputField {
-  width: 95px;
+	width: 150px;
 }
 .secondInputField {
-  width: 345px;
+	width: 470px;
 }
+.SearchBtn {
+	width: 100px;
+	height: 40px;
+	background: #351e98;
+	color: #fff;
+	border-radius: 5px;
+	margin-left: 10px;
+}
+.searcList select {
+	border: 1px solid #351e98;
+	padding: 5px;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+.discountFieldWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+.discountFieldWrap input,
+.discountFieldWrap span {
+	border: 1px solid #351e98;
+	margin-bottom: 7px;
+	height: 45px;
+	border-radius: 5px;
+	padding-left: 5px;
+	width: 148px;
+}
+.discountFieldWrap span {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+.addInvoiceItem {
+	position: absolute;
+}
+
 .labelWrap label {
-  font-size: 12px;
-}
-.labelWrap label:nth-child(5) {
-  left: 14px !important;
-}
-.labelWrap label:nth-child(4) {
-  left: 52px !important;
-}
-.labelWrap label:nth-child(3) {
-  left: 133px !important;
-}
-.labelWrap label:nth-child(2) {
-  left: -37px !important;
+	display: block;
+	position: absolute;
 }
 .labelWrap label:nth-child(1) {
-  left: 20px !important;
+	left: 10px !important;
+}
+.labelWrap label:nth-child(2) {
+	left: -88px !important;
+}
+.labelWrap label:nth-child(3) {
+	left: 148px !important;
+}
+.labelWrap label:nth-child(4) {
+	left: 20px !important;
+}
+.labelWrap label:nth-child(5) {
+	left: -2px !important;
+}
+.buttonGroup {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
 }
 
-
+.buttonGroup button {
+	background: #351e98;
+	color: #fff;
+	margin-right: 5px;
+	width: 100px;
+	height: 40px;
+	border-radius: 20px;
+	transition: all .3s ease-in-out;
+}
+.buttonGroup button:hover {
+	background-color: #b91c1c;
+}
+.submitQutationBtn {
+	width: 200px;
+	text-align: center;
+}
+.submitQutationBtn button {
+	background: #351e98;
+	color: white;
+	width: 200px;
+	height: 40px;
+	border-radius: 20px;
+}
+.invoiceCard {
+	text-align: center !important;
+	width: 15rem !important;
+	margin: 28px auto;
 }
 
-@media only screen and (max-width:768px){
-.qutationForm {
-  flex-wrap: wrap;
-  gap: 5px;
+@media only screen and (max-width: 1024px) {
+	.invoiceHead {
+		width: 100%;
+	}
+	.trustAuto {
+		font-size: 50px;
+	}
+	.invoicForm input {
+		width: 182px;
+	}
+	.qutationForm {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+	.thirdInputField {
+		width: 95px;
+	}
+	.secondInputField {
+		width: 345px;
+	}
+	.labelWrap label {
+		font-size: 12px;
+	}
+	.labelWrap label:nth-child(5) {
+		left: 14px !important;
+	}
+	.labelWrap label:nth-child(4) {
+		left: 52px !important;
+	}
+	.labelWrap label:nth-child(3) {
+		left: 133px !important;
+	}
+	.labelWrap label:nth-child(2) {
+		left: -37px !important;
+	}
+	.labelWrap label:nth-child(1) {
+		left: 20px !important;
+	}
 }
 
-.trustAuto {
-  font-size: 30px;
-  margin-left: 0px;
-}
-.discountFieldWrap input {
-  width: 118px;
-}
-.discountFieldWrap b{
-  font-size: 12px;
-}
-.labelWrap label {
-  display: none;
-}
+@media only screen and (max-width: 768px) {
+	.qutationForm {
+		flex-wrap: wrap;
+		gap: 5px;
+	}
 
-
+	.trustAuto {
+		font-size: 30px;
+		margin-left: 0px;
+	}
+	.discountFieldWrap input {
+		width: 118px;
+	}
+	.discountFieldWrap b {
+		font-size: 12px;
+	}
+	.labelWrap label {
+		display: none;
+	}
 }
-@media only screen and (max-width: 500px){
-
-.trustAuto {
-    font-size: 25px;
+@media only screen and (max-width: 500px) {
+	.trustAuto {
+		font-size: 25px;
+	}
+	.qutationForm {
+		justify-content: center;
+	}
+	.invoicForm input {
+		width: 300px;
+	}
+	.invoicForm input {
+		width: 300px;
+	}
 }
-.qutationForm {
-  justify-content: center;
-}
-.invoicForm input {
-  width: 300px;
-}
-.invoicForm input {
-  width: 300px;
-}
-
-
-
-
-
-}
-
-

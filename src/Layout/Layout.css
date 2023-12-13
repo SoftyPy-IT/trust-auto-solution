@@ -1,130 +1,124 @@
-.bar{
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px;
-    transition:all .3s ease-in-out;
-	-webkit-transition:all .3s ease-in-out;
-	-moz-transition:all .3s ease-in-out;
-	-ms-transition:all .3s ease-in-out;
-	-o-transition:all .3s ease-in-out;
-    background:white !important;
-  }
-  .activeToggle .bar:nth-child(2){
-    opacity:0;
-  }
-  .activeToggle .bar:nth-child(1){
-    transform:translateY(8px) rotate(45deg);
-    -webkit-transform:translateY(8px) rotate(45deg);
-    -moz-transform:translateY(8px) rotate(45deg);
-    -ms-transform:translateY(8px) rotate(45deg);
-    -o-transform:translateY(8px) rotate(45deg);
-  }
-  .activeToggle .bar:nth-child(3){
-    transform:translateY(-8px) rotate(-45deg)	;
-    -webkit-transform:translateY(-8px) rotate(-45deg)	;
-    -moz-transform:translateY(-8px) rotate(-45deg)	;
-    -ms-transform:translateY(-8px) rotate(-45deg)	;
-    -o-transform:translateY(-8px) rotate(-45deg)	;
-  }
-.active, .activeToggle{
-    position: fixed;
-    background: #351E98;
-    left: 3px;
-    padding: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width:50px;
-    transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
-    cursor: pointer;
+.bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	margin: 5px;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	background: white !important;
+}
+.activeToggle .bar:nth-child(2) {
+	opacity: 0;
+}
+.activeToggle .bar:nth-child(1) {
+	transform: translateY(8px) rotate(45deg);
+	-webkit-transform: translateY(8px) rotate(45deg);
+	-moz-transform: translateY(8px) rotate(45deg);
+	-ms-transform: translateY(8px) rotate(45deg);
+	-o-transform: translateY(8px) rotate(45deg);
+}
+.activeToggle .bar:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+	-webkit-transform: translateY(-8px) rotate(-45deg);
+	-moz-transform: translateY(-8px) rotate(-45deg);
+	-ms-transform: translateY(-8px) rotate(-45deg);
+	-o-transform: translateY(-8px) rotate(-45deg);
+}
+.active,
+.activeToggle {
+	position: fixed;
+	background: #351e98;
+	left: 3px;
+	padding: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 50px;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+	cursor: pointer;
 }
 .active {
-  left: 24px;
-  z-index: 999999 !important;
+	left: 24px;
+	z-index: 999999 !important;
 }
 
 .activeToggle {
-    position: fixed;
-    left: 203px;
-    transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+	position: fixed;
+	left: 203px;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.activeRightSideBarWrap{
-  width: 89px;
-  background: #351E98;
-  height: 100% !important;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+.activeRightSideBarWrap {
+	width: 89px;
+	background: #351e98;
+	height: 100% !important;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
 .rightSideBarWrap {
-display: none;
-transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
-
+	display: none;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.toolTipWrap{
-  position:relative;
-
+.toolTipWrap {
+	position: relative;
 }
-.toolTip{
-  position: absolute;
-  left: 57px;
-  z-index: 999999999 !important;
-  background: #351E98;
-  width: 119px;
-  border-radius: 3px;
-  color: #fff;
-  top: 4px;
-  padding: 5px;
-  display: none;
+.toolTip {
+	position: absolute;
+	left: 57px;
+	z-index: 999999999 !important;
+	background: #351e98;
+	width: 119px;
+	border-radius: 3px;
+	color: #fff;
+	top: 4px;
+	padding: 5px;
+	display: none;
 }
-.toolTipWrap:hover .toolTip{
-  display:block;
- 
-
+.toolTipWrap:hover .toolTip {
+	display: block;
 }
-.tooltipIcon{
-  font-size: 25px !important;
-  color:#fff !important;
-  cursor: pointer;
+.tooltipIcon {
+	font-size: 25px !important;
+	color: #fff !important;
+	cursor: pointer;
 }
-.dashboardAccordion{
-  background: #351E98 !important;
-  width:250px !important;
-  color:#fff !important;
-  transition:all .5s ease-in-out;
+.dashboardAccordion {
+	background: #351e98 !important;
+	width: 250px !important;
+	color: #fff !important;
+	transition: all .5s ease-in-out;
 }
-.dashboardAccordion:hover{
-  background:#654FC3 !important;
+.dashboardAccordion:hover {
+	background: #654fc3 !important;
 }
-.accordionTypoGrapy{
-  padding-left:35px ;
-  padding-bottom: 6px !important;
-  font-size: 14px !important;
+.accordionTypoGrapy {
+	padding-left: 35px;
+	padding-bottom: 6px !important;
+	font-size: 14px !important;
 }
-.dashboardIcon{
-  margin-right:5px;
-  font-size:20px !important;
+.dashboardIcon {
+	margin-right: 5px;
+	font-size: 20px !important;
 }
-.dashboardItems{
-  padding-left:16px;
-  margin-bottom:5px;
-  margin-top:5px;
-  transition:all .5s ease-in-out;
+.dashboardItems {
+	padding-left: 16px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	transition: all .5s ease-in-out;
+	font-size: 14px;
 }
-.dashboardItems:hover{
-  background:#654FC3;
-  padding:5px;
-  padding-left:20px;
-  width:100%;
-}
-.dashboardItems span{
-  font-size: 16px;
-
+.dashboardItems:hover {
+	background: #654fc3;
+	padding: 5px;
+	padding-left: 20px;
+	width: 100%;
 }
 
-@media only screen and (max-width:1024px){
-  .activeToggle{
-    left:204px ;
-  }
+@media only screen and (max-width: 1024px) {
+	.activeToggle {
+		left: 204px;
+	}
 }

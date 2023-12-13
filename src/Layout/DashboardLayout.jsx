@@ -11,17 +11,17 @@ import {
 	FaDatabase,
 	FaHeadset,
 	FaPlus,
-	FaThLarge
+	FaThLarge,
+	FaHome
 } from 'react-icons/fa'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { FaHome } from 'react-icons/fa'
 import { useRef, useState } from 'react'
 import './Layout.css'
-import { Home,Logout,Receipt } from '@mui/icons-material'
+import { Home,Logout,Receipt,CurrencyExchange } from '@mui/icons-material'
 const DashboardLayout = () => {
 	const navRef = useRef()
 	const [ toggle, setToggle ] = useState(false)
@@ -142,7 +142,12 @@ const DashboardLayout = () => {
 									</Typography>
 								</AccordionDetails>
 							</Accordion>
-
+							<Link to="/dashboard/money-receive">
+                            <div className="flex items-center dashboardItems">
+                            <CurrencyExchange className='dashboardIcon'/>
+								<span>Money recieved</span>
+                            </div>
+							</Link>
 							<Accordion className="dashboardAccordion">
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}

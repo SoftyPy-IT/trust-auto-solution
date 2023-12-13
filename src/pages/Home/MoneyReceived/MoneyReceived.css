@@ -1,0 +1,119 @@
+.moneyReceivedWrap {
+	padding: 10px 50px;
+}
+.moneyFormWrap {
+	margin: 30px auto;
+	border: 1px solid black;
+	padding: 30px;
+	border-radius: 5px;
+}
+.moneyRecieved {
+	display: flex;
+	justify-content: space-between;
+}
+.moneyHead {
+	width: 650px;
+	text-align: center;
+	color: #0950a1;
+}
+
+.hotlineIcon {
+	margin-right: 5px;
+}
+.receivedBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.receivedBtn button {
+	background: #82017f;
+	color: #fff;
+	width: 200px;
+	height: 35px;
+	border-radius: 20px;
+	margin-top: 10px;
+}
+.receivedTitle {
+	font-size: 45px;
+	font-weight: bold;
+}
+.moneyHead small {
+	font-size: 15px;
+}
+
+.receivedField {
+	width: 100%;
+}
+.receivedField b {
+	font-style: italic;
+}
+.receivedField input {
+	width: 100%;
+	border-bottom: 1px dashed;
+}
+
+.payAdvance {
+	width: 100%;
+}
+.receivedMoneyText {
+	width: 289px;
+}
+.advance {
+	width: 615px;
+}
+.payAdvance {
+	display: flex;
+	align-items: center;
+}
+.vehicleText {
+	width: 140px;
+}
+.checqueText {
+	width: 240px;
+}
+.date {
+	width: 58px;
+	font-style: italic;
+}
+.backText {
+	width: 70px;
+}
+.dateInput {
+	width: 100%;
+}
+.amount {
+	display: flex;
+	justify-content: space-between;
+}
+.amount label,
+.wordTaka label,
+.receivedField label {
+	font-style: italic;
+	font-weight: 600;
+	margin-right: 5px;
+}
+.amount input {
+	width: 250px;
+	border: 1px solid #111;
+	background: #d9d9d9;
+	border-radius: 3px;
+	height: 35px;
+	padding-left: 6px;
+}
+.wordTaka input {
+	border-bottom: 1px dashed;
+	width: 500px;
+}
+.signature {
+	display: flex;
+	justify-content: end;
+	position: relative;
+	font-style: italic;
+}
+.signature:after {
+	position: absolute;
+	content: "";
+	width: 134px;
+	height: 1px;
+	background-color: #82017f;
+}

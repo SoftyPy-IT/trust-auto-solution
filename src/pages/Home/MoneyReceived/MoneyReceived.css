@@ -168,6 +168,11 @@
 	font-size: 14px;
 	height: 30px;
 }
+.customerSignature {
+	display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
 
 @media only screen and (max-width: 1024px) {
 	.moneyHead {

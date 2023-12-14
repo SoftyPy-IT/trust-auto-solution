@@ -107,9 +107,9 @@ const MoneyReceiptList = () => {
            <div className=''>
             <small className='signature'>Authorized Signature</small>
            </div>
-           <div className="flex w-full items-center justify-between signature mt-5 px-5">
-            <p>Customer Signature </p>
-            <p>Trust Auto Solution</p>
+           <div className="customerSignature">
+            <b>Customer Signature : </b>
+            <b>Trust Auto Solution</b>
           </div>
           <hr className="my-3" />
           <div className="text-center mt-5">

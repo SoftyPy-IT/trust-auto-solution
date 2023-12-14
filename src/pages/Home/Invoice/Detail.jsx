@@ -170,8 +170,8 @@ const Detail = () => {
             </tbody>
           </table>
 
-          <div className="flex items-center justify-between signature mt-5 px-5">
-            <b>Customer Signature </b>
+          <div className="customerSignature">
+            <b>Customer Signature : </b>
             <b>Trust Auto Solution</b>
           </div>
           <hr className="my-3" />

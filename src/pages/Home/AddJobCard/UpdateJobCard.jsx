@@ -1,5 +1,5 @@
 import "./AddJobCard.css";
-import car from "../../../../public/assets/car.jpeg";
+import car from "../../../../public/assets/carr.jpeg";
 import logo from "../../../../public/assets/logo.png";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
@@ -349,6 +349,26 @@ const UpdateJobCard = () => {
               </b>
               <div className="imgWrap mt-2">
                 <img src={car} alt="car" />
+              </div>
+              <div className="mt-3">
+              <h4 className="text-xl font-bold capitalize">Legend</h4>
+               <div className="legend">
+                
+               <ol>
+                  <li>Scratch</li>
+                  <li>Chip</li>
+                  <li>Respainted</li>
+                  <li>New Panel Filter </li>
+                  <li>Scratch</li>
+                </ol>
+                <ol>
+                  <li>Scratch</li>
+                  <li>Chip</li>
+                  <li>Respainted</li>
+                  <li>New Panel Filter </li>
+                  <li>Scratch</li>
+                </ol>
+               </div>
               </div>
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import "./AddJobCard.css";
-import car from "../../../../public/assets/car.jpeg";
+import car from "../../../../public/assets/carr.jpeg";
 import logo from "../../../../public/assets/logo.png";
 import swal from "sweetalert";
 import { useEffect, useRef, useState } from "react";
@@ -811,6 +811,26 @@ const AddJobCard = () => {
               <div className="imgWrap mt-2">
                 <img src={car} alt="car" />
               </div>
+              <div className="mt-3">
+              <h4 className="text-xl font-bold capitalize">Legend</h4>
+               <div className="legend">
+                
+               <ol>
+                  <li>Scratch</li>
+                  <li>Chip</li>
+                  <li>Respainted</li>
+                  <li>New Panel Filter </li>
+                  <li>Scratch</li>
+                </ol>
+                <ol>
+                  <li>Scratch</li>
+                  <li>Chip</li>
+                  <li>Respainted</li>
+                  <li>New Panel Filter </li>
+                  <li>Scratch</li>
+                </ol>
+               </div>
+              </div>
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
                 <textarea
@@ -820,10 +840,10 @@ const AddJobCard = () => {
                   autoComplete="off"
                 ></textarea>
               </div>
-              <b className="carSideBar">LEFT</b>
+              {/* <b className="carSideBar">LEFT</b>
               <b className="carSideBar2">REAR</b>
               <b className="carSideBar3">FRONT</b>
-              <b className="carSideBar4">RIGHT</b>
+              <b className="carSideBar4">RIGHT</b> */}
             </div>
           </div>
           <div className="jobCardSingleForm">

@@ -1,6 +1,6 @@
 .addJobCardWraps {
 	width: 100%;
-	padding: 40px 20px;
+	padding: 25px 20px;
 	overflow: hidden;
 }
 .jobCardFormWrap {
@@ -219,6 +219,15 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 33px;
+}
+.legend {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+}
+.legend ol li {
+	list-style-type: number;
+	font-size: 14px;
 }
 @media only screen and (max-width: 1024px) {
 	.jobCardSingleForm input {

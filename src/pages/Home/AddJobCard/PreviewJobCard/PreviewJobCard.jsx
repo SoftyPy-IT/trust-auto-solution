@@ -31,12 +31,12 @@ const PreviewJobCard = () => {
         <div ref={targetRef} className="p-5 jobCardPrint">
           <div className="mx-auto text-center border-b-2 border-[#351E98]">
             <div className="flex  justify-between items-center">
-              <img className="w-[120px] " src={logo} alt="logo" />
+              <img className="w-[160px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle">Trust Auto Solution </h2>
             </div>
           </div>
           <div>
-            <div className="flex items-center justify-between mt-3 mb-2">
+            <div className="flex items-center justify-between my-2">
               <input
                 readOnly
                 type="text"
@@ -191,21 +191,11 @@ const PreviewJobCard = () => {
                   readOnly
                 />
               </div>
-              {/* <div>
-                <label className="block">Company Name </label>
-                <input
-                  type="text"
-                  placeholder="Company Name "
-                  defaultValue={previewData.phone_number}
-                  readOnly
-                />
-              </div> */}
               <div>
                 <label className="block">Phone </label>
                 <input
                   type="text"
                   placeholder="Phone"
-                  className="text-white"
                   defaultValue={previewData.phone_number}
                   readOnly
                 />
@@ -219,7 +209,6 @@ const PreviewJobCard = () => {
                     Vehicle Interior Parts, Papers, Tools, Meter Light & Others
                   </label>
                   <textarea
-                    className="text-white"
                     defaultValue={previewData.vehicle_interior_parts}
                     readOnly
                   ></textarea>
@@ -231,7 +220,6 @@ const PreviewJobCard = () => {
                     reported_defect
                   </label>
                   <textarea
-                    className="text-white"
                     defaultValue={previewData.reported_defect}
                     readOnly
                   ></textarea>
@@ -243,7 +231,6 @@ const PreviewJobCard = () => {
                     reported_action
                   </label>
                   <textarea
-                    className="text-white"
                     defaultValue={previewData.reported_action}
                     readOnly
                   ></textarea>
@@ -254,7 +241,6 @@ const PreviewJobCard = () => {
                     vehicle_body_report
                   </label>
                   <textarea
-                    className="text-white"
                     defaultValue={previewData.vehicle_body_report}
                     readOnly
                   ></textarea>
@@ -272,7 +258,6 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">Technician Name</label>
               <input
-                className="text-white"
                 defaultValue={previewData.technician_name}
                 readOnly
                 type="text"
@@ -282,7 +267,6 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">Technician Signature </label>
               <input
-                className="text-white"
                 defaultValue={previewData.technician_signature}
                 readOnly
                 type="text"
@@ -292,7 +276,7 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">Date </label>
               <input
-                className="text-white"
+              
                 defaultValue={previewData.technician_date}
                 readOnly
                 type="text"
@@ -302,7 +286,7 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">For Vehicle Owner </label>
               <input
-                className="text-white"
+              
                 defaultValue={previewData.vehicle_owner}
                 readOnly
                 type="text"
@@ -311,9 +295,9 @@ const PreviewJobCard = () => {
             </div>
           </div>
 
-          <div className="flex items-center text-xs justify-between signature mt-10 px-5">
-            <b>Customer Signature </b>
-            <b>Trust Auto Solution</b>
+          <div className="customerSignatureWrap">
+            <b className="customerSignatur">Customer Signature : </b>
+            <b className="customerSignatur">Trust Auto Solution</b>
           </div>
           <hr className="my-3" />
           <div className="text-center mt-3 ">

@@ -1,130 +1,130 @@
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-  @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin:0;
-  padding:0;
+* {
+	margin: 0;
+	padding: 0;
 }
-body{
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: 'Poppins', sans-serif;
+body {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	font-family: 'Poppins', sans-serif;
 }
 
 .drawerflex {
-  width: 100% !important;
-  display: flex;
-  justify-content: space-between;
+	width: 100% !important;
+	display: flex;
+	justify-content: space-between;
 }
-.drawwerLeftSide, .activeSideBar {
-  width: 20% !important;
-  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+.drawwerLeftSide,
+.activeSideBar {
+	width: 20% !important;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.sideBarActive{
-  width:0% !important;
-  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+.sideBarActive {
+	width: 0% !important;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
 .drawer-content {
-  position: absolute !important;
-  right: 0px !important;
-  width: 80%;
-  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+	position: absolute !important;
+	right: 0px !important;
+	width: 80%;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.activeDrawer{
-  width: 90%;
-  position: absolute !important;
-  right: 31px !important;
-  transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
+.activeDrawer {
+	width: 90%;
+	position: absolute !important;
+	right: 31px !important;
+	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 }
-.menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)), .menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
-  padding-left: 0rem !important;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0rem !important;
+.menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)),
+.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+	padding-left: 0rem !important;
+	padding-right: 1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0rem !important;
 }
 
 .css-15v22id-MuiAccordionDetails-root {
-  padding: 0px 0px 0px !important;
-  padding-bottom: 0px !important;
+	padding: 0px 0px 0px !important;
+	padding-bottom: 0px !important;
 }
 .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
-  min-height: 38px !important;
+	min-height: 38px !important;
 }
 
-.css-o4b71y-MuiAccordionSummary-content.Mui-expanded, .css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded{
-  margin:0px !important;
+.css-o4b71y-MuiAccordionSummary-content.Mui-expanded,
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+	margin: 0px !important;
 }
 
 table {
-  width: 100%;
+	width: 100%;
 }
 .table :where(thead, tfoot) {
-  white-space: pre-wrap;
-  font-size: 0.7rem;
-  line-height: 1.5rem;
-  font-weight: 300;
-  color: hsl(var(--bc) / 0.6);
+	white-space: pre-wrap;
+	font-size: 0.7rem;
+	line-height: 1.5rem;
+	font-weight: 300;
+	color: hsl(var(--bc) / 0.6);
 }
 
 .table :where(th, td) {
-  padding-left: 0.1rem;
-  padding-right: 0.1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  vertical-align: middle;
-  white-space: pre-wrap;
+	padding-left: 0.1rem;
+	padding-right: 0.1rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	vertical-align: middle;
+	white-space: pre-wrap;
 }
 .table :where(td) {
-  border-right: 1px solid #ddd;
-  text-align: center;
-  font-size: 12px;
-  border-bottom:1px solid #351E98;
+	border-right: 1px solid #ddd;
+	text-align: center;
+	font-size: 12px;
+	border-bottom: 1px solid #351e98;
 }
 .table :where(td):nth-last-of-type() {
-  border-bottom: 3px solid #ddd !important;
+	border-bottom: 3px solid #ddd !important;
 }
 .table :where(th) {
-  border: 1px solid #fff;
-  text-align: center;
-  background: #351E98;
-  font-size: 14px;
-  color: white;
-
+	border: 1px solid #fff;
+	text-align: center;
+	background: #351e98;
+	font-size: 14px;
+	color: white;
 }
 .table {
-  width: 100%;
-  text-align: left;
-  font-size: 0.6em;
-  line-height: 1.75rem;
-  border-radius: var(--rounded-box, 1rem);
+	width: 100%;
+	text-align: left;
+	font-size: 0.6em;
+	line-height: 1.75rem;
+	border-radius: var(--rounded-box, 1rem);
 }
 .ql-container.ql-snow {
-  border: none !important;
+	border: none !important;
 }
-select:focus, input:focus{
-  outline:none;
-}
-
-@media only screen and (max-width:1024px){
-  .activeDrawer, .drawer-content {
-    right: 12px !important;
+select:focus,
+input:focus {
+	outline: none;
 }
 
+@media only screen and (max-width: 1024px) {
+	.activeDrawer,
+	.drawer-content {
+		right: 12px !important;
+	}
 }
-@media only screen and (max-width:768px){
-.drawwerLeftSide, .activeSideBar {
-  width: 32% !important;
-}
-.activeToggle {
-  left: 246px;
-}
+@media only screen and (max-width: 768px) {
+	.drawwerLeftSide,
+	.activeSideBar {
+		width: 32% !important;
+	}
+	.activeToggle {
+		left: 246px;
+	}
 }

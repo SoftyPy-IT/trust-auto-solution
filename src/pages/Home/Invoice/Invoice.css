@@ -1,11 +1,8 @@
 .invoicePrintWrap {
 	background-color: #ddd;
-	padding: 100px 0;
+	padding: 50px 0;
 }
-.printInvoiceBtnGroup {
-	margin-left: 170px;
-	margin-top: 30px;
-}
+
 .invoiceHead {
 	width: 782px;
 	margin-left: 20px;
@@ -23,7 +20,7 @@
 	width: 150px;
 }
 .secondInputField {
-	width: 470px;
+	width: 580px;
 }
 .SearchBtn {
 	width: 100px;
@@ -67,16 +64,16 @@
 	position: absolute;
 }
 .labelWrap label:nth-child(1) {
-	left: 10px !important;
+	left: 5px !important;
 }
 .labelWrap label:nth-child(2) {
-	left: -88px !important;
+	left: -117px !important;
 }
 .labelWrap label:nth-child(3) {
-	left: 148px !important;
+	left: 201px !important;
 }
 .labelWrap label:nth-child(4) {
-	left: 20px !important;
+	left: 52px !important;
 }
 .labelWrap label:nth-child(5) {
 	left: -2px !important;
@@ -123,7 +120,7 @@
 .invoiceOrderBtn {
 	width: 65px;
 	height: 27px;
-	background: #4671A1;
+	background: #4671a1;
 	color: #fff;
 	border-radius: 4px;
 	font-size: 13px;
@@ -139,6 +136,38 @@
 	color: #fff;
 }
 
+.printInvoiceBtnGroup {
+	margin-left: 210px;
+	margin-top: 30px;
+}
+.printInvoiceBtnGroup button {
+	background: #351e98;
+	color: #fff;
+	border-radius: 20px;
+	margin-right: 5px;
+	width: 69px;
+	height: 30px;
+	font-size: 14px;
+}
+.customerSignatureWrap {
+	display: flex;
+	justify-content: space-between;
+	margin: 5px 0;
+	margin-top: 25px;
+}
+.customerSignatur {
+	position: relative;
+}
+
+.customerSignatur::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	top: 0;
+	background: black;
+	left: 0;
+}
 @media only screen and (max-width: 1024px) {
 	.invoiceHead {
 		width: 100%;

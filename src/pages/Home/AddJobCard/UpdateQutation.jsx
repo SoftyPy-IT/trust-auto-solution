@@ -189,6 +189,7 @@ const UpdateQutation = () => {
                 type="text"
                 placeholder="Order Number"
                 defaultValue={specificInvoice?.job_no}
+                className="orderNumber"
               />
             </div>
             <div>
@@ -230,6 +231,7 @@ const UpdateQutation = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Date"
+                className="orderNumber"
               />
             </div>
           </div>

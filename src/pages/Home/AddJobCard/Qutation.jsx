@@ -471,7 +471,7 @@ const Qutation = () => {
     <div className="py-10 px-5">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
         <div className="flex items-center justify-center">
-          <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
+          <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
             <h2 className=" font-bold text-center trustAuto word-sp">
               Trust Auto Solution{" "}
@@ -496,6 +496,7 @@ const Qutation = () => {
                 type="text"
                 placeholder="Order Number"
                 defaultValue={orderNo}
+                className="orderNumber"
               />
             </div>
             <div>
@@ -533,7 +534,7 @@ const Qutation = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Date"
-                // onChange={handleDateChange}
+                className="orderNumber"
               />
             </div>
           </div>

@@ -190,11 +190,11 @@ const Detail = () => {
       <div ref={componentRef}>
         <div ref={targetRef} className="py-5 px-5 invoicePrint">
           <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-            <div className="flex  justify-between items-center mb-3">
+            <div className="flex  justify-between items-center mb-2">
               <img className="w-[150px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
             </div>
-            <p className="text-[#426EA0] italic">It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </p>
+            <p className="text-[#426EA0] italic text-sm">It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </p>
           </div>
           <div></div>
           <div>
@@ -204,17 +204,17 @@ const Detail = () => {
            </div>
            <table className="invoicTable mt-5">
             <tr>
-              <th>Name</th>
-              <th>Address </th>
-              <th>Frame No </th>
-              <th>Pickup</th>
+              <th>  Order Number</th>
+              <th>  Customer Name </th>
+              <th> Car Number </th>
+              <th> Mobile Number</th>
             </tr>
             <tbody>
               <tr>
+                <td>03</td>
                 <td>Jahid Hasan</td>
-                <td>Jahid Hasan</td>
-                <td>Jahid Hasan</td>
-                <td>Jahid Hasan</td>
+                <td>554444</td>
+                <td>019747444</td>
               </tr>
             </tbody>
            </table>
@@ -247,16 +247,17 @@ const Detail = () => {
             <td colSpan={3}> <b>Total Amount</b> </td>
             <td>145000/=</td>
           </tr>
+        
 
           </tbody>
           </table>
-
-          <div className="customerSignature">
-            <b>Customer Signature : </b>
-            <b>Trust Auto Solution</b>
+          <p className="mt-1"><b>In words:</b> Forty Four Thousand Tow Hundred Taka Only</p>
+          <div className="customerSignatureWrap">
+            <b className="customerSignatur">Customer Signature : </b>
+            <b className="customerSignatur">Trust Auto Solution</b>
           </div>
           <hr className="my-3" />
-          <div className="text-center mt-5">
+          <div className="text-center mt-3 text-sm">
             <p>
               <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
               www.trustautosolution.com
@@ -278,7 +279,7 @@ const Detail = () => {
           <button> Edit </button>
         </Link>
      
-       <Link to='/dashboard/qutation'> <button> Create Qutation </button></Link>
+       <Link to='/dashboard/qutation'> <button> Qutation </button></Link>
  
       </div>
     </main>

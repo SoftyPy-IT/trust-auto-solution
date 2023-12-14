@@ -34,7 +34,6 @@ import MoneyReceived from "../pages/Home/MoneyReceived/MoneyReceived";
 import MoneyReceiptList from "../pages/Home/MoneyReceived/MoneyReceiptList";
 import MoneyReceiptView from "../pages/Home/MoneyReceived/MoneyReceiptView";
 import UpdateMoneyReceipt from "../pages/Home/MoneyReceived/UpdateMoneyReceipt";
-import Payment from "../pages/Home/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -185,10 +184,6 @@ export const router = createBrowserRouter([
       {
         path: "money-receipt-update",
         element: <UpdateMoneyReceipt/>,
-      },
-      {
-        path: "payment",
-        element: <Payment/>,
       },
     ],
   },

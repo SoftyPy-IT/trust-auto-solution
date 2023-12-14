@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
@@ -6,7 +6,6 @@ import { usePDF } from "react-to-pdf";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const Details = () => {
-  const [error, setError] = useState("");
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Details = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/${id}`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -29,85 +28,201 @@ const Details = () => {
     }
   }, [id]);
 
-  const handleAddToInvoice = async (e) => {
+  const handleAddToQuotation = async (e) => {
     e.preventDefault();
 
-    try {
-      const values = {
-        username: quotationPreview.username,
-        // serial_no: formattedSerialNo,
-        job_no: quotationPreview.job_no,
-        date: quotationPreview.date,
-        car_registration_no: quotationPreview.car_registration_no,
-        customer_name: quotationPreview?.customer_name,
-        contact_number: quotationPreview?.contact_number,
-        descriptions: quotationPreview.descriptions,
-        quantity: quotationPreview.quantity,
-        rate: quotationPreview.rate,
-        amount: quotationPreview.amount,
-        total_amount: quotationPreview.total_amount,
-        discount: quotationPreview.discount,
-        vat: quotationPreview.vat,
-        net_total: quotationPreview.net_total,
-      };
-      
-      const response = await axios.post(
-        "https://trust-auto-solution-server.vercel.app/api/v1/invoice",
-        values
-      );
+    const values = {
+      username: quotationPreview.username,
+      job_no: quotationPreview.job_no,
+      date: quotationPreview.date,
+      car_registration_no: quotationPreview.car_registration_no,
+      customer_name: quotationPreview?.customer_name,
+      contact_number: quotationPreview?.contact_number,
+      descriptions: quotationPreview.descriptions,
+      quantity: quotationPreview.quantity,
+      rate: quotationPreview.rate,
+      amount: quotationPreview.total,
+      total_amount: quotationPreview.total_amount,
+      discount: quotationPreview.discount,
+      vat: quotationPreview.vat,
+      net_total: quotationPreview.net_total,
+    };
 
-      if (response.data.message === "Successfully Invoice post") {
-        navigate("/dashboard/invoice-view");
-        // setReload(!reload);
-        // setPostError("");
-        // setError("");
-      }
-    } catch (error) {
-      if (error.response) {
-        setError(error.response.data.message);
-      }
+    const response = await axios.post(
+      "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
+      values
+    );
+
+    if (response.data.message === "Successfully quotation post") {
+      navigate("/dashboard/qutation-view");
     }
   };
+  const invoiceData = [
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+  ]
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
-        <div ref={targetRef} className="py-10 px-5 invoicePrint">
-          <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-            <div className="flex  justify-between items-center mb-3">
-              <img className="w-[120px] " src={logo} alt="logo" />
+        <div ref={targetRef} className="py-5 px-5 invoicePrint">
+          <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+            <div className="flex  justify-between items-center mb-2">
+              <img className="w-[150px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
             </div>
+            <p className="text-[#426EA0] italic text-sm">It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </p>
           </div>
           <div></div>
           <div>
-            <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
-              Quotation
-            </h3>
-            <div className="px-5 mb-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <small className=" block">
-                    Order Number: {quotationPreview?.job_no}{" "}
-                  </small>
-                  <small className=" block">
-                    Customer Name: {quotationPreview?.customer_name}{" "}
-                  </small>
-                  <small className=" ">
-                    Car Number: {quotationPreview?.car_registration_no}{" "}
-                  </small>
-                  <small className=" block ">
-                    Mobile Number: {quotationPreview?.contact_number}
-                  </small>
-                </div>
-                <div>
-                  <small className="block"> QUOTATION NO : 23102901</small>
-                  <small>QUOTATION DATE : {quotationPreview?.date}</small>
-                </div>
-              </div>
-            </div>
+           <div className="flex items-center justify-between">
+           <button className="invoiceOrderBtn">SL No:40</button>
+           <b>Date: 12/12/23 </b>
+           </div>
+           <table className="invoicTable mt-5">
+            <tr>
+              <th>  Order Number</th>
+              <th>  Customer Name </th>
+              <th> Car Number </th>
+              <th> Mobile Number</th>
+            </tr>
+            <tbody>
+              <tr>
+                <td>03</td>
+                <td>Jahid Hasan</td>
+                <td>554444</td>
+                <td>019747444</td>
+              </tr>
+            </tbody>
+           </table>
+        
+           
           </div>
 
-          <table className="table ">
+          <table className=" invoiceTable2 qutationTables mt-5">
             <thead className="tableWrap">
               <tr>
                 <th>SL No</th>
@@ -117,77 +232,38 @@ const Details = () => {
                 <th>Amount </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  {Array.isArray(quotationPreview?.descriptions) &&
-                    quotationPreview?.descriptions.map((description, index) => (
-                      <div key={index}>{index + 1}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview?.descriptions) &&
-                    quotationPreview?.descriptions.map((description, index) => (
-                      <div key={index}>{description}</div>
-                    ))}
-                </td>
+          <tbody>
+          {
+            invoiceData.map(data=> <tr key={data.id}>
+              <td>01</td>
+               <td>{data.desc} </td>
+               <td>{data.quantity} </td>
+               <td>555 </td>
+               <td>200000/= </td>
+              </tr>)
+          }
+          <tr>
+            <td colSpan={2}> <b>Vat</b> </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colSpan={2}> <b>Total Amount</b> </td>
+            <td></td>
+            <td></td>
+            <td>145000/=</td>
+          </tr>
 
-                <td>
-                  {Array.isArray(quotationPreview.quantity) &&
-                    quotationPreview.quantity.map((quantity, index) => (
-                      <div key={index}>{quantity}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview.rate) &&
-                    quotationPreview.rate.map((rate, index) => (
-                      <div key={index}>{rate}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview.amount) &&
-                    quotationPreview.amount.map((amount, index) => (
-                      <div key={index}>{amount}</div>
-                    ))}
-                </td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Total</td>
-                <td>{quotationPreview.total_amount}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Discount</td>
-                <td>{quotationPreview.discount}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Vat</td>
-                <td>{quotationPreview.vat}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Net Total </td>
-                <td>{quotationPreview.net_total}</td>
-              </tr>
-            </tbody>
+          </tbody>
           </table>
-
-          <div className="customerSignature">
-            <b>Customer Signature : </b>
-            <b>Trust Auto Solution</b>
+          <p className="mt-1"><b>In words:</b> Forty Four Thousand Tow Hundred Taka Only</p>
+          <div className="customerSignatureWrap">
+            <b className="customerSignatur">Customer Signature : </b>
+            <b className="customerSignatur">Trust Auto Solution</b>
           </div>
           <hr className="my-3" />
-          <div className="text-center mt-5">
+          <div className="text-center mt-3 text-sm">
             <p>
               <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
               www.trustautosolution.com
@@ -203,14 +279,14 @@ const Details = () => {
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
-        <Link to="/dashboard/qutation">
+ 
+
+        <Link to="/dashboard/invoice">
           <button> Edit </button>
         </Link>
- 
-      <Link to='/dashboard/invoice'>  <button onClick={handleAddToInvoice}> Create Invoice </button></Link>
      
+       <Link to='/dashboard/qutation'> <button> Qutation </button></Link>
  
-        
       </div>
     </main>
   );

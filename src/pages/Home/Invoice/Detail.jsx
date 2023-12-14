@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
@@ -56,46 +57,172 @@ const Detail = () => {
       navigate("/dashboard/qutation-view");
     }
   };
+  const invoiceData = [
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+    {
+      id: 1,
+      desc: "",
+      quantity: 5,
+      rate: 555,
+      amount: 20000,
+    },
+  ]
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
-        <div ref={targetRef} className="py-10 px-5 invoicePrint">
-          <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+        <div ref={targetRef} className="py-5 px-5 invoicePrint">
+          <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
             <div className="flex  justify-between items-center mb-3">
-              <img className="w-[110px] " src={logo} alt="logo" />
+              <img className="w-[150px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
             </div>
+            <p className="text-[#426EA0] italic">It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </p>
           </div>
           <div></div>
           <div>
-            <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
-              Invoice
-            </h3>
-            <div className="px-5 mb-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <small className=" block">
-                    Order Number: {quotationPreview?.job_no}{" "}
-                  </small>
-                  <small className=" block">
-                    Customer Name: {quotationPreview?.customer_name}{" "}
-                  </small>
-                  <small className=" ">
-                    Car Number: {quotationPreview?.car_registration_no}{" "}
-                  </small>
-                  <small className=" block ">
-                    Mobile Number: {quotationPreview?.contact_number}
-                  </small>
-                </div>
-                <div>
-                  <small className="block"> QUOTATION NO : 23102901</small>
-                  <small>QUOTATION DATE : {quotationPreview?.date}</small>
-                </div>
-              </div>
-            </div>
+           <div className="flex items-center justify-between">
+           <button className="invoiceOrderBtn">No:40</button>
+           <b>Date: 12/12/23 </b>
+           </div>
+           <table className="invoicTable mt-5">
+            <tr>
+              <th>Name</th>
+              <th>Address </th>
+              <th>Frame No </th>
+              <th>Pickup</th>
+            </tr>
+            <tbody>
+              <tr>
+                <td>Jahid Hasan</td>
+                <td>Jahid Hasan</td>
+                <td>Jahid Hasan</td>
+                <td>Jahid Hasan</td>
+              </tr>
+            </tbody>
+           </table>
+        
+           
           </div>
 
-          <table className="table ">
+          <table className=" invoiceTable2 mt-5">
             <thead className="tableWrap">
               <tr>
                 <th>SL No</th>
@@ -105,69 +232,23 @@ const Detail = () => {
                 <th>Amount </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  {Array.isArray(quotationPreview?.descriptions) &&
-                    quotationPreview?.descriptions.map((description, index) => (
-                      <div key={index}>{index + 1}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview?.descriptions) &&
-                    quotationPreview?.descriptions.map((description, index) => (
-                      <div key={index}>{description}</div>
-                    ))}
-                </td>
+          <tbody>
+          {
+            invoiceData.map(data=> <tr key={data.id}>
+              <td>01</td>
+               <td>{data.desc} </td>
+               <td>{data.quantity} </td>
+               <td>555 </td>
+               <td>200000/= </td>
+              </tr>)
+          }
+          <tr>
+            <td></td>
+            <td colSpan={3}> <b>Total Amount</b> </td>
+            <td>145000/=</td>
+          </tr>
 
-                <td>
-                  {Array.isArray(quotationPreview.quantity) &&
-                    quotationPreview.quantity.map((quantity, index) => (
-                      <div key={index}>{quantity}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview.rate) &&
-                    quotationPreview.rate.map((rate, index) => (
-                      <div key={index}>{rate}</div>
-                    ))}
-                </td>
-                <td>
-                  {Array.isArray(quotationPreview.amount) &&
-                    quotationPreview.amount.map((amount, index) => (
-                      <div key={index}>{amount}</div>
-                    ))}
-                </td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Total</td>
-                <td>{quotationPreview.total_amount}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Discount</td>
-                <td>{quotationPreview.discount}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Vat</td>
-                <td>{quotationPreview.vat}</td>
-              </tr>
-              <tr>
-                <td className="hideBorder"></td>
-                <td className="hideBorder"></td>
-                <td className="hideBorder2"></td>
-                <td>Net Total </td>
-                <td>{quotationPreview.net_total}</td>
-              </tr>
-            </tbody>
+          </tbody>
           </table>
 
           <div className="customerSignature">

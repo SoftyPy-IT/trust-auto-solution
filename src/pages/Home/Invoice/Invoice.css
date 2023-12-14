@@ -10,14 +10,7 @@
 	width: 782px;
 	margin-left: 20px;
 }
-.invoicePrintWrap button {
-	background: #351e98;
-	color: #fff;
-	margin-right: 5px;
-	padding: 8px;
-	border-radius: 6px;
-	text-transform: uppercase;
-}
+
 .invoicePrint {
 	max-width: 790px;
 	margin: 0 auto;
@@ -122,6 +115,28 @@
 	text-align: center !important;
 	width: 15rem !important;
 	margin: 28px auto;
+}
+.trustAutoTitle {
+	font-size: 56px !important;
+	color: #426ea0;
+}
+.invoiceOrderBtn {
+	width: 65px;
+	height: 27px;
+	background: #4671A1;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 13px;
+}
+.invoicTable :where(td, th, tr),
+.invoiceTable2 :where(td, th, tr) {
+	border: 1px solid #c0c2c1;
+	text-align: center;
+	font-size: 14px !important;
+}
+.invoiceTable2 th {
+	background: #4671a1;
+	color: #fff;
 }
 
 @media only screen and (max-width: 1024px) {

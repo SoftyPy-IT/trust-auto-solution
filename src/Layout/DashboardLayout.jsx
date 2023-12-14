@@ -159,13 +159,13 @@ const DashboardLayout = () => {
 									<Typography className='accordionTypoGrapy'>
 										<span className="flex items-center">
 											<FaPlus className="mr-2" />
-											<Link to="/dashboard/money-receive">Add money receipt</Link>
+											<Link to="/dashboard/money-receive">Add Money Receipt</Link>
 										</span>
 									</Typography>
 									<Typography className='accordionTypoGrapy'>
 										<span className="flex items-center">
 											<FaThLarge className="mr-2" />
-											<Link to="/dashboard/money-receipt-list">View money receipt </Link>
+											<Link to="/dashboard/money-receipt-list"> Money Receipt List</Link>
 										</span>
 									</Typography>
 								</AccordionDetails>

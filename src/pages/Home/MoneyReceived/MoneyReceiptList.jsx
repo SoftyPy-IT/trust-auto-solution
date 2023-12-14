@@ -17,30 +17,30 @@ const MoneyReceiptList = () => {
        <section className='receiptMoneyWrap'>
         <div ref={targetRef} className="moneyReceivedWrap ">
          <div ref={componentRef} className='moneyFormWrap moneyWraps'>
-            <div className="moneyRecieved">
-             <div className="logoWrap">
+            <div className="moneyRecieved ">
+             <div className="logoWrap logoWrap2">
              <img className="" src={logo} alt="logo" />
              </div>
-              <div className='moneyHead'>
-              <h2 className="receivedTitle ">Trust Auto Solution </h2>
+              <div className='moneyHead moneyHead2'>
+              <h2 className="receivedTitle receivedTitle2">Trust Auto Solution </h2>
               <small>It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </small>
               </div>
               <div>
                 <h3>Hotline</h3>
                 <div className='flex items-center mt-1'>
-                    <LocalPhone hotlineIcon/>
+                    <LocalPhone className='hotlineIcon'/>
                 <b className='ml-1'>+880 1821-216465</b>
                 </div>
                <div className="flex items-center mt-1">
-                <Email hotlineIcon/>
+                <Email className='hotlineIcon'/>
                <small className='ml-1'>trustautosolution@gmail.com</small>
                </div>
                <div className="flex items-center mt-1">
-                <Home hotlineIcon/>
+                <Home className='hotlineIcon'> </Home>
                <small className='ml-1'>Ka-93/4/C Kuril Bishawroad, <br /> Dhaka-1212</small>
                </div>
                <div className="flex items-center mt-1">
-                <WhatsApp hotlineIcon/>
+                <WhatsApp className='hotlineIcon'/>
                <small className='ml-1'>+88 1972-216465</small>
                </div>
               </div>

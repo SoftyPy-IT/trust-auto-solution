@@ -8,10 +8,15 @@
 	border-radius: 5px;
 }
 .logoWrap {
-	width: 170px;
+	width: 200px;
+	height: 120px;
+}
+.logoWrap2 {
+	height: auto;
 }
 .logoWrap img {
 	width: 100%;
+	height: 100%;
 	object-fit: cover;
 }
 .moneyRecieved {
@@ -24,9 +29,16 @@
 	text-align: center;
 	color: #0950a1;
 }
-
+.moneyHead2 {
+	width: 600px;
+}
+.moneyHead2 small {
+	font-size: 11px !important;
+}
 .hotlineIcon {
 	margin-right: 5px;
+	color: #0950a1 !important;
+	font-size: 20px !important;
 }
 .receivedBtn {
 	display: flex;
@@ -45,6 +57,9 @@
 	font-size: 45px;
 	font-weight: bold;
 }
+.receivedTitle2 {
+	font-size: 40px;
+}
 .moneyHead small {
 	font-size: 15px;
 }
@@ -58,6 +73,7 @@
 .receivedField input {
 	width: 100%;
 	border-bottom: 1px dashed;
+	border-color: #81027e;
 }
 
 .payAdvance {

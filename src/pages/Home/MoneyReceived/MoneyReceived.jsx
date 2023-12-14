@@ -17,19 +17,19 @@ const MoneyReceived = () => {
               <div>
                 <h3>Hotline</h3>
                 <div className='flex items-center mt-1'>
-                    <LocalPhone hotlineIcon/>
+                    <LocalPhone className='hotlineIcon'/>
                 <b className='ml-1'>+880 1821-216465</b>
                 </div>
                <div className="flex items-center mt-1">
-                <Email hotlineIcon/>
+                <Email className='hotlineIcon'/>
                <small className='ml-1'>trustautosolution@gmail.com</small>
                </div>
                <div className="flex items-center mt-1">
-                <Home hotlineIcon/>
+                <Home className='hotlineIcon'> </Home>
                <small className='ml-1'>Ka-93/4/C Kuril Bishawroad, <br /> Dhaka-1212</small>
                </div>
                <div className="flex items-center mt-1">
-                <WhatsApp hotlineIcon/>
+                <WhatsApp className='hotlineIcon'/>
                <small className='ml-1'>+88 1972-216465</small>
                </div>
               </div>

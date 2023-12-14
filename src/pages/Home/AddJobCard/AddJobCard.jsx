@@ -87,6 +87,7 @@ const AddJobCard = () => {
       "http://localhost:5000/api/v1/jobCard",
       values
     );
+    console.log(response)
     if (response.data.message === "Successfully add to card post") {
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);

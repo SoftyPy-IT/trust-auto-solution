@@ -15,13 +15,17 @@ const JobCardList = () => {
   const [allJobCard, setAllJobCard] = useState([]);
   const [noMatching, setNoMatching] = useState(null);
   const [filterType, setFilterType] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const username = "683231669175";
   useEffect(() => {
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`)
+    setLoading(true);
+    fetch(
+      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+    )
       .then((res) => res.json())
       .then((data) => {
-         console.log(data)
+        setLoading(false);
         setAllJobCard(data);
       });
   }, [username]);
@@ -47,6 +51,7 @@ const JobCardList = () => {
 
     if (willDelete) {
       try {
+        
         const res = await fetch(
           `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
           {
@@ -57,6 +62,7 @@ const JobCardList = () => {
 
         if (data.message == "Job card delete successful") {
           setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
+         
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -228,25 +234,31 @@ const JobCardList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`)
+      setLoading(true);
+      fetch(
+        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setAllJobCard(data);
           setNoMatching(null);
+          setLoading(false);
         });
     } else {
       const data = {
         select,
         filterType,
       };
+      setLoading(true);
       const response = await axios.post(
         `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
         data
       );
-      console.log(response.data);
+
       if (response.data.message === "Filter successful") {
         setAllJobCard(response.data.result);
         setNoMatching(null);
+        setLoading(false);
       }
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
@@ -268,59 +280,78 @@ const JobCardList = () => {
               <option value="Mobile Number"> Mobile Number</option>
             </select>
             <div className="searchGroup">
-              <input onChange={(e) => setFilterType(e.target.value)} autoComplete="off" type="text" placeholder={select} />
+              <input
+                onChange={(e) => setFilterType(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder={select}
+              />
             </div>
-            <button onClick={handleFilterType}  className="SearchBtn ">Search </button>
+            <button onClick={handleFilterType} className="SearchBtn ">
+              Search{" "}
+            </button>
           </div>
         </div>
-        <div>
-        {allJobCard?.length === 0 || currentItems.length === 0 || noMatching ? (
-          <div className="text-xl text-center flex justify-center items-center h-full">
-            No matching card found.
+        {loading ? (
+          <div className="flex justify-center items-center text-xl">
+            Loading...
           </div>
         ) : (
-          <>
-            <section>
-              {renderData(currentItems)}
-              <ul
-                className={
-                  minPageNumberLimit < 5
-                    ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                    : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                }
-              >
-                <button
-                  onClick={handlePrevious}
-                  disabled={currentPage === pages[0] ? true : false}
-                  className={
-                    currentPage === pages[0] ? "text-gray-600" : "text-gray-300"
-                  }
-                >
-                  Previous
-                </button>
-                <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
-                  {pageDecrementBtn}
-                </span>
-                {renderPagesNumber}
-                {pageIncrementBtn}
-                <button
-                  onClick={handleNext}
-                  disabled={
-                    currentPage === pages[pages?.length - 1] ? true : false
-                  }
-                  className={
-                    currentPage === pages[pages?.length - 1]
-                      ? "text-gray-700"
-                      : "text-gray-300 pl-1"
-                  }
-                >
-                  Next
-                </button>
-              </ul>
-            </section>
-          </>
+          <div>
+            {allJobCard?.length === 0 ||
+            currentItems.length === 0 ||
+            noMatching ? (
+              <div className="text-xl text-center flex justify-center items-center h-full">
+                No matching card found.
+              </div>
+            ) : (
+              <>
+                <section>
+                  {renderData(currentItems)}
+                  <ul
+                    className={
+                      minPageNumberLimit < 5
+                        ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                        : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
+                    }
+                  >
+                    <button
+                      onClick={handlePrevious}
+                      disabled={currentPage === pages[0] ? true : false}
+                      className={
+                        currentPage === pages[0]
+                          ? "text-gray-600"
+                          : "text-gray-300"
+                      }
+                    >
+                      Previous
+                    </button>
+                    <span
+                      className={minPageNumberLimit < 5 ? "hidden" : "inline"}
+                    >
+                      {pageDecrementBtn}
+                    </span>
+                    {renderPagesNumber}
+                    {pageIncrementBtn}
+                    <button
+                      onClick={handleNext}
+                      disabled={
+                        currentPage === pages[pages?.length - 1] ? true : false
+                      }
+                      className={
+                        currentPage === pages[pages?.length - 1]
+                          ? "text-gray-700"
+                          : "text-gray-300 pl-1"
+                      }
+                    >
+                      Next
+                    </button>
+                  </ul>
+                </section>
+              </>
+            )}
+          </div>
         )}
-      </div>
       </div>
 
       {/* <div className="pagination">

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
@@ -16,47 +17,50 @@ const Details = () => {
   });
 
   const [quotationPreview, setQuotationPreview] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (id) {
+      setLoading(true)
       fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setQuotationPreview(data);
+          setLoading(false)
         });
     }
   }, [id]);
 
-  const handleAddToQuotation = async (e) => {
-    e.preventDefault();
+  // const handleAddToQuotation = async (e) => {
+  //   e.preventDefault();
 
-    const values = {
-      username: quotationPreview.username,
-      job_no: quotationPreview.job_no,
-      date: quotationPreview.date,
-      car_registration_no: quotationPreview.car_registration_no,
-      customer_name: quotationPreview?.customer_name,
-      contact_number: quotationPreview?.contact_number,
-      descriptions: quotationPreview.descriptions,
-      quantity: quotationPreview.quantity,
-      rate: quotationPreview.rate,
-      amount: quotationPreview.total,
-      total_amount: quotationPreview.total_amount,
-      discount: quotationPreview.discount,
-      vat: quotationPreview.vat,
-      net_total: quotationPreview.net_total,
-    };
+  //   const values = {
+  //     username: quotationPreview.username,
+  //     job_no: quotationPreview.job_no,
+  //     date: quotationPreview.date,
+  //     car_registration_no: quotationPreview.car_registration_no,
+  //     customer_name: quotationPreview?.customer_name,
+  //     contact_number: quotationPreview?.contact_number,
+  //     descriptions: quotationPreview.descriptions,
+  //     quantity: quotationPreview.quantity,
+  //     rate: quotationPreview.rate,
+  //     amount: quotationPreview.total,
+  //     total_amount: quotationPreview.total_amount,
+  //     discount: quotationPreview.discount,
+  //     vat: quotationPreview.vat,
+  //     net_total: quotationPreview.net_total,
+  //   };
 
-    const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
-      values
-    );
+  //   const response = await axios.post(
+  //     "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
+  //     values
+  //   );
 
-    if (response.data.message === "Successfully quotation post") {
-      navigate("/dashboard/qutation-view");
-    }
-  };
+  //   if (response.data.message === "Successfully quotation post") {
+  //     navigate("/dashboard/qutation-view");
+  //   }
+  // };
   const invoiceData = [
     {
       id: 1,

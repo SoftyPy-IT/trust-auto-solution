@@ -15,19 +15,21 @@ const QutationList = () => {
   const [getAllQuotation, setGetAllQuotation] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const username = "683231669175";
 
   const handleIconPreview = async (e) => {
     navigate(`/dashboard/details?id=${e}`);
   };
   useEffect(() => {
+    setLoading(true);
     fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setGetAllQuotation(data);
+        setLoading(false);
       });
   }, [username]);
 
@@ -61,7 +63,6 @@ const QutationList = () => {
 
         if (data.message == "Quotation card delete successful") {
           setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id));
-           
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -129,7 +130,6 @@ const QutationList = () => {
     currentItems = [];
   }
 
- 
   const renderData = (getAllQuotation) => {
     return (
       <table className="table">
@@ -230,10 +230,11 @@ const QutationList = () => {
     );
   }
 
-
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `)
+      fetch(
+        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `
+      )
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -272,63 +273,76 @@ const QutationList = () => {
               <option value="Mobile Number"> Mobile Number</option>
             </select>
             <div className="searchGroup">
-              <input  onChange={(e) => setFilterType(e.target.value)}  autoComplete="off" type="text" placeholder={select} />
+              <input
+                onChange={(e) => setFilterType(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder={select}
+              />
             </div>
-            <button onClick={handleFilterType} className="SearchBtn ">Search </button>
+            <button onClick={handleFilterType} className="SearchBtn ">
+              Search{" "}
+            </button>
           </div>
         </div>
-        <div>
-          {getAllQuotation?.length === 0 || currentItems.length === 0 ? (
-            <div className="text-xl text-center flex justify-center items-center h-full">
-              No matching card found.
-            </div>
-          ) : (
-            <>
-              <section>
-                {renderData(currentItems)}
-                <ul
-                  className={
-                    minPageNumberLimit < 5
-                      ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                      : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                  }
-                >
-                  <button
-                    onClick={handlePrevious}
-                    disabled={currentPage === pages[0] ? true : false}
+        {loading ? (
+          <div className="flex justify-center items-center text-xl">
+            Loading...
+          </div>
+        ) : (
+          <div>
+            {getAllQuotation?.length === 0 || currentItems.length === 0 ? (
+              <div className="text-xl text-center flex justify-center items-center h-full">
+                No matching card found.
+              </div>
+            ) : (
+              <>
+                <section>
+                  {renderData(currentItems)}
+                  <ul
                     className={
-                      currentPage === pages[0]
-                        ? "text-gray-600"
-                        : "text-gray-300"
+                      minPageNumberLimit < 5
+                        ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                        : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
                     }
                   >
-                    Previous
-                  </button>
-                  <span
-                    className={minPageNumberLimit < 5 ? "hidden" : "inline"}
-                  >
-                    {pageDecrementBtn}
-                  </span>
-                  {renderPagesNumber}
-                  {pageIncrementBtn}
-                  <button
-                    onClick={handleNext}
-                    disabled={
-                      currentPage === pages[pages?.length - 1] ? true : false
-                    }
-                    className={
-                      currentPage === pages[pages?.length - 1]
-                        ? "text-gray-700"
-                        : "text-gray-300 pl-1"
-                    }
-                  >
-                    Next
-                  </button>
-                </ul>
-              </section>
-            </>
-          )}
-        </div>
+                    <button
+                      onClick={handlePrevious}
+                      disabled={currentPage === pages[0] ? true : false}
+                      className={
+                        currentPage === pages[0]
+                          ? "text-gray-600"
+                          : "text-gray-300"
+                      }
+                    >
+                      Previous
+                    </button>
+                    <span
+                      className={minPageNumberLimit < 5 ? "hidden" : "inline"}
+                    >
+                      {pageDecrementBtn}
+                    </span>
+                    {renderPagesNumber}
+                    {pageIncrementBtn}
+                    <button
+                      onClick={handleNext}
+                      disabled={
+                        currentPage === pages[pages?.length - 1] ? true : false
+                      }
+                      className={
+                        currentPage === pages[pages?.length - 1]
+                          ? "text-gray-700"
+                          : "text-gray-300 pl-1"
+                      }
+                    >
+                      Next
+                    </button>
+                  </ul>
+                </section>
+              </>
+            )}
+          </div>
+        )}
       </div>
 
       {/* <div className="pagination">

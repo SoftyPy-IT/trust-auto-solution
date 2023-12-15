@@ -17,6 +17,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
@@ -51,6 +52,8 @@ const AddJobCard = () => {
   const { register, handleSubmit, reset } = useForm();
   const [formattedDate, setFormattedDate] = useState("");
   const [filterType, setFilterType] = useState("");
+
+  const [loading, setLoading] = useState(false);
   const formRef = useRef();
   const username = "683231669175";
 
@@ -82,17 +85,27 @@ const AddJobCard = () => {
       technician_date: technicianDate,
       vehicle_owner: owner,
     };
+    const hasQuotationNullValues = Object.values(values).some(
+      (val) => val === null
+    );
 
+    if (hasQuotationNullValues) {
+      setError("Please fill in all the required fields.");
+      return;
+    }
+    setLoading(true);
     const response = await axios.post(
       "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
       values
     );
-    console.log(response)
+    console.log(response);
     if (response.data.message === "Successfully add to card post") {
+      setLoading(false);
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);
       setReload(!reload);
-      // formRef.current.reset()
+      toast.success("Add to job card successful.");
+      formRef.current.reset();
       // reset();
     }
     // console.log(response);
@@ -136,15 +149,19 @@ const AddJobCard = () => {
       setError("Please fill in all the required fields.");
       return;
     }
+   
     const response = await axios.post(
       "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
+     
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);
       setReload(!reload);
-      fetch("https://trust-auto-solution-server.vercel.app/api/v1/jobCard/recent")
+      fetch(
+        "https://trust-auto-solution-server.vercel.app/api/v1/jobCard/recent"
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -194,6 +211,7 @@ const AddJobCard = () => {
       setError("Please fill in all the required fields.");
       return;
     }
+    setLoading(true);
     const response = await axios.post(
       "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
       values
@@ -204,7 +222,7 @@ const AddJobCard = () => {
       setReload(!reload);
       navigate(`/dashboard/qutation?order_no=${jobNo}`);
       // formRef.current.reset()
-      console.log(response);
+      setLoading(false);
     }
   };
   const handleInvoice = async (e) => {
@@ -244,6 +262,7 @@ const AddJobCard = () => {
       setError("Please fill in all the required fields.");
       return;
     }
+    setLoading(true);
     const response = await axios.post(
       "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
       values
@@ -252,8 +271,8 @@ const AddJobCard = () => {
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);
       setReload(!reload);
-       
-        navigate(`/dashboard/invoice?order_no=${jobNo}`);
+      setLoading(false);
+      navigate(`/dashboard/invoice?order_no=${jobNo}`);
       // formRef.current.reset()
     }
   };
@@ -262,11 +281,12 @@ const AddJobCard = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard`)
       .then((res) => res.json())
       .then((data) => {
         setPreviousPostData(data);
-
+        setLoading(false);
         // console.log(data);
       });
   }, [jobNo, reload]);
@@ -277,10 +297,13 @@ const AddJobCard = () => {
   }, [previousPostData, jobNo, reload]);
 
   useEffect(() => {
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`)
+    setLoading(true);
+    fetch(
+      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        //  console.log(data)
+        setLoading(false);
         setAllJobCard(data);
       });
   }, [username, reload]);
@@ -315,6 +338,7 @@ const AddJobCard = () => {
 
     if (willDelete) {
       try {
+        
         const res = await fetch(
           `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
           {
@@ -325,6 +349,7 @@ const AddJobCard = () => {
 
         if (data.message == "Job card delete successful") {
           setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
+         
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -496,25 +521,31 @@ const AddJobCard = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`)
+      setLoading(true);
+      fetch(
+        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setAllJobCard(data);
           setNoMatching(null);
+          setLoading(false);
         });
     } else {
       const data = {
         select,
         filterType,
       };
+      setLoading(true);
       const response = await axios.post(
         `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
         data
       );
-      console.log(response.data);
+
       if (response.data.message === "Filter successful") {
         setAllJobCard(response.data.result);
         setNoMatching(null);
+        setLoading(false);
       }
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
@@ -539,7 +570,7 @@ const AddJobCard = () => {
           </div>
         </div>
       </div>
-      <form>
+      <form ref={formRef}>
         <div>
           <div className=" jobCardFormWrap">
             <div>
@@ -812,24 +843,23 @@ const AddJobCard = () => {
                 <img src={car} alt="car" />
               </div>
               <div className="mt-3">
-              <h4 className="text-xl font-bold capitalize">Legend</h4>
-               <div className="legend">
-                
-               <ol>
-                  <li>Scratch</li>
-                  <li>Chip</li>
-                  <li>Respainted</li>
-                  <li>New Panel Filter </li>
-                  <li>Scratch</li>
-                </ol>
-                <ol>
-                  <li>Scratch</li>
-                  <li>Chip</li>
-                  <li>Respainted</li>
-                  <li>New Panel Filter </li>
-                  <li>Scratch</li>
-                </ol>
-               </div>
+                <h4 className="text-xl font-bold capitalize">Legend</h4>
+                <div className="legend">
+                  <ol>
+                    <li>Scratch</li>
+                    <li>Chip</li>
+                    <li>Respainted</li>
+                    <li>New Panel Filter </li>
+                    <li>Scratch</li>
+                  </ol>
+                  <ol>
+                    <li>Scratch</li>
+                    <li>Chip</li>
+                    <li>Respainted</li>
+                    <li>New Panel Filter </li>
+                    <li>Scratch</li>
+                  </ol>
+                </div>
               </div>
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
@@ -958,54 +988,66 @@ const AddJobCard = () => {
         </div>
       </div>
 
-      <div>
-        {allJobCard?.length === 0 || currentItems.length === 0 || noMatching ? (
-          <div className="text-xl text-center flex justify-center items-center h-full">
-            No matching card found.
-          </div>
-        ) : (
-          <>
-            <section>
-              {renderData(currentItems)}
-              <ul
-                className={
-                  minPageNumberLimit < 5
-                    ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                    : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                }
-              >
-                <button
-                  onClick={handlePrevious}
-                  disabled={currentPage === pages[0] ? true : false}
+      {loading ? (
+        <div className="flex justify-center items-center text-xl">
+          Loading...
+        </div>
+      ) : (
+        <div>
+          {allJobCard?.length === 0 ||
+          currentItems.length === 0 ||
+          noMatching ? (
+            <div className="text-xl text-center flex justify-center items-center h-full">
+              No matching card found.
+            </div>
+          ) : (
+            <>
+              <section>
+                {renderData(currentItems)}
+                <ul
                   className={
-                    currentPage === pages[0] ? "text-gray-600" : "text-gray-300"
+                    minPageNumberLimit < 5
+                      ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                      : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
                   }
                 >
-                  Previous
-                </button>
-                <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
-                  {pageDecrementBtn}
-                </span>
-                {renderPagesNumber}
-                {pageIncrementBtn}
-                <button
-                  onClick={handleNext}
-                  disabled={
-                    currentPage === pages[pages?.length - 1] ? true : false
-                  }
-                  className={
-                    currentPage === pages[pages?.length - 1]
-                      ? "text-gray-700"
-                      : "text-gray-300 pl-1"
-                  }
-                >
-                  Next
-                </button>
-              </ul>
-            </section>
-          </>
-        )}
-      </div>
+                  <button
+                    onClick={handlePrevious}
+                    disabled={currentPage === pages[0] ? true : false}
+                    className={
+                      currentPage === pages[0]
+                        ? "text-gray-600"
+                        : "text-gray-300"
+                    }
+                  >
+                    Previous
+                  </button>
+                  <span
+                    className={minPageNumberLimit < 5 ? "hidden" : "inline"}
+                  >
+                    {pageDecrementBtn}
+                  </span>
+                  {renderPagesNumber}
+                  {pageIncrementBtn}
+                  <button
+                    onClick={handleNext}
+                    disabled={
+                      currentPage === pages[pages?.length - 1] ? true : false
+                    }
+                    className={
+                      currentPage === pages[pages?.length - 1]
+                        ? "text-gray-700"
+                        : "text-gray-300 pl-1"
+                    }
+                  >
+                    Next
+                  </button>
+                </ul>
+              </section>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

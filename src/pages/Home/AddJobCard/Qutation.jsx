@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { toast } from "react-toastify";
 const Qutation = () => {
   const [select, setSelect] = useState(null);
 
@@ -29,13 +30,18 @@ const Qutation = () => {
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
   const [reload, setReload] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (job_no) {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/invoice/${job_no}`)
+      setLoading(true);
+      fetch(
+        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/invoice/${job_no}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
+          setLoading(false);
         });
     }
   }, [job_no]);
@@ -169,6 +175,7 @@ const Qutation = () => {
         setPostError("");
         return;
       }
+      setLoading(true);
       const response = await axios.post(
         "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
         values
@@ -177,6 +184,9 @@ const Qutation = () => {
       if (response.data.message === "Successfully quotation post") {
         setPostError("");
         setError("");
+        toast.success("Quotation added successful.");
+        setReload(!reload);
+        setLoading(false);
       }
     } catch (error) {
       if (error.response) {
@@ -233,11 +243,12 @@ const Qutation = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setGetAllQuotation(data);
+        setLoading(false);
       });
   }, [reload]);
 
@@ -261,6 +272,7 @@ const Qutation = () => {
 
     if (willDelete) {
       try {
+        
         const res = await fetch(
           `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
           {
@@ -272,6 +284,7 @@ const Qutation = () => {
         if (data.message == "Quotation card delete successful") {
           setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id));
           setReload(!reload);
+           
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -441,17 +454,22 @@ const Qutation = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
+      setLoading(true);
+      fetch(
+        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`
+      )
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
           setNoMatching(null);
+          setLoading(false);
         });
     } else {
       const data = {
         select,
         filterType,
       };
+      setLoading(true);
       const response = await axios.post(
         `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`,
         data
@@ -460,6 +478,7 @@ const Qutation = () => {
       if (response.data.message === "Filter successful") {
         setGetAllQuotation(response.data.result);
         setNoMatching(null);
+        setLoading(false);
       }
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
@@ -632,9 +651,7 @@ const Qutation = () => {
           <div className="discountFieldWrap">
             <div className="flex items-center ">
               <b> Total Amount: </b>
-              <span>
-                {grandTotal}
-              </span>
+              <span>{grandTotal}</span>
             </div>
             <div>
               <b> Discount: </b>
@@ -658,13 +675,8 @@ const Qutation = () => {
             </div>
             <div>
               <div className="ml-3 flex items-center ">
-                <b>
-                  Final Total:{" "}
-                 
-                </b>
-                <span>
-                    {calculateFinalTotal()}
-                  </span>
+                <b>Final Total: </b>
+                <span>{calculateFinalTotal()}</span>
               </div>
             </div>
           </div>
@@ -715,58 +727,64 @@ const Qutation = () => {
             </button>
           </div>
         </div>
-        <div>
-          {getAllQuotation?.length === 0 || currentItems.length === 0 ? (
-            <div className="text-xl text-center flex justify-center items-center h-full">
-              No matching card found.
-            </div>
-          ) : (
-            <>
-              <section>
-                {renderData(currentItems)}
-                <ul
-                  className={
-                    minPageNumberLimit < 5
-                      ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                      : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                  }
-                >
-                  <button
-                    onClick={handlePrevious}
-                    disabled={currentPage === pages[0] ? true : false}
+        {loading ? (
+          <div className="flex justify-center items-center text-xl">
+            Loading...
+          </div>
+        ) : (
+          <div>
+            {getAllQuotation?.length === 0 || currentItems.length === 0 ? (
+              <div className="text-xl text-center flex justify-center items-center h-full">
+                No matching card found.
+              </div>
+            ) : (
+              <>
+                <section>
+                  {renderData(currentItems)}
+                  <ul
                     className={
-                      currentPage === pages[0]
-                        ? "text-gray-600"
-                        : "text-gray-300"
+                      minPageNumberLimit < 5
+                        ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                        : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
                     }
                   >
-                    Previous
-                  </button>
-                  <span
-                    className={minPageNumberLimit < 5 ? "hidden" : "inline"}
-                  >
-                    {pageDecrementBtn}
-                  </span>
-                  {renderPagesNumber}
-                  {pageIncrementBtn}
-                  <button
-                    onClick={handleNext}
-                    disabled={
-                      currentPage === pages[pages?.length - 1] ? true : false
-                    }
-                    className={
-                      currentPage === pages[pages?.length - 1]
-                        ? "text-gray-700"
-                        : "text-gray-300 pl-1"
-                    }
-                  >
-                    Next
-                  </button>
-                </ul>
-              </section>
-            </>
-          )}
-        </div>
+                    <button
+                      onClick={handlePrevious}
+                      disabled={currentPage === pages[0] ? true : false}
+                      className={
+                        currentPage === pages[0]
+                          ? "text-gray-600"
+                          : "text-gray-300"
+                      }
+                    >
+                      Previous
+                    </button>
+                    <span
+                      className={minPageNumberLimit < 5 ? "hidden" : "inline"}
+                    >
+                      {pageDecrementBtn}
+                    </span>
+                    {renderPagesNumber}
+                    {pageIncrementBtn}
+                    <button
+                      onClick={handleNext}
+                      disabled={
+                        currentPage === pages[pages?.length - 1] ? true : false
+                      }
+                      className={
+                        currentPage === pages[pages?.length - 1]
+                          ? "text-gray-700"
+                          : "text-gray-300 pl-1"
+                      }
+                    >
+                      Next
+                    </button>
+                  </ul>
+                </section>
+              </>
+            )}
+          </div>
+        )}
       </div>
 
       {/* <div className="pagination">

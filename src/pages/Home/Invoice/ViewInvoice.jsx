@@ -15,6 +15,7 @@ const ViewInvoice = () => {
   const [getAllInvoice, setGetAllInvoice] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const username = "683231669175";
 
@@ -23,11 +24,12 @@ const ViewInvoice = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setGetAllInvoice(data);
+        setLoading(false);
       });
   }, [username]);
 
@@ -230,17 +232,20 @@ const ViewInvoice = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
+      setLoading(true);
       fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
           setNoMatching(null);
+          setLoading(false);
         });
     } else {
       const data = {
         select,
         filterType,
       };
+      setLoading(true);
       const response = await axios.post(
         `https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`,
         data
@@ -249,6 +254,7 @@ const ViewInvoice = () => {
       if (response.data.message === "Filter successful") {
         setGetAllInvoice(response.data.result);
         setNoMatching(null);
+        setLoading(false);
       }
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
@@ -256,33 +262,36 @@ const ViewInvoice = () => {
     }
   };
   return (
-   
-      <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
-          <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
-          <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
-              <option value="SL No"> SL No</option>
-              <option value="Customer Name"> Customer Name</option>
-              <option value="Order Number"> Order Number</option>
-              <option value="Car Number"> Car Number</option>
-              <option value="Mobile Number"> Mobile Number</option>
-            </select>
-            <div className="searchGroup">
-              <input
-                onChange={(e) => setFilterType(e.target.value)}
-                autoComplete="off"
-                type="text"
-                placeholder={select}
-              />
-            </div>
-            <button onClick={handleFilterType} className="SearchBtn ">
-              Search{" "}
-            </button>
+    <div className="overflow-x-auto mt-20">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
+        <div className="flex items-center searcList">
+          <select onChange={(e) => setSelect(e.target.value)}>
+            <option value="SL No"> SL No</option>
+            <option value="Customer Name"> Customer Name</option>
+            <option value="Order Number"> Order Number</option>
+            <option value="Car Number"> Car Number</option>
+            <option value="Mobile Number"> Mobile Number</option>
+          </select>
+          <div className="searchGroup">
+            <input
+              onChange={(e) => setFilterType(e.target.value)}
+              autoComplete="off"
+              type="text"
+              placeholder={select}
+            />
           </div>
+          <button onClick={handleFilterType} className="SearchBtn ">
+            Search{" "}
+          </button>
         </div>
- 
- 
+      </div>
+
+      {loading ? (
+        <div className="flex justify-center items-center text-xl">
+          Loading...
+        </div>
+      ) : (
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
             <div className="text-xl text-center flex justify-center items-center h-full">
@@ -334,12 +343,8 @@ const ViewInvoice = () => {
               </section>
             </>
           )}
- 
-       
- 
-      </div>
-
-       
+        </div>
+      )}
     </div>
   );
 };

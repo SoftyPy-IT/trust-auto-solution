@@ -50,7 +50,7 @@ const Login = () => {
                     name="email"
                     placeholder="Email"
                     type="email"
-                    className="inputField text-white"
+                    className="inputFiel"
                     autoComplete="off"
                   />
                 </div>
@@ -61,7 +61,7 @@ const Login = () => {
                     name="password"
                     placeholder="Password"
                     type="password"
-                    className="inputField text-white"
+                    className="inputFiel"
                     autoComplete="off"
                   />
                 </div>

@@ -64,9 +64,9 @@
 	margin-top: 10px;
 }
 .receivedBtn2 button {
-    width: 156px;
-    height: 30px;
-    font-size: 14px;
+	width: 156px;
+	height: 30px;
+	font-size: 14px;
 }
 .receivedTitle {
 	font-size: 45px;
@@ -121,12 +121,11 @@
 .vehicleText2 {
 	width: 130px;
 }
-.checqueText {
+.checqueText,
+.checqueText2 {
 	width: 240px;
 }
-.checqueText2 {
-	width:190px;
-}
+
 .date {
 	width: 58px;
 	font-style: italic;
@@ -134,24 +133,28 @@
 .backText {
 	width: 70px;
 }
-.backText2{
-	width:50px;
+.backText2 {
+	width: 50px;
 }
-.vehicleText2 {
-}
+
 .dateInput {
 	width: 100%;
 }
-.amount {
+.amount,
+.amount2 {
 	display: flex;
 	justify-content: space-between;
 }
-.totalAmountText{
-	width:115px;
+.totalAmountText {
+	width: 115px;
 }
-.totalAmountInput{
-	width:140px !important;
+.totalAmountText2 {
+	width: 220px;
 }
+.totalAmountInput {
+	width: 140px !important;
+}
+.amount2 label,
 .amount label,
 .wordTaka label,
 .receivedField label {
@@ -165,6 +168,9 @@
 	height: 35px;
 	padding-left: 6px;
 	border-bottom: 1px dashed;
+}
+.amount2 input {
+	width: 100%;
 }
 
 .wordTaka input {
@@ -189,6 +195,8 @@
 	border-radius: 3px;
 	background: #d9d9d9;
 	margin-right: 5px;
+	height: 35px;
+	padding-left: 5px;
 }
 .receiptMoneyWrap {
 	background-color: #ddd;
@@ -207,7 +215,7 @@
 	font-size: 14px;
 	height: 30px;
 }
-.allInputWraps input{
+.allInputWraps input {
 	background: transparent;
 }
 @media only screen and (max-width: 1024px) {

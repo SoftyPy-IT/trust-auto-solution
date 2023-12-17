@@ -76,23 +76,23 @@ const MoneyReceiptView = () => {
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>
-     <div className="amount mt-5">
-      <div>
-          <label>Total Amount Tk:</label>
-          <input type="text" />
+     <div className="amount2 mt-5">
+      <div className='flex '>
+          <label className='totalAmountText2'>Total Amount Tk:</label>
+          <input className='moneyViewInputField' type="text" />
       </div>
-      <div>
+      <div className='flex '>
           <label>Advance:</label>
-          <input type="text" />
+          <input className='moneyViewInputField' type="text" />
       </div>
-      <div>
+      <div className='flex '>
           <label>Remaining:</label>
-          <input type="text" />
+          <input className='moneyViewInputField' type="text" />
       </div>
      </div>
      <div className='wordTaka mt-5'> 
       <label>in word (takta) </label>
-      <input type="text" />
+      <input className='moneyViewInputField' type="text" />
      </div>
      <div className=''>
       <small className='signature'>Authorized Signature</small>

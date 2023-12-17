@@ -229,7 +229,7 @@ const UpdateInvoice = () => {
               onChange={(e)=> setDate(e.target.value)}
                 defaultValue={specificInvoice.date}
                 autoComplete="off"
-                type="text"
+                type="date"
                 placeholder="Date"
                 className="orderNumber"
               />

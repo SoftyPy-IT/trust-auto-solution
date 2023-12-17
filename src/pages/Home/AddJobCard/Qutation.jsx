@@ -551,7 +551,7 @@ const Qutation = () => {
               <input
                 defaultValue={jobCardData?.date}
                 autoComplete="off"
-                type="text"
+                type="date"
                 placeholder="Date"
                 className="orderNumber"
               />

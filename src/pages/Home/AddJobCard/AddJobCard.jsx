@@ -670,7 +670,7 @@ const AddJobCard = () => {
               />
             </div>
           </div>
-          <div className="jobCardSingleForm">
+          <div className="jobCardSingleForm jobCardSingleForm2">
             <div>
               <label>Color & Code <span className="requiredStart">*</span> </label>
               <input
@@ -695,7 +695,7 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Reference Name <span className="requiredStart">*</span></label>
+              <label>Reference Name</label>
               <input
                 // {...register("reference_number", { required: true })}
                 onChange={(e) => setReference(e.target.value)}
@@ -706,16 +706,19 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              <label>Company Category  <span className="requiredStart">*</span></label>
-              {/* <input
-                // {...register("company_name", { required: true })}
-                onChange={(e) => setCompanyName(e.target.value)}
+              <label>Company Name</label>
+              <input
+                onChange={(e) => setReference(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Company Category "
-              /> */}
+                placeholder="Company Name "
+              />
+            </div>
+            <div>
+              <label>Vehicle Category  <span className="requiredStart">*</span></label>
               <select autoComplete="off"  onChange={(e) => setCompanyName(e.target.value)}>
+                <option value="Select Vehicle Category ">Select Vehicle Category </option>
                 <option value="Sedans">Sedans</option>
                 <option value="Crossovers">Crossovers</option>
                 <option value="Sports">Sports</option>

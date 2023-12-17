@@ -1,5 +1,5 @@
 import "./AddJobCard.css";
-import car from "../../../../public/assets/carr.jpeg";
+import car from "../../../../public/assets/car2.jpeg";
 import logo from "../../../../public/assets/logo.png";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
@@ -191,7 +191,7 @@ const UpdateJobCard = () => {
               />
             </div>
           </div>
-          <div className="jobCardSingleForm">
+          <div className="jobCardSingleForm jobCardSingleForm2">
             <div>
               <label>Color & Code <span className="requiredStart">*</span> </label>
               <input
@@ -227,7 +227,18 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Company Category <span className="requiredStart">*</span>  </label>
+              <label>Company Name </label>
+              <input
+                {...register("reference_number")}
+                // name="reference"
+                autoComplete="off"
+                type="text"
+                placeholder="Company Name "
+                defaultValue={singleCard.reference_number}
+              />
+            </div>
+            <div>
+              <label>Vehicle Category <span className="requiredStart">*</span>  </label>
               {/* <input
                 {...register("company_name")}
                 // name="cname"
@@ -237,7 +248,7 @@ const UpdateJobCard = () => {
                 defaultValue={singleCard.company_name}
               /> */}
                <select autoComplete="off">
-                <option value="Select Category ">Select Category </option>
+                <option value="Select Vehicle Category ">Select Vehicle Category </option>
                 <option value="Sedans">Sedans</option>
                 <option value="Crossovers">Crossovers</option>
                 <option value="Sports">Sports</option>
@@ -407,10 +418,6 @@ const UpdateJobCard = () => {
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
                 <textarea defaultValue={singleCard.vehicle_body_report}></textarea>
               </div>
-              <b className="carSideBar">LEFT</b>
-              <b className="carSideBar2">REAR</b>
-              <b className="carSideBar3">FRONT</b>
-              <b className="carSideBar4">RIGHT</b>
             </div>
           </div>
           <div className="jobCardSingleForm">

@@ -2,16 +2,28 @@
 import './MoneyReceived.css'
 import logo from '../../../../public/assets/logo.png'
 import { Email,Home,WhatsApp,LocalPhone } from '@mui/icons-material'
+import {  useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+import { usePDF } from "react-to-pdf";
+import { Link } from 'react-router-dom';
 const MoneyReceived = () => {
+    const componentRef = useRef();
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
     return (
-       <section className="moneyReceivedWrap">
-         <section className='moneyFormWrap'>
+      <section className='viewMoneyReceiptWrap'>
+         <div className="moneyWraps">
+        <div ref={targetRef}>
+        <div ref={componentRef} className='moneyFormWrap'>
             <div className="moneyRecieved">
-             <div className="logoWrap">
+             <div className="logoWrap logoWrap2">
              <img className="" src={logo} alt="logo" />
              </div>
-              <div className='moneyHead'>
-              <h2 className="receivedTitle ">Trust Auto Solution </h2>
+
+              <div className='moneyHead moneyHead2'>
+              <h2 className="receivedTitle receivedTitle2">Trust Auto Solution </h2>
               <small>It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </small>
               </div>
               <div>
@@ -34,70 +46,83 @@ const MoneyReceived = () => {
                </div>
               </div>
             </div>
-            <div className='receivedBtn'>
+            <div className='receivedBtn receivedBtn2'>
                 <button>Receipt</button>
             </div>
             <div className="flex justify-between ">
                 <b>Serial No: 01</b>
                 <b>Date: 12-12-21</b>
             </div>
-            <div className='flex receivedField mt-3'>
-                <label className='receivedMoneyText'>Received with thanks from </label>
-                <input  type="text" autoComplete='off' />
+           <div className="allInputWraps">
+           <div className='flex receivedField mt-3'>
+                <label className='receivedMoneyText2'>Received with thanks from </label>
+                <input disabled  type="text" autoComplete='off' />
             </div>
            <div className=" payAdvance mt-5">
            <div className='flex  receivedField'>
-                <label className='advance'>Advance/Final Payment agint bill no:  </label>
-                <input className='' type="text" autoComplete='off' />
+                <label className='advance2'>Advance/Final Payment agint bill no:  </label>
+                <input disabled className='' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
-                <label className='vehicleText'>Vehicle No: </label>
-                <input className='' type="text" autoComplete='off' />
+                <label className='vehicleText2'>Vehicle No: </label>
+                <input disabled className='' type="text" autoComplete='off' />
             </div>
            </div>
            <div className="payAdvance mt-5">
            <div className='flex  receivedField'>
-                <label className='checqueText'>Cash/Checque No: </label>
-                <input className='cashInput' type="text" autoComplete='off' />
+                <label className='checqueText2'>Cash/Checque No: </label>
+                <input disabled className='cashInput' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
-                <b className='date'>Date: </b>
-                <input className='dateInput' type="text" autoComplete='off' />
+                <label className='date'>Date: </label>
+                <input disabled className='dateInput' type="text" autoComplete='off' />
             </div>
            </div>
            <div className=" payAdvance mt-5">
            <div className='flex  receivedField'>
-                <label className='backText'>Bank : </label>
-                <input className='' type="text" autoComplete='off' />
+                <label className='backText2'>Bank : </label>
+                <input disabled className='' type="text" autoComplete='off' />
             </div>
             <div className='flex receivedField'>
                 <label className='date'>Date : </label>
-                <input className='' type="text" autoComplete='off' />
+                <input disabled className='' type="text" autoComplete='off' />
             </div>
            </div>
            <div className="amount mt-5">
-            <div>
-                <label>Total Amount Tk:</label>
-                <input type="text" />
+            <div className='flex receivedField'>
+                <label className='totalAmountText'>Total Amount Tk:</label>
+                <input className='totalAmountInput' disabled type="text" />
             </div>
-            <div>
+            <div className='flex receivedField'>
                 <label>Advance:</label>
-                <input type="text" />
+                <input disabled type="text" />
             </div>
-            <div>
+            <div className='flex receivedField'>
                 <label>Remaining:</label>
-                <input type="text" />
+                <input className='totalAmountInput' disabled type="text" />
             </div>
            </div>
            <div className='wordTaka mt-5'> 
             <label>in word (takta) </label>
-            <input type="text" />
+            <input className='inWordTk' disabled type="text" />
+           </div>
            </div>
            <div className=''>
             <small className='signature'>Authorized Signature</small>
            </div>
-        </section>
-       </section>
+        </div>
+        </div>
+       
+       </div>
+       <div className="moneyReceiptBtnGroup mt-5">
+        <button onClick={handlePrint}>Print </button>
+        <button onClick={() => toPDF()}>Pdf </button>
+        <Link to="/dashboard/money-receive">
+          <button> Edit </button>
+        </Link>
+ 
+      </div>
+      </section>
     );
 };
 

@@ -17,7 +17,7 @@ const UpdateJobCard = () => {
   const navigate = useNavigate()
   const location = useLocation();
   const id = new URLSearchParams(location.search).get("id");
- 
+
   useEffect(() => {
     if (id) {
       fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`)
@@ -89,7 +89,7 @@ const UpdateJobCard = () => {
         <div>
           <div className=" jobCardFormWrap">
             <div>
-              <label>Job No:</label>
+              <label>Job No: <span className="requiredStart">*</span> </label>
               <input
                 // {...register("job_no")}
                 // name="jobno"
@@ -104,7 +104,7 @@ const UpdateJobCard = () => {
               <div className="vehicleCard">Update Job Card </div>
             </div>
             <div>
-              <label>Date </label>
+              <label>Date <span className="requiredStart">*</span>  </label>
               <input
                 onChange={handleDateChange}
                 // name="date"
@@ -117,53 +117,60 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm jobCardSingleForm2 mt-8">
             <div>
-              <label>VIN No </label>
+              <label>Chassis No <span className="requiredStart">*</span>  </label>
               <input
                 {...register("vin_no")}
                 // name="vinno"
                 autoComplete="off"
                 type="text"
-                placeholder="VIN No"
+                placeholder="Chassis No"
                 defaultValue={singleCard.vin_no}
               />
             </div>
             <div>
-              <label>Car Registration No </label>
-              <input
-                {...register("car_registration_no")}
-                // name="rnumber"
+              <label>Car Registration No <span className="requiredStart">*</span>  </label>
+             
+                <div className="flex items-center inputSelectWrap">
+                <select>
+                  <option value="Reg">Select </option>
+                  <option value="Reg">DM KHA</option>
+                  <option value="Reg">DM KHA</option>
+                  <option value="Reg">DM KHA</option>
+                </select>
+               <input
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Registration No"
+                placeholder="Car Registration"
                 defaultValue={singleCard.car_registration_no}
               />
+              </div>
             </div>
             <div>
-              <label>Car Model</label>
+              <label>Vehicle Model <span className="requiredStart">*</span> </label>
               <input
                 {...register("car_model")}
                 // name="carmodel"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Model"
+                placeholder="Vehicle Model"
                 defaultValue={singleCard.car_model}
               />
             </div>
 
             <div>
-              <label>Car Make </label>
+              <label>Vehicle Brand <span className="requiredStart">*</span>  </label>
               <input
                 {...register("car_make")}
                 // name="carmake"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Make"
+                placeholder="Cehicle Brand"
                 defaultValue={singleCard.car_make}
               />
             </div>
             <div>
-              <label>Mileage </label>
+              <label>Mileage <span className="requiredStart">*</span>  </label>
               <input
                 {...register("mileage")}
                 // name="meleage"
@@ -176,60 +183,76 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Color</label>
+              <label>Color & Code <span className="requiredStart">*</span> </label>
               <input
                 {...register("color")}
                 // name="color"
                 autoComplete="off"
                 type="text"
-                placeholder="Color "
+                placeholder="Color & Code "
                 defaultValue={singleCard.color}
               />
             </div>
             <div>
-              <label>Engine No </label>
+              <label>Engine No & CC </label>
               <input
                 {...register("engine_no")}
                 // name="engine"
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Engine No "
+                placeholder="Engine No & CC"
                 defaultValue={singleCard.engine_no}
               />
             </div>
             <div>
-              <label>Reference Number</label>
+              <label>Reference Name </label>
               <input
                 {...register("reference_number")}
                 // name="reference"
                 autoComplete="off"
                 type="text"
-                placeholder="Reference Number"
+                placeholder="Reference Name "
                 defaultValue={singleCard.reference_number}
               />
             </div>
             <div>
-              <label>Company Name </label>
-              <input
+              <label>Company Category <span className="requiredStart">*</span>  </label>
+              {/* <input
                 {...register("company_name")}
                 // name="cname"
                 autoComplete="off"
                 type="text"
                 placeholder="Company Name"
                 defaultValue={singleCard.company_name}
-              />
+              /> */}
+               <select autoComplete="off">
+                <option value="Select Category ">Select Category </option>
+                <option value="Sedans">Sedans</option>
+                <option value="Crossovers">Crossovers</option>
+                <option value="Sports">Sports</option>
+                <option value="Trucks">Trucks</option>
+                <option value="Coupes">Coupes</option>
+                <option value="Convertibles">Convertibles</option>
+                <option value="Diesels">Diesels</option>
+                <option value="SUVs">SUVs</option>
+                <option value="Hybrid/Electric">Hybrid/Electric</option>
+                <option value="Vans/Minivans">Vans/Minivans</option>
+                <option value="Wagons">Wagons</option>
+                <option value="Small Cars ">Small Cars </option>
+                <option value="CPO ">CPO </option>
+              </select>
             </div>
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Customer/User name </label>
+              <label>Customer name </label>
               <input
                 {...register("customer_name")}
                 // name="username"
                 autoComplete="off"
                 type="text"
-                placeholder="Customer/User name "
+                placeholder="Customer name "
                 defaultValue={singleCard.customer_name}
               />
             </div>
@@ -382,7 +405,7 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Technician Name </label>
+              <label>Technician Name <span className="requiredStart">*</span> </label>
               <input
                 {...register("technician_name")}
                 // name="tname"
@@ -393,7 +416,7 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Technician Signature </label>
+              <label>Technician Signature <span className="requiredStart">*</span> </label>
               <input
                 {...register("technician_signature")}
                 // name="tsignature"
@@ -405,12 +428,12 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Date </label>
+              <label>Date <span className="requiredStart">*</span> </label>
               <input
                 {...register("technician_date")}
                 // name="tdate"
                 autoComplete="off"
-                type="text"
+                type="date"
                 placeholder="Date"
                 defaultValue={singleCard.technician_date}
               />

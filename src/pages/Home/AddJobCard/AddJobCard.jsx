@@ -621,8 +621,10 @@ const AddJobCard = () => {
               
               <div className="flex items-center inputSelectWrap">
                 <select>
-                  <option value="Reg">Reg</option>
-                  <option value="Reg">Reg</option>
+                  <option value="Reg">Select </option>
+                  <option value="Reg">DM KHA</option>
+                  <option value="Reg">DM KHA</option>
+                  <option value="Reg">DM KHA</option>
                 </select>
                <input
                 onChange={(e) => setRegistration(e.target.value)}
@@ -950,10 +952,10 @@ const AddJobCard = () => {
               <button onClick={handlePreview}>Preview</button>
               {/* </Link> */}
               {/* <Link to="/dashboard/preview"> */}
-              <button>Download</button>
+             <Link  to="/dashboard/preview"> <button>Download</button></Link>
               {/* </Link>
               <Link to="/dashboard/preview"> */}
-              <button>Print</button>
+              <Link  to="/dashboard/preview"> <button>Print</button></Link>
               {/* </Link> */}
               {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
               <button onClick={handleQuotation}>Quotation</button>

@@ -42,7 +42,7 @@ const PreviewJobCard = () => {
                 type="text"
                 placeholder="Job No"
                 autoComplete="off"
-                className="jobInput text-white"
+                className="jobInput"
                 defaultValue={previewData.job_no}
               />
               <div className="vehicleJobCard">Vehicle Job Card </div>
@@ -51,7 +51,7 @@ const PreviewJobCard = () => {
                 type="text"
                 placeholder="Date"
                 autoComplete="off"
-                className="jobInput text-white"
+                className="jobInput"
                 defaultValue={previewData.date}
               />
             </div>
@@ -61,7 +61,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="VIN No"
-                  className="text-white"
                   defaultValue={previewData.vin_no}
                   readOnly
                 />
@@ -70,28 +69,25 @@ const PreviewJobCard = () => {
                 <label className="block">Car Registration No</label>
                 <input
                   type="text"
-                  className="text-white"
                   placeholder="Registration"
                   defaultValue={previewData.car_registration_no}
                   readOnly
                 />
               </div>
               <div>
-                <label className="block">Car Model </label>
+                <label className="block">Vehicle Model </label>
                 <input
                   type="text"
-                  className="text-white"
-                  placeholder="Car Model"
+                  placeholder="Vehicle Model"
                   defaultValue={previewData.car_model}
                   readOnly
                 />
               </div>
               <div>
-                <label className="block">Car Make </label>
+                <label className="block">Vehicle Brand  </label>
                 <input
                   type="text"
-                  className="text-white"
-                  placeholder="Car Make"
+                  placeholder="Vehicle Brand "
                   defaultValue={previewData.car_make}
                   readOnly
                 />
@@ -103,7 +99,6 @@ const PreviewJobCard = () => {
                   placeholder="Mileage"
                   defaultValue={previewData.mileage}
                   readOnly
-                  className="text-white"
                 />
               </div>
             </div>
@@ -113,7 +108,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Color"
-                  className="text-white"
                   defaultValue={previewData.color}
                   readOnly
                 />
@@ -123,7 +117,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Engine No"
-                  className="text-white"
                   defaultValue={previewData.engine_no}
                   readOnly
                 />
@@ -133,7 +126,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Reference Number"
-                  className="text-white"
                   defaultValue={previewData.reference_number}
                   readOnly
                 />
@@ -143,17 +135,15 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Company Name "
-                  className="text-white"
                   defaultValue={previewData.company_name}
                   readOnly
                 />
               </div>
               <div>
-                <label className="block">Mileage</label>
+                <label className="block">Vehicle Category </label>
                 <input
                   type="text"
-                  placeholder="Mileage"
-                  className="text-white"
+                  placeholder="Vehicle Category "
                   defaultValue={previewData.mileage}
                   readOnly
                 />
@@ -166,7 +156,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Customer Name"
-                  className="text-white"
                   defaultValue={previewData.customer_name}
                   readOnly
                 />
@@ -176,7 +165,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Contact No"
-                  className="text-white"
                   defaultValue={previewData.contact_number}
                   readOnly
                 />
@@ -186,7 +174,6 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Car Driver Name"
-                  className="text-white"
                   defaultValue={previewData.driver_name}
                   readOnly
                 />

@@ -16,22 +16,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { InputRounded } from "@mui/icons-material";
-
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
   const [jobNo, setJobNo] = useState(previousPostData.job_no);
   const [allJobCard, setAllJobCard] = useState([]);
   const [noMatching, setNoMatching] = useState(null);
-  const [vinNo, setVinNo] = useState(null);
+  const [chassisNo, setChassisNo] = useState(null);
   const [registration, setRegistration] = useState(null);
-  const [carModel, setCarModel] = useState(null);
-  const [carMake, setCarMake] = useState(null);
+  const [carRegNo, setCarReg] = useState(null);
+  const [vehicleModel, setCarModel] = useState(null);
+  const [vehiclebrand, setCarMake] = useState(null);
   const [mileage, setMileage] = useState(null);
   const [color, setColor] = useState(null);
   const [engineNo, setEngineNo] = useState(null);
   const [reference, setReference] = useState(null);
   const [companyName, setCompanyName] = useState(null);
+  const [vehicleCategory, setVehicleCategory] = useState(null);
   const [customerName, setCustomerName] = useState(null);
   const [contactNo, setContactNo] = useState(null);
   const [driverName, setDriverName] = useState(null);
@@ -62,15 +62,17 @@ const AddJobCard = () => {
       username: username,
       job_no: jobNo,
       date: formattedDate,
-      vin_no: vinNo,
+      chassis_no: chassisNo,
+      carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: carModel,
-      car_make: carMake,
+      vehicle_model: vehicleModel,
+      vehicle_brand: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
       reference_number: reference,
       company_name: companyName,
+      vehicle_category: vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -84,6 +86,7 @@ const AddJobCard = () => {
       technician_date: technicianDate,
       vehicle_owner: owner,
     };
+    console.log(values)
     const hasQuotationNullValues = Object.values(values).some(
       (val) => val === null
     );
@@ -118,15 +121,17 @@ const AddJobCard = () => {
       username: username,
       job_no: jobNo,
       date: formattedDate,
-      vin_no: vinNo,
+      chassis_no: chassisNo,
+      carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: carModel,
-      car_make: carMake,
+      car_model: vehicleModel,
+      car_make: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
       reference_number: reference,
       company_name: companyName,
+      vehicle_category:vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -179,15 +184,17 @@ const AddJobCard = () => {
       username: username,
       job_no: jobNo,
       date: formattedDate,
-      vin_no: vinNo,
+      chassis_no: chassisNo,
+      carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: carModel,
-      car_make: carMake,
+      car_model: vehicleModel,
+      car_make: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
       reference_number: reference,
       company_name: companyName,
+      vehicle_category:vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -230,15 +237,17 @@ const AddJobCard = () => {
       username: username,
       job_no: jobNo,
       date: formattedDate,
-      vin_no: vinNo,
+      chassis_no: chassisNo,
+      carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: carModel,
-      car_make: carMake,
+      vehicle_model: vehicleModel,
+      vehicle_brand: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
       reference_number: reference,
       company_name: companyName,
+      vehicle_category:vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -587,14 +596,6 @@ const AddJobCard = () => {
             </div>
             <div>
               <label>Date <span className="requiredStart">*</span></label>
-              {/* <input
-                {...register("date", { required: true })}
-                // name="date"
-                autoComplete="off"
-                type="date"
-                placeholder="Date"
-                value={formattedDate}
-              /> */}
               <input
                 onChange={handleDateChange}
                 autoComplete="off"
@@ -607,20 +608,20 @@ const AddJobCard = () => {
             <div>
               <label>Chassis No  <span className="requiredStart">*</span></label>
               <input
-                onChange={(e) => setVinNo(e.target.value)}
+                onChange={(e) => setChassisNo(e.target.value)}
                 required
-                // {...register("vin_no", { required: true })}
-                // name="vin_no"
+                // {...register("chassis_no", { required: true })}
+                // name="chassis_no"
                 autoComplete="off"
                 type="text"
-                placeholder="Chassis No"
+                placeholder="Chassis No (T&N)"
               />
             </div>
             <div>
               <label>Car Registration No  <span className="requiredStart">*</span></label>
               
               <div className="flex items-center inputSelectWrap">
-                <select>
+                <select  onChange={(e) => setCarReg(e.target.value)} >
                   <option value="Reg">Select </option>
                   <option value="Reg">DM KHA</option>
                   <option value="Reg">DM KHA</option>
@@ -632,7 +633,7 @@ const AddJobCard = () => {
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Registration"
+                placeholder="Car R (T&N)"
               />
               </div>
             </div>
@@ -644,7 +645,7 @@ const AddJobCard = () => {
                 // name="car_model"
                 autoComplete="off"
                 type="text"
-                placeholder="Vehicle Model"
+                placeholder="Vehicle Model (N)"
               />
             </div>
 
@@ -655,7 +656,7 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Vehicle Brand"
+                placeholder="Vehicle Brand (T&N)"
               />
             </div>
             <div>
@@ -666,7 +667,7 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Mileage"
+                placeholder="Mileage (N)"
               />
             </div>
           </div>
@@ -679,19 +680,18 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Color & Code"
+                placeholder="Color & Code (T&N)"
               />
             </div>
             <div>
               <label>Engine No & CC  <span className="requiredStart">*</span></label>
               <input
-                // {...register("engine_no", { required: true })}
                 onChange={(e) => setEngineNo(e.target.value)}
                 required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Engine No & CC "
+                placeholder="ENGINE NO & CC (T&N)"
               />
             </div>
             <div>
@@ -702,22 +702,22 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Reference Name "
+                placeholder="Reference Name (T)"
               />
             </div>
             <div>
               <label>Company Name</label>
               <input
-                onChange={(e) => setReference(e.target.value)}
+                onChange={(e) => setCompanyName(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Company Name "
+                placeholder="Company Name (T)"
               />
             </div>
             <div>
               <label>Vehicle Category  <span className="requiredStart">*</span></label>
-              <select autoComplete="off"  onChange={(e) => setCompanyName(e.target.value)}>
+              <select autoComplete="off"  onChange={(e) => setVehicleCategory(e.target.value)}>
                 <option value="Select Vehicle Category ">Select Vehicle Category </option>
                 <option value="Sedans">Sedans</option>
                 <option value="Crossovers">Crossovers</option>
@@ -744,7 +744,7 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Customer Name "
+                placeholder="Customer Name (T)"
               />
             </div>
             <div>
@@ -756,7 +756,7 @@ const AddJobCard = () => {
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Contact No "
+                placeholder="Contact No (N)"
               />
             </div>
             <div>
@@ -767,7 +767,7 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Driver Name  "
+                placeholder="Driver Name (T)"
               />
             </div>
             <div>
@@ -778,7 +778,7 @@ const AddJobCard = () => {
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Contact No"
+                placeholder="Contact No (N)"
               />
             </div>
           </div>
@@ -793,7 +793,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value}
                   className="textEditor"
-                  onChange={setValue}
+                  onChange={(e) => setValue(e.target.value)}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -820,7 +820,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value2}
                   className="textEditor"
-                  onChange={setValue2}
+                  onChange={(e) => setValue2(e.target.value)}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -840,7 +840,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value3}
                   className="textEditor"
-                  onChange={setValue3}
+                  onChange={(e) => setValue3(e.target.value)}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -972,14 +972,6 @@ const AddJobCard = () => {
                 Add To Job Card{" "}
               </button>
             </div>
-
-            {/* <div>
-              <button>Preview</button>
-              <button>Download </button>
-              <button>Print </button>
-              <button>Quotation</button>
-              <button>Invoice </button>
-            </div> */}
           </div>
           <div className="pt-6 text-red-400 text-center">{error}</div>
         </div>

@@ -50,7 +50,9 @@
 	border-radius: 5px;
 	padding: 5px;
 }
-
+.jobCardSingleForm2 input::placeholder {
+	font-size: 13px !important;
+}
 .vehicleCard,
 .vehicleCard2 {
 	box-shadow: #896eff 0px 3px 2px 3px;

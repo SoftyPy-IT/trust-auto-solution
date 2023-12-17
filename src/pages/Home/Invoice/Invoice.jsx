@@ -505,6 +505,7 @@ const Invoice = () => {
                 type="text"
                 placeholder="Order Number"
                 defaultValue={orderNo}
+                className="orderNumber"
               />
             </div>
             <div>
@@ -542,6 +543,7 @@ const Invoice = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Date"
+                className="orderNumber"
                 // onChange={handleDateChange}
               />
             </div>

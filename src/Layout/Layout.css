@@ -121,4 +121,11 @@
 	.activeToggle {
 		left: 204px;
 	}
+
+	.activeRightSideBarWrap {
+		width: 60px;
+	}
+	.active {
+		left: 10px;
+	}
 }

@@ -189,6 +189,7 @@ const UpdateInvoice = () => {
                 type="text"
                 placeholder="Order Number"
                 defaultValue={specificInvoice.job_no}
+                className="orderNumber"
               />
             </div>
             <div>
@@ -230,6 +231,7 @@ const UpdateInvoice = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Date"
+                className="orderNumber"
               />
             </div>
           </div>
@@ -325,18 +327,9 @@ const UpdateInvoice = () => {
             );
           })}
           <div className="discountFieldWrap">
-            <div>
+          <div className="flex items-center">
               <b> Total Amount: </b>
-              {/* <input
-                autoComplete="off"
-                type="text"
-                placeholder="Total Amount ccvcv"
-                defaultValue={grandTotal}
-                readOnly
-              /> */}
-              <span className="border border-blue-900 rounded-md px-[87px] bg-[#3B3B3B] py-[6px]">
-                {grandTotal}
-              </span>
+              <span>{grandTotal}</span>
             </div>
             <div>
               <b> Discount: </b>
@@ -362,7 +355,7 @@ const UpdateInvoice = () => {
               <div className="ml-3">
                 <strong>
                   Final Total:{" "}
-                  <span className="border border-blue-900 rounded-md px-[87px] bg-[#3B3B3B] py-[6px]">
+                  <span>
                     {calculateFinalTotal()}
                   </span>
                 </strong>

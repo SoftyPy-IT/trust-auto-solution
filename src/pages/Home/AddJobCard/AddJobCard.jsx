@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import "./AddJobCard.css";
-import car from "../../../../public/assets/carr.jpeg";
+import car from "../../../../public/assets/car2.jpeg";
 import logo from "../../../../public/assets/logo.png";
 import swal from "sweetalert";
 import { useEffect, useRef, useState } from "react";
@@ -10,14 +10,13 @@ import "react-quill/dist/quill.snow.css";
 import {
   FaTrashAlt,
   FaEdit,
-  FaArrowRight,
-  FaArrowLeft,
   FaEye,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { InputRounded } from "@mui/icons-material";
 
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
@@ -574,7 +573,7 @@ const AddJobCard = () => {
         <div>
           <div className=" jobCardFormWrap">
             <div>
-              <label>Job No:</label>
+              <label>Job No: <span className="requiredStart">*</span></label>
               <input
                 value={jobNo}
                 // name="jobNo"
@@ -587,7 +586,7 @@ const AddJobCard = () => {
               <div className="vehicleCard">Vehicle Job Card </div>
             </div>
             <div>
-              <label>Date </label>
+              <label>Date <span className="requiredStart">*</span></label>
               {/* <input
                 {...register("date", { required: true })}
                 // name="date"
@@ -606,7 +605,7 @@ const AddJobCard = () => {
           </div>
           <div className="jobCardSingleForm jobCardSingleForm2 mt-8">
             <div>
-              <label>VIN No </label>
+              <label>Chassis No  <span className="requiredStart">*</span></label>
               <input
                 onChange={(e) => setVinNo(e.target.value)}
                 required
@@ -614,48 +613,51 @@ const AddJobCard = () => {
                 // name="vin_no"
                 autoComplete="off"
                 type="text"
-                placeholder="VIN No"
+                placeholder="Chassis No"
               />
             </div>
             <div>
-              <label>Car Registration No </label>
-              <input
-                // {...register("car_registration_no", { required: true })}
+              <label>Car Registration No  <span className="requiredStart">*</span></label>
+              
+              <div className="flex items-center inputSelectWrap">
+                <select>
+                  <option value="Reg">Reg</option>
+                  <option value="Reg">Reg</option>
+                </select>
+               <input
                 onChange={(e) => setRegistration(e.target.value)}
                 required
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Registration No"
+                placeholder="Car Registration"
               />
+              </div>
             </div>
             <div>
-              <label>Car Model</label>
+              <label>Vehicle Model <span className="requiredStart">*</span></label>
               <input
-                // {...register("car_model", { required: true })}
                 onChange={(e) => setCarModel(e.target.value)}
                 required
                 // name="car_model"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Model"
+                placeholder="Vehicle Model"
               />
             </div>
 
             <div>
-              <label>Car Make </label>
+              <label>Vehicle Brand <span className="requiredStart">*</span> </label>
               <input
-                // {...register("car_make", { required: true })}
                 onChange={(e) => setCarMake(e.target.value)}
                 required
-                // name="car_make"
                 autoComplete="off"
                 type="text"
-                placeholder="Car Make"
+                placeholder="Vehicle Brand"
               />
             </div>
             <div>
-              <label>Mileage </label>
+              <label>Mileage <span className="requiredStart">*</span> </label>
               <input
                 // {...register("mileage", { required: true })}
                 onChange={(e) => setMileage(e.target.value)}
@@ -668,18 +670,18 @@ const AddJobCard = () => {
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Color</label>
+              <label>Color & Code <span className="requiredStart">*</span> </label>
               <input
                 // {...register("color", { required: true })}
                 onChange={(e) => setColor(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Color "
+                placeholder="Color & Code"
               />
             </div>
             <div>
-              <label>Engine No </label>
+              <label>Engine No & CC  <span className="requiredStart">*</span></label>
               <input
                 // {...register("engine_no", { required: true })}
                 onChange={(e) => setEngineNo(e.target.value)}
@@ -687,46 +689,61 @@ const AddJobCard = () => {
                 className="registrationForm"
                 autoComplete="off"
                 type="text"
-                placeholder="Engine No "
+                placeholder="Engine No & CC "
               />
             </div>
             <div>
-              <label>Reference Number</label>
+              <label>Reference Name <span className="requiredStart">*</span></label>
               <input
                 // {...register("reference_number", { required: true })}
                 onChange={(e) => setReference(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Reference Number"
+                placeholder="Reference Name "
               />
             </div>
             <div>
-              <label>Company Name </label>
-              <input
+              <label>Company Category  <span className="requiredStart">*</span></label>
+              {/* <input
                 // {...register("company_name", { required: true })}
                 onChange={(e) => setCompanyName(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Company Name"
-              />
+                placeholder="Company Category "
+              /> */}
+              <select autoComplete="off"  onChange={(e) => setCompanyName(e.target.value)}>
+                <option value="Sedans">Sedans</option>
+                <option value="Crossovers">Crossovers</option>
+                <option value="Sports">Sports</option>
+                <option value="Trucks">Trucks</option>
+                <option value="Coupes">Coupes</option>
+                <option value="Convertibles">Convertibles</option>
+                <option value="Diesels">Diesels</option>
+                <option value="SUVs">SUVs</option>
+                <option value="Hybrid/Electric">Hybrid/Electric</option>
+                <option value="Vans/Minivans">Vans/Minivans</option>
+                <option value="Wagons">Wagons</option>
+                <option value="Small Cars ">Small Cars </option>
+                <option value="CPO ">CPO </option>
+              </select>
             </div>
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Customer/User name </label>
+              <label>Customer Name <span className="requiredStart">*</span> </label>
               <input
                 // {...register("customer_name", { required: true })}
                 onChange={(e) => setCustomerName(e.target.value)}
                 required
                 autoComplete="off"
                 type="text"
-                placeholder="Customer/User name "
+                placeholder="Customer Name "
               />
             </div>
             <div>
-              <label>Contact No </label>
+              <label>Contact No <span className="requiredStart">*</span></label>
               <input
                 // {...register("contact_number", { required: true })}
                 onChange={(e) => setContactNo(e.target.value)}

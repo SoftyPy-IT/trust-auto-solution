@@ -42,7 +42,8 @@
 .jobCardSingleForm label {
 	display: block;
 }
-.jobCardSingleForm input {
+.jobCardSingleForm input,
+.jobCardSingleForm select {
 	width: 18rem;
 	height: 3rem;
 	border: 1px solid #896eff;
@@ -130,6 +131,28 @@
 .jobCardSingleForm2 input {
 	width: 14.4rem !important;
 }
+.inputSelectWrap {
+	width: 14.4rem;
+	height: 3rem;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 1px solid #896eff;
+	border-radius: 5px;
+	padding: 5px;
+}
+.inputSelectWrap input {
+	border: none;
+	width: 12rem !important;
+}
+.requiredStart {
+	color: red;
+}
+.inputSelectWrap select {
+	border: none;
+	border-right: 1px solid #896eff;
+	border-radius: 0%;
+	width: 6rem !important;
+}
 .table :where(th, tr, td) {
 	text-align: center;
 }
@@ -164,7 +187,7 @@
 }
 .textEditor:nth-child(2),
 .textEditor:nth-child(3) {
-	height: 235px;
+	height: 285px;
 }
 .qutationForm {
 	display: flex;

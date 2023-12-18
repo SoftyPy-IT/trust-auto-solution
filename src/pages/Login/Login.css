@@ -1,33 +1,47 @@
 .signUnWrap {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 600px;
-    margin: 0 auto;
-    padding: 50px;
-    background: #fff;
-    border-radius: 20px;
-    color: black;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	width: 600px;
+	margin: 0 auto;
+	padding: 50px;
+	background: #fff;
+	border-radius: 20px;
+	color: black;
 }
-.signupFormWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.signupFormWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
-.singleSignupForm label{
-    display: block;
+.singleSignupForm label {
+	display: block;
 }
-.singleSignupForm input{
-    width: 450px;
-    border: 1px solid #351E98;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
+.passwordWrap {
+	position: relative;
 }
-.singleSignupForm button{
-    width: 300px;
-    background: #351E98;
-    color: #fff;
-    height: 40px;
-    border-radius: 20px;
-    margin-top: 8px;
+.showIconWrap {
+	position: absolute;
+	position: absolute;
+	right: 18px;
+	top: 34px;
+}
+.showPassIcon {
+	font-size: 25px !important;
+	color: #351e98;
+	cursor: pointer;
+}
+.singleSignupForm input {
+	width: 450px;
+	border: 1px solid #351e98;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.singleSignupForm button {
+	width: 300px;
+	background: #351e98;
+	color: #fff;
+	height: 40px;
+	border-radius: 20px;
+	margin-top: 8px;
 }

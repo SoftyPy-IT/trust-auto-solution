@@ -1,11 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css'
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
+  const [shwoPassword, setShowPassword] = useState(null)
   const navigate = useNavigate()
   const email = useRef()
   const password = useRef()
+  const handleShowPassword = ()=>{
+    setShowPassword((shwoPassword)=>!shwoPassword)
+  }
   const handleLogin = event => {
     event.preventDefault()
     console.log(email.current.value, password.current.value)
@@ -54,16 +59,19 @@ const Login = () => {
                     autoComplete="off"
                   />
                 </div>
-                <div className="singleSignupForm">
+                <div className="singleSignupForm passwordWrap">
                   <label>Password</label>
                   <input
                     ref={password}
                     name="password"
                     placeholder="Password"
-                    type="password"
+                    type={shwoPassword ? 'text' : 'password'}
                     className="inputFiel"
                     autoComplete="off"
                   />
+               <div onClick={handleShowPassword} className="showIconWrap">
+             {shwoPassword ?   <FaEye className="showPassIcon"/> : <FaEyeSlash className="showPassIcon" />}
+               </div>
                 </div>
                 <div className="singleSignupForm">
                   <button type="submit">

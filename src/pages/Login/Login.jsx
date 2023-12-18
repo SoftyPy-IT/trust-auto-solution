@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css'
 import Swal from "sweetalert2";
@@ -37,10 +37,24 @@ const Login = () => {
         
      }
   }
-
+  const ref = useRef(null);
+  useEffect(() => {
+    import("@lottiefiles/lottie-player");
+  });
   return (
     <div>
       <div className="py-5  bg-[#351E98] min-h-screen flex items-center justify-center ">
+        <div className="animationWrap">
+        <lottie-player
+                    id="firstLottie"
+                    ref={ref}
+                    autoplay
+                    loop
+                    mode="normal"
+                    src="/car5.json"
+                    className="animation"
+                  ></lottie-player>
+        </div>
         <div>
           <h2 className="text-4xl capitalize mb-8 font-bold text-white text-center">
             Trust Auto Solution !

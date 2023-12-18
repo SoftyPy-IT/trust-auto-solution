@@ -66,13 +66,13 @@ const AddProduct = () => {
        <TextField className='productField'  fullWidth label="Note" id="Note" />
        </div>
        <div className="supplierBox mt-8">
-        <div className="flex items-center justify-around">
-          <h3>Supplier </h3>
-          <h3>Supplier Price</h3>
-          <h3>Action </h3>
+        <div className="flex items-center justify-between px-5">
+          <b>Supplier </b>
+          <b className='ml-5'>Supplier Price</b>
+          <b>Action </b>
         </div>
-        <div className="flex items-center justify-between addItemsWrap">
-        <FormControl className='productField'>
+        <div className=" addItemsWrap">
+        <FormControl className='productField productField2'>
         <InputLabel htmlFor="grouped-native-select">Select Price</InputLabel>
         <Select  native defaultValue="" id="grouped-native-select" label="Select Category ">
           <option aria-label="None" value="" />
@@ -81,7 +81,7 @@ const AddProduct = () => {
          <option value="First Category ">Quantity </option>
         </Select>
       </FormControl>
-        <TextField className='productField'  fullWidth label="" id="" />
+        <TextField className='productField productField2'  fullWidth label="" id="" />
       <div className="actionIcon ">
        <div className="flex items-center">
        <FaPlus className='addIcon2' />
@@ -96,7 +96,7 @@ const AddProduct = () => {
        </div>
        <div className="savebtn mt-2">
         <button>Save</button>
-        <button>Save & Add Another</button>
+        <button >Save & Add Another</button>
        </div>
         </form>
       </div>

@@ -17,7 +17,9 @@
 .supplierBox {
 	padding: 5px;
 	border: 1px solid #ddd;
+	transition: all .5s ease;
 }
+
 .actionIcon {
 	width: 100px;
 	display: grid;
@@ -27,8 +29,18 @@
 	border: 1px solid #ddd;
 	padding: 8px;
 	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-
+.addItemsWrap:hover {
+	background: #341e9852;
+}
+.addItemsWrap:hover .productField1 {
+	background: #fff !important;
+	color: black !important;
+	border: 1px solid #fff !important;
+}
 .addIcon,
 .addIcon2 {
 	width: 30px;
@@ -60,4 +72,7 @@
 	margin-right: 5px;
 	color: #fff;
 	border-radius: 3px;
+}
+.savebtn button:first-child {
+	background: #45c203;
 }

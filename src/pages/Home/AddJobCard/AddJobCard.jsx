@@ -97,7 +97,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     console.log(response);
@@ -124,8 +124,8 @@ const AddJobCard = () => {
       chassis_no: chassisNo,
       carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: vehicleModel,
-      car_make: vehiclebrand,
+      vehicle_model: vehicleModel,
+      vehicle_brand: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
@@ -155,7 +155,7 @@ const AddJobCard = () => {
     }
    
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -164,7 +164,7 @@ const AddJobCard = () => {
       setJobNo(newJobNo);
       setReload(!reload);
       fetch(
-        "https://trust-auto-solution-server.vercel.app/api/v1/jobCard/recent"
+        "http://localhost:5000/api/v1/jobCard/recent"
       )
         .then((res) => res.json())
         .then((data) => {
@@ -187,8 +187,8 @@ const AddJobCard = () => {
       chassis_no: chassisNo,
       carReg_no: carRegNo,
       car_registration_no: registration,
-      car_model: vehicleModel,
-      car_make: vehiclebrand,
+      vehicle_model: vehicleModel,
+      vehicle_brand: vehiclebrand,
       mileage: mileage,
       color: color,
       engine_no: engineNo,
@@ -219,7 +219,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -272,7 +272,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -290,7 +290,7 @@ const AddJobCard = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard`)
+    fetch(`http://localhost:5000/api/v1/jobCard`)
       .then((res) => res.json())
       .then((data) => {
         setPreviousPostData(data);
@@ -307,7 +307,7 @@ const AddJobCard = () => {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+      `http://localhost:5000/api/v1/jobCard/all/${username}`
     )
       .then((res) => res.json())
       .then((data) => {

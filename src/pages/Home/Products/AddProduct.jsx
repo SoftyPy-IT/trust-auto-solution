@@ -1,75 +1,103 @@
-import { useForm } from "react-hook-form";
+/* eslint-disable react/jsx-no-undef */
 import './Product.css'
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { FaRegTrashAlt,FaPlus  } from "react-icons/fa";
+
+
 
 const AddProduct = () => {
-  const { register, handleSubmit } = useForm();
+ 
 
-  const onSubmit = (data) => {
-    console.log(data)
-
-  };
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold text-center">Add Product </h2>
-      <div className="w-full mx-auto mt-8 addProductWrap">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="formControl ">
-            <div className="addproductForm">
-              <div>
-                <label>Vehicle Name </label>
-                <input
-                  {...register("name", { required: true })}
-                  name="name"
-                  placeholder="Vehicle Name"
-                  type="text"
-                  className="inputField"
-                  autoComplete="off"
-                />
-
-              </div>
-              <div>
-                <label> Vehicle No </label>
-                <input
-                  {...register("title", { required: true })}
-                  name="title"
-                  placeholder="Vehicle No"
-                  type="text"
-                  className="inputField"
-                  autoComplete="off"
-                />
-              </div>
-            </div>
-            <div className="addproductForm">
-              <div>
-                <label>Address </label>
-                <input
-                  {...register("productsDescription", { required: true })}
-                  name="productsDescription"
-                  placeholder="Address"
-                  type="text"
-                  className="inputField"
-                  autoComplete="off"
-                />
-              </div>
-              <div>
-                <label>Mileage </label>
-                <input
-                  {...register("productsDescription", { required: true })}
-                  name="productsDescription"
-                  placeholder="Mileage"
-                  type="text"
-                  className="inputField"
-                  autoComplete="off"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className=" ">
-            <button className="addProductBtn" type="submit">
-              Add Product
-            </button>
-          </div>
+      <div className=" mt-8 addProductWrap">
+        <form>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Product Name" id="Product Name " />
+       <TextField className='productField'  fullWidth label="Serial Number " id="Serial Number " />
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Model" id="Model " />
+      <FormControl className='productField'>
+        <InputLabel htmlFor="grouped-native-select">Select Category </InputLabel>
+        <Select  native defaultValue="" id="grouped-native-select" label="Select Category ">
+          <option aria-label="None" value="" />
+         <option value="First Category "> First Category </option>
+         <option value="First Category "> First Category </option>
+         <option value="First Category "> First Category </option>
+         <option value="First Category "> First Category </option>
+         <option value="First Category "> First Category </option>
+        </Select>
+      </FormControl>
+     
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Sale Price" id="Price " />
+       <FormControl className='productField'>
+        <InputLabel htmlFor="grouped-native-select">Unit</InputLabel>
+        <Select  native defaultValue="" id="grouped-native-select" label="Select Category ">
+          <option aria-label="None" value="" />
+         <option value="First Category "> KG</option>
+         <option value="First Category "> PCS </option>
+         <option value="First Category ">Quantity </option>
+        </Select>
+      </FormControl>
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' type='file' fullWidth label="" id="Image " />
+       <TextField className='productField'  fullWidth label="Tax" id="Tax" />
+       
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Minimum Stock" id="Minimum Stock " />
+       <TextField className='productField'  fullWidth label="Re Order Level" id="Re Order Level" />
+       
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Product Location" id="Product Location " />
+       <TextField className='productField'  fullWidth label="Global Markup" id="Global Markup" />
+       </div>
+       <div className="productFieldWrap">
+       <TextField className='productField' fullWidth label="Individual Markup" id="Individual Markup " />
+       <TextField className='productField'  fullWidth label="Note" id="Note" />
+       </div>
+       <div className="supplierBox mt-8">
+        <div className="flex items-center justify-around">
+          <h3>Supplier </h3>
+          <h3>Supplier Price</h3>
+          <h3>Action </h3>
+        </div>
+        <div className="flex items-center justify-between addItemsWrap">
+        <FormControl className='productField'>
+        <InputLabel htmlFor="grouped-native-select">Select Price</InputLabel>
+        <Select  native defaultValue="" id="grouped-native-select" label="Select Category ">
+          <option aria-label="None" value="" />
+         <option value="First Category "> KG</option>
+         <option value="First Category "> PCS </option>
+         <option value="First Category ">Quantity </option>
+        </Select>
+      </FormControl>
+        <TextField className='productField'  fullWidth label="" id="" />
+      <div className="actionIcon ">
+       <div className="flex items-center">
+       <FaPlus className='addIcon2' />
+        <FaRegTrashAlt className='addIcon'/>
+       </div>
+      </div>
+        </div>
+       </div>
+       <div className="productDetailWrap mt-8">
+        <label className='block'> Product Details </label>
+     <textarea placeholder='Product Details ' className='productDetail' name="" id="" cols="30" rows="10"></textarea>
+       </div>
+       <div className="savebtn mt-2">
+        <button>Save</button>
+        <button>Save & Add Another</button>
+       </div>
         </form>
       </div>
     </div>

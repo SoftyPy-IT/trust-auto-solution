@@ -1,113 +1,63 @@
-.editIcon,
-.deleteIcon {
-  font-size: 25px;
-  color: #351E98;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 auto;
+.addProductWrap {
+	/* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+	padding: 30px;
+	width: 1050px;
+	margin: 0 auto;
+}
+.productField {
+	width: 500px !important;
+	margin: 5px !important;
+}
+.productFieldWrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+.supplierBox {
+	padding: 5px;
+	border: 1px solid #ddd;
+}
+.actionIcon {
+	width: 100px;
+	display: grid;
+	place-items: center;
+}
+.addItemsWrap {
+	border: 1px solid #ddd;
+	padding: 8px;
+	margin-top: 10px;
 }
 
-.deleteIcon {
-  color: red;
+.addIcon,
+.addIcon2 {
+	width: 30px;
+	height: 30px;
+	background: red;
+	margin-right: 5px;
+	font-size: 20px !important;
+	color: #fff;
+	padding: 7px;
+	cursor: pointer;
+	border-radius: 3px;
 }
-.addHotel button {
-    background: #351E98;
-    color: white;
-    border: 1px solid #fff;
-    transition: all 0.5s cubic-bezier(0, 0.01, 0.98, 0.93);
-    border-radius: 25px;
-    padding: 10px 15px;
+.addIcon2 {
+	background: #351e98;
 }
-.pagination{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .paginationBtn button{
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid #351E98;
-    color: #351E98;
-    border-radius: 50%;
-    margin-right: 5px;
-    font-size: 12px;
-    transition: all .5s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
-  
-  
-  }
-  .paginationBtn button:hover{
-    background-color: #351E98;
-    color:white;
-  
-  }
-  .arrowLeft, .arrowRight{
-    color: #351E98 !important;
-    font-size: 15px !important;
-  }
-  .arrowLeft:hover, .arrowRight:hover{
-    color:white !important;
-  }
-  .paginationBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .singleForm{
-    width:100%;
-  }
-  .addProductWrap{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 900px;
-    padding: 30px;
-  }
-  .addProductWrap label{
-    display: block;
-  }
-  .addProductWrap input{
-
-  }
-  .addproductForm{
-    display: flex;
-    justify-content: space-between;
-  }
-  .addproductForm input{
-    border: 1px solid #351E98;
-    width: 400px;
-    height: 40px;
-    border-radius: 20px;
-    padding: 10px;
-    margin-bottom:20px;
-
-  }
-.addProductBtn{
-  width: 300px;
-  height: 50px;
-  background: #351E98;
-  color: #fff;
-  border-radius: 20px;
-  margin:0 auto;
+.productDetail {
+	height: 150px !important;
+	border: 1px solid #ddd;
+	width: 100%;
+	border-radius: 3px;
+	padding: 10px;
 }
-@media only screen and (max-width:768px){
-  .addProductWrap {
-    width: 650px;
+.productDetail:active {
+	outline: #351e98;
 }
-.addproductForm input {
-  width: 285px;
-}
-.addProductBtn {
-  width: 200px;
-  height: 39px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
+.savebtn button {
+	background-color: #351e98;
+	padding: 8px;
+	margin-right: 5px;
+	color: #fff;
+	border-radius: 3px;
 }

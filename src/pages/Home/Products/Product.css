@@ -155,3 +155,12 @@
 	background: #351e98;
 	color: white;
 }
+
+@media only screen and (max-width:1024px){
+	.addProductWrap {
+		width: 100%;
+	}
+	.productHeadWrap {
+		padding: 10px 35px;
+	}
+}

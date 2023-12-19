@@ -47,10 +47,14 @@ const AddProduct = () => {
 				</div>
 			</div>
 			<div className="my-3 flex justify-end mr-[80px] ">
+				<Link to='/dashboard/product'>
 				<div className="manageProduct">
 					<FormatListNumberedIcon className="listIcon" />
 					<h2>Product List </h2>
 				</div>
+
+				</Link>
+				
 			</div>
 			<div className="addProductWrap">
 				<form>

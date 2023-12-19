@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css'
@@ -38,9 +39,9 @@ const Login = () => {
      }
   }
   const ref = useRef(null);
-  useEffect(() => {
-    import("@lottiefiles/lottie-player");
-  });
+  // useEffect(() => {
+  //   import("@lottiefiles/lottie-player");
+  // });
   return (
     <div>
       <div className="py-5  bg-[#351E98] min-h-screen flex items-center justify-center ">

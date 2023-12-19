@@ -6,7 +6,7 @@ const MoneyReceiptView = () => {
 
     
     return (
-      <div className='moneyFormWrap '>
+      <div className='moneyReceptWrap '>
       <div className="moneyRecieved ">
        <div className="logoWrap ">
        <img className="" src={logo} alt="logo" />
@@ -16,7 +16,6 @@ const MoneyReceiptView = () => {
         <small>It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </small>
         </div>
         <div>
-          <h3>Hotline</h3>
           <div className='flex items-center mt-1'>
               <LocalPhone className='hotlineIcon'/>
           <b className='ml-1'>+880 1821-216465</b>
@@ -52,17 +51,17 @@ const MoneyReceiptView = () => {
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
       <div className='flex receivedField'>
-          <label className='vehicleText2'>Vehicle No: </label>
+          <label className='vehicleText'>Vehicle No: </label>
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>
      <div className="payAdvance mt-5">
      <div className='flex  receivedField'>
-          <label className='checqueText2'>Cash/Checque No: </label>
+          <label className='checqueText'>Cash/Checque No: </label>
           <input className='cashInput moneyViewInputField' type="text" autoComplete='off' />
       </div>
       <div className='flex receivedField'>
-          <b className='date'>Date: </b>
+          <b className='date mr-2'>Date: </b>
           <input className='dateInput moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>
@@ -72,7 +71,7 @@ const MoneyReceiptView = () => {
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
       <div className='flex receivedField'>
-          <label className='date'>Date : </label>
+          <label className='date mr-2'>Date : </label>
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>
@@ -94,11 +93,11 @@ const MoneyReceiptView = () => {
       <label>in word (takta) </label>
       <input className='moneyViewInputField' type="text" />
      </div>
-     <div className=''>
+     <div >
       <small className='signature'>Authorized Signature</small>
      </div>
-     <div className="customerSignature">
-      <b>Customer Signature : </b>
+     <div className="customerSignature flex items-center justify-between mt-5">
+      <b>Customer Signature </b>
       <b>Trust Auto Solution</b>
     </div>
     <hr className="my-3" />

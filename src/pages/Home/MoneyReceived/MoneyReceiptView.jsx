@@ -9,7 +9,7 @@ import { usePDF } from "react-to-pdf";
 import { Link } from 'react-router-dom';
 const MoneyReceived = () => {
     const componentRef = useRef();
-    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    const { targetRef } = usePDF({ filename: "page.pdf" });
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
     });
@@ -114,18 +114,18 @@ const downloadPdf = () => generatePDF(getTargetElement, options);
                 <label className='date'>Date : </label>
                 <span></span>   </div>
            </div>
-           <div className="amount mt-2">
+           <div className="amount moneyReceiptAmount mt-2">
             <div className='flex items-center justify-center receivedField'>
                 <label className='totalAmountText'>Total Amount Tk:</label>
-               <input className='amountTextBG' type="text" />
+               <input readOnly className='amountTextBG' type="text" />
             </div>
             <div className='flex items-center justify-center receivedField'>
                 <label>Advance:</label>
-              <input className='amountTextBG' type="text" />
+              <input readOnly className='amountTextBG' type="text" />
             </div>
             <div className='flex items-center justify-center receivedField'>
                 <label>Remaining:</label>
-               <input className='amountTextBG' type="text" />
+               <input readOnly className='amountTextBG' type="text" />
             </div>
            </div>
            <div className='wordTaka mt-2 receivedField flex items-center justify-center'> 
@@ -133,7 +133,7 @@ const downloadPdf = () => generatePDF(getTargetElement, options);
             <span></span>    
             </div>
            </div>
-           <div className=''>
+           <div className='mt-5'>
             <small className='signature'>Authorized Signature</small>
            </div>
         </div>

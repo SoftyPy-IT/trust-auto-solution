@@ -1,15 +1,31 @@
 import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft, FaEye } from "react-icons/fa";
 import './Product.css'
 import img from "../../../../public/assets/service2.png";
-import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import { FormControl, InputLabel, Select } from "@mui/material";
 
 const Product = () => {
   return (
     <div className="mt-5 mb-24 w-full">
-      <div className="flex items-center justify-between px-8 mb-5">
-        <TextField id="outlined-basic" label="Search " variant="outlined" />
-        <h3 className="text-3xl font-bold">All Products List </h3>
+      <h3 className="text-3xl font-bold text-center ">All Products List </h3>
+      <div className="flex items-center justify-between  mb-5">
+      <div className="productFieldWrap productSearch">
+						<FormControl className="searchProductField">
+							<InputLabel htmlFor="grouped-native-select">Select Category </InputLabel>
+							<Select native defaultValue="" id="grouped-native-select" label="Select Category ">
+								<option aria-label="None" value="" />
+								<option value="First Category "> First Category </option>
+								<option value="First Category "> First Category </option>
+								<option value="First Category "> First Category </option>
+								<option value="First Category "> First Category </option>
+								<option value="First Category "> First Category </option>
+							</Select>
+						</FormControl>
+        <button className="SearchBtn searchBtn2">
+              Search{" "}
+            </button>
+					</div>
+        
         <div className='addHotel'>
           <Link to='/dashboard/add-product'>
             <button>

@@ -155,8 +155,14 @@
 	background: #351e98;
 	color: white;
 }
+.searchProductField {
+	width: 250px !important;
+}
+.searchBtn2 {
+	height: 45px;
+}
 
-@media only screen and (max-width:1024px){
+@media only screen and (max-width: 1024px) {
 	.addProductWrap {
 		width: 100%;
 	}

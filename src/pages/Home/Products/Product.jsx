@@ -1,4 +1,4 @@
-import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft, FaEye } from "react-icons/fa";
 import './Product.css'
 import img from "../../../../public/assets/service2.png";
 import TextField from "@mui/material/TextField";
@@ -22,16 +22,19 @@ const Product = () => {
         <table className="table ">
           <thead className='tableWrap'>
             <tr>
+              <th>SL</th>
               <th>Image</th>
-              <th>Product Description </th>
-              <th>Product Title</th>
-              <th>Sub title </th>
-              <th>Date</th>
-              <th colSpan={2}>Action</th>
+              <th>Product Name </th>
+              <th>Product Model </th>
+              <th>Supplier Name </th>
+              <th>Price </th>
+              <th>Supplier Price  </th>
+              <th colSpan={3}>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>01</td>
               <td>
                 <div className="mask   h-[100px] w-[100px] mx-auto ">
                   <img
@@ -41,12 +44,20 @@ const Product = () => {
                   />
                 </div>
               </td>
-              <td>Best Auto Solutions in Bangladesh </td>
-              <td>Best Auto Solutions in Bangladesh</td>
-              <td>Best Auto Solutions in Bangladesh </td>
-              <td>3/6/23</td>
+              <td>Car  </td>
+              <td>BMW2343</td>
+              <td>Aminul Hoque </td>
+              <td>BDT405</td>
+              <td>BDT1005</td>
               <td >
-                <div className='editIconWrap'>
+                <div className='editIconWrap edit'>
+                  <Link to='/dashboard/update-product'>
+                    <FaEye className='editIcon' />
+                  </Link>
+                </div>
+              </td>
+              <td >
+                <div className='editIconWrap edit'>
                   <Link to='/dashboard/update-product'>
                     <FaEdit className='editIcon' />
                   </Link>

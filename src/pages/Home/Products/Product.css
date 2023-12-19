@@ -1,8 +1,31 @@
+.addProductWraps {
+	background: #ddd;
+	padding: 30px 0;
+}
 .addProductWrap {
-	/* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 	padding: 30px;
 	width: 1050px;
 	margin: 0 auto;
+	background: #fff;
+}
+.listIcon {
+	font-size: 25px !important;
+}
+.manageProduct {
+	background: #351e98;
+	width: 136px;
+	display: flex;
+	color: #fff;
+	border-radius: 2px;
+	padding: 5px;
+}
+.productHeadWrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	margin: 20px 0;
+	padding: 10px 75px;
 }
 .productField {
 	width: 500px !important;
@@ -75,4 +98,60 @@
 }
 .savebtn button:first-child {
 	background: #45c203;
+}
+.invoicIcon {
+	color: #45c203 !important;
+	font-size: 45px;
+}
+.productHome {
+	border: 1px solid #ddd;
+	padding: 10px 20px;
+	border-radius: 3px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.productHome span {
+	transition: all .5s ease;
+	color: #351e98;
+}
+.productHome span::hover {
+	color: #351e98;
+}
+.deleteIcon,
+.editIcon {
+	font-size: 15px !important;
+}
+
+.editIconWrap {
+	background: red;
+	width: 25px;
+	height: 25px;
+	color: #fff;
+	margin: 0 auto;
+	display: grid;
+	place-content: center;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.edit {
+	background: #351e98;
+}
+.addHotel {
+	background: #351e98;
+	color: #fff;
+	padding: 7px;
+	border-radius: 3px;
+	display: flex;
+}
+
+.topProductBtn button {
+	border: 1px solid #351e98;
+	margin-right: 11px;
+	padding: 5px 15px;
+	border-radius: 2px;
+	transition: all .5s cubic-bezier(0.47, 0.5, 0.86, 0.83);
+}
+.topProductBtn button:hover {
+	background: #351e98;
+	color: white;
 }

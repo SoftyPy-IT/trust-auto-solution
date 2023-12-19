@@ -94,6 +94,10 @@ export const router = createBrowserRouter([
         element: <UpdateProduct />,
       },
       {
+        path: "update-product",
+        element: <UpdateProduct />,
+      },
+      {
         path: "customer",
         element: <Customer />,
       },

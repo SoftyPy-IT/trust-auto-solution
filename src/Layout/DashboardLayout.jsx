@@ -22,7 +22,7 @@ import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useRef, useState } from 'react'
 import './Layout.css'
-import { Home, Logout, Receipt, CurrencyExchange } from '@mui/icons-material'
+import { Home, Logout, Receipt, CurrencyExchange, ShoppingBag } from '@mui/icons-material'
 const DashboardLayout = () => {
 	const [expanded, setExpanded] = useState(false);
 	const navRef = useRef()
@@ -205,14 +205,24 @@ const DashboardLayout = () => {
 							>
 								<Typography>
 									<span className="flex items-center justify-center">
-										<FaProductHunt />
-										<span className="ml-2"> Product List </span>
+										<ShoppingBag />
+										<span className="ml-2"> Product </span>
 									</span>
 								</Typography>
+								
 							</AccordionSummary>
 							<AccordionDetails>
 								<Typography className='accordionTypoGrapy'>
+								<div className="flex items-center">
+								<FaPlus className="mr-2" />
+									<Link to="/dashboard/add-product">Add Product </Link>
+								</div>
+								</Typography>
+								<Typography className='accordionTypoGrapy'>
+								<div className="flex items-center">
+								<FaThLarge className="mr-2" />
 									<Link to="/dashboard/product">All Product List </Link>
+								</div>
 								</Typography>
 							</AccordionDetails>
 						</Accordion>

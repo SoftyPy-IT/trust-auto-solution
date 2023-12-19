@@ -110,7 +110,7 @@
 	width: 100%;
 }
 .receivedMoneyText {
-	width: 305px;
+	width: 280px;
 }
 .receivedMoneyText2 {
 	width: 192px;
@@ -145,8 +145,11 @@
 	width: 36px;
 	font-style: italic;
 }
+.date2 {
+	width: 40px;
+}
 .backText {
-	width: 70px;
+	width: 56px;
 }
 .backText2 {
 	width: 39px;

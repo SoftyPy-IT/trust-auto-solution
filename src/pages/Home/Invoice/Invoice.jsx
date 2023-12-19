@@ -16,10 +16,6 @@ import { toast } from "react-toastify";
 const Invoice = () => {
   const [select, setSelect] = useState(null);
 
-  const [inputList, setInputList] = useState([
-    { flyingFrom: "", flyingTo: "", date: "" },
-  ]);
-
   const location = useLocation();
   const orderNo = new URLSearchParams(location.search).get("order_no");
   const navigate = useNavigate();
@@ -47,6 +43,9 @@ const Invoice = () => {
     }
   }, [job_no]);
 
+  const [inputList, setInputList] = useState([
+    { flyingFrom: "", flyingTo: "", date: "" },
+  ]);
   const handleRemove = (index) => {
     if (!index) {
       const list = [...inputList];

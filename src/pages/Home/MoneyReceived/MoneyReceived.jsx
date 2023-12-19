@@ -61,17 +61,17 @@ const MoneyReceiptView = () => {
           <input className='cashInput moneyViewInputField' type="text" autoComplete='off' />
       </div>
       <div className='flex receivedField'>
-          <b className='date mr-2'>Date: </b>
+          <b className='date2 mr-2'>Date: </b>
           <input className='dateInput moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>
      <div className=" payAdvance mt-5">
      <div className='flex  receivedField'>
-          <label className='backText'>Bank : </label>
+          <label className='backText'>Bank: </label>
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
       <div className='flex receivedField'>
-          <label className='date mr-2'>Date : </label>
+          <label className='date2 '> Date:</label>
           <input className=' moneyViewInputField' type="text" autoComplete='off' />
       </div>
      </div>

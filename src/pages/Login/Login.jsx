@@ -41,8 +41,14 @@ const Login = () => {
   };
 
   const handleRowClick = (emailValue, passwordValue) => {
-    setDefaultEmail(emailValue);
-    setDefaultPassword(passwordValue);
+    // Set values to input fields
+    email.current.value = emailValue;
+    password.current.value = passwordValue;
+
+    // Trigger login process
+    handleLogin({
+      preventDefault: () => {}, // Simulate event object
+    });
   };
 
   return (
@@ -61,7 +67,7 @@ const Login = () => {
                     ref={email}
                     name="email"
                     placeholder="Email"
-                    value={defaultEmail}
+                 
                     type="email"
                     className="inputFiel"
                     autoComplete="off"
@@ -72,8 +78,7 @@ const Login = () => {
                   <input
                     ref={password}
                     name="password"
-                    value={defaultPassword}
-                    type={showPassword}
+                    type={showPassword ? "text" : "password"} 
                     placeholder="Password"
                     className="inputFiel"
                     autoComplete="off"

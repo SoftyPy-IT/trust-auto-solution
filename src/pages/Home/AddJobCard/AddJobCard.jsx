@@ -453,15 +453,16 @@ const AddJobCard = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap"
+                  className="editIconWrap edit"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
                   {/* </Link> */}
                 </div>
               </td>
+
               <td>
-                <div className="editIconWrap">
+                <div className="editIconWrap edit">
                   <Link to={`/dashboard/update-jobcard?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>

@@ -11,7 +11,7 @@ import generatePDF, { Resolution, Margin } from 'react-to-pdf';
 
 const PdfGenerator = () => {
     const componentRef = useRef();
-    const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+    const {  targetRef } = usePDF({filename: 'page.pdf'});
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
     });

@@ -156,7 +156,7 @@ const MoneyReceiptList = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap"
+                  className="editIconWrap edit"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -164,7 +164,7 @@ const MoneyReceiptList = () => {
                 </div>
               </td>
               <td>
-                <div className="editIconWrap">
+                <div className="editIconWrap edit">
                   <Link to={`/dashboard/money-receipt-update?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>

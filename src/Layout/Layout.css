@@ -27,7 +27,7 @@
 	-ms-transform: translateY(-8px) rotate(-45deg);
 	-o-transform: translateY(-8px) rotate(-45deg);
 }
-.active,
+.navActive,
 .activeToggle {
 	position: fixed;
 	background: #351e98;
@@ -39,7 +39,7 @@
 	transition: all .5s cubic-bezier(0.55, 0.54, 0.68, 0.63);
 	cursor: pointer;
 }
-.active {
+.navActive {
 	left: 24px;
 	z-index: 999999 !important;
 }
@@ -116,6 +116,11 @@
 	padding-left: 20px;
 	width: 100%;
 }
+.active {
+	position: relative;
+	z-index: 999;
+	color: #948bc0;
+}
 
 @media only screen and (max-width: 1024px) {
 	.activeToggle {
@@ -125,7 +130,7 @@
 	.activeRightSideBarWrap {
 		width: 60px;
 	}
-	.active {
+	.navActive {
 		left: 10px;
 	}
 }

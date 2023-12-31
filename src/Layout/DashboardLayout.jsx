@@ -1,5 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import { Link, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import {
 	FaCarAlt,
 	FaProjectDiagram,
@@ -49,18 +49,18 @@ const DashboardLayout = () => {
 							: `fixed overflow-y-scroll overflow-x-hidden sideBarActive h-screen text-lg font-semibold  bg-[#351E98] text-white`}`}
 					>
 						<div className="mb-5">
-							<Link to="/" className="shadow-md z-10">
+							<NavLink to="/" className="shadow-md z-10">
 								<h3 className="text-2xl font-bold mt-3 ml-3">T A Solutions </h3>
-							</Link>
+							</NavLink>
 						</div>
 
 
-						<Link to="/dashboard">
+						<NavLink to="/dashboard">
 							<div className="flex items-center dashboardItems">
 								<FaHome className='dashboardIcon' />
 								<span>Dashboard</span>
 							</div>
-						</Link>
+						</NavLink>
 						<Accordion className="dashboardAccordion " expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 							<AccordionSummary
 								expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}
@@ -78,13 +78,13 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<Link to="/dashboard/addjob">Add job card</Link>
+										<NavLink to="/dashboard/addjob">Add job card</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<Link to="/dashboard/jobcard-list">Job Card List</Link>
+										<NavLink to="/dashboard/jobcard-list">Job Card List</NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>
@@ -108,13 +108,13 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<Link to="/dashboard/qutation">Add Qutation Card</Link>
+										<NavLink to="/dashboard/qutation">Add Qutation Card</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<Link to="/dashboard/qutation-view">View Qutation List</Link>
+										<NavLink to="/dashboard/qutation-view">View Qutation List</NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>
@@ -137,13 +137,13 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<Link to="/dashboard/invoice">Add Invoice Card</Link>
+										<NavLink to="/dashboard/invoice">Add Invoice Card</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<Link to="/dashboard/invoice-view">View Invoice List </Link>
+										<NavLink to="/dashboard/invoice-view">View Invoice List </NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>
@@ -165,13 +165,13 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<Link to="/dashboard/money-receive">Add Money Receipt</Link>
+										<NavLink to="/dashboard/money-receive">Add Money Receipt</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<Link to="/dashboard/money-receipt-list"> Money Receipt List</Link>
+										<NavLink to="/dashboard/money-receipt-list"> Money Receipt List</NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>
@@ -191,7 +191,7 @@ const DashboardLayout = () => {
 							</AccordionSummary>
 							<AccordionDetails>
 								<Typography className='accordionTypoGrapy'>
-									<Link to="/dashboard/addjob">Running Project</Link>
+									<NavLink to="/dashboard/addjob">Running Project</NavLink>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>Completed Project</Typography>
 							</AccordionDetails>
@@ -215,30 +215,30 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 								<div className="flex items-center">
 								<FaPlus className="mr-2" />
-									<Link to="/dashboard/add-product">Add Product </Link>
+									<NavLink to="/dashboard/add-product">Add Product </NavLink>
 								</div>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 								<div className="flex items-center">
 								<FaThLarge className="mr-2" />
-									<Link to="/dashboard/product">All Product List </Link>
+									<NavLink to="/dashboard/product">All Product List </NavLink>
 								</div>
 								</Typography>
 							</AccordionDetails>
 						</Accordion>
 
-						<Link to="/dashboard/services">
+						<NavLink to="/dashboard/services">
 							<div className="flex items-center dashboardItems">
 								<FaUserTie className='dashboardIcon' />
 								Customer List
 							</div>
-						</Link>
-						<Link to="/dashboard/expense">
+						</NavLink>
+						<NavLink to="/dashboard/expense">
 							<div className="flex items-center dashboardItems">
 								<FaCriticalRole className='dashboardIcon' />
 								<span> Expense </span>
 							</div>
-						</Link>
+						</NavLink>
 						<Accordion className="dashboardAccordion" expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
 							<AccordionSummary
 								expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}
@@ -256,63 +256,63 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<Link to="/dashboard/add-role">Add Role</Link>
+										<NavLink to="/dashboard/add-role">Add Role</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<Link to="/dashboard/role">View Role</Link>
+										<NavLink to="/dashboard/role">View Role</NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>
 						</Accordion>
-						<Link to="/dashboard/services">
+						<NavLink to="/dashboard/services">
 							<div className="flex items-center dashboardItems">
 								<FaAlipay className='dashboardIcon' />
 								<span> Bill Pay</span>
 							</div>
-						</Link>
+						</NavLink>
 
-						<Link to="/dashboard/employee">
+						<NavLink to="/dashboard/employee">
 							<div className="flex items-center dashboardItems">
 								<FaUsers className='dashboardIcon' />
 								<span>Employee</span>
 							</div>
-						</Link>
-						<Link to="/dashboard/profile">
+						</NavLink>
+						<NavLink to="/dashboard/profile">
 							<div className="flex items-center dashboardItems">
 								<FaUsersCog className='dashboardIcon' />
 								<span> Profile</span>
 							</div>
 
-						</Link>
-						<Link to="/dashboard/services">
+						</NavLink>
+						<NavLink to="/dashboard/services">
 							<div className="flex items-center dashboardItems">
 								<FaDatabase className='dashboardIcon' />
 								<span> Data Backup </span>
 							</div>
 
 
-						</Link>
-						<Link to="/dashboard/services">
+						</NavLink>
+						<NavLink to="/dashboard/services">
 							<div className="flex items-center dashboardItems">
 								<FaHeadset className='dashboardIcon' />
 								<span>Support</span>
 							</div>
 
-						</Link>
-						<Link to="/dashboard/services">
+						</NavLink>
+						<NavLink to="/dashboard/services">
 							<div className="flex items-center dashboardItems">
 								<Logout className='dashboardIcon' />
 								<span>Log Out </span>
 							</div>
 
 
-						</Link>
+						</NavLink>
 
 					</div>
-					<div className={`${toggle ? `activeToggle` : `active`}`} ref={navRef} onClick={toggleSideBar}>
+					<div className={`${toggle ? `activeToggle` : `navActive`}`} ref={navRef} onClick={toggleSideBar}>
 						<span className="bar" />
 						<span className="bar" />
 						<span className="bar" />

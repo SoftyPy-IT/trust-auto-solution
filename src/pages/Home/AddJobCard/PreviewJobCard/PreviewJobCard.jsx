@@ -16,7 +16,7 @@ const PreviewJobCard = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/${id}`)
+      fetch(`http://localhost:5000/api/v1/jobCard/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setPreviewData(data);
@@ -25,6 +25,30 @@ const PreviewJobCard = () => {
     }
   }, [id]);
 
+  const [vehicleInterior, setVehicleInterior] = useState("");
+  const [reportedDefect, setReportedDefect] = useState("");
+  const [reportedAction, setReportedAction] = useState("");
+
+  const extractTextFromHTML = (htmlString) => {
+    const doc = new DOMParser().parseFromString(htmlString, "text/html");
+    return doc.body.textContent || "";
+  };
+
+  useEffect(() => {
+    if (previewData && previewData.vehicle_interior_parts) {
+      const extractedText = extractTextFromHTML(previewData.reported_defect);
+      setVehicleInterior(extractedText);
+    }
+    if (previewData && previewData.reported_defect) {
+      const extractedText = extractTextFromHTML(previewData.reported_defect);
+      setReportedDefect(extractedText);
+    }
+    if (previewData && previewData.vehicle_interior_parts) {
+      const extractedText = extractTextFromHTML(previewData.reported_defect);
+      setReportedAction(extractedText);
+    }
+  }, [previewData]);
+
   return (
     <main className="jobCardViewWrap">
       <div ref={componentRef}>
@@ -32,7 +56,9 @@ const PreviewJobCard = () => {
           <div className="mx-auto text-center border-b-2 border-[#351E98]">
             <div className="flex  justify-between items-center">
               <img className="w-[160px] " src={logo} alt="logo" />
-              <h2 className="trustAutoTitle printTitle">Trust Auto Solution </h2>
+              <h2 className="trustAutoTitle printTitle">
+                Trust Auto Solution{" "}
+              </h2>
             </div>
           </div>
           <div>
@@ -45,6 +71,7 @@ const PreviewJobCard = () => {
                 className="jobInput"
                 defaultValue={previewData.job_no}
               />
+
               <div className="vehicleJobCard">Vehicle Job Card </div>
               <input
                 readOnly
@@ -84,7 +111,7 @@ const PreviewJobCard = () => {
                 />
               </div>
               <div>
-                <label className="block">Vehicle Brand  </label>
+                <label className="block">Vehicle Brand </label>
                 <input
                   type="text"
                   placeholder="Vehicle Brand "
@@ -122,7 +149,7 @@ const PreviewJobCard = () => {
                 />
               </div>
               <div>
-                <label className="block">Referance Number </label>
+                <label className="block">Reference Number </label>
                 <input
                   type="text"
                   placeholder="Reference Number"
@@ -195,10 +222,17 @@ const PreviewJobCard = () => {
                     {" "}
                     Vehicle Interior Parts, Papers, Tools, Meter Light & Others
                   </label>
-                  <textarea
-                    defaultValue={previewData.vehicle_interior_parts}
-                    readOnly
-                  ></textarea>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: previewData.reported_defect,
+                    }}
+                  />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: previewData.reported_action,
+                    }}
+                  />
+                  <textarea defaultValue={vehicleInterior} readOnly></textarea>
                 </div>
                 <div>
                   <label>
@@ -206,10 +240,8 @@ const PreviewJobCard = () => {
                     {/* Vehicle Interior Parts, Papers, Tools, Meter Light & Others */}
                     reported_defect
                   </label>
-                  <textarea
-                    defaultValue={previewData.reported_defect}
-                    readOnly
-                  ></textarea>
+
+                  <textarea defaultValue={reportedDefect} readOnly />
                 </div>
                 <div>
                   <label>
@@ -217,10 +249,7 @@ const PreviewJobCard = () => {
                     {/* Vehicle Interior Parts, Papers, Tools, Meter Light & Others */}
                     reported_action
                   </label>
-                  <textarea
-                    defaultValue={previewData.reported_action}
-                    readOnly
-                  ></textarea>
+                  <textarea defaultValue={reportedAction} readOnly></textarea>
                 </div>
                 <div className="mt-3">
                   <label>
@@ -263,7 +292,6 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">Date </label>
               <input
-              
                 defaultValue={previewData.technician_date}
                 readOnly
                 type="text"
@@ -273,7 +301,6 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">For Vehicle Owner </label>
               <input
-              
                 defaultValue={previewData.vehicle_owner}
                 readOnly
                 type="text"

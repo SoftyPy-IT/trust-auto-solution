@@ -31,17 +31,18 @@ const Qutation = () => {
   const [noMatching, setNoMatching] = useState(null);
   const [reload, setReload] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [jobLoading, setJobLoading] = useState(false);
 
   useEffect(() => {
     if (job_no) {
-      setLoading(true);
+      setJobLoading(true);
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/invoice/${job_no}`
+        `http://localhost:5000/api/v1/jobCard/invoice/${job_no}`
       )
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
-          setLoading(false);
+          setJobLoading(false);
         });
     }
   }, [job_no]);
@@ -177,7 +178,7 @@ const Qutation = () => {
       }
       setLoading(true);
       const response = await axios.post(
-        "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
+        "http://localhost:5000/api/v1/quotation",
         values
       );
 
@@ -224,11 +225,11 @@ const Qutation = () => {
       return;
     }
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
+      "http://localhost:5000/api/v1/quotation",
       values
     );
     if (response.data.message === "Successfully quotation post") {
-      fetch("https://trust-auto-solution-server.vercel.app/api/v1/quotation")
+      fetch("http://localhost:5000/api/v1/quotation")
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -244,7 +245,7 @@ const Qutation = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
+    fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         setGetAllQuotation(data);
@@ -274,7 +275,7 @@ const Qutation = () => {
       try {
         
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
+          `http://localhost:5000/api/v1/quotation/one/${id}`,
           {
             method: "DELETE",
           }
@@ -456,7 +457,7 @@ const Qutation = () => {
     if (select === "SL No") {
       setLoading(true);
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`
+        `http://localhost:5000/api/v1/quotation/all`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -471,7 +472,7 @@ const Qutation = () => {
       };
       setLoading(true);
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`,
+        `http://localhost:5000/api/v1/quotation/all`,
         data
       );
       console.log(response.data);
@@ -506,57 +507,61 @@ const Qutation = () => {
       </div>
       <div className="mt-5">
         <form>
-          <div className="qutationForm invoicForm">
-            <div>
-              <label className="block">Order Number </label>
-              <input
-                onChange={(e) => setJob_no(e.target.value)}
-                autoComplete="off"
-                type="text"
-                placeholder="Order Number"
-                defaultValue={orderNo}
-                className="orderNumber"
-              />
-            </div>
-            <div>
-              <label className="block">Customer Name </label>
-              <input
-                autoComplete="off"
-                type="text"
-                placeholder="Customer Name"
-                defaultValue={jobCardData?.customer_name}
-              />
-            </div>
-
-            <div>
-              <label className="block">Car Number </label>
-              <input
-                defaultValue={jobCardData?.car_registration_no}
-                autoComplete="off"
-                type="text"
-                placeholder="Car Number"
-              />
-            </div>
-            <div>
-              <label className="block">Mobile Number </label>
-              <input
-                autoComplete="off"
-                type="text"
-                placeholder="Mobile Number "
-                defaultValue={jobCardData?.contact_number}
-              />
-            </div>
-            <div>
-              <label className="block">Date</label>
-              <input
-                defaultValue={jobCardData?.date}
-                autoComplete="off"
-                type="date"
-                placeholder="Date"
-                className="orderNumber"
-              />
-            </div>
+        <div>
+            <label className="block">Order Number </label>
+            <input
+              onChange={(e) => setJob_no(e.target.value)}
+              autoComplete="off"
+              type="text"
+              placeholder="Order Number"
+              defaultValue={orderNo}
+              className="orderNumber"
+            />
           </div>
+         {
+          jobLoading ? <div>Loading...</div> :  <div className="qutationForm invoicForm">
+          
+          <div>
+            <label className="block">Customer Name </label>
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Customer Name"
+              defaultValue={jobCardData?.customer_name}
+            />
+          </div>
+
+          <div>
+            <label className="block">Car Number </label>
+            <input
+              defaultValue={jobCardData?.car_registration_no}
+              autoComplete="off"
+              type="text"
+              placeholder="Car Number"
+            />
+          </div>
+          <div>
+            <label className="block">Mobile Number </label>
+            <input
+              autoComplete="off"
+              type="text"
+              placeholder="Mobile Number "
+              defaultValue={jobCardData?.contact_number}
+            />
+          </div>
+          <div>
+            <label className="block">Date</label>
+            <input
+              defaultValue={jobCardData?.date}
+              autoComplete="off"
+               
+              placeholder="Date"
+              className="orderNumber"
+              readOnly
+            />
+          </div>
+        </div>
+         }
 
           <div className="vehicleCard">Quotation Card </div>
           <div className="flex items-center justify-around labelWrap">

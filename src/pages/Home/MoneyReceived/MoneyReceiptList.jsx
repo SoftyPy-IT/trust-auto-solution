@@ -23,7 +23,7 @@ const MoneyReceiptList = () => {
   };
 
   useEffect(() => {
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
+    fetch(`http://localhost:5000/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -52,7 +52,7 @@ const MoneyReceiptList = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/invoice/one/${id}`,
+          `http://localhost:5000/api/v1/invoice/one/${id}`,
           {
             method: "DELETE",
           }
@@ -232,7 +232,7 @@ const MoneyReceiptList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -244,7 +244,7 @@ const MoneyReceiptList = () => {
         filterType,
       };
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`,
+        `http://localhost:5000/api/v1/invoice/all`,
         data
       );
       console.log(response.data);

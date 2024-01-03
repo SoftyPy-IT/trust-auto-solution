@@ -173,10 +173,7 @@ const UpdateQutation = () => {
           setReload(!reload);
         }
       })
-      .catch((error) => {
-        console.error("Error while making the POST request:", error);
-        // Handle the error here
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -349,7 +346,7 @@ const UpdateQutation = () => {
                         />
                       </div>
                       <div>
-                        <div className="  my-1">
+                        <div className="my-1">
                           <input type="text" 
                           placeholder="Amount"
                           defaultValue={total[i]}

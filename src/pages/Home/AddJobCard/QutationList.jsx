@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import Loading from "../../../components/Loading/Loading";
 const QutationList = () => {
   const [select, setSelect] = useState(null);
   const [getAllQuotation, setGetAllQuotation] = useState([]);
@@ -287,7 +288,7 @@ const QutationList = () => {
         </div>
         {loading ? (
           <div className="flex justify-center items-center text-xl">
-            Loading...
+          <Loading/>
           </div>
         ) : (
           <div>

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
+import Loading from "../../../components/Loading/Loading";
 const Qutation = () => {
   const [select, setSelect] = useState(null);
 
@@ -729,7 +730,7 @@ const Qutation = () => {
         </div>
         {loading ? (
           <div className="flex justify-center items-center text-xl">
-            Loading...
+            <Loading/>
           </div>
         ) : (
           <div>

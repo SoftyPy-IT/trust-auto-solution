@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../../../components/Loading/Loading";
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
   const [jobNo, setJobNo] = useState(previousPostData.job_no);
@@ -1005,7 +1006,7 @@ const AddJobCard = () => {
 
       {loading ? (
         <div className="flex justify-center items-center text-xl">
-          Loading...
+        <Loading/>
         </div>
       ) : (
         <div>

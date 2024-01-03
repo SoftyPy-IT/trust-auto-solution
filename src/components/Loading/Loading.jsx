@@ -10,7 +10,7 @@ useEffect(() => {
   import("@lottiefiles/lottie-player");
 });
     return (
-        <div className=" min-h-screen w-[400px] mx-auto ">
+        <div className=" min-h-screen w-[350px] mx-auto ">
             <lottie-player
                     id="firstLottie"
                     ref={ref}

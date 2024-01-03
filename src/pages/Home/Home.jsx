@@ -38,6 +38,7 @@ import bill from '../../../public/assets/bill.png'
 import './Home.css'
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 const Home = () => {
   const [expanded, setExpanded] = React.useState(false);
   const [salesData, setSalesData] = useState([]);
@@ -164,7 +165,6 @@ const Home = () => {
             <h2 className="text-[#654FC3]">Admin Dashboard</h2>
           </div>
         </div>
-
         <div className="nameWrap downWrap  px-3">
           <div className="value">
             <div className="valueWrap firstCard">

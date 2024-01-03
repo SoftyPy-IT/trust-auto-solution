@@ -1,0 +1,27 @@
+import { useEffect, useRef } from "react";
+
+
+
+
+const Loading = () => {
+
+const ref = useRef(null);
+useEffect(() => {
+  import("@lottiefiles/lottie-player");
+});
+    return (
+        <div className=" min-h-screen w-[400px] mx-auto ">
+            <lottie-player
+                    id="firstLottie"
+                    ref={ref}
+                    autoplay
+                    loop
+                    mode="normal"
+                    src="/loading.json"
+                    className="animation"
+                  ></lottie-player>
+        </div>
+    );
+};
+
+export default Loading;

@@ -54,8 +54,10 @@ const AddJobCard = () => {
   const [filterType, setFilterType] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
   const formRef = useRef();
   const username = "683231669175";
+
 
   const handleAddToCard = async (e) => {
     e.preventDefault();
@@ -71,7 +73,7 @@ const AddJobCard = () => {
       mileage: mileage,
       color: color,
       engine_no: engineNo,
-      reference_number: reference,
+      reference_name: reference,
       company_name: companyName,
       vehicle_category: vehicleCategory,
       customer_name: customerName,
@@ -87,7 +89,6 @@ const AddJobCard = () => {
       technician_date: technicianDate,
       vehicle_owner: owner,
     };
-    console.log(values)
     const hasQuotationNullValues = Object.values(values).some(
       (val) => val === null
     );
@@ -101,7 +102,6 @@ const AddJobCard = () => {
       "http://localhost:5000/api/v1/jobCard",
       values
     );
-    console.log(response);
     if (response.data.message === "Successfully add to card post") {
       setLoading(false);
       const newJobNo = jobNo + 1;
@@ -109,9 +109,10 @@ const AddJobCard = () => {
       setReload(!reload);
       toast.success("Add to job card successful.");
       formRef.current.reset();
-      // reset();
+      setError(null)
+      
     }
-    // console.log(response);
+     
   };
 
   const navigate = useNavigate();
@@ -130,7 +131,7 @@ const AddJobCard = () => {
       mileage: mileage,
       color: color,
       engine_no: engineNo,
-      reference_number: reference,
+      reference_name: reference,
       company_name: companyName,
       vehicle_category:vehicleCategory,
       customer_name: customerName,
@@ -177,7 +178,7 @@ const AddJobCard = () => {
       // formRef.current.reset()
       reset();
     }
-    console.log(response);
+     
   };
   const handleQuotation = async (e) => {
     e.preventDefault();
@@ -193,7 +194,7 @@ const AddJobCard = () => {
       mileage: mileage,
       color: color,
       engine_no: engineNo,
-      reference_number: reference,
+      reference_name: reference,
       company_name: companyName,
       vehicle_category:vehicleCategory,
       customer_name: customerName,
@@ -246,7 +247,7 @@ const AddJobCard = () => {
       mileage: mileage,
       color: color,
       engine_no: engineNo,
-      reference_number: reference,
+      reference_name: reference,
       company_name: companyName,
       vehicle_category:vehicleCategory,
       customer_name: customerName,
@@ -349,7 +350,7 @@ const AddJobCard = () => {
       try {
         
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
+          `http://localhost:5000/api/v1/jobCard/one/${id}`,
           {
             method: "DELETE",
           }
@@ -531,37 +532,39 @@ const AddJobCard = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      setLoading(true);
+      setSearchLoading(true);
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+        `http://localhost:5000/api/v1/jobCard/all/${username}`
       )
         .then((res) => res.json())
         .then((data) => {
           setAllJobCard(data);
           setNoMatching(null);
-          setLoading(false);
+          setSearchLoading(false);
         });
     } else {
       const data = {
         select,
         filterType,
       };
-      setLoading(true);
+      setSearchLoading(true);
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
+        `http://localhost:5000/api/v1/jobCard/all/${username}`,
         data
       );
 
       if (response.data.message === "Filter successful") {
         setAllJobCard(response.data.result);
         setNoMatching(null);
-        setLoading(false);
+        setSearchLoading(false);
       }
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
       }
     }
   };
+  const currentDate = new Date().toISOString().split('T')[0];
+  
   return (
     <div className="addJobCardWraps">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
@@ -603,6 +606,7 @@ const AddJobCard = () => {
                 autoComplete="off"
                 type="date"
                 placeholder="Date"
+                max={currentDate}
               />
             </div>
           </div>
@@ -624,10 +628,10 @@ const AddJobCard = () => {
               
               <div className="flex items-center inputSelectWrap">
                 <select  onChange={(e) => setCarReg(e.target.value)} >
-                  <option value="Reg">Select </option>
-                  <option value="Reg">DM KHA</option>
-                  <option value="Reg">DM KHA</option>
-                  <option value="Reg">DM KHA</option>
+                  <option  value="select">Select </option>
+                  <option value="DM KHA">DM KHA</option>
+                  <option value="DM KHA">DM KHA</option>
+                  <option value="DM KHA">DM KHA</option>
                 </select>
                <input
                 onChange={(e) => setRegistration(e.target.value)}
@@ -644,7 +648,6 @@ const AddJobCard = () => {
               <input
                 onChange={(e) => setCarModel(e.target.value)}
                 required
-                // name="car_model"
                 autoComplete="off"
                 type="text"
                 placeholder="Vehicle Model (N)"
@@ -664,7 +667,6 @@ const AddJobCard = () => {
             <div>
               <label>Mileage <span className="requiredStart">*</span> </label>
               <input
-                // {...register("mileage", { required: true })}
                 onChange={(e) => setMileage(e.target.value)}
                 required
                 autoComplete="off"
@@ -677,7 +679,6 @@ const AddJobCard = () => {
             <div>
               <label>Color & Code <span className="requiredStart">*</span> </label>
               <input
-                // {...register("color", { required: true })}
                 onChange={(e) => setColor(e.target.value)}
                 required
                 autoComplete="off"
@@ -699,7 +700,6 @@ const AddJobCard = () => {
             <div>
               <label>Reference Name</label>
               <input
-                // {...register("reference_number", { required: true })}
                 onChange={(e) => setReference(e.target.value)}
                 required
                 autoComplete="off"
@@ -795,7 +795,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value}
                   className="textEditor"
-                  onChange={(e) => setValue(e.target.value)}
+                  onChange={ setValue }
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -822,7 +822,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value2}
                   className="textEditor"
-                  onChange={(e) => setValue2(e.target.value)}
+                  onChange={ setValue2 }
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -842,7 +842,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value3}
                   className="textEditor"
-                  onChange={(e) => setValue3(e.target.value)}
+                  onChange={ setValue3 }
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -927,12 +927,12 @@ const AddJobCard = () => {
             <div>
               <label>Date </label>
               <input
-                // {...register("technician_date", { required: true })}
                 onChange={(e) => setTechnicianDate(e.target.value)}
                 required
                 autoComplete="off"
                 type="date"
                 placeholder="Date"
+                min={currentDate}
               />
             </div>
             <div>
@@ -954,7 +954,7 @@ const AddJobCard = () => {
           <div className="buttonGroup mt-5">
             <div>
               {/* <Link to={`/dashboard/preview?${id}`}> */}
-              <button onClick={handlePreview}>Preview</button>
+              <button disabled={loading} onClick={handlePreview}>Preview</button>
               {/* </Link> */}
               {/* <Link to="/dashboard/preview"> */}
              <Link  to="/dashboard/preview"> <button>Download</button></Link>
@@ -963,14 +963,14 @@ const AddJobCard = () => {
               <Link  to="/dashboard/preview"> <button>Print</button></Link>
               {/* </Link> */}
               {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
-              <button onClick={handleQuotation}>Quotation</button>
+              <button disabled={loading} onClick={handleQuotation}>Quotation</button>
               {/* </Link> */}
               {/* <Link to="/dashboard/invoice"> */}{" "}
-              <button onClick={handleInvoice}>Invoice</button>
+              <button disabled={loading} onClick={handleInvoice}>Invoice</button>
               {/* </Link> */}
             </div>
             <div className="submitQutationBtn">
-              <button onClick={handleAddToCard} type="submit" className="">
+              <button disabled={loading} onClick={handleAddToCard} type="submit" className="">
                 Add To Job Card{" "}
               </button>
             </div>
@@ -1004,7 +1004,7 @@ const AddJobCard = () => {
         </div>
       </div>
 
-      {loading ? (
+      {searchLoading ? (
         <div className="flex justify-center items-center text-xl">
         <Loading/>
         </div>

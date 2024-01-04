@@ -8,42 +8,50 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const UpdateJobCard = () => {
-  const [singleCard, setSingleCard] = useState({})
+  const [carRegNo, setCarRegNo] = useState(null);
+  const [vehicleCategory, setVehicleCategory] = useState(null);
+  const [singleCard, setSingleCard] = useState({});
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
   const [formattedDate, setFormattedDate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [select, setSelect] = useState(false);
+  const [dateSelect, setDateSelect] = useState(false);
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const id = new URLSearchParams(location.search).get("id");
 
   useEffect(() => {
     if (id) {
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`)
+      setLoading(true);
+      fetch(`http://localhost:5000/api/v1/jobCard/one/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setSingleCard(data);
-          console.log(data);
+          setLoading(false);
         });
     }
   }, [id]);
 
   const onSubmit = async (data) => {
-    
-  const values = {
+    const values = {
       username: singleCard.username,
       job_no: singleCard.job_no,
-      date:  formattedDate || singleCard.date,
-      vin_no: data.vin_no || singleCard.vin_no,
-      car_registration_no: data.car_registration_no || singleCard.car_registration_no,
+      date: formattedDate || singleCard.date,
+      chassis_no: data.chassis_no || singleCard.chassis_no,
+      carReg_no: carRegNo || singleCard.carReg_no,
+      car_registration_no:
+        data.car_registration_no || singleCard.car_registration_no,
       car_model: data.car_model || singleCard.car_model,
       car_make: data.car_make || singleCard.car_make,
       mileage: data.mileage || singleCard.mileage,
       color: data.color || singleCard.color,
       engine_no: data.engine_no || singleCard.engine_no,
-      reference_number: data.reference_number || singleCard.reference_number,
+      reference_name: data.reference_name || singleCard.reference_name,
       company_name: data.company_name || singleCard.company_name,
+      vehicle_category: vehicleCategory || singleCard.vehicle_category,
       customer_name: data.customer_name || singleCard.customer_name,
       contact_number: data.contact_number || singleCard.contact_number,
       driver_name: data.driver_name || singleCard.driver_name,
@@ -51,19 +59,22 @@ const UpdateJobCard = () => {
       vehicle_interior_parts: value || singleCard.vehicle_interior_parts,
       reported_defect: value2 || singleCard.reported_defect,
       reported_action: value3 || singleCard.reported_action,
-      vehicle_body_report: data.vehicle_body_report || singleCard.vehicle_body_report,
+      vehicle_body_report:
+        data.vehicle_body_report || singleCard.vehicle_body_report,
       technician_name: data.technician_name || singleCard.technician_name,
-      technician_signature: data.technician_signature || singleCard.technician_signature,
+      technician_signature:
+        data.technician_signature || singleCard.technician_signature,
       technician_date: data.technician_date || singleCard.technician_date,
       vehicle_owner: data.vehicle_owner || singleCard.vehicle_owner,
     };
-
+    setLoading(true);
     const response = await axios.put(
-      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
+      `http://localhost:5000/api/v1/jobCard/one/${id}`,
       values
     );
     if (response.data.message === "Successfully update card.") {
-       navigate("/dashboard/addjob")
+      navigate("/dashboard/addjob");
+      setLoading(false);
     }
   };
 
@@ -71,15 +82,20 @@ const UpdateJobCard = () => {
     const rawDate = event.target.value;
     const parsedDate = new Date(rawDate);
     const day = parsedDate.getDate().toString().padStart(2, "0");
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0"); 
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
     const year = parsedDate.getFullYear();
     const formattedDate = `${day}-${month}-${year}`;
     setFormattedDate(formattedDate);
   };
 
+  const handleSelectReg = () => {
+    setSelect(true);
+  };
+  const currentDate = new Date().toISOString().split("T")[0];
+
   return (
     <div className="addJobCardWraps">
-       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
@@ -99,10 +115,10 @@ const UpdateJobCard = () => {
         <div>
           <div className=" jobCardFormWrap">
             <div>
-              <label>Job No: <span className="requiredStart">*</span> </label>
+              <label>
+                Job No: <span className="requiredStart">*</span>{" "}
+              </label>
               <input
-                // {...register("job_no")}
-                // name="jobno"
                 autoComplete="off"
                 type="text"
                 placeholder="Job No"
@@ -114,73 +130,107 @@ const UpdateJobCard = () => {
               <div className="vehicleCard">Update Job Card </div>
             </div>
             <div>
-              <label>Date <span className="requiredStart">*</span>  </label>
-              <input
-                onChange={handleDateChange}
-                // name="date"
-                autoComplete="off"
-                type="date"
-                placeholder="Date"
-                defaultValue={singleCard.date}
-              />
+              <label>
+                Date <span className="requiredStart">*</span>{" "}
+              </label>
+
+              {!dateSelect && (
+                <>
+                  <div
+                    onClick={() => setDateSelect(true)}
+                    className=" cursor-pointer"
+                  >
+                    {singleCard.date}{" "}
+                  </div>
+                  <div>Calender icon</div>
+                </>
+              )}
+
+              {dateSelect && (
+                <input
+                  onChange={handleDateChange}
+                  autoComplete="off"
+                  type="date"
+                  placeholder="Date"
+                  defaultValue={singleCard.date}
+                  max={currentDate}
+                />
+              )}
             </div>
           </div>
           <div className="jobCardSingleForm jobCardSingleForm2 mt-8">
             <div>
-              <label>Chassis No <span className="requiredStart">*</span>  </label>
+              <label>
+                Chassis No <span className="requiredStart">*</span>{" "}
+              </label>
               <input
-                {...register("vin_no")}
-                // name="vinno"
+                {...register("chassis_no")}
                 autoComplete="off"
                 type="text"
                 placeholder="Chassis No"
-                defaultValue={singleCard.vin_no}
+                defaultValue={singleCard.chassis_no}
               />
             </div>
             <div>
-              <label>Car Registration No <span className="requiredStart">*</span>  </label>
-             
-                <div className="flex items-center inputSelectWrap">
-                <select>
-                  <option value="Reg">Select </option>
-                  <option value="Reg">DM KHA</option>
-                  <option value="Reg">DM KHA</option>
-                  <option value="Reg">DM KHA</option>
-                </select>
-               <input
-                className="registrationForm"
-                autoComplete="off"
-                type="text"
-                placeholder="Car Registration"
-                defaultValue={singleCard.car_registration_no}
-              />
+              <label>
+                Car Registration No <span className="requiredStart">*</span>{" "}
+              </label>
+
+              <div className="flex items-center inputSelectWrap">
+                {!select && !carRegNo && (
+                  <div onClick={handleSelectReg} className="px-7 text-sm">
+                    {singleCard.carReg_no}
+                  </div>
+                )}
+                {select && (
+                  <select value={singleCard.carReg_no} onChange={(e) => setCarRegNo(e.target.value)}>
+                    <option value="Reg">Select </option>
+                    <option value="Reg">DM KHA</option>
+                    <option value="Reg">DM KHA</option>
+                    <option value="Reg">DM KHA</option>
+                  </select>
+                )}
+
+                <input
+                  className="registrationForm"
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Car Registration"
+                  defaultValue={singleCard.car_registration_no}
+                />
               </div>
             </div>
             <div>
-              <label>Vehicle Model <span className="requiredStart">*</span> </label>
+              <label>
+                Vehicle Model <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("car_model")}
                 // name="carmodel"
                 autoComplete="off"
                 type="text"
                 placeholder="Vehicle Model"
-                defaultValue={singleCard.car_model}
+                defaultValue={singleCard.vehicle_model}
               />
             </div>
 
             <div>
-              <label>Vehicle Brand <span className="requiredStart">*</span>  </label>
+              <label>
+                Vehicle Brand <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("car_make")}
                 // name="carmake"
                 autoComplete="off"
                 type="text"
                 placeholder="Cehicle Brand"
-                defaultValue={singleCard.car_make}
+                defaultValue={singleCard.vehicle_brand}
               />
             </div>
             <div>
-              <label>Mileage <span className="requiredStart">*</span>  </label>
+              <label>
+                Mileage <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("mileage")}
                 // name="meleage"
@@ -193,7 +243,9 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardSingleForm jobCardSingleForm2">
             <div>
-              <label>Color & Code <span className="requiredStart">*</span> </label>
+              <label>
+                Color & Code <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("color")}
                 // name="color"
@@ -218,27 +270,29 @@ const UpdateJobCard = () => {
             <div>
               <label>Reference Name </label>
               <input
-                {...register("reference_number")}
+                {...register("reference_name")}
                 // name="reference"
                 autoComplete="off"
                 type="text"
                 placeholder="Reference Name "
-                defaultValue={singleCard.reference_number}
+                defaultValue={singleCard.reference_name}
               />
             </div>
             <div>
               <label>Company Name </label>
               <input
-                {...register("reference_number")}
+                {...register("company_name")}
                 // name="reference"
                 autoComplete="off"
                 type="text"
                 placeholder="Company Name "
-                defaultValue={singleCard.reference_number}
+                defaultValue={singleCard.company_name}
               />
             </div>
             <div>
-              <label>Vehicle Category <span className="requiredStart">*</span>  </label>
+              <label>
+                Vehicle Category <span className="requiredStart">*</span>{" "}
+              </label>
               {/* <input
                 {...register("company_name")}
                 // name="cname"
@@ -247,8 +301,18 @@ const UpdateJobCard = () => {
                 placeholder="Company Name"
                 defaultValue={singleCard.company_name}
               /> */}
-               <select autoComplete="off">
-                <option value="Select Vehicle Category ">Select Vehicle Category </option>
+              <select
+                value={
+                  vehicleCategory
+                    ? vehicleCategory
+                    : singleCard.vehicle_category
+                }
+                onChange={(e) => setVehicleCategory(e.target.value)}
+                autoComplete="off"
+              >
+                <option value="Select Vehicle Category ">
+                  Select Vehicle Category{" "}
+                </option>
                 <option value="Sedans">Sedans</option>
                 <option value="Crossovers">Crossovers</option>
                 <option value="Sports">Sports</option>
@@ -395,34 +459,37 @@ const UpdateJobCard = () => {
                 <img src={car} alt="car" />
               </div>
               <div className="mt-3">
-              <h4 className="text-xl font-bold capitalize">Legend</h4>
-               <div className="legend">
-                
-               <ol>
-                  <li>Scratch</li>
-                  <li>Chip</li>
-                  <li>Respainted</li>
-                  <li>New Panel Filter </li>
-                  <li>Scratch</li>
-                </ol>
-                <ol>
-                  <li>Scratch</li>
-                  <li>Chip</li>
-                  <li>Respainted</li>
-                  <li>New Panel Filter </li>
-                  <li>Scratch</li>
-                </ol>
-               </div>
+                <h4 className="text-xl font-bold capitalize">Legend</h4>
+                <div className="legend">
+                  <ol>
+                    <li>Scratch</li>
+                    <li>Chip</li>
+                    <li>Respainted</li>
+                    <li>New Panel Filter </li>
+                    <li>Scratch</li>
+                  </ol>
+                  <ol>
+                    <li>Scratch</li>
+                    <li>Chip</li>
+                    <li>Respainted</li>
+                    <li>New Panel Filter </li>
+                    <li>Scratch</li>
+                  </ol>
+                </div>
               </div>
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
-                <textarea defaultValue={singleCard.vehicle_body_report}></textarea>
+                <textarea
+                  defaultValue={singleCard.vehicle_body_report}
+                ></textarea>
               </div>
             </div>
           </div>
           <div className="jobCardSingleForm">
             <div>
-              <label>Technician Name <span className="requiredStart">*</span> </label>
+              <label>
+                Technician Name <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("technician_name")}
                 // name="tname"
@@ -433,7 +500,9 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Technician Signature <span className="requiredStart">*</span> </label>
+              <label>
+                Technician Signature <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("technician_signature")}
                 // name="tsignature"
@@ -445,14 +514,16 @@ const UpdateJobCard = () => {
               />
             </div>
             <div>
-              <label>Date <span className="requiredStart">*</span> </label>
+              <label>
+                Date <span className="requiredStart">*</span>{" "}
+              </label>
               <input
                 {...register("technician_date")}
-                // name="tdate"
                 autoComplete="off"
                 type="date"
                 placeholder="Date"
                 defaultValue={singleCard.technician_date}
+                min={currentDate}
               />
             </div>
             <div>
@@ -473,7 +544,7 @@ const UpdateJobCard = () => {
 
           <div className="buttonGroup updateJobCardBtn">
             <div className="submitQutationBtn flex items-center justify-center">
-              <button type="submit" className="">
+              <button disabled={loading} type="submit" className="">
                 Update Job Card{" "}
               </button>
             </div>

@@ -22,7 +22,7 @@ const Details = () => {
   useEffect(() => {
     if (id) {
       setLoading(true)
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/${id}`)
+      fetch(`http://localhost:5000/api/v1/invoice/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -53,7 +53,7 @@ const Details = () => {
   //   };
 
   //   const response = await axios.post(
-  //     "https://trust-auto-solution-server.vercel.app/api/v1/quotation",
+  //     "http://localhost:5000/api/v1/quotation",
   //     values
   //   );
 

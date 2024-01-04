@@ -20,7 +20,7 @@ const JobCardList = () => {
   const navigate = useNavigate();
   const username = "683231669175";
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     fetch(
       `http://localhost:5000/api/v1/jobCard/all/${username}`
     )
@@ -235,7 +235,7 @@ const JobCardList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      setLoading(true);
+      // setLoading(true);
       fetch(
         `http://localhost:5000/api/v1/jobCard/all/${username}`
       )
@@ -250,7 +250,7 @@ const JobCardList = () => {
         select,
         filterType,
       };
-      setLoading(true);
+      // setLoading(true);
       const response = await axios.post(
         `http://localhost:5000/api/v1/jobCard/all/${username}`,
         data

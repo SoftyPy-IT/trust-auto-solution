@@ -12,6 +12,7 @@ const Detail = () => {
   });
 const [qutation, setQutation] = useState()
 
+
   useEffect(() => {
     fetch('http://localhost:5000/api/v1/quotation/all')
     .then(res=>res.json())
@@ -25,7 +26,7 @@ const [qutation, setQutation] = useState()
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
-        <div ref={targetRef} className="py-5 px-5 invoicePrint">
+        <div ref={targetRef} className="p-5 invoicePrint">
          <div className="headerContainer">
          <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
             <div className="flex  justify-between items-center mb-2">
@@ -49,8 +50,8 @@ const [qutation, setQutation] = useState()
             <tbody>
               <tr>
                 <td>03</td>
-                <td>Jahid Hasan</td>
-                <td>554444</td>
+                <td>Aminul Hoque </td>
+                <td>58885</td>
                 <td>019747444</td>
               </tr>
             </tbody>

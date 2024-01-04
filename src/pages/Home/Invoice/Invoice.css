@@ -299,11 +299,9 @@
 	}
 }
 
-
-
 @media print {
 	body {
-		background-color: #fff; 
+		background-color: #fff;
 	}
 
 	.invoicePrintWrap {
@@ -313,14 +311,14 @@
 
 	.buttonGroup,
 	.printInvoiceBtnGroup {
-		display: none; 
+		display: none;
 	}
 
 	.invoiceTable2 th,
 	.invoiceTable2 td {
-		padding: 10px; 
-		margin: 0; 
-		font-size: 12px; 
+		padding: 10px;
+		margin: 0;
+		font-size: 12px;
 	}
 }
 .invoicTable td,

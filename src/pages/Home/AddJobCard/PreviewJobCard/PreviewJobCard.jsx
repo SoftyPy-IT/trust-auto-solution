@@ -53,10 +53,11 @@ const PreviewJobCard = () => {
     <main className="jobCardViewWrap">
       <div ref={componentRef}>
         <div ref={targetRef} className="p-5 jobCardPrint">
-          <div className="mx-auto text-center border-b-2 border-[#351E98]">
+         <div className="headerContainer">
+         <div className="mx-auto text-center border-b-2 border-[#351E98]">
             <div className="flex  justify-between items-center">
               <img className="w-[160px] " src={logo} alt="logo" />
-              <h2 className="trustAutoTitle printTitle">
+              <h2 className="trustAutoTitle ">
                 Trust Auto Solution{" "}
               </h2>
             </div>
@@ -222,7 +223,7 @@ const PreviewJobCard = () => {
                     {" "}
                     Vehicle Interior Parts, Papers, Tools, Meter Light & Others
                   </label>
-                  <div
+                  {/* <div
                     dangerouslySetInnerHTML={{
                       __html: previewData.reported_defect,
                     }}
@@ -231,7 +232,7 @@ const PreviewJobCard = () => {
                     dangerouslySetInnerHTML={{
                       __html: previewData.reported_action,
                     }}
-                  />
+                  /> */}
                   <textarea defaultValue={vehicleInterior} readOnly></textarea>
                 </div>
                 <div>
@@ -308,13 +309,15 @@ const PreviewJobCard = () => {
               />
             </div>
           </div>
+         </div>
 
-          <div className="customerSignatureWrap">
+         <div className="footerContainer">
+         <div className="customerSignatureWrap">
             <b className="customerSignatur">Customer Signature : </b>
             <b className="customerSignatur">Trust Auto Solution</b>
           </div>
           <hr className="my-3" />
-          <div className="text-center mt-3 ">
+          <div className="text-center  ">
             <p className="text-xs">
               <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
               www.trustautosolution.com
@@ -325,6 +328,7 @@ const PreviewJobCard = () => {
               trustautosolution@gmail.com{" "}
             </p>
           </div>
+         </div>
         </div>
       </div>
       <CommonButton />

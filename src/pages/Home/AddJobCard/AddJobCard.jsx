@@ -107,8 +107,8 @@ const AddJobCard = () => {
       setJobNo(newJobNo);
       setReload(!reload);
       toast.success("Add to job card successful.");
-      setError(null)
       formRef.current.reset();
+      setError(null)
       
     }
      
@@ -177,7 +177,7 @@ const AddJobCard = () => {
       // formRef.current.reset()
       reset();
     }
-    console.log(response);
+     
   };
   const handleQuotation = async (e) => {
     e.preventDefault();

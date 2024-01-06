@@ -14,7 +14,7 @@ const [invoice, setInvoice] = useState()
 console.log(invoice)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/invoice/all')
+    fetch('https://trust-auto-solution-server.vercel.app/api/v1/invoice/all')
     .then(res=>res.json())
     .then(data=>{
       setInvoice(data)

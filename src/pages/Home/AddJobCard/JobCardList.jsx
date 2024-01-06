@@ -22,7 +22,7 @@ const JobCardList = () => {
   useEffect(() => {
     // setLoading(true);
     fetch(
-      `http://localhost:5000/api/v1/jobCard/all/${username}`
+      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -54,7 +54,7 @@ const JobCardList = () => {
       try {
         
         const res = await fetch(
-          `http://localhost:5000/api/v1/jobCard/one/${id}`,
+          `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
           {
             method: "DELETE",
           }
@@ -237,7 +237,7 @@ const JobCardList = () => {
     if (select === "SL No") {
       // setLoading(true);
       fetch(
-        `http://localhost:5000/api/v1/jobCard/all/${username}`
+        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -252,7 +252,7 @@ const JobCardList = () => {
       };
       // setLoading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/v1/jobCard/all/${username}`,
+        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
         data
       );
 

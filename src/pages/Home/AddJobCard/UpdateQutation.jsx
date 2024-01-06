@@ -45,7 +45,7 @@ const UpdateQutation = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/quotation/one/${id}`)
+    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`)
       .then((res) => res.json())
       .then((data) => setSpecificInvoice(data));
   }, [id, reload]);
@@ -149,7 +149,7 @@ const UpdateQutation = () => {
         return;
       }
       const response = await axios.put(
-        `http://localhost:5000/api/v1/quotation/one/${id}`,
+        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
         values
       );
 
@@ -166,7 +166,7 @@ const UpdateQutation = () => {
 
   const handleRemoveButton = (i) => {
     axios
-      .put(`http://localhost:5000/api/v1/quotation/${id}`, { index: i })
+      .put(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/${id}`, { index: i })
       .then((response) => {
         console.log(response.data.message);
         if (response.data.message === "Description deleted successfully") {

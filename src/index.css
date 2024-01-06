@@ -13,7 +13,7 @@
 
 
 
-body {
+html, body {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	font-family: 'Poppins', sans-serif;
@@ -129,6 +129,9 @@ input:focus {
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
  transition: all 1s ease !important;
 }
+
+
+
 
 @media only screen and (max-width: 1024px) {
 	.activeDrawer,

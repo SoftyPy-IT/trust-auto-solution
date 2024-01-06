@@ -25,7 +25,7 @@ const ViewInvoice = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/v1/invoice/all`)
+    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         setGetAllInvoice(data);
@@ -54,7 +54,7 @@ const ViewInvoice = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/invoice/one/${id}`,
+          `https://trust-auto-solution-server.vercel.app/api/v1/invoice/one/${id}`,
           {
             method: "DELETE",
           }
@@ -233,7 +233,7 @@ const ViewInvoice = () => {
   const handleFilterType = async () => {
     if (select === "SL No") {
       setLoading(true);
-      fetch(`http://localhost:5000/api/v1/invoice/all`)
+      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -247,7 +247,7 @@ const ViewInvoice = () => {
       };
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/v1/invoice/all`,
+        `https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`,
         data
       );
       console.log(response.data);
@@ -288,9 +288,7 @@ const ViewInvoice = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center text-xl">
-          Loading...
-        </div>
+          <loading/>
       ) : (
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (

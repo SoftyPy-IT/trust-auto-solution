@@ -43,7 +43,7 @@
 //   };
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/api/v1/quotation/one/${id}`)
+//     fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`)
 //       .then((res) => res.json())
 //       .then((data) => setSpecificInvoice(data));
 //   }, [id]);
@@ -147,7 +147,7 @@
 //         return;
 //       }
 //       const response = await axios.put(
-//         `http://localhost:5000/api/v1/quotation/one/${id}`,
+//         `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
 //         values
 //       );
 

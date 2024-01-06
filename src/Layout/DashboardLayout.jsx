@@ -20,9 +20,14 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Layout.css'
 import { Home, Logout, Receipt, CurrencyExchange, ShoppingBag } from '@mui/icons-material'
+import { animateScroll as scroll } from 'react-scroll';
+import { HiArrowNarrowUp } from "react-icons/hi";
+
+
+
 const DashboardLayout = () => {
 	const [expanded, setExpanded] = useState(false);
 	const navRef = useRef()
@@ -34,6 +39,27 @@ const DashboardLayout = () => {
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
 	};
+
+	useEffect(() => {
+		const handleScroll = () => {
+		  const button = document.getElementById('button')
+		 if(window.scrollY > 200){
+		   button.classList.add('scrollToTopBtn')
+		  }
+		  else{
+		  button.classList.remove('scrollToTopBtn')
+		 }
+	
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	  }, []);
+	
+	function scrollToTop(){
+	  window.scrollTo(0,0)
+	  scroll.scrollToTop({ smooth: true });
+	}
+	
 
 	return (
 		<main>
@@ -414,6 +440,7 @@ const DashboardLayout = () => {
 					</div>
 				</aside>
 			</div>
+			<button onClick={scrollToTop} id="button"><HiArrowNarrowUp size={25} /> </button>
 		</main>
 	)
 }

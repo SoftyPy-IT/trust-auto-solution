@@ -1,7 +1,7 @@
 import {  FaArrowRight, FaArrowLeft, FaTrashAlt, FaEdit } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-import img from "../../../../public/assets/team.png";
+import img from "../../../../public/assets/team.jpeg";
 const Employee = () => {
     return (
         <div className="mt-5 mb-24 w-full">

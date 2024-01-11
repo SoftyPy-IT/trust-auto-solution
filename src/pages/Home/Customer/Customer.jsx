@@ -1,5 +1,5 @@
 import { FaTrashAlt, FaEdit, FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import img from "../../../../public/assets/team.png";
+import img from "../../../../public/assets/team.jpeg";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 

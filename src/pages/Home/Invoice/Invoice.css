@@ -33,14 +33,14 @@
 .SearchBtn {
 	width: 100px;
 	height: 40px;
-	background: #351e98;
+	background: #42A1DA;
 	color: #fff;
 	border-radius: 5px;
 	margin-left: 10px;
 }
 
 .searcList select {
-	border: 1px solid #351e98;
+	border: 1px solid #42A1DA;
 	padding: 5px;
 	border-radius: 5px;
 	margin-right: 5px;
@@ -54,7 +54,7 @@
 
 .discountFieldWrap input,
 .discountFieldWrap span {
-	border: 1px solid #351e98;
+	border: 1px solid #42A1DA;
 	margin-bottom: 7px;
 	height: 45px;
 	border-radius: 5px;
@@ -105,7 +105,7 @@
 }
 
 .buttonGroup button {
-	background: #351e98;
+	background: #42A1DA;
 	color: #fff;
 	margin-right: 5px;
 	width: 100px;
@@ -115,7 +115,7 @@
 }
 
 .buttonGroup button:hover {
-	background-color: #b91c1c;
+	background-color: #37A248;
 }
 
 .submitQutationBtn {
@@ -124,7 +124,7 @@
 }
 
 .submitQutationBtn button {
-	background: #351e98;
+	background: #42A1DA;
 	color: white;
 	width: 200px;
 	height: 40px;
@@ -173,7 +173,7 @@
 }
 
 .printInvoiceBtnGroup button {
-	background: #351e98;
+	background: #42A1DA;
 	color: #fff;
 	border-radius: 20px;
 	margin-right: 5px;

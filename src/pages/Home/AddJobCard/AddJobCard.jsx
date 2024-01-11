@@ -99,7 +99,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -157,7 +157,7 @@ const AddJobCard = () => {
     }
    
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -166,7 +166,7 @@ const AddJobCard = () => {
       setJobNo(newJobNo);
       setReload(!reload);
       fetch(
-        "https://trust-auto-solution-server.vercel.app/api/v1/jobCard/recent"
+        "http://localhost:5000/api/v1/jobCard/recent"
       )
         .then((res) => res.json())
         .then((data) => {
@@ -221,7 +221,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -274,7 +274,7 @@ const AddJobCard = () => {
     }
     setLoading(true);
     const response = await axios.post(
-      "https://trust-auto-solution-server.vercel.app/api/v1/jobCard",
+      "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
@@ -292,7 +292,7 @@ const AddJobCard = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/jobCard`)
+    fetch(`http://localhost:5000/api/v1/jobCard`)
       .then((res) => res.json())
       .then((data) => {
         setPreviousPostData(data);
@@ -309,7 +309,7 @@ const AddJobCard = () => {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+      `http://localhost:5000/api/v1/jobCard/all/${username}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -350,7 +350,7 @@ const AddJobCard = () => {
       try {
         
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
+          `http://localhost:5000/api/v1/jobCard/one/${id}`,
           {
             method: "DELETE",
           }
@@ -455,10 +455,10 @@ const AddJobCard = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
-                  <FaEye className="editIcon" />
+                  <FaEye className="editIcon " />
                   {/* </Link> */}
                 </div>
               </td>
@@ -534,7 +534,7 @@ const AddJobCard = () => {
     if (select === "SL No") {
       setSearchLoading(true);
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+        `http://localhost:5000/api/v1/jobCard/all/${username}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -549,7 +549,7 @@ const AddJobCard = () => {
       };
       setSearchLoading(true);
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
+        `http://localhost:5000/api/v1/jobCard/all/${username}`,
         data
       );
 
@@ -567,7 +567,7 @@ const AddJobCard = () => {
   
   return (
     <div className="addJobCardWraps">
-      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">

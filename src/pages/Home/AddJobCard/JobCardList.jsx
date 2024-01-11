@@ -20,9 +20,9 @@ const JobCardList = () => {
   const navigate = useNavigate();
   const username = "683231669175";
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     fetch(
-      `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+      `http://localhost:5000/api/v1/jobCard/all/${username}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -54,7 +54,7 @@ const JobCardList = () => {
       try {
         
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/one/${id}`,
+          `http://localhost:5000/api/v1/jobCard/one/${id}`,
           {
             method: "DELETE",
           }
@@ -159,7 +159,7 @@ const JobCardList = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -235,9 +235,9 @@ const JobCardList = () => {
 
   const handleFilterType = async () => {
     if (select === "SL No") {
-      // setLoading(true);
+      setLoading(true);
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`
+        `http://localhost:5000/api/v1/jobCard/all/${username}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -250,9 +250,9 @@ const JobCardList = () => {
         select,
         filterType,
       };
-      // setLoading(true);
+      setLoading(true);
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/jobCard/all/${username}`,
+        `http://localhost:5000/api/v1/jobCard/all/${username}`,
         data
       );
 
@@ -271,7 +271,7 @@ const JobCardList = () => {
     <div>
       <div className="overflow-x-auto mt-20">
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
+          <h3 className="text-3xl font-bold mb-3">All Job Card List:</h3>
           <div className="flex items-center searcList">
             <select onChange={(e) => setSelect(e.target.value)}>
               <option value="SL No"> SL No</option>

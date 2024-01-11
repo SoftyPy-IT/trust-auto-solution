@@ -71,8 +71,8 @@ const DashboardLayout = () => {
 				<aside className="flex ">
 					<div
 						className={`${toggle
-							? `fixed overflow-y-scroll overflow-x-hidden drawwerLeftSide  h-screen text-lg font-semibold  bg-[#351E98] text-white`
-							: `fixed overflow-y-scroll overflow-x-hidden sideBarActive h-screen text-lg font-semibold  bg-[#351E98] text-white`}`}
+							? `fixed overflow-y-scroll overflow-x-hidden drawwerLeftSide  h-screen text-lg font-semibold  bg-[#2C3136] text-white`
+							: `fixed overflow-y-scroll overflow-x-hidden sideBarActive h-screen text-lg font-semibold  bg-[#2C3136] text-white`}`}
 					>
 						<div className="mb-5">
 							<NavLink to="/" className="shadow-md z-10">

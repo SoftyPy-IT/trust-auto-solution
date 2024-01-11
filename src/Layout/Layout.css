@@ -30,7 +30,7 @@
 .navActive,
 .activeToggle {
 	position: fixed;
-	background: #351e98;
+	background: #2c3136;
 	left: 3px;
 	padding: 5px;
 	border-top-right-radius: 5px;
@@ -51,7 +51,7 @@
 }
 .activeRightSideBarWrap {
 	width: 89px;
-	background: #351e98;
+	background: #2c3136;
 	height: 100% !important;
 	position: fixed;
 	display: flex;
@@ -69,7 +69,7 @@
 	position: absolute;
 	left: 57px;
 	z-index: 999999999 !important;
-	background: #351e98;
+	background: #2c3136;
 	width: 119px;
 	border-radius: 3px;
 	color: #fff;
@@ -86,13 +86,13 @@
 	cursor: pointer;
 }
 .dashboardAccordion {
-	background: #351e98 !important;
+	background: #2c3136 !important;
 	width: 250px !important;
 	color: #fff !important;
 	transition: all .5s ease-in-out;
 }
 .dashboardAccordion:hover {
-	background: #654fc3 !important;
+	background: #33383e !important;
 }
 .accordionTypoGrapy {
 	padding-left: 35px;
@@ -111,7 +111,7 @@
 	font-size: 14px;
 }
 .dashboardItems:hover {
-	background: #654fc3;
+	background: #33383e;
 	padding: 5px;
 	padding-left: 20px;
 	width: 100%;
@@ -119,12 +119,12 @@
 .active {
 	position: relative;
 	z-index: 999;
-	color: #948bc0;
+	color: #37a248;
 }
 .scrollToTopBtn {
 	width: 40px;
 	height: 40px;
-	background: #351E98;
+	background: #2c3136;
 	color: white;
 	position: fixed;
 	right: 10px;
@@ -133,11 +133,12 @@
 	border-radius: 100%;
 	display: grid;
 	place-items: center;
-  transition:all .5s ease;
-  animation-delay: .5s;
+	transition: all .5s ease;
+	animation-delay: .5s;
 }
-
-
+.accordionExpandIcon {
+	color: #fff !important;
+}
 
 @media only screen and (max-width: 1024px) {
 	.activeToggle {

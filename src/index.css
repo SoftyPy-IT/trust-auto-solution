@@ -11,9 +11,8 @@
 	padding: 0;
 }
 
-
-
-html, body {
+html,
+body {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	font-family: 'Poppins', sans-serif;
@@ -89,7 +88,6 @@ table {
 	border-right: 1px solid #ddd;
 	text-align: center;
 	font-size: 12px;
-	border-bottom: 1px solid #351e98;
 }
 .table :where(td):nth-last-of-type() {
 	border-bottom: 3px solid #ddd !important;
@@ -97,9 +95,14 @@ table {
 .table :where(th) {
 	border: 1px solid #fff;
 	text-align: center;
-	background: #351e98;
+	background: #42a1da;
 	font-size: 14px;
 	color: white;
+	transition: all .5s ease-in-out;
+}
+.table tr:hover {
+	background: #11e43438;
+	
 }
 .table {
 	width: 100%;
@@ -116,22 +119,18 @@ input:focus {
 	outline: none;
 }
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    height: 1em !important;
-	
+	height: 1em !important;
 }
 .css-ffg8md-MuiNativeSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-    padding: 4px 0 5px !important;
-    height: 40px !important;
+	padding: 4px 0 5px !important;
+	height: 40px !important;
 	width: 500px !important;
-    padding: 5px 14px !important;
+	padding: 5px 14px !important;
 }
 
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
- transition: all 1s ease !important;
+	transition: all 1s ease !important;
 }
-
-
-
 
 @media only screen and (max-width: 1024px) {
 	.activeDrawer,
@@ -148,5 +147,3 @@ input:focus {
 		left: 246px;
 	}
 }
-
-

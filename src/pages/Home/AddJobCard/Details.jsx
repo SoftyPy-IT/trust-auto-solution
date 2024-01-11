@@ -14,7 +14,7 @@ const [invoice, setInvoice] = useState()
 console.log(invoice)
 
   useEffect(() => {
-    fetch('https://trust-auto-solution-server.vercel.app/api/v1/invoice/all')
+    fetch('http://localhost:5000/api/v1/invoice/all')
     .then(res=>res.json())
     .then(data=>{
       setInvoice(data)
@@ -59,7 +59,6 @@ console.log(invoice)
         
            
           </div>
-
           <table className=" invoiceTable2 mt-5">
             <thead className="tableWrap">
               <tr>
@@ -72,19 +71,19 @@ console.log(invoice)
             </thead>
           <tbody>
           {
-            invoice?.map(data=> <tr key={data.id}>
-              <td>01</td>
+            invoice?.map((data, i)=> <tr key={data.id}>
+              <td>{i + 1 }</td>
                <td>{data.descriptions} </td>
                <td>{data.quantity} </td>
-               <td>555 </td>
+               <td>{data?.rate} </td>
                <td> {data.total_amount}/= </td>
               </tr>)
           }
-          <tr>
+          {/* <tr>
             <td></td>
             <td colSpan={3}> <b>Total Amount</b> </td>
             <td>145000/=</td>
-          </tr>
+          </tr> */}
         
 
           </tbody>
@@ -122,7 +121,8 @@ console.log(invoice)
         </Link>
      
        <Link to='/dashboard/qutation'> <button> Qutation </button></Link>
- 
+     
+
       </div>
     </main>
   );

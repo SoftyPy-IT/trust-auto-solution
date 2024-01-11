@@ -7,10 +7,13 @@ import {
   FaArrowRight,
   FaArrowLeft,
   FaEye,
+  FaFileInvoice,
 } from "react-icons/fa";
+import { FaUserGear } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../../../components/Loading/Loading";
+import { NotificationAdd } from "@mui/icons-material";
 const QutationList = () => {
   const [select, setSelect] = useState(null);
   const [getAllQuotation, setGetAllQuotation] = useState([]);
@@ -26,7 +29,7 @@ const QutationList = () => {
   };
   useEffect(() => {
     setLoading(true);
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/quotation/all`)
+    fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
         setGetAllQuotation(data);
@@ -55,7 +58,7 @@ const QutationList = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/quotation/one/${id}`,
+          `http://localhost:5000/api/v1/quotation/one/${id}`,
           {
             method: "DELETE",
           }
@@ -133,7 +136,10 @@ const QutationList = () => {
 
   const renderData = (getAllQuotation) => {
     return (
-      <table className="table">
+      <div className="px-5 py-10 bg-[#F1F3F6]">
+    
+
+      <table className="table bg-[#fff]">
         <thead className="tableWrap">
           <tr>
             <th>SL No</th>
@@ -157,7 +163,7 @@ const QutationList = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -183,6 +189,8 @@ const QutationList = () => {
           ))}
         </tbody>
       </table>
+      </div>
+     
     );
   };
 
@@ -234,7 +242,7 @@ const QutationList = () => {
   const handleFilterType = async () => {
     if (select === "SL No") {
       fetch(
-        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `
+        `http://localhost:5000/api/v1/quotation/all `
       )
         .then((res) => res.json())
         .then((data) => {
@@ -247,7 +255,7 @@ const QutationList = () => {
         filterType,
       };
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/quotation/all `,
+        `http://localhost:5000/api/v1/quotation/all `,
         data
       );
       console.log(response.data);
@@ -262,8 +270,34 @@ const QutationList = () => {
   };
   return (
     <div>
-      <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
+      <div className="overflow-x-auto mt-5">
+    <div className="flex justify-between border-b-2 pb-3">
+    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
+				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
+				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
+			</div>
+      <div className="flex  justify-end items-end">
+        <NotificationAdd size={30} className="mr-2"/>
+        <FaUserGear size={30} />
+      </div>
+    </div>
+			<div className="flex items-center justify-between my-3 mb-8">
+				<div className="flex items-center justify-center ">
+					<FaFileInvoice className="invoicIcon" />
+					<div className="ml-2">
+						<h3 className="text-2xl font-bold"> Quotation </h3>
+						<span>Manage Quotation </span>
+					</div>
+				</div>
+				<div className="productHome">
+					<span>Home / </span>
+					<span>Product / </span>
+					<span>New Product </span>
+				</div>
+			</div>
+			
+        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] p-10">
           <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
           <div className="flex items-center searcList">
             <select onChange={(e) => setSelect(e.target.value)}>

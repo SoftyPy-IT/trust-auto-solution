@@ -1,4 +1,4 @@
-import img from "../../../../public/assets/team.png";
+import img from '../../../../public/assets/team.jpeg'
 import { FaCheckCircle } from "react-icons/fa";
 const Profile = () => {
   return (

@@ -7,9 +7,13 @@ import {
   FaArrowRight,
   FaArrowLeft,
   FaEye,
+  FaFileInvoice,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import Loading from "../../../components/Loading/Loading";
+import { NotificationAdd } from "@mui/icons-material";
+import { FaUserGear } from "react-icons/fa6";
 const ViewInvoice = () => {
   const [select, setSelect] = useState(null);
   const [getAllInvoice, setGetAllInvoice] = useState([]);
@@ -23,9 +27,10 @@ const ViewInvoice = () => {
     navigate(`/dashboard/detail?id=${e}`);
   };
 
+  
   useEffect(() => {
     setLoading(true);
-    fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
+    fetch(`http://localhost:5000/api/v1/invoice/all`)
       .then((res) => res.json())
       .then((data) => {
         setGetAllInvoice(data);
@@ -54,7 +59,7 @@ const ViewInvoice = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `https://trust-auto-solution-server.vercel.app/api/v1/invoice/one/${id}`,
+          `http://localhost:5000/api/v1/invoice/one/${id}`,
           {
             method: "DELETE",
           }
@@ -132,7 +137,8 @@ const ViewInvoice = () => {
 
   const renderData = (getAllInvoice) => {
     return (
-      <table className="table">
+     <div className="px-5 py-14 bg-[#F1F3F6] ">
+       <table className="table bg-[#fff]">
         <thead className="tableWrap">
           <tr>
             <th>SL No</th>
@@ -182,6 +188,7 @@ const ViewInvoice = () => {
           ))}
         </tbody>
       </table>
+     </div>
     );
   };
 
@@ -233,7 +240,7 @@ const ViewInvoice = () => {
   const handleFilterType = async () => {
     if (select === "SL No") {
       setLoading(true);
-      fetch(`https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`)
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllInvoice(data);
@@ -247,7 +254,7 @@ const ViewInvoice = () => {
       };
       setLoading(true);
       const response = await axios.post(
-        `https://trust-auto-solution-server.vercel.app/api/v1/invoice/all`,
+        `http://localhost:5000/api/v1/invoice/all`,
         data
       );
       console.log(response.data);
@@ -262,7 +269,32 @@ const ViewInvoice = () => {
     }
   };
   return (
-    <div className="overflow-x-auto mt-20">
+    <div className="overflow-x-auto mt-5">
+       <div className="flex justify-between border-b-2 pb-3">
+    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
+				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
+				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
+			</div>
+      <div className="flex  justify-end items-end">
+        <NotificationAdd size={30} className="mr-2"/>
+        <FaUserGear size={30} />
+      </div>
+    </div>
+			<div className="flex items-center justify-between mt-5 mb-8">
+				<div className="flex items-center justify-center ">
+					<FaFileInvoice className="invoicIcon" />
+					<div className="ml-2">
+						<h3 className="text-2xl font-bold"> Quotation </h3>
+						<span>Manage Quotation </span>
+					</div>
+				</div>
+				<div className="productHome">
+					<span>Home / </span>
+					<span>Product / </span>
+					<span>New Product </span>
+				</div>
+			</div>
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
         <div className="flex items-center searcList">
@@ -288,7 +320,9 @@ const ViewInvoice = () => {
       </div>
 
       {loading ? (
-          <loading/>
+         <div className="flex justify-center items-center text-xl">
+         <Loading/>
+         </div>
       ) : (
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (

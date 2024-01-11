@@ -14,7 +14,7 @@ const [qutation, setQutation] = useState()
 
 
   useEffect(() => {
-    fetch('https://trust-auto-solution-server.vercel.app/api/v1/quotation/all')
+    fetch('http://localhost:5000/api/v1/quotation/all')
     .then(res=>res.json())
     .then(data=>{
       setQutation(data)

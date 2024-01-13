@@ -1,7 +1,8 @@
+ 
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import logo from "../../../../public/assets/logo.png";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 const UpdateQutation = () => {
   const [specificInvoice, setSpecificInvoice] = useState({});
@@ -20,7 +21,8 @@ const UpdateQutation = () => {
   const [error, setError] = useState("");
   const [dateHandle, setDateHandle] = useState(false);
   const [reload, setReload] = useState(false);
-
+  const [quantityIndex, setQuantityIndex] = useState(null);
+  const [rateIndex, setRateIndex] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const id = new URLSearchParams(location.search).get("id");
@@ -62,6 +64,8 @@ const UpdateQutation = () => {
     }
   };
   const handleQuantityChange = (index, value) => {
+    // console.log(index);
+    setQuantityIndex(index);
     const parsedValue = value === "" ? "" : parseFloat(value);
 
     if (!isNaN(parsedValue)) {
@@ -72,6 +76,7 @@ const UpdateQutation = () => {
     }
   };
   const handleRateChange = (index, value) => {
+    setRateIndex(index);
     const parsedValue = value === "" ? "" : parseFloat(value);
 
     if (!isNaN(parsedValue)) {
@@ -81,6 +86,33 @@ const UpdateQutation = () => {
       updateTotal(index, quantity[index], parsedValue);
     }
   };
+
+  useEffect(() => {
+    console.log(rateIndex)
+    console.log(quantityIndex)
+    if (rateIndex && rateIndex !== null && (quantityIndex === undefined || quantityIndex === null)) {
+      const quantityValue = specificInvoice?.quantity[rateIndex];
+      console.log(quantityValue)
+      setQuantity(quantityValue)
+      updateTotal(rateIndex, quantityValue, rate[rateIndex]);
+    } else {
+      handleQuantityChange();
+      
+    }
+
+    if (quantityIndex && quantityIndex !== null && rateIndex === undefined) {
+      const rateValue = specificInvoice?.rate[quantityIndex];
+      setRate(rateValue);
+      updateTotal(quantityIndex, quantity[quantityIndex], rateValue);
+    } else {
+       
+      handleRateChange();
+    }
+
+
+  }, [quantityIndex, rate, rateIndex, specificInvoice?.quantity]);
+
+   
 
   const updateTotal = (index, quantityValue, rateValue) => {
     const newTotal = [...total];
@@ -347,11 +379,11 @@ const UpdateQutation = () => {
                       </div>
                       <div>
                         <div className="my-1">
-                          <input type="text" 
-                          placeholder="Amount"
-                          defaultValue={total[i]}
+                          <input
+                            type="text"
+                            placeholder="Amount"
+                            defaultValue={total[i]}
                           />
-                          
                         </div>
                       </div>
                     </div>

@@ -22,7 +22,7 @@ const Details = () => {
   useEffect(() => {
     if (id) {
       setLoading(true)
-      fetch(`http://localhost:5000/api/v1/invoice/${id}`)
+      fetch(`http://localhost:5000/api/v1/quotation/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -32,6 +32,8 @@ const Details = () => {
     }
   }, [id]);
 
+
+  console.log(quotationPreview)
   // const handleAddToQuotation = async (e) => {
   //   e.preventDefault();
 
@@ -203,8 +205,8 @@ const Details = () => {
           <div></div>
           <div>
            <div className="flex items-center justify-between">
-           <button className="invoiceOrderBtn">SL No:40</button>
-           <b>Date: 12/12/23 </b>
+           <button className="invoiceOrderBtn"> {quotationPreview?.job_no}</button>
+           <b>Date: {quotationPreview?.date} </b>
            </div>
            <table className="invoicTable mt-5">
             <tr>
@@ -215,10 +217,10 @@ const Details = () => {
             </tr>
             <tbody>
               <tr>
-                <td>03</td>
-                <td>Jahid Hasan</td>
-                <td>554444</td>
-                <td>019747444</td>
+                <td>{quotationPreview.job_no}</td>
+                <td> {quotationPreview.customer_name}</td>
+                <td>{quotationPreview.car_registration_no}</td>
+                <td>{quotationPreview.contact_number}</td>
               </tr>
             </tbody>
            </table>

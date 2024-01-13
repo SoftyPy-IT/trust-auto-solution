@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { NotificationAdd } from "@mui/icons-material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
@@ -7,7 +8,9 @@ import {
   FaArrowRight,
   FaArrowLeft,
   FaEye,
+  FaFileInvoice,
 } from "react-icons/fa";
+import { FaUserGear } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 const MoneyReceiptList = () => {
@@ -156,7 +159,7 @@ const MoneyReceiptList = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -259,8 +262,34 @@ const MoneyReceiptList = () => {
   };
   return (
    
-      <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
+      <div className="overflow-x-auto mt-5">
+         <div className="flex justify-between border-b-2 pb-3">
+    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
+				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
+				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
+			</div>
+      <div className="flex  justify-end items-end">
+        <NotificationAdd size={30} className="mr-2"/>
+        <FaUserGear size={30} />
+      </div>
+    </div>
+			<div className="flex items-center justify-between mt-5 mb-8">
+				<div className="flex items-center justify-center ">
+					<FaFileInvoice className="invoicIcon" />
+					<div className="ml-2">
+						<h3 className="text-2xl font-bold"> Money Receipt </h3>
+						<span>Manage Money Receipt </span>
+					</div>
+				</div>
+				<div className="productHome">
+					<span>Home / </span>
+					<span>Product / </span>
+					<span>New Product </span>
+				</div>
+			</div>
+     
+        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
           <h3 className="text-3xl font-bold mb-3">Money Receipt List:</h3>
           <div className="flex items-center searcList">
             <select onChange={(e) => setSelect(e.target.value)}>

@@ -43,7 +43,7 @@ const DashboardLayout = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 		  const button = document.getElementById('button')
-		 if(window.scrollY > 200){
+		 if(window.scrollY > 50){
 		   button.classList.add('scrollToTopBtn')
 		  }
 		  else{

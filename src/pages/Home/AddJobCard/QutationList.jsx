@@ -282,6 +282,7 @@ const QutationList = () => {
         <FaUserGear size={30} />
       </div>
     </div>
+    
 			<div className="flex items-center justify-between my-3 mb-8">
 				<div className="flex items-center justify-center ">
 					<FaFileInvoice className="invoicIcon" />
@@ -297,7 +298,7 @@ const QutationList = () => {
 				</div>
 			</div>
 			
-        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] p-10">
+        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
           <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
           <div className="flex items-center searcList">
             <select onChange={(e) => setSelect(e.target.value)}>

@@ -30,7 +30,7 @@
 //         <div ref={targetRef}>
 //         <div  className="py-5 px-5 invoicePrint">
 //          <div className="headerContainer">
-//          <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+//          <div className=" mb-2 mx-auto text-center border-b-2 border-[#42A1DA] pb-2">
 //             <div className="flex  justify-between items-center mb-2">
 //               <img className="w-[150px] " src={logo} alt="logo" />
 //               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>

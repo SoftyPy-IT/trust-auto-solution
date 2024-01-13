@@ -7,10 +7,13 @@ import {
   FaArrowRight,
   FaArrowLeft,
   FaEye,
+  FaFileInvoice,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../../../components/Loading/Loading";
+import { NotificationAdd } from "@mui/icons-material";
+import { FaUserGear } from "react-icons/fa6";
 const JobCardList = () => {
   const [select, setSelect] = useState(null);
   const [allJobCard, setAllJobCard] = useState([]);
@@ -269,8 +272,35 @@ const JobCardList = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto mt-20">
-        <div className="flex items-center justify-between mb-5">
+      <div className="overflow-x-auto mt-5">
+      <div className="flex justify-between border-b-2 pb-3">
+    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
+				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
+				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
+			</div>
+      <div className="flex  justify-end items-end">
+        <NotificationAdd size={30} className="mr-2"/>
+        <FaUserGear size={30} />
+      </div>
+    </div>
+      <div className="flex items-center justify-between my-3 mb-8">
+				<div className="flex items-center justify-center ">
+					<FaFileInvoice className="invoicIcon" />
+					<div className="ml-2">
+						<h3 className="text-2xl font-bold"> Job Card </h3>
+						<span>Manage Job Card </span>
+					</div>
+				</div>
+				<div className="productHome">
+					<span>Home / </span>
+					<span>Product / </span>
+					<span>New Product </span>
+				</div>
+			</div>
+			
+       
+        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
           <h3 className="text-3xl font-bold mb-3">All Job Card List:</h3>
           <div className="flex items-center searcList">
             <select onChange={(e) => setSelect(e.target.value)}>

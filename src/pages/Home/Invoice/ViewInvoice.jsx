@@ -162,7 +162,7 @@ const ViewInvoice = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -285,8 +285,8 @@ const ViewInvoice = () => {
 				<div className="flex items-center justify-center ">
 					<FaFileInvoice className="invoicIcon" />
 					<div className="ml-2">
-						<h3 className="text-2xl font-bold"> Quotation </h3>
-						<span>Manage Quotation </span>
+						<h3 className="text-2xl font-bold"> Invoice </h3>
+						<span>Manage Invoice </span>
 					</div>
 				</div>
 				<div className="productHome">
@@ -295,7 +295,7 @@ const ViewInvoice = () => {
 					<span>New Product </span>
 				</div>
 			</div>
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
         <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
         <div className="flex items-center searcList">
           <select onChange={(e) => setSelect(e.target.value)}>

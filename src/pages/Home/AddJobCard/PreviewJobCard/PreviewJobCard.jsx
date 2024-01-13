@@ -54,7 +54,7 @@ const PreviewJobCard = () => {
       <div ref={componentRef}>
         <div ref={targetRef} className="p-5 jobCardPrint">
          <div className="headerContainer">
-         <div className="mx-auto text-center border-b-2 border-[#351E98]">
+         <div className="mx-auto text-center border-b-2 border-[#42A1DA]">
             <div className="flex  justify-between items-center">
               <img className="w-[160px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">

@@ -27,12 +27,12 @@
 }
 .showPassIcon {
 	font-size: 25px !important;
-	color: #351e98;
+	color: #42a1da;
 	cursor: pointer;
 }
 .singleSignupForm input {
 	width: 350px;
-	border: 1px solid #351e98;
+	border: 1px solid #42a1da;
 	border-radius: 5px;
 	padding: 10px;
 	margin-bottom: 10px;
@@ -44,7 +44,7 @@
 }
 .singleSignupForm button {
 	width: 300px;
-	background: #351e98;
+	background: #42a1da;
 	color: #fff;
 	height: 40px;
 	border-radius: 20px;

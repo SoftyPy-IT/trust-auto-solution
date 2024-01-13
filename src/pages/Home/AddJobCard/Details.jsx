@@ -11,7 +11,7 @@ const Detail = () => {
     content: () => componentRef.current,
   });
 const [invoice, setInvoice] = useState()
-console.log(invoice)
+
 
   useEffect(() => {
     fetch('http://localhost:5000/api/v1/invoice/all')
@@ -37,25 +37,39 @@ console.log(invoice)
           </div>
           <div>
            <div className="flex items-center justify-between">
-           <button className="invoiceOrderBtn">No:40</button>
+           <button className="invoiceOrderBtn">SL:40</button>
            <b>Date: 12/12/23 </b>
            </div>
-           <table className="invoicTable mt-5">
+           <div className="flex items-center justiyf-between">
+         <table className="invoicTable inVoiceTables mt-5">
             <tr>
-              <th>  Order Number</th>
-              <th>  Customer Name </th>
-              <th> Car Number </th>
-              <th> Mobile Number</th>
+              <th>  Name </th>
+              <th> Address </th>
             </tr>
             <tbody>
+              <tr className="borderNone">
+                <td >Al Amin </td>
+              </tr>
               <tr>
-                <td>03</td>
-                <td>Jahid Hasan</td>
-                <td>554444</td>
-                <td>019747444</td>
+                <td>Kuril Bishawroad, Dhaka-1229 </td>
               </tr>
             </tbody>
            </table>
+           <table className="invoicTable mt-5">
+            <tr>
+              <th>  Vehicle No </th>
+              <th>  Mileage  </th>
+            </tr>
+            <tbody>
+              <tr>
+                <td>055</td>
+              </tr>
+              <tr>
+                <td>5677 </td>
+              </tr>
+            </tbody>
+           </table>
+         </div>
         
            
           </div>

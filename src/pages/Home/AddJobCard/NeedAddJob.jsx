@@ -17,7 +17,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loading from "../../../components/Loading/Loading";
-import { FormControl, InputLabel, Select, TextField } from "@mui/material";
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
   const [jobNo, setJobNo] = useState(previousPostData.job_no);
@@ -611,55 +610,117 @@ const AddJobCard = () => {
               />
             </div>
           </div>
-         <div className="jobCardFieldWraps">
-         <div className="jobCardFieldLeftSide">
-          <h3 className="text-2xl mb-3 ">Company Information </h3>
+          <div className="jobCardSingleForm jobCardSingleForm2 mt-8">
             <div>
-              {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
-             
-              <TextField className="addJobInputField" onChange={(e) => setChassisNo(e.target.value)} label="Chassis No (T&N)" />
+              <label>Chassis No  <span className="requiredStart">*</span></label>
+              <input
+                onChange={(e) => setChassisNo(e.target.value)}
+                required
+                // {...register("chassis_no", { required: true })}
+                // name="chassis_no"
+                autoComplete="off"
+                type="text"
+                placeholder="Chassis No (T&N)"
+              />
             </div>
-            <div className="mt-3">
-              <div className="flex items-center">
-						<FormControl className="productField">
-							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select onChange={(e) => setCarReg(e.target.value)} native defaultValue="" id="grouped-native-select" label="Car Registration No  ">
-              <option  value="select">Select </option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-							</Select>
-						</FormControl>
-            <TextField onChange={(e) => setRegistration(e.target.value)}  label="Car R (T&N)" />
-					</div>
-            </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model" />
-            </div>
-
-            <div className="mt-3">
+            <div>
+              <label>Car Registration No  <span className="requiredStart">*</span></label>
               
-               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand " />
+              <div className="flex items-center inputSelectWrap">
+                <select  onChange={(e) => setCarReg(e.target.value)} >
+                  <option  value="select">Select </option>
+                  <option value="DM KHA">DM KHA</option>
+                  <option value="DM KHA">DM KHA</option>
+                  <option value="DM KHA">DM KHA</option>
+                </select>
+               <input
+                onChange={(e) => setRegistration(e.target.value)}
+                required
+                className="registrationForm"
+                autoComplete="off"
+                type="text"
+                placeholder="Car R (T&N)"
+              />
+              </div>
             </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"      onChange={(e) => setMileage(e.target.value)} label="Mileage (N) " />
+            <div>
+              <label>Vehicle Model <span className="requiredStart">*</span></label>
+              <input
+                onChange={(e) => setCarModel(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Vehicle Model (N)"
+              />
             </div>
 
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setColor(e.target.value)} label="Color & Code (T&N) " />
+            <div>
+              <label>Vehicle Brand <span className="requiredStart">*</span> </label>
+              <input
+                onChange={(e) => setCarMake(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Vehicle Brand (T&N)"
+              />
             </div>
-            <div className="mt-3">
-                <TextField  className="addJobInputField" onChange={(e) => setEngineNo(e.target.value)} label="ENGINE NO & CC (T&N) " />
+            <div>
+              <label>Mileage <span className="requiredStart">*</span> </label>
+              <input
+                onChange={(e) => setMileage(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Mileage (N)"
+              />
             </div>
-            
-            <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setCompanyName(e.target.value)} label="Company Name (T)" />
+          </div>
+          <div className="jobCardSingleForm jobCardSingleForm2">
+            <div>
+              <label>Color & Code <span className="requiredStart">*</span> </label>
+              <input
+                onChange={(e) => setColor(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Color & Code (T&N)"
+              />
             </div>
-            <div className="mt-3">
-              <FormControl className="addJobInputField">
-							<InputLabel htmlFor="grouped-native-select">Select Vehicle Category </InputLabel>
-							<Select onChange={(e) => setVehicleCategory(e.target.value)} native defaultValue="" id="grouped-native-select" label="Select Vehicle Category  ">
-              <option value="Select Vehicle Category ">Select Vehicle Category </option>
+            <div>
+              <label>Engine No & CC  <span className="requiredStart">*</span></label>
+              <input
+                onChange={(e) => setEngineNo(e.target.value)}
+                required
+                className="registrationForm"
+                autoComplete="off"
+                type="text"
+                placeholder="ENGINE NO & CC (T&N)"
+              />
+            </div>
+            <div>
+              <label>Reference Name</label>
+              <input
+                onChange={(e) => setReference(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Reference Name (T)"
+              />
+            </div>
+            <div>
+              <label>Company Name</label>
+              <input
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Company Name (T)"
+              />
+            </div>
+            <div>
+              <label>Vehicle Category  <span className="requiredStart">*</span></label>
+              <select autoComplete="off"  onChange={(e) => setVehicleCategory(e.target.value)}>
+                <option value="Select Vehicle Category ">Select Vehicle Category </option>
                 <option value="Sedans">Sedans</option>
                 <option value="Crossovers">Crossovers</option>
                 <option value="Sports">Sports</option>
@@ -673,31 +734,56 @@ const AddJobCard = () => {
                 <option value="Wagons">Wagons</option>
                 <option value="Small Cars ">Small Cars </option>
                 <option value="CPO ">CPO </option>
-							</Select>
-						</FormControl>
+              </select>
             </div>
-
           </div>
-         
-          <div className="jobCardFieldRightSide">
-          <h3 className="text-2xl mb-3 ">Customer Information </h3>
+          <div className="jobCardSingleForm">
             <div>
-              <TextField  className="addJobInputField"  onChange={(e) => setCustomerName(e.target.value)} label="Customer Name (T)" />
+              <label>Customer Name <span className="requiredStart">*</span> </label>
+              <input
+                // {...register("customer_name", { required: true })}
+                onChange={(e) => setCustomerName(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Customer Name (T)"
+              />
             </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setContactNo(e.target.value)} label="Contact No (N)" />
+            <div>
+              <label>Contact No <span className="requiredStart">*</span></label>
+              <input
+                // {...register("contact_number", { required: true })}
+                onChange={(e) => setContactNo(e.target.value)}
+                required
+                className="registrationForm"
+                autoComplete="off"
+                type="text"
+                placeholder="Contact No (N)"
+              />
             </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setDriverName(e.target.value)} label="Driver Name (T)" />
+            <div>
+              <label>Driver Name </label>
+              <input
+                // {...register("driver_name", { required: true })}
+                onChange={(e) => setDriverName(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Driver Name (T)"
+              />
             </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setPhoneNo(e.target.value)} label="Contact No (N)" />
-            </div>
-            <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setReference(e.target.value)} label="Reference Name (T) " />
+            <div>
+              <label>Phone No </label>
+              <input
+                // {...register("phone_number", { required: true })}
+                onChange={(e) => setPhoneNo(e.target.value)}
+                required
+                autoComplete="off"
+                type="text"
+                placeholder="Contact No (N)"
+              />
             </div>
           </div>
-         </div>
 
           <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">

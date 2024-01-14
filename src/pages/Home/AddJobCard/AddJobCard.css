@@ -15,11 +15,11 @@
 .vehicleReportLeftSide textarea {
 	outline: none;
 }
-.jobCardFormWrap input {
+/* .jobCardFormWrap input {
 	border: 1px solid #42A1DA;
 	padding: 5px;
 	border-radius: 10px;
-}
+} */
 
 .trustAuto {
 	font-family: 'Merriweather', serif;
@@ -30,7 +30,7 @@
 	color: #11054e;
 }
 
-.jobCardFormWrap label {
+/* .jobCardFormWrap label {
 	display: block;
 }
 .jobCardSingleForm {
@@ -41,18 +41,17 @@
 }
 .jobCardSingleForm label {
 	display: block;
-}
-.jobCardSingleForm input,
+} */
+/* .jobCardSingleForm input,
 .jobCardSingleForm select {
-	width: 18rem;
-	height: 3rem;
+	
 	border: 1px solid #42A1DA;
 	border-radius: 5px;
 	padding: 5px;
 }
 .jobCardSingleForm2 input::placeholder {
 	font-size: 13px !important;
-}
+} */
 .vehicleCard,
 .vehicleCard2 {
 	box-shadow: #42A1DA 0px 3px 2px 3px;
@@ -111,9 +110,9 @@
 
 .jobCardSingleForm2 input,
 .jobCardSingleForm2 select {
-	width: 14.4rem !important;
+	/* width: 14.4rem !important; */
 }
-.inputSelectWrap {
+/* .inputSelectWrap {
 	width: 14.4rem;
 	height: 3rem;
 	overflow: hidden;
@@ -121,11 +120,11 @@
 	border: 1px solid #42A1DA;
 	border-radius: 5px;
 	padding: 5px;
-}
-.inputSelectWrap input {
+} */
+/* .inputSelectWrap input {
 	border: none;
-	width: 12rem !important;
-}
+	 width: 12rem !important; 
+} */
 .requiredStart {
 	color: red;
 }
@@ -234,6 +233,27 @@
 	list-style-type: number;
 	font-size: 14px;
 }
+.addJobInputField{
+	width: 100% !important;
+}
+.jobCardFieldWraps{
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top:30px;
+}
+.jobCardFieldLeftSide, .jobCardFieldRightSide{
+width:50%;
+}
+.jobCardFieldLeftSide{
+	margin-right:5px;
+}
+.jobCardFieldRightSide{
+	margin-left:5px;
+}
+
+
+
 @media only screen and (max-width: 1024px) {
 	.jobCardSingleForm input {
 		width: 100% !important;
@@ -264,7 +284,7 @@
 		width: 12rem;
 	}
 	.jobCardFormWrap input {
-		width: 105px;
+		/* width: 105px; */
 	}
 	.buttonGroup button {
 		margin-bottom: 8px;

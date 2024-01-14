@@ -1,25 +1,33 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import logo from "../../../../public/assets/logo.png";
 import { useReactToPrint } from "react-to-print";
 import { usePDF } from "react-to-pdf";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const Detail = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-const [qutation, setQutation] = useState()
+  const location = useLocation();
+  const id = new URLSearchParams(location.search).get("id");
 
-
-  useEffect(() => {
-    fetch('http://localhost:5000/api/v1/quotation/all')
-    .then(res=>res.json())
-    .then(data=>{
-      setQutation(data)
-    })
-  }, []);
+  const [invoicePreview, setInvoicePreview] = useState({});
+  const [loading, setLoading] = useState(false);
+useEffect(() => {
+  if (id) {
+    setLoading(true);
+    fetch(`http://localhost:5000/api/v1/invoice/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setInvoicePreview(data);
+        setLoading(false);
+      });
+  }
+}, [id]);
 
 
 
@@ -37,8 +45,13 @@ const [qutation, setQutation] = useState()
           </div>
           <div>
            <div className="flex items-center justify-between">
+ 
+           <button className="invoiceOrderBtn"> {invoicePreview?.job_no}</button>
+           <b> {invoicePreview?.date}</b>
+ 
            <button className="invoiceOrderBtn">SL:40</button>
            <b>Date: 12/12/23 </b>
+ 
            </div>
          <div className="flex items-center justiyf-between">
          <table className="invoicTable inVoiceTables mt-5">
@@ -62,10 +75,17 @@ const [qutation, setQutation] = useState()
             </tr>
             <tbody>
               <tr>
+ 
+                <td> {invoicePreview.job_no}</td>
+                <td>{invoicePreview.customer_name} </td>
+                <td>{invoicePreview.car_registration_no}</td>
+                <td>{invoicePreview.contact_number}</td>
+ 
                 <td>055</td>
               </tr>
               <tr>
                 <td>5677 </td>
+ 
               </tr>
             </tbody>
            </table>
@@ -86,18 +106,18 @@ const [qutation, setQutation] = useState()
             </thead>
           <tbody>
           {
-            qutation?.map(data=> <tr key={data.id}>
-              <td>01</td>
-               <td>{data.descriptions} </td>
+            invoicePreview?.input_data?.map((data, index)=> <tr key={data.id}>
+              <td>{index}</td>
+               <td>{data.description} </td>
                <td>{data.quantity} </td>
-               <td>555 </td>
-               <td> {data.total_amount}/= </td>
+               <td>{data.rate} </td>
+               <td> {data.total}/= </td>
               </tr>)
           }
           <tr>
             <td></td>
             <td colSpan={3}> <b>Total Amount</b> </td>
-            <td>145000/=</td>
+            <td> {invoicePreview.total_amount}/=</td>
           </tr>
         
 

@@ -45,25 +45,51 @@ useEffect(() => {
           </div>
           <div>
            <div className="flex items-center justify-between">
+ 
            <button className="invoiceOrderBtn"> {invoicePreview?.job_no}</button>
            <b> {invoicePreview?.date}</b>
+ 
+           <button className="invoiceOrderBtn">SL:40</button>
+           <b>Date: 12/12/23 </b>
+ 
            </div>
+         <div className="flex items-center justiyf-between">
+         <table className="invoicTable inVoiceTables mt-5">
+            <tr>
+              <th>  Name </th>
+              <th> Address </th>
+            </tr>
+            <tbody>
+              <tr className="borderNone">
+                <td >Al Amin </td>
+              </tr>
+              <tr>
+                <td>Kuril Bishawroad, Dhaka-1229 </td>
+              </tr>
+            </tbody>
+           </table>
            <table className="invoicTable mt-5">
             <tr>
-              <th>  Order Number</th>
-              <th>  Customer Name </th>
-              <th> Car Number </th>
-              <th> Mobile Number</th>
+              <th>  Vehicle No </th>
+              <th>  Mileage  </th>
             </tr>
             <tbody>
               <tr>
+ 
                 <td> {invoicePreview.job_no}</td>
                 <td>{invoicePreview.customer_name} </td>
                 <td>{invoicePreview.car_registration_no}</td>
                 <td>{invoicePreview.contact_number}</td>
+ 
+                <td>055</td>
+              </tr>
+              <tr>
+                <td>5677 </td>
+ 
               </tr>
             </tbody>
            </table>
+         </div>
         
            
           </div>

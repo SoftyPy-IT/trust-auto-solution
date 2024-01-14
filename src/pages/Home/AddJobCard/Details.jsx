@@ -15,9 +15,14 @@ const Details = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+ 
 
   const [quotationPreview, setQuotationPreview] = useState({});
   const [loading, setLoading] = useState(false);
+ 
+const [invoice, setInvoice] = useState()
+
+ 
 
   useEffect(() => {
     if (id) {
@@ -208,6 +213,7 @@ const Details = () => {
           </div>
           <div></div>
           <div>
+ 
             <div className="flex items-center justify-between">
               <button className="invoiceOrderBtn">
                 {" "}
@@ -231,6 +237,44 @@ const Details = () => {
                 </tr>
               </tbody>
             </table>
+ 
+           <div className="flex items-center justify-between">
+           <button className="invoiceOrderBtn">SL:40</button>
+           <b>Date: 12/12/23 </b>
+           </div>
+           <div className="flex items-center justiyf-between">
+         <table className="invoicTable inVoiceTables mt-5">
+            <tr>
+              <th>  Name </th>
+              <th> Address </th>
+            </tr>
+            <tbody>
+              <tr className="borderNone">
+                <td >Al Amin </td>
+              </tr>
+              <tr>
+                <td>Kuril Bishawroad, Dhaka-1229 </td>
+              </tr>
+            </tbody>
+           </table>
+           <table className="invoicTable mt-5">
+            <tr>
+              <th>  Vehicle No </th>
+              <th>  Mileage  </th>
+            </tr>
+            <tbody>
+              <tr>
+                <td>055</td>
+              </tr>
+              <tr>
+                <td>5677 </td>
+              </tr>
+            </tbody>
+           </table>
+         </div>
+        
+           
+ 
           </div>
 
           <table className=" invoiceTable2 qutationTables mt-5">

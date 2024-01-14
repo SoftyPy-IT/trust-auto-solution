@@ -78,6 +78,7 @@ const AddProduct = () => {
 							</Select>
 						</FormControl>
 					</div>
+					
 					<div className="productFieldWrap">
 						<TextField className="productField" fullWidth label="Sale Price" id="Price " />
 						<FormControl className="productField">

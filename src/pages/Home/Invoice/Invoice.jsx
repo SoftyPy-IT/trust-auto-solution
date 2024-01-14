@@ -48,13 +48,13 @@ const Invoice = () => {
   ]);
   const handleRemove = (index) => {
     if (!index) {
-      const list = [...inputList];
+      const list = [...items];
 
-      setInputList(list);
+      setItems(list);
     } else {
-      const list = [...inputList];
+      const list = [...items];
       list.splice(index, 1);
-      setInputList(list);
+      setItems(list);
     }
   };
 
@@ -185,6 +185,7 @@ const Invoice = () => {
         car_registration_no: jobCardData.car_registration_no,
         customer_name: jobCardData?.customer_name,
         contact_number: jobCardData?.contact_number,
+        mileage: jobCardData.mileage,
         total_amount: grandTotal,
         discount: discount,
         vat: vat,
@@ -231,10 +232,11 @@ const Invoice = () => {
       car_registration_no: jobCardData.car_registration_no,
       customer_name: jobCardData.customer_name,
       contact_number: jobCardData.contact_number,
-      descriptions: descriptions,
-      quantity: quantity,
-      rate: rate,
-      amount: total,
+      mileage: jobCardData.mileage,
+      // descriptions: descriptions,
+      // quantity: quantity,
+      // rate: rate,
+      // amount: total,
       total_amount: grandTotal,
       discount: discount,
       vat: vat,
@@ -396,7 +398,7 @@ const Invoice = () => {
               <td>{card.customer_name}</td>
               <td>{card.job_no}</td>
               <td>{card.car_registration_no}</td>
-              <td> {card.phone_number} </td>
+              <td> {card.contact_number} </td>
               <td>{card.date}</td>
               <td>
                 <div

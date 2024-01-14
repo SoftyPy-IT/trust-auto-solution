@@ -48,13 +48,13 @@ const Qutation = () => {
 
   const handleRemove = (index) => {
     if (!index) {
-      const list = [...inputList];
+      const list = [...items];
 
-      setInputList(list);
+      setItems(list);
     } else {
-      const list = [...inputList];
+      const list = [...items];
       list.splice(index, 1);
-      setInputList(list);
+      setItems(list);
     }
   };
 
@@ -69,10 +69,10 @@ const Qutation = () => {
   //   minimumIntegerDigits: 2,
   //   useGrouping: false,
   // });
-  const [descriptions, setDescriptions] = useState([]);
-  const [quantity, setQuantity] = useState([]);
-  const [rate, setRate] = useState([]);
-  const [total, setTotal] = useState([]);
+  // const [descriptions, setDescriptions] = useState([]);
+  // const [quantity, setQuantity] = useState([]);
+  // const [rate, setRate] = useState([]);
+  // const [total, setTotal] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
@@ -205,16 +205,16 @@ const Qutation = () => {
     try {
       const values = {
         username: jobCardData.username,
-        // serial_no: formattedSerialNo,
         job_no: job_no,
         date: jobCardData.date,
         car_registration_no: jobCardData.car_registration_no,
         customer_name: jobCardData?.customer_name,
         contact_number: jobCardData?.contact_number,
-        descriptions: descriptions,
-        quantity: quantity,
-        rate: rate,
-        amount: total,
+        mileage: jobCardData?.mileage,
+        // descriptions: descriptions,
+        // quantity: quantity,
+        // rate: rate,
+        // amount: total,
         total_amount: grandTotal,
         discount: discount,
         vat: vat,
@@ -262,14 +262,16 @@ const Qutation = () => {
       car_registration_no: jobCardData.car_registration_no,
       customer_name: jobCardData.customer_name,
       contact_number: jobCardData.contact_number,
-      descriptions: descriptions,
-      quantity: quantity,
-      rate: rate,
-      amount: total,
+      mileage: jobCardData.mileage,
+      // descriptions: descriptions,
+      // quantity: quantity,
+      // rate: rate,
+      // amount: total,
       total_amount: grandTotal,
       discount: discount,
       vat: vat,
       net_total: calculateFinalTotal(),
+      input_data: items,
     };
     const hasPreviewNullValues = Object.values(values).some(
       (val) => val === null
@@ -427,7 +429,7 @@ const Qutation = () => {
               <td>{card.customer_name}</td>
               <td>{card.job_no}</td>
               <td>{card.car_registration_no}</td>
-              <td> {card.phone_number} </td>
+              <td> {card.contact_number} </td>
               <td>{card.date}</td>
               <td>
                 <div

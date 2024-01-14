@@ -20,10 +20,6 @@ const Details = () => {
   const [quotationPreview, setQuotationPreview] = useState({});
   console.log(quotationPreview)
   const [loading, setLoading] = useState(false);
- 
-const [invoice, setInvoice] = useState()
-
- 
 
   useEffect(() => {
     if (id) {
@@ -68,134 +64,6 @@ const [invoice, setInvoice] = useState()
   //     navigate("/dashboard/qutation-view");
   //   }
   // };
-  const invoiceData = [
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-  ];
 
 
   return (
@@ -218,8 +86,8 @@ const [invoice, setInvoice] = useState()
     
           <div>
            <div className="flex items-center justify-between mt-5 ">
-           <button className="invoiceOrderBtn">SL:40</button>
-           <b>Date: 12/12/23 </b>
+           <button className="invoiceOrderBtn">SL: {quotationPreview.job_no}</button>
+           <b>Date: {quotationPreview.date} </b>
            </div>
            <div className="flex items-center justiyf-between">
          <table className="invoicTable inVoiceTables mt-5">
@@ -229,7 +97,7 @@ const [invoice, setInvoice] = useState()
             </tr>
             <tbody>
               <tr className="borderNone">
-                <td >Al Amin </td>
+                <td > {quotationPreview.customer_name} </td>
               </tr>
               <tr>
                 <td>Kuril Bishawroad, Dhaka-1229 </td>
@@ -243,10 +111,10 @@ const [invoice, setInvoice] = useState()
             </tr>
             <tbody>
               <tr>
-                <td>055</td>
+                <td>{quotationPreview.car_registration_no}</td>
               </tr>
               <tr>
-                <td>5677 </td>
+                <td> {quotationPreview.mileage} </td>
               </tr>
             </tbody>
            </table>

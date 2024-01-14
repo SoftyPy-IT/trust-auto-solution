@@ -190,6 +190,8 @@ const Details = () => {
       amount: 20000,
     },
   ];
+
+
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>

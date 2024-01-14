@@ -35,14 +35,14 @@ const Role = () => {
               <td>Rubel </td>
               <td>Active</td>
               <td>
-                <div className='editIconWrap'>
+                <div className='editIconWrap edit2'>
                   <Link to='/dashboard/update-role'>
                     <FaEye className='editIcon' />
                   </Link>
                 </div>
               </td>
               <td >
-                <div className='editIconWrap'>
+                <div className='editIconWrap edit' >
                   <Link to='/dashboard/update-role'>
                     <FaEdit className='editIcon' />
                   </Link>

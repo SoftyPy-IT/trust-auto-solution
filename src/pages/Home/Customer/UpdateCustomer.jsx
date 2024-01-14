@@ -71,7 +71,7 @@ const UpdateCustomer = () => {
               id="text"
               type="file"
               name="image "
-              className="file-input file-input-bordered  w-full  appearance-none block  border border-[#351E98]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+              className="file-input file-input-bordered  w-full  appearance-none block  border border-[#42A1DA]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
               autoComplete="off"
             />
           </div>

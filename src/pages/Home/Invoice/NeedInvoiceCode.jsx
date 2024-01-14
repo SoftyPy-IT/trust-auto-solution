@@ -60,7 +60,7 @@
 //     <main className="invoicePrintWrap">
 //       <div ref={componentRef}>
 //         <div ref={targetRef} className="py-10 px-5 invoicePrint">
-//           <div className=" mb-5 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+//           <div className=" mb-5 mx-auto text-center border-b-2 border-[#42A1DA] pb-2">
 //             <div className="flex  justify-between items-center mb-3">
 //               <img className="w-[110px] " src={logo} alt="logo" />
 //               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
@@ -68,7 +68,7 @@
 //           </div>
 //           <div></div>
 //           <div>
-//             <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#351E98] mx-auto">
+//             <h3 className="text-3xl font-bold text-center border-b-2 w-[130px] border-[#42A1DA] mx-auto">
 //               Invoice
 //             </h3>
 //             <div className="px-5 mb-5">

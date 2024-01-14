@@ -1,11 +1,11 @@
-import img from "../../../../public/assets/team.png";
+import img from '../../../../public/assets/team.jpeg'
 import { FaCheckCircle } from "react-icons/fa";
 const Profile = () => {
   return (
     <div>
       {/* new cosw */}
       <div className="border-gray-700 bg-opacity-25 mt-14">
-        <div className="lg:w-full bg-[#654FC3] mb-8">
+        <div className="lg:w-full bg-[#42A1DA] mb-8">
           <div className="flex flex-wrap items-center justify-evenly p-4 md:py-8">
             <div className="md:w-3/12 md:ml-16">
               <img
@@ -69,7 +69,7 @@ const Profile = () => {
                     id="text"
                     name="name"
                     type="text"
-                    className="appearance-none block w-full px-3 py-2 border border-[#351E98] rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    className="appearance-none block w-full px-3 py-2 border border-[#42A1DA] rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     autoComplete="off"
                   />
                 </div>
@@ -86,7 +86,7 @@ const Profile = () => {
                     id="text"
                     type="file"
                     name="image "
-                    className="file-input file-input-bordered  w-full  appearance-none block  border border-[#351E98]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    className="file-input file-input-bordered  w-full  appearance-none block  border border-[#42A1DA]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     autoComplete="off"
                   />
                 </div>
@@ -102,14 +102,14 @@ const Profile = () => {
                     id="text"
                     type="text"
                     name="about"
-                    className="appearance-none block resize-none w-full px-3 py-2 border border-[#351E98]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    className="appearance-none block resize-none w-full px-3 py-2 border border-[#42A1DA]  rounded-md placeholder-gray-400 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     autoComplete="off"
                   ></textarea>
                 </div>
               </div>
               <div className="mt-6">
                 <span className="block w-full rounded-md shadow-sm">
-                  <button className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-[#654FC3] border border-transparent rounded-md hover:bg-primary focus:outline-none transition duration-150 ease-in-out mb-24 ">
+                  <button className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-[#42A1DA] border border-transparent rounded-md hover:bg-primary focus:outline-none transition duration-150 ease-in-out mb-24 ">
                     Update
                   </button>
                 </span>

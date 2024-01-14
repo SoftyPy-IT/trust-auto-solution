@@ -12,7 +12,7 @@
 }
 .submitBtn{
   width: 50%;
-  background: #351E98;
+  background: #42A1DA;
   margin: 0 auto;
   color: white;
   height: 37px;
@@ -22,7 +22,7 @@
   align-items: center;
 }
 .singleForm :where(input, textarea){
-    border: 1px solid #351E98;
+    border: 1px solid #42A1DA;
     width: 100%;
     padding: 10px;
     border-radius: 10px;
@@ -47,7 +47,7 @@
   width:400px;
   height:50px;
   border-radius: 20px;
-  border:1px solid #351E98;
+  border:1px solid #42A1DA;
   padding-left:5px;
 
 }

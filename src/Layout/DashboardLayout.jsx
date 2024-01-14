@@ -20,9 +20,14 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Layout.css'
 import { Home, Logout, Receipt, CurrencyExchange, ShoppingBag } from '@mui/icons-material'
+import { animateScroll as scroll } from 'react-scroll';
+import { HiArrowNarrowUp } from "react-icons/hi";
+
+
+
 const DashboardLayout = () => {
 	const [expanded, setExpanded] = useState(false);
 	const navRef = useRef()
@@ -35,6 +40,27 @@ const DashboardLayout = () => {
 		setExpanded(isExpanded ? panel : false);
 	};
 
+	useEffect(() => {
+		const handleScroll = () => {
+		  const button = document.getElementById('button')
+		 if(window.scrollY > 50){
+		   button.classList.add('scrollToTopBtn')
+		  }
+		  else{
+		  button.classList.remove('scrollToTopBtn')
+		 }
+	
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	  }, []);
+	
+	function scrollToTop(){
+	  window.scrollTo(0,0)
+	  scroll.scrollToTop({ smooth: true });
+	}
+	
+
 	return (
 		<main>
 			<div className=" ">
@@ -45,8 +71,8 @@ const DashboardLayout = () => {
 				<aside className="flex ">
 					<div
 						className={`${toggle
-							? `fixed overflow-y-scroll overflow-x-hidden drawwerLeftSide  h-screen text-lg font-semibold  bg-[#351E98] text-white`
-							: `fixed overflow-y-scroll overflow-x-hidden sideBarActive h-screen text-lg font-semibold  bg-[#351E98] text-white`}`}
+							? `fixed overflow-y-scroll overflow-x-hidden drawwerLeftSide  h-screen text-lg font-semibold  bg-[#2C3136] text-white`
+							: `fixed overflow-y-scroll overflow-x-hidden sideBarActive h-screen text-lg font-semibold  bg-[#2C3136] text-white`}`}
 					>
 						<div className="mb-5">
 							<NavLink to="/" className="shadow-md z-10">
@@ -414,6 +440,7 @@ const DashboardLayout = () => {
 					</div>
 				</aside>
 			</div>
+			<button onClick={scrollToTop} id="button"><HiArrowNarrowUp size={25} /> </button>
 		</main>
 	)
 }

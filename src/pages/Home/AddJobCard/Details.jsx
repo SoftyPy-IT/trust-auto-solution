@@ -21,19 +21,18 @@ const Details = () => {
 
   useEffect(() => {
     if (id) {
-      setLoading(true)
+      setLoading(true);
       fetch(`http://localhost:5000/api/v1/quotation/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setQuotationPreview(data);
-          setLoading(false)
+          setLoading(false);
         });
     }
   }, [id]);
 
-
-  console.log(quotationPreview)
+ 
   // const handleAddToQuotation = async (e) => {
   //   e.preventDefault();
 
@@ -190,7 +189,7 @@ const Details = () => {
       rate: 555,
       amount: 20000,
     },
-  ]
+  ];
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
@@ -200,32 +199,38 @@ const Details = () => {
               <img className="w-[150px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">Trust Auto Solution </h2>
             </div>
-            <p className="text-[#426EA0] italic text-sm">It's trusted computerized Organization for all kinds of vehicle check up & maintenance such as computerized Engine Analysis, Engine tune up, Denting, Painting, Engine, AC, Electrical Works & Car Wash. </p>
+            <p className="text-[#426EA0] italic text-sm">
+              It's trusted computerized Organization for all kinds of vehicle
+              check up & maintenance such as computerized Engine Analysis,
+              Engine tune up, Denting, Painting, Engine, AC, Electrical Works &
+              Car Wash.{" "}
+            </p>
           </div>
           <div></div>
           <div>
-           <div className="flex items-center justify-between">
-           <button className="invoiceOrderBtn"> {quotationPreview?.job_no}</button>
-           <b>Date: {quotationPreview?.date} </b>
-           </div>
-           <table className="invoicTable mt-5">
-            <tr>
-              <th>  Order Number</th>
-              <th>  Customer Name </th>
-              <th> Car Number </th>
-              <th> Mobile Number</th>
-            </tr>
-            <tbody>
+            <div className="flex items-center justify-between">
+              <button className="invoiceOrderBtn">
+                {" "}
+                {quotationPreview?.job_no}
+              </button>
+              <b>Date: {quotationPreview?.date} </b>
+            </div>
+            <table className="invoicTable mt-5">
               <tr>
-                <td>{quotationPreview.job_no}</td>
-                <td> {quotationPreview.customer_name}</td>
-                <td>{quotationPreview.car_registration_no}</td>
-                <td>{quotationPreview.contact_number}</td>
+                <th> Order Number</th>
+                <th> Customer Name </th>
+                <th> Car Number </th>
+                <th> Mobile Number</th>
               </tr>
-            </tbody>
-           </table>
-        
-           
+              <tbody>
+                <tr>
+                  <td>{quotationPreview.job_no}</td>
+                  <td> {quotationPreview.customer_name}</td>
+                  <td>{quotationPreview.car_registration_no}</td>
+                  <td>{quotationPreview.contact_number}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <table className=" invoiceTable2 qutationTables mt-5">
@@ -238,32 +243,26 @@ const Details = () => {
                 <th>Amount </th>
               </tr>
             </thead>
-          <tbody>
-          {
-            invoiceData.map(data=> <tr key={data.id}>
-              <td>01</td>
-               <td>{data.desc} </td>
-               <td>{data.quantity} </td>
-               <td>555 </td>
-               <td>200000/= </td>
-              </tr>)
-          }
-          <tr>
-            <td colSpan={2}> <b>Vat</b> </td>
+            <tbody>
+              {quotationPreview?.input_data?.map((data, index) => (
+                <tr key={data._id}>
+                  <td>{ index + 1}</td>
+                  <td>{data.description}</td>
+                  <td>{data.quantity}</td>
+                  <td>{data.rate}</td>
+                  <td>{data.total}</td>
+                </tr>
+              ))}
+              <tr>
             <td></td>
-            <td></td>
-            <td></td>
+            <td colSpan={3}> <b>Total Amount</b> </td>
+            <td> {quotationPreview.total_amount}/=</td>
           </tr>
-          <tr>
-            <td colSpan={2}> <b>Total Amount</b> </td>
-            <td></td>
-            <td></td>
-            <td>145000/=</td>
-          </tr>
-
-          </tbody>
+            </tbody>
           </table>
-          <p className="mt-1"><b>In words:</b> Forty Four Thousand Tow Hundred Taka Only</p>
+          <p className="mt-1">
+            <b>In words:</b> Forty Four Thousand Tow Hundred Taka Only
+          </p>
           <div className="customerSignatureWrap">
             <b className="customerSignatur">Customer Signature : </b>
             <b className="customerSignatur">Trust Auto Solution</b>
@@ -285,14 +284,15 @@ const Details = () => {
       <div className="printInvoiceBtnGroup">
         <button onClick={handlePrint}>Print </button>
         <button onClick={() => toPDF()}>Pdf </button>
- 
 
         <Link to="/dashboard/invoice">
           <button> Edit </button>
         </Link>
-     
-       <Link to='/dashboard/qutation'> <button> Qutation </button></Link>
- 
+
+        <Link to="/dashboard/qutation">
+          {" "}
+          <button> Qutation </button>
+        </Link>
       </div>
     </main>
   );

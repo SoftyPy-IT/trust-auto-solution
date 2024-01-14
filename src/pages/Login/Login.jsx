@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="py-5 bg-[#351E98] min-h-screen flex items-center justify-center">
+      <div className="py-5 bg-[#42A1DA] min-h-screen flex items-center justify-center">
         <div>
           <h2 className="text-4xl capitalize mb-8 font-bold text-white text-center">
             Login Now!

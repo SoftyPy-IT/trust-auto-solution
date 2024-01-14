@@ -162,7 +162,7 @@ const UpdateInvoice = () => {
   };
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
           <div className="invoiceHead">
@@ -252,7 +252,7 @@ const UpdateInvoice = () => {
                     {inputList.length !== 0 && (
                       <button
                         onClick={() => handleRemove(i)}
-                        className="  bg-[#351E98] hover:bg-[#351E98] text-white rounded-md px-2 py-2"
+                        className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
                       >
                         Remove
                       </button>
@@ -317,7 +317,7 @@ const UpdateInvoice = () => {
                       onClick={handleAddClick}
                       className="flex justify-end mt-2"
                     >
-                      <button className="btn bg-[#351E98] hover:bg-[#351E98] text-white">
+                      <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
                         Add
                       </button>
                     </div>

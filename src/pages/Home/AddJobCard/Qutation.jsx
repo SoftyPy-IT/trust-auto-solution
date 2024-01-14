@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
+import Loading from "../../../components/Loading/Loading";
 const Qutation = () => {
   const [select, setSelect] = useState(null);
 
@@ -36,9 +37,7 @@ const Qutation = () => {
   useEffect(() => {
     if (job_no) {
       setJobLoading(true);
-      fetch(
-        `http://localhost:5000/api/v1/jobCard/invoice/${job_no}`
-      )
+      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -60,7 +59,7 @@ const Qutation = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { flyingFrom: "", flyingTo: "", date: "" }]);
+    setItems([...items, { flyingFrom: "", flyingTo: "", date: "" }]);
   };
 
   //  add to quotation
@@ -78,46 +77,100 @@ const Qutation = () => {
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
 
-  const handleDescriptionChange = (index, value) => {
-    if (value === "") {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = "";
-      setDescriptions(newDescriptions);
-    } else {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = value;
-      setDescriptions(newDescriptions);
-    }
-  };
-  const handleQuantityChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
+  // const handleDescriptionChange = (index, value) => {
+  //   if (value === "") {
+  //     const newDescriptions = [...descriptions];
+  //     newDescriptions[index] = "";
+  //     setDescriptions(newDescriptions);
+  //   } else {
+  //     const newDescriptions = [...descriptions];
+  //     newDescriptions[index] = value;
+  //     setDescriptions(newDescriptions);
+  //   }
+  // };
+  // const handleQuantityChange = (index, value) => {
+  //   const parsedValue = value === "" ? "" : parseFloat(value);
 
-    if (!isNaN(parsedValue)) {
-      const newQuantity = [...quantity];
-      newQuantity[index] = parsedValue;
-      setQuantity(newQuantity);
-      updateTotal(index, parsedValue, rate[index]);
-    }
-  };
-  const handleRateChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
+  //   if (!isNaN(parsedValue)) {
+  //     const newQuantity = [...quantity];
+  //     newQuantity[index] = parsedValue;
+  //     setQuantity(newQuantity);
+  //     updateTotal(index, parsedValue, rate[index]);
+  //   }
+  // };
+  // const handleRateChange = (index, value) => {
+  //   const parsedValue = value === "" ? "" : parseFloat(value);
 
-    if (!isNaN(parsedValue)) {
-      const newRate = [...rate];
-      newRate[index] = parsedValue;
-      setRate(newRate);
-      updateTotal(index, quantity[index], parsedValue);
-    }
-  };
+  //   if (!isNaN(parsedValue)) {
+  //     const newRate = [...rate];
+  //     newRate[index] = parsedValue;
+  //     setRate(newRate);
+  //     updateTotal(index, quantity[index], parsedValue);
+  //   }
+  // };
 
-  const updateTotal = (index, quantityValue, rateValue) => {
-    const newTotal = [...total];
-    // const rateAsPercentage = rateValue / 100; // Convert rate to percentage
-    newTotal[index] = quantityValue * rateValue;
-    setTotal(newTotal);
-    const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
-    setGrandTotal(newGrandTotal);
-  };
+  // const updateTotal = (index, quantityValue, rateValue) => {
+  //   const newTotal = [...total];
+  //   newTotal[index] = quantityValue * rateValue;
+  //   setTotal(newTotal);
+  //   const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
+  //   setGrandTotal(newGrandTotal);
+  // };
+  // const updateTotal = (index, quantityValue, rateValue) => {
+  //   const newTotal = [...total];
+  //   const calculatedTotal = quantityValue * rateValue;
+
+  //   if (isNaN(calculatedTotal) && !rateValue) {
+  //     setTotal(quantityValue);
+  //   }
+  //   if (isNaN(calculatedTotal) && !quantityValue) {
+  //     setTotal(rateValue);
+  //   }
+  //   if (isNaN(calculatedTotal) ) {
+  //     setTotal("");
+  //   }
+
+  //   if (!isNaN(calculatedTotal)) {
+  //     // Check if the calculatedTotal is a valid number
+  //     newTotal[index] = calculatedTotal;
+  //     setTotal(newTotal);
+  //   }
+
+  //   const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
+  //   setGrandTotal(newGrandTotal);
+  // };
+
+  // const updateTotal = (index, quantityValue, rateValue, amountValue) => {
+  //   const newTotal = [...total];
+  //   const calculatedTotal = quantityValue * rateValue;
+
+  //   if (isNaN(calculatedTotal) && !rateValue) {
+  //     setTotal(quantityValue);
+  //   }
+
+  //   if (isNaN(calculatedTotal) && !quantityValue) {
+  //     setTotal(rateValue);
+  //   }
+  //   if (isNaN(calculatedTotal)) {
+  //     setTotal("");
+  //   }
+
+  //   if (!isNaN(calculatedTotal)) {
+  //     // Check if the calculatedTotal is a valid number
+  //     newTotal[index] = calculatedTotal;
+  //     setTotal(newTotal);
+  //   }
+
+  //   // Check if amountValue is a valid number
+  //   const parsedAmount = parseFloat(amountValue);
+  //   if (!isNaN(parsedAmount)) {
+  //     newTotal[index] = parsedAmount;
+  //     setTotal(newTotal);
+  //   }
+
+  //   const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
+  //   setGrandTotal(newGrandTotal);
+  // };
 
   const handleDiscountChange = (value) => {
     const parsedValue = value === "" ? 0 : parseFloat(value);
@@ -166,6 +219,7 @@ const Qutation = () => {
         discount: discount,
         vat: vat,
         net_total: calculateFinalTotal(),
+        input_data: items,
       };
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
@@ -182,6 +236,7 @@ const Qutation = () => {
         values
       );
 
+      console.log(response);
       if (response.data.message === "Successfully quotation post") {
         setPostError("");
         setError("");
@@ -273,7 +328,6 @@ const Qutation = () => {
 
     if (willDelete) {
       try {
-        
         const res = await fetch(
           `http://localhost:5000/api/v1/quotation/one/${id}`,
           {
@@ -285,7 +339,6 @@ const Qutation = () => {
         if (data.message == "Quotation card delete successful") {
           setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id));
           setReload(!reload);
-           
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -379,7 +432,7 @@ const Qutation = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -387,7 +440,7 @@ const Qutation = () => {
                 </div>
               </td>
               <td>
-                <div className="editIconWrap">
+                <div className="editIconWrap edit">
                   <Link to={`/dashboard/update-qutation?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
@@ -456,9 +509,7 @@ const Qutation = () => {
   const handleFilterType = async () => {
     if (select === "SL No") {
       setLoading(true);
-      fetch(
-        `http://localhost:5000/api/v1/quotation/all`
-      )
+      fetch(`http://localhost:5000/api/v1/quotation/all`)
         .then((res) => res.json())
         .then((data) => {
           setGetAllQuotation(data);
@@ -487,9 +538,107 @@ const Qutation = () => {
     }
   };
 
+  // Function to handle changes for a specific set of inputs
+  // const handleInputChange = (index, field, value) => {
+  //   const newData = [...inputData];
+  //   newData[index] = {
+  //     ...newData[index],
+  //     [field]: value,
+  //   };
+  //   setInputData(newData);
+
+  //   // Handle specific field changes based on the provided field name
+  //   switch (field) {
+  //     case "descriptions":
+  //       handleDescriptionChange(index, value);
+  //       break;
+  //     case "quantity":
+  //       handleQuantityChange(index, value);
+  //       break;
+  //     case "rate":
+  //       handleRateChange(index, value);
+  //       break;
+  //     case "amount":
+  //       updateTotal(index, value);
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+
+  //   // Update total, discount, VAT, and final total
+  //   updateTotal(index, newData[index].quantity, newData[index].rate);
+  //   calculateFinalTotal();
+  // };
+  // const handleInputChange = (index, field, value) => {
+  //   const newData = [...inputData];
+  //   console.log(newData)
+  //   newData[index] = {
+  //     ...newData[index],
+  //     [field]: value,
+  //   };
+  //   setInputData(newData);
+
+  //   // Handle specific field changes based on the provided field name
+  //   switch (field) {
+  //     case "descriptions":
+  //       handleDescriptionChange(index, value);
+  //       break;
+  //     case "quantity":
+  //       handleQuantityChange(index, value);
+  //       break;
+  //     case "rate":
+  //       handleRateChange(index, value);
+  //       break;
+  //     case "total":
+  //       // Update total with additional checks for quantity and rate
+  //       updateTotal(index, newData[index].quantity, newData[index].rate, value);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+
+  //   // Update total, discount, VAT, and final total
+  //   updateTotal(index, newData[index].quantity, newData[index].rate);
+  //   calculateFinalTotal();
+  // };
+
+  // console.log(inputData);
+
+  const [items, setItems] = useState([
+    { description: "", quantity: "", rate: "", total: "" },
+  ]);
+
+  useEffect(() => {
+    const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
+    setGrandTotal(totalSum);
+  }, [items]);
+
+  const handleDescriptionChange = (index, value) => {
+    const newItems = [...items];
+    newItems[index].description = value;
+    setItems(newItems);
+  };
+
+  const handleQuantityChange = (index, value) => {
+    const newItems = [...items];
+    newItems[index].quantity = value;
+    // Convert quantity to a number and calculate total
+    newItems[index].total = Number(value) * newItems[index].rate;
+    setItems(newItems);
+  };
+
+  const handleRateChange = (index, value) => {
+    const newItems = [...items];
+    newItems[index].rate = value;
+    // Convert rate to a number and calculate total
+    newItems[index].total = newItems[index].quantity * Number(value);
+    setItems(newItems);
+  };
+
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
@@ -507,7 +656,7 @@ const Qutation = () => {
       </div>
       <div className="mt-5">
         <form>
-        <div>
+          <div>
             <label className="block">Order Number </label>
             <input
               onChange={(e) => setJob_no(e.target.value)}
@@ -518,50 +667,50 @@ const Qutation = () => {
               className="orderNumber"
             />
           </div>
-         {
-          jobLoading ? <div>Loading...</div> :  <div className="qutationForm invoicForm">
-          
-          <div>
-            <label className="block">Customer Name </label>
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Customer Name"
-              defaultValue={jobCardData?.customer_name}
-            />
-          </div>
+          {jobLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <div className="qutationForm invoicForm">
+              <div>
+                <label className="block">Customer Name </label>
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Customer Name"
+                  defaultValue={jobCardData?.customer_name}
+                />
+              </div>
 
-          <div>
-            <label className="block">Car Number </label>
-            <input
-              defaultValue={jobCardData?.car_registration_no}
-              autoComplete="off"
-              type="text"
-              placeholder="Car Number"
-            />
-          </div>
-          <div>
-            <label className="block">Mobile Number </label>
-            <input
-              autoComplete="off"
-              type="text"
-              placeholder="Mobile Number "
-              defaultValue={jobCardData?.contact_number}
-            />
-          </div>
-          <div>
-            <label className="block">Date</label>
-            <input
-              defaultValue={jobCardData?.date}
-              autoComplete="off"
-               
-              placeholder="Date"
-              className="orderNumber"
-              readOnly
-            />
-          </div>
-        </div>
-         }
+              <div>
+                <label className="block">Car Number </label>
+                <input
+                  defaultValue={jobCardData?.car_registration_no}
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Car Number"
+                />
+              </div>
+              <div>
+                <label className="block">Mobile Number </label>
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Mobile Number "
+                  defaultValue={jobCardData?.contact_number}
+                />
+              </div>
+              <div>
+                <label className="block">Date</label>
+                <input
+                  defaultValue={jobCardData?.date}
+                  autoComplete="off"
+                  placeholder="Date"
+                  className="orderNumber"
+                  readOnly
+                />
+              </div>
+            </div>
+          )}
 
           <div className="vehicleCard">Quotation Card </div>
           <div className="flex items-center justify-around labelWrap">
@@ -571,15 +720,15 @@ const Qutation = () => {
             <label>Rate</label>
             <label>Amount </label>
           </div>
-          {inputList.map((x, i) => {
+          {items.map((item, i) => {
             return (
               <div key={i}>
                 <div className="qutationForm">
                   <div>
-                    {inputList.length !== 0 && (
+                    {items.length !== 0 && (
                       <button
                         onClick={() => handleRemove(i)}
-                        className="  bg-[#351E98] hover:bg-[#351E98] text-white rounded-md px-2 py-2"
+                        className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
                       >
                         Remove
                       </button>
@@ -611,8 +760,8 @@ const Qutation = () => {
                     <input
                       className="firstInputField"
                       autoComplete="off"
-                      type="text"
-                      placeholder="Quantity "
+                      type="number"
+                      placeholder="Quantity"
                       onChange={(e) => handleQuantityChange(i, e.target.value)}
                       required
                     />
@@ -621,8 +770,8 @@ const Qutation = () => {
                     <input
                       className="thirdInputField"
                       autoComplete="off"
-                      type="text"
-                      placeholder="Rate "
+                      type="number"
+                      placeholder="Rate"
                       onChange={(e) => handleRateChange(i, e.target.value)}
                       required
                     />
@@ -633,18 +782,19 @@ const Qutation = () => {
                       autoComplete="off"
                       type="text"
                       placeholder="Amount"
-                      defaultValue={total[i]}
+                      value={item.total}
+                      readOnly
                     />
                   </div>
                 </div>
 
                 <div className="addInvoiceItem">
-                  {inputList.length - 1 === i && (
+                  {items.length - 1 === i && (
                     <div
                       onClick={handleAddClick}
                       className="flex justify-end mt-2"
                     >
-                      <button className="btn bg-[#351E98] hover:bg-[#351E98] text-white">
+                      <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
                         Add
                       </button>
                     </div>
@@ -734,7 +884,7 @@ const Qutation = () => {
         </div>
         {loading ? (
           <div className="flex justify-center items-center text-xl">
-            Loading...
+            <Loading />
           </div>
         ) : (
           <div>

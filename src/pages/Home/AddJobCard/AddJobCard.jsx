@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../../../components/Loading/Loading";
 const AddJobCard = () => {
   const [previousPostData, setPreviousPostData] = useState({});
   const [jobNo, setJobNo] = useState(previousPostData.job_no);
@@ -454,10 +455,10 @@ const AddJobCard = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
-                  <FaEye className="editIcon" />
+                  <FaEye className="editIcon " />
                   {/* </Link> */}
                 </div>
               </td>
@@ -566,7 +567,7 @@ const AddJobCard = () => {
   
   return (
     <div className="addJobCardWraps">
-      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
@@ -1005,7 +1006,7 @@ const AddJobCard = () => {
 
       {searchLoading ? (
         <div className="flex justify-center items-center text-xl">
-          Loading...
+        <Loading/>
         </div>
       ) : (
         <div>

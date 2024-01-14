@@ -59,7 +59,7 @@ const Invoice = () => {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { flyingFrom: "", flyingTo: "", date: "" }]);
+    setItems([...items, { flyingFrom: "", flyingTo: "", date: "" }]);
   };
 
   //  add to invoice
@@ -72,46 +72,79 @@ const Invoice = () => {
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
 
+
+  const [items, setItems] = useState([
+    { description: "", quantity: "", rate: "", total: "" },
+  ]);
+
+  useEffect(() => {
+    const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
+    setGrandTotal(totalSum);
+  }, [items]);
+
   const handleDescriptionChange = (index, value) => {
-    if (value === "") {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = "";
-      setDescriptions(newDescriptions);
-    } else {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = value;
-      setDescriptions(newDescriptions);
-    }
+    const newItems = [...items];
+    newItems[index].description = value;
+    setItems(newItems);
   };
+
   const handleQuantityChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
-
-    if (!isNaN(parsedValue)) {
-      const newQuantity = [...quantity];
-      newQuantity[index] = parsedValue;
-      setQuantity(newQuantity);
-      updateTotal(index, parsedValue, rate[index]);
-    }
+    const newItems = [...items];
+    newItems[index].quantity = value;
+    // Convert quantity to a number and calculate total
+    newItems[index].total = Number(value) * newItems[index].rate;
+    setItems(newItems);
   };
+
   const handleRateChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
-
-    if (!isNaN(parsedValue)) {
-      const newRate = [...rate];
-      newRate[index] = parsedValue;
-      setRate(newRate);
-      updateTotal(index, quantity[index], parsedValue);
-    }
+    const newItems = [...items];
+    newItems[index].rate = value;
+    // Convert rate to a number and calculate total
+    newItems[index].total = newItems[index].quantity * Number(value);
+    setItems(newItems);
   };
 
-  const updateTotal = (index, quantityValue, rateValue) => {
-    const newTotal = [...total];
-    // const rateAsPercentage = rateValue / 100; // Convert rate to percentage
-    newTotal[index] = quantityValue * rateValue;
-    setTotal(newTotal);
-    const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
-    setGrandTotal(newGrandTotal);
-  };
+
+  // const handleDescriptionChange = (index, value) => {
+  //   if (value === "") {
+  //     const newDescriptions = [...descriptions];
+  //     newDescriptions[index] = "";
+  //     setDescriptions(newDescriptions);
+  //   } else {
+  //     const newDescriptions = [...descriptions];
+  //     newDescriptions[index] = value;
+  //     setDescriptions(newDescriptions);
+  //   }
+  // };
+  // const handleQuantityChange = (index, value) => {
+  //   const parsedValue = value === "" ? "" : parseFloat(value);
+
+  //   if (!isNaN(parsedValue)) {
+  //     const newQuantity = [...quantity];
+  //     newQuantity[index] = parsedValue;
+  //     setQuantity(newQuantity);
+  //     updateTotal(index, parsedValue, rate[index]);
+  //   }
+  // };
+  // const handleRateChange = (index, value) => {
+  //   const parsedValue = value === "" ? "" : parseFloat(value);
+
+  //   if (!isNaN(parsedValue)) {
+  //     const newRate = [...rate];
+  //     newRate[index] = parsedValue;
+  //     setRate(newRate);
+  //     updateTotal(index, quantity[index], parsedValue);
+  //   }
+  // };
+
+  // const updateTotal = (index, quantityValue, rateValue) => {
+  //   const newTotal = [...total];
+  //   // const rateAsPercentage = rateValue / 100; // Convert rate to percentage
+  //   newTotal[index] = quantityValue * rateValue;
+  //   setTotal(newTotal);
+  //   const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
+  //   setGrandTotal(newGrandTotal);
+  // };
 
   const handleDiscountChange = (value) => {
     const parsedValue = value === "" ? 0 : parseFloat(value);
@@ -152,14 +185,11 @@ const Invoice = () => {
         car_registration_no: jobCardData.car_registration_no,
         customer_name: jobCardData?.customer_name,
         contact_number: jobCardData?.contact_number,
-        descriptions: descriptions,
-        quantity: quantity,
-        rate: rate,
-        amount: total,
         total_amount: grandTotal,
         discount: discount,
         vat: vat,
         net_total: calculateFinalTotal(),
+        input_data: items
       };
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
@@ -371,7 +401,7 @@ const Invoice = () => {
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap"
+                  className="editIconWrap edit2"
                 >
                   {/* <Link to="/dashboard/preview"> */}
                   <FaEye className="editIcon" />
@@ -379,7 +409,7 @@ const Invoice = () => {
                 </div>
               </td>
               <td>
-                <div className="editIconWrap">
+                <div className="editIconWrap edit">
                   <Link to={`/dashboard/update-invoice?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
@@ -477,7 +507,7 @@ const Invoice = () => {
   };
   return (
     <div className="py-10 px-5">
-      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#351E98]">
+      <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
           <div className="invoiceHead">
@@ -540,7 +570,7 @@ const Invoice = () => {
               <input
                 defaultValue={jobCardData?.date}
                 autoComplete="off"
-                type="date"
+          
                 placeholder="Date"
                 className="orderNumber"
                 // onChange={handleDateChange}
@@ -556,15 +586,15 @@ const Invoice = () => {
             <label>Rate</label>
             <label>Amount </label>
           </div>
-          {inputList.map((x, i) => {
+          {items.map((item, i) => {
             return (
               <div key={i}>
                 <div className="qutationForm">
                   <div>
-                    {inputList.length !== 0 && (
+                    {items.length !== 0 && (
                       <button
                         onClick={() => handleRemove(i)}
-                        className="  bg-[#351E98] hover:bg-[#351E98] text-white rounded-md px-2 py-2"
+                        className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
                       >
                         Remove
                       </button>
@@ -618,7 +648,7 @@ const Invoice = () => {
                       autoComplete="off"
                       type="text"
                       placeholder="Amount"
-                      defaultValue={total[i]}
+                      value={item.total}
                     />
                   </div>
                 </div>
@@ -629,7 +659,7 @@ const Invoice = () => {
                       onClick={handleAddClick}
                       className="flex justify-end mt-2"
                     >
-                      <button className="btn bg-[#351E98] hover:bg-[#351E98] text-white">
+                      <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
                         Add
                       </button>
                     </div>

@@ -15,11 +15,11 @@
 .vehicleReportLeftSide textarea {
 	outline: none;
 }
-.jobCardFormWrap input {
+/* .jobCardFormWrap input {
 	border: 1px solid #42A1DA;
 	padding: 5px;
 	border-radius: 10px;
-}
+} */
 
 .trustAuto {
 	font-family: 'Merriweather', serif;
@@ -30,7 +30,7 @@
 	color: #11054e;
 }
 
-.jobCardFormWrap label {
+/* .jobCardFormWrap label {
 	display: block;
 }
 .jobCardSingleForm {
@@ -41,8 +41,8 @@
 }
 .jobCardSingleForm label {
 	display: block;
-}
-.jobCardSingleForm input,
+} */
+/* .jobCardSingleForm input,
 .jobCardSingleForm select {
 	
 	border: 1px solid #42A1DA;
@@ -51,7 +51,7 @@
 }
 .jobCardSingleForm2 input::placeholder {
 	font-size: 13px !important;
-}
+} */
 .vehicleCard,
 .vehicleCard2 {
 	box-shadow: #42A1DA 0px 3px 2px 3px;
@@ -112,7 +112,7 @@
 .jobCardSingleForm2 select {
 	/* width: 14.4rem !important; */
 }
-.inputSelectWrap {
+/* .inputSelectWrap {
 	width: 14.4rem;
 	height: 3rem;
 	overflow: hidden;
@@ -120,11 +120,11 @@
 	border: 1px solid #42A1DA;
 	border-radius: 5px;
 	padding: 5px;
-}
-.inputSelectWrap input {
+} */
+/* .inputSelectWrap input {
 	border: none;
-	/* width: 12rem !important; */
-}
+	 width: 12rem !important; 
+} */
 .requiredStart {
 	color: red;
 }

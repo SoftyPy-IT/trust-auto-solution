@@ -613,7 +613,7 @@ const AddJobCard = () => {
           </div>
          <div className="jobCardFieldWraps">
          <div className="jobCardFieldLeftSide">
-          <h3 className="text-2xl text-center mb-3 ">Company Information </h3>
+          <h3 className="text-2xl mb-3 ">Company Information </h3>
             <div>
               {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
              
@@ -680,7 +680,7 @@ const AddJobCard = () => {
           </div>
          
           <div className="jobCardFieldRightSide">
-          <h3 className="text-2xl text-center mb-3 ">Customer Information </h3>
+          <h3 className="text-2xl mb-3 ">Customer Information </h3>
             <div>
               <TextField  className="addJobInputField"  onChange={(e) => setCustomerName(e.target.value)} label="Customer Name (T)" />
             </div>

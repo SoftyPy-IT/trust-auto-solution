@@ -157,7 +157,7 @@ const ViewInvoice = () => {
               <td>{card.customer_name}</td>
               <td>{card.job_no}</td>
               <td>{card.car_registration_no}</td>
-              <td> {card.phone_number} </td>
+              <td> {card.contact_number} </td>
               <td>{card.date}</td>
               <td>
                 <div

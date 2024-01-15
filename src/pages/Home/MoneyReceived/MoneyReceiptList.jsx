@@ -15,24 +15,22 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 const MoneyReceiptList = () => {
   const [select, setSelect] = useState(null);
-  const [getAllInvoice, setGetAllInvoice] = useState([]);
+  const [getMoneyReceipt, setGetMoneyReceipt] = useState([]);
   const [filterType, setFilterType] = useState("");
   const [noMatching, setNoMatching] = useState(null);
   const navigate = useNavigate();
-  const username = "683231669175";
 
   const handleIconPreview = async (e) => {
     navigate(`/dashboard/money-receipt-view?id=${e}`);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/invoice/all`)
+    fetch(`http://localhost:5000/api/v1/money_receipt`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setGetAllInvoice(data);
+        setGetMoneyReceipt(data.moneyReceipt);
       });
-  }, [username]);
+  }, []);
 
   // pagination
 
@@ -55,15 +53,15 @@ const MoneyReceiptList = () => {
     if (willDelete) {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/invoice/one/${id}`,
+          `http://localhost:5000/api/v1/money_receipt/${id}`,
           {
             method: "DELETE",
           }
         );
         const data = await res.json();
 
-        if (data.message == "Invoice card delete successful") {
-          setGetAllInvoice(getAllInvoice?.filter((pkg) => pkg._id !== id));
+        if (data.message == "MoneyReceipt delete successful") {
+          setGetMoneyReceipt(getMoneyReceipt?.filter((pkg) => pkg._id !== id));
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -96,7 +94,7 @@ const MoneyReceiptList = () => {
     sessionStorage.setItem("q_n", pageNumber.toString());
   };
   const pages = [];
-  for (let i = 1; i <= Math.ceil(getAllInvoice?.length / limit); i++) {
+  for (let i = 1; i <= Math.ceil(getMoneyReceipt?.length / limit); i++) {
     pages.push(i);
   }
 
@@ -125,20 +123,20 @@ const MoneyReceiptList = () => {
   const startIndex = lastIndex - limit;
 
   let currentItems;
-  if (Array.isArray(getAllInvoice)) {
-    currentItems = getAllInvoice?.slice(startIndex, lastIndex);
+  if (Array.isArray(getMoneyReceipt)) {
+    currentItems = getMoneyReceipt?.slice(startIndex, lastIndex);
   } else {
     currentItems = [];
   }
 
-  const renderData = (getAllInvoice) => {
+  const renderData = (getMoneyReceipt) => {
     return (
       <table className="table">
         <thead className="tableWrap">
           <tr>
             <th>SL No</th>
             <th>Received with thanks from</th>
-            <th>Final Payment agint bill no</th>
+            <th>Final Payment against bill no</th>
             <th>Vehicle No </th>
             <th>Check Number </th>
             <th>Bank</th>
@@ -147,15 +145,15 @@ const MoneyReceiptList = () => {
           </tr>
         </thead>
         <tbody>
-          {getAllInvoice?.map((card, index) => (
+          {getMoneyReceipt?.map((card, index) => (
             <tr key={card._id}>
               <td>{index + 1}</td>
-              <td>{card.customer_name}</td>
-              <td>{card.job_no}</td>
-              <td>{card.car_registration_no}</td>
-              <td> {card.phone_number} </td>
-              <td> {card.phone_number} </td>
-              <td>{card.date}</td>
+              <td>{card.thanks_from}</td>
+              <td>{card.against_bill_no}</td>
+              <td>{card.vehicle_no}</td>
+              <td> {card.cheque_no} </td>
+              <td> {card.bank} </td>
+              <td>{card.date_one}</td>
               <td>
                 <div
                   onClick={() => handleIconPreview(card._id)}
@@ -234,143 +232,147 @@ const MoneyReceiptList = () => {
   }
 
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      fetch(`http://localhost:5000/api/v1/invoice/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGetAllInvoice(data);
-          setNoMatching(null);
-        });
-    } else {
-      const data = {
-        select,
-        filterType,
-      };
-      const response = await axios.post(
-        `http://localhost:5000/api/v1/invoice/all`,
-        data
-      );
-      console.log(response.data);
-      if (response.data.message === "Filter successful") {
-        setGetAllInvoice(response.data.result);
-        setNoMatching(null);
-      }
-      if (response.data.message === "No matching found") {
-        setNoMatching(response.data.message);
-      }
+    
+    const data = {
+      filterType,
+    };
+    console.log(data);
+    const response = await axios.post(
+      `http://localhost:5000/api/v1/money_receipt/all`,
+      data
+    );
+  
+    if (response.data.message === "Filter successful") {
+      setGetMoneyReceipt(response.data.result);
+      setNoMatching(null);
+    }
+    if (response.data.message === "No matching found") {
+      setGetMoneyReceipt([])
+      setNoMatching(response.data.message);
     }
   };
+
+  const handleAllMoneyReceipt = () => {
+    fetch(`http://localhost:5000/api/v1/money_receipt`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetMoneyReceipt(data.moneyReceipt);
+        setNoMatching(null);
+      });
+  };
+
   return (
-   
-      <div className="overflow-x-auto mt-5">
-         <div className="flex justify-between border-b-2 pb-3">
-    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
-				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
-				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
-				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
-			</div>
-      <div className="flex  justify-end items-end">
-        <NotificationAdd size={30} className="mr-2"/>
-        <FaUserGear size={30} />
+    <div className="overflow-x-auto mt-5">
+      <div className="flex justify-between border-b-2 pb-3">
+        <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+          <Link to="/dashboard/addjob">
+            <button> Add Job </button>
+          </Link>
+          <Link to="/dashboard/qutation">
+            <button>Quotation </button>
+          </Link>
+          <Link to="/dashboard/invoice">
+            <button>Invoice </button>
+          </Link>
+        </div>
+        <div className="flex  justify-end items-end">
+          <NotificationAdd size={30} className="mr-2" />
+          <FaUserGear size={30} />
+        </div>
       </div>
-    </div>
-			<div className="flex items-center justify-between mt-5 mb-8">
-				<div className="flex items-center justify-center ">
-					<FaFileInvoice className="invoicIcon" />
-					<div className="ml-2">
-						<h3 className="text-2xl font-bold"> Money Receipt </h3>
-						<span>Manage Money Receipt </span>
-					</div>
-				</div>
-				<div className="productHome">
-					<span>Home / </span>
-					<span>Product / </span>
-					<span>New Product </span>
-				</div>
-			</div>
-     
-        <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
-          <h3 className="text-3xl font-bold mb-3">Money Receipt List:</h3>
-          <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
-              <option value="SL No"> SL No</option>
-              <option value="Customer Name"> Received with thanks from</option>
-              <option value="Customer Name"> Checque No</option>
-              <option value="Order Number"> Vehicle No</option>
-              <option value="Car Number">Bank</option>
-            </select>
-            <div className="searchGroup">
-              <input
-                onChange={(e) => setFilterType(e.target.value)}
-                autoComplete="off"
-                type="text"
-                placeholder={select}
-              />
-            </div>
-            <button onClick={handleFilterType} className="SearchBtn ">
-              Search{" "}
-            </button>
+      <div className="flex items-center justify-between mt-5 mb-8">
+        <div className="flex items-center justify-center ">
+          <FaFileInvoice className="invoicIcon" />
+          <div className="ml-2">
+            <h3 className="text-2xl font-bold"> Money Receipt </h3>
+            <span>Manage Money Receipt </span>
           </div>
         </div>
- 
- 
-        <div>
-          {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
-            <div className="text-xl text-center flex justify-center items-center h-full">
-              No matching card found.
-            </div>
-          ) : (
-            <>
-              <section>
-                {renderData(currentItems)}
-                <ul
-                  className={
-                    minPageNumberLimit < 5
-                      ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                      : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                  }
-                >
-                  <button
-                    onClick={handlePrevious}
-                    disabled={currentPage === pages[0] ? true : false}
-                    className={
-                      currentPage === pages[0]
-                        ? "text-gray-600"
-                        : "text-gray-300"
-                    }
-                  >
-                    Previous
-                  </button>
-                  <span
-                    className={minPageNumberLimit < 5 ? "hidden" : "inline"}
-                  >
-                    {pageDecrementBtn}
-                  </span>
-                  {renderPagesNumber}
-                  {pageIncrementBtn}
-                  <button
-                    onClick={handleNext}
-                    disabled={
-                      currentPage === pages[pages?.length - 1] ? true : false
-                    }
-                    className={
-                      currentPage === pages[pages?.length - 1]
-                        ? "text-gray-700"
-                        : "text-gray-300 pl-1"
-                    }
-                  >
-                    Next
-                  </button>
-                </ul>
-              </section>
-            </>
-          )}
- 
-       
- 
+        <div className="productHome">
+          <span>Home / </span>
+          <span>Product / </span>
+          <span>New Product </span>
+        </div>
       </div>
 
-       
+      <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
+        <h3 className="text-3xl font-bold mb-3">Money Receipt List:</h3>
+        <div className="flex items-center searcList">
+          <div
+            onClick={handleAllMoneyReceipt}
+            className="mx-6 font-semibold cursor-pointer"
+          >
+            All
+          </div>
+          <select onChange={(e) => setSelect(e.target.value)}>
+            <option value="SL No"> SL No</option>
+            <option value="Customer Name"> Received with thanks from</option>
+            <option value="Customer Name"> Cheque No</option>
+            <option value="Order Number"> Vehicle No</option>
+            <option value="Car Number">Bank</option>
+          </select>
+          <div className="searchGroup">
+            <input
+              onChange={(e) => setFilterType(e.target.value)}
+              autoComplete="off"
+              type="text"
+              placeholder={select}
+            />
+          </div>
+          <button onClick={handleFilterType} className="SearchBtn ">
+            Search{" "}
+          </button>
+        </div>
+      </div>
+
+      <div>
+        {getMoneyReceipt?.length === 0 || currentItems.length === 0 ? (
+          <div className="text-xl text-center flex justify-center items-center h-full">
+            No matching card found.
+          </div>
+        ) : (
+          <>
+            <section>
+              {renderData(currentItems)}
+              <ul
+                className={
+                  minPageNumberLimit < 5
+                    ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                    : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
+                }
+              >
+                <button
+                  onClick={handlePrevious}
+                  disabled={currentPage === pages[0] ? true : false}
+                  className={
+                    currentPage === pages[0] ? "text-gray-600" : "text-gray-300"
+                  }
+                >
+                  Previous
+                </button>
+                <span className={minPageNumberLimit < 5 ? "hidden" : "inline"}>
+                  {pageDecrementBtn}
+                </span>
+                {renderPagesNumber}
+                {pageIncrementBtn}
+                <button
+                  onClick={handleNext}
+                  disabled={
+                    currentPage === pages[pages?.length - 1] ? true : false
+                  }
+                  className={
+                    currentPage === pages[pages?.length - 1]
+                      ? "text-gray-700"
+                      : "text-gray-300 pl-1"
+                  }
+                >
+                  Next
+                </button>
+              </ul>
+            </section>
+          </>
+        )}
+      </div>
     </div>
   );
 };

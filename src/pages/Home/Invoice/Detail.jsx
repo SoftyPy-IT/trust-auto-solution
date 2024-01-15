@@ -16,22 +16,18 @@ const Detail = () => {
   });
  
 
-  const [quotationPreview, setQuotationPreview] = useState({});
-  console.log(quotationPreview)
+  const [invoicePreview, setInvoicePreview] = useState({});
+ 
   const [loading, setLoading] = useState(false);
  
-const [invoice, setInvoice] = useState()
-
- 
-
   useEffect(() => {
     if (id) {
       setLoading(true);
-      fetch(`http://localhost:5000/api/v1/quotation/${id}`)
+      fetch(`http://localhost:5000/api/v1/invoice/${id}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setQuotationPreview(data);
+          setInvoicePreview(data);
           setLoading(false);
         });
     }
@@ -42,20 +38,20 @@ const [invoice, setInvoice] = useState()
   //   e.preventDefault();
 
   //   const values = {
-  //     username: quotationPreview.username,
-  //     job_no: quotationPreview.job_no,
-  //     date: quotationPreview.date,
-  //     car_registration_no: quotationPreview.car_registration_no,
-  //     customer_name: quotationPreview?.customer_name,
-  //     contact_number: quotationPreview?.contact_number,
-  //     descriptions: quotationPreview.descriptions,
-  //     quantity: quotationPreview.quantity,
-  //     rate: quotationPreview.rate,
-  //     amount: quotationPreview.total,
-  //     total_amount: quotationPreview.total_amount,
-  //     discount: quotationPreview.discount,
-  //     vat: quotationPreview.vat,
-  //     net_total: quotationPreview.net_total,
+  //     username: invoicePreview.username,
+  //     job_no: invoicePreview.job_no,
+  //     date: invoicePreview.date,
+  //     car_registration_no: invoicePreview.car_registration_no,
+  //     customer_name: invoicePreview?.customer_name,
+  //     contact_number: invoicePreview?.contact_number,
+  //     descriptions: invoicePreview.descriptions,
+  //     quantity: invoicePreview.quantity,
+  //     rate: invoicePreview.rate,
+  //     amount: invoicePreview.total,
+  //     total_amount: invoicePreview.total_amount,
+  //     discount: invoicePreview.discount,
+  //     vat: invoicePreview.vat,
+  //     net_total: invoicePreview.net_total,
   //   };
 
   //   const response = await axios.post(
@@ -67,134 +63,7 @@ const [invoice, setInvoice] = useState()
   //     navigate("/dashboard/qutation-view");
   //   }
   // };
-  const invoiceData = [
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-    {
-      id: 1,
-      desc: "",
-      quantity: 5,
-      rate: 555,
-      amount: 20000,
-    },
-  ];
+   
   return (
     <main className="invoicePrintWrap">
       <div ref={componentRef}>
@@ -215,8 +84,8 @@ const [invoice, setInvoice] = useState()
     
           <div>
            <div className="flex items-center justify-between mt-5 ">
-           <button className="invoiceOrderBtn">SL:40</button>
-           <b>Date: 12/12/23 </b>
+           <button className="invoiceOrderBtn">SL: {invoicePreview?.job_no}</button>
+           <b>Date: {invoicePreview?.date} </b>
            </div>
            <div className="flex items-center justiyf-between">
          <table className="invoicTable inVoiceTables mt-5">
@@ -226,7 +95,7 @@ const [invoice, setInvoice] = useState()
             </tr>
             <tbody>
               <tr className="borderNone">
-                <td >Al Amin </td>
+                <td > {invoicePreview?.customer_name} </td>
               </tr>
               <tr>
                 <td>Kuril Bishawroad, Dhaka-1229 </td>
@@ -240,10 +109,10 @@ const [invoice, setInvoice] = useState()
             </tr>
             <tbody>
               <tr>
-                <td>055</td>
+                <td>{invoicePreview?.car_registration_no}</td>
               </tr>
               <tr>
-                <td>5677 </td>
+                <td> {invoicePreview?.mileage} </td>
               </tr>
             </tbody>
            </table>
@@ -262,7 +131,7 @@ const [invoice, setInvoice] = useState()
               </tr>
             </thead>
             <tbody>
-              {quotationPreview?.input_data?.map((data, index) => (
+              {invoicePreview?.input_data?.map((data, index) => (
                 <tr key={data._id}>
                   <td>{ index + 1}</td>
                   <td>{data.description}</td>
@@ -274,7 +143,7 @@ const [invoice, setInvoice] = useState()
               <tr>
             <td></td>
             <td colSpan={3}> <b>Total Amount</b> </td>
-            <td> {quotationPreview.total_amount}/=</td>
+            <td> {invoicePreview?.total_amount}/=</td>
           </tr>
             </tbody>
           </table>

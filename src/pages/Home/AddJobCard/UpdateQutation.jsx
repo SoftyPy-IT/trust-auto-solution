@@ -196,6 +196,7 @@ const UpdateQutation = () => {
                 placeholder="Order Number"
                 defaultValue={specificInvoice?.job_no}
                 className="orderNumber"
+                readOnly
               />
             </div>
             <div>
@@ -242,9 +243,15 @@ const UpdateQutation = () => {
                   className="orderNumber"
                 />
               ) : (
-                <div onClick={() => setDateHandle(true)}>
-                  {specificInvoice.date}
-                </div>
+                <input
+                onClick={() => setDateHandle(true)}
+                  defaultValue={specificInvoice.date}
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Date"
+                  className="orderNumber"
+                />
+                 
               )}
             </div>
           </div>
@@ -259,7 +266,8 @@ const UpdateQutation = () => {
           </div>
           <div>
          {
-          specificInvoice?.input_data ? <>
+          specificInvoice?.input_data ? 
+          <>
           
           {specificInvoice?.input_data.map((item, i) => {
             return (
@@ -327,13 +335,13 @@ const UpdateQutation = () => {
                       type="text"
                       placeholder="Amount"
                       value={item.total}
-                      readOnly
+                       
                     />
                   </div>
                 </div>
 
                 <div className="addInvoiceItem">
-                  {items.length - 1 === i && (
+                  {specificInvoice?.input_data.length - 1 === i && (
                     <div
                       onClick={handleAddClick}
                       className="flex justify-end mt-2"

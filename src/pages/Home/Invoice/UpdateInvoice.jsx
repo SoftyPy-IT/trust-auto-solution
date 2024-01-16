@@ -54,9 +54,9 @@ const UpdateInvoice = () => {
   ]);
 
   useEffect(() => {
-    const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
+    const totalSum = specificInvoice.input_data.reduce((sum, item) => sum + Number(item.total), 0);
     setGrandTotal(totalSum);
-  }, [items]);
+  }, [specificInvoice.input_data]);
 
   const handleDescriptionChange = (index, value) => {
     const newItems = [...specificInvoice.input_data];

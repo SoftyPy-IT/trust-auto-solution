@@ -55,7 +55,7 @@ const UpdateQutation = () => {
   ]);
 
   useEffect(() => {
-    const totalSum = specificInvoice.input_data?.reduce((sum, item) => sum + Number(item.total), 0);
+    const totalSum = specificInvoice?.input_data?.reduce((sum, item) => sum + Number(item.total), 0);
     setGrandTotal(totalSum);
   }, [specificInvoice.input_data]);
 

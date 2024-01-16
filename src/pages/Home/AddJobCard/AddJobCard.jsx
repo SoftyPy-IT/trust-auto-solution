@@ -565,6 +565,11 @@ const AddJobCard = () => {
     }
   };
   const currentDate = new Date().toISOString().split('T')[0];
+  useEffect(() => {
+    // Get the current date in the format YYYY-MM-DD
+    const currentDate = new Date().toISOString().split('T')[0];
+    setFormattedDate(currentDate);
+  }, []);
   
   return (
     <div className="addJobCardWraps">
@@ -576,7 +581,7 @@ const AddJobCard = () => {
               Trust Auto Solution{" "}
             </h2>
             <p className=" text-sm">
-              It is trusted computerized Ogranizetion for all the kinds of
+              It is trusted computerized Organization for all the kinds of
               vehicle check up & maintenance such as computerized Engine
               Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical
               Works & Car Wash.
@@ -591,7 +596,6 @@ const AddJobCard = () => {
               <label>Job No: <span className="requiredStart">*</span></label>
               <input
                 value={jobNo}
-                // name="jobNo"
                 autoComplete="off"
                 type="text"
                 placeholder="Job No"
@@ -608,6 +612,7 @@ const AddJobCard = () => {
                 type="date"
                 placeholder="Date"
                 max={currentDate}
+                defaultValue={formattedDate}
               />
             </div>
           </div>

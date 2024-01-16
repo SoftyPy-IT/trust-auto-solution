@@ -60,22 +60,22 @@ const UpdateQutation = () => {
   }, [items]);
 
   const handleDescriptionChange = (index, value) => {
-    const newItems = [...items];
+    const newItems = [...specificInvoice.input_data];
     newItems[index].description = value;
     setItems(newItems);
   };
 
   const handleQuantityChange = (index, value) => {
-    const newItems = [...items];
-    newItems[index].quantity = value;
+    const newItems = [...specificInvoice.input_data];
+    newItems[index].quantity = Number(value);
     // Convert quantity to a number and calculate total
     newItems[index].total = Number(value) * newItems[index].rate;
     setItems(newItems);
   };
 
   const handleRateChange = (index, value) => {
-    const newItems = [...items];
-    newItems[index].rate = value;
+    const newItems = [...specificInvoice.input_data];
+    newItems[index].rate = Number(value);
     // Convert rate to a number and calculate total
     newItems[index].total = newItems[index].quantity * Number(value);
     setItems(newItems);
@@ -99,7 +99,13 @@ const UpdateQutation = () => {
 
   const calculateFinalTotal = () => {
     const discountAsPercentage = discount;
-    const totalAfterDiscount = grandTotal - discountAsPercentage;
+   
+    let totalAfterDiscount;
+    if (grandTotal) {
+      totalAfterDiscount = grandTotal - discountAsPercentage;
+    } else {
+      totalAfterDiscount = specificInvoice.total_amount - discountAsPercentage;
+    }
 
     const vatAsPercentage = vat / 100;
     const finalTotal =
@@ -108,7 +114,9 @@ const UpdateQutation = () => {
     return finalTotal;
   };
 
-  const handleUpdateInvoice = async (e) => {
+  console.log(items);
+
+  const handleUpdateQuotation = async (e) => {
     e.preventDefault();
 
     try {
@@ -128,6 +136,7 @@ const UpdateQutation = () => {
         discount: discount,
         vat: vat,
         net_total: calculateFinalTotal(),
+        input_data: items,
       };
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
@@ -244,14 +253,13 @@ const UpdateQutation = () => {
                 />
               ) : (
                 <input
-                onClick={() => setDateHandle(true)}
+                  onClick={() => setDateHandle(true)}
                   defaultValue={specificInvoice.date}
                   autoComplete="off"
                   type="text"
                   placeholder="Date"
                   className="orderNumber"
                 />
-                 
               )}
             </div>
           </div>
@@ -265,180 +273,192 @@ const UpdateQutation = () => {
             <label>Amount </label>
           </div>
           <div>
-         {
-          specificInvoice?.input_data ? 
-          <>
-          
-          {specificInvoice?.input_data.map((item, i) => {
-            return (
-              <div key={i}>
-                <div className="qutationForm">
-                  <div>
-                    {items.length !== 0 && (
-                      <button
-                        onClick={() => handleRemoveButton(i)}
-                        className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                  <div>
-                    <input
-                      className="firstInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="SL No "
-                      defaultValue={`${i + 1 < 10 ? `0${i + 1}` : i + 1}`}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="secondInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Description"
-                      onChange={(e) =>
-                        handleDescriptionChange(i, e.target.value)
-                      }
-                      defaultValue={item.description}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="firstInputField"
-                      autoComplete="off"
-                      type="number"
-                      placeholder="Quantity"
-                      onChange={(e) => handleQuantityChange(i, e.target.value)}
-                      required
-                      defaultValue={item.quantity}
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="thirdInputField"
-                      autoComplete="off"
-                      type="number"
-                      placeholder="Rate"
-                      onChange={(e) => handleRateChange(i, e.target.value)}
-                      required
-                      defaultValue={item.rate}
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="thirdInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Amount"
-                      value={item.total}
-                       
-                    />
-                  </div>
-                </div>
+            {specificInvoice?.input_data ? (
+              <>
+                {specificInvoice?.input_data.map((item, i) => {
+                  return (
+                    <div key={i}>
+                      <div className="qutationForm">
+                        <div>
+                          {items.length !== 0 && (
+                            <button
+                              onClick={() => handleRemoveButton(i)}
+                              className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            className="firstInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="SL No "
+                            defaultValue={`${i + 1 < 10 ? `0${i + 1}` : i + 1}`}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="secondInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="Description"
+                            onChange={(e) =>
+                              handleDescriptionChange(
+                                i,
+                                e.target.value || item.description
+                              )
+                            }
+                            defaultValue={item.description}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="firstInputField"
+                            autoComplete="off"
+                            type="number"
+                            placeholder="Quantity"
+                            onChange={(e) =>
+                              handleQuantityChange(i, e.target.value)
+                            }
+                            required
+                            defaultValue={item.quantity}
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="thirdInputField"
+                            autoComplete="off"
+                            type="number"
+                            placeholder="Rate"
+                            onChange={(e) =>
+                              handleRateChange(i, e.target.value)
+                            }
+                            required
+                            defaultValue={item.rate}
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="thirdInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="Amount"
+                            value={item.total}
+                          />
+                        </div>
+                      </div>
 
-                <div className="addInvoiceItem">
-                  {specificInvoice?.input_data.length - 1 === i && (
-                    <div
-                      onClick={handleAddClick}
-                      className="flex justify-end mt-2"
-                    >
-                      <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
-                        Add
-                      </button>
+                      <div className="addInvoiceItem">
+                        {specificInvoice?.input_data.length - 1 === i && (
+                          <div
+                            onClick={handleAddClick}
+                            className="flex justify-end mt-2"
+                          >
+                            <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
+                              Add
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}</>: <>
-           {items.map((item, i) => {
-            return (
-              <div key={i}>
-                <div className="qutationForm">
-                  <div>
-                    {items.length !== 0 && (
-                      <button
-                        onClick={() => handleRemove(i)}
-                        className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
-                      >
-                        Remove
-                      </button>
-                    )}
-                  </div>
-                  <div>
-                    <input
-                      className="firstInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="SL No "
-                      defaultValue={`${i + 1 < 10 ? `0${i + 1}` : i + 1}`}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="secondInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Description"
-                      onChange={(e) =>
-                        handleDescriptionChange(i, e.target.value)
-                      }
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="firstInputField"
-                      autoComplete="off"
-                      type="number"
-                      placeholder="Quantity"
-                      onChange={(e) => handleQuantityChange(i, e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="thirdInputField"
-                      autoComplete="off"
-                      type="number"
-                      placeholder="Rate"
-                      onChange={(e) => handleRateChange(i, e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="thirdInputField"
-                      autoComplete="off"
-                      type="text"
-                      placeholder="Amount"
-                      value={item.total}
-                      readOnly
-                    />
-                  </div>
-                </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                {items.map((item, i) => {
+                  return (
+                    <div key={i}>
+                      <div className="qutationForm">
+                        <div>
+                          {items.length !== 0 && (
+                            <button
+                              onClick={() => handleRemove(i)}
+                              className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                        <div>
+                          <input
+                            className="firstInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="SL No "
+                            defaultValue={`${i + 1 < 10 ? `0${i + 1}` : i + 1}`}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="secondInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="Description"
+                            onChange={(e) =>
+                              handleDescriptionChange(i, e.target.value)
+                            }
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="firstInputField"
+                            autoComplete="off"
+                            type="number"
+                            placeholder="Quantity"
+                            onChange={(e) =>
+                              handleQuantityChange(i, e.target.value)
+                            }
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="thirdInputField"
+                            autoComplete="off"
+                            type="number"
+                            placeholder="Rate"
+                            onChange={(e) =>
+                              handleRateChange(i, e.target.value)
+                            }
+                            required
+                          />
+                        </div>
+                        <div>
+                          <input
+                            className="thirdInputField"
+                            autoComplete="off"
+                            type="text"
+                            placeholder="Amount"
+                            value={item.total}
+                            readOnly
+                          />
+                        </div>
+                      </div>
 
-                <div className="addInvoiceItem">
-                  {items.length - 1 === i && (
-                    <div
-                      onClick={handleAddClick}
-                      className="flex justify-end mt-2"
-                    >
-                      <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
-                        Add
-                      </button>
+                      <div className="addInvoiceItem">
+                        {items.length - 1 === i && (
+                          <div
+                            onClick={handleAddClick}
+                            className="flex justify-end mt-2"
+                          >
+                            <button className="btn bg-[#42A1DA] hover:bg-[#42A1DA] text-white">
+                              Add
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}</>
-         }
+                  );
+                })}
+              </>
+            )}
             <div className="discountFieldWrap">
               <div className="flex items-center">
                 <b> Total Amount: </b>
@@ -486,7 +506,7 @@ const UpdateQutation = () => {
           </div>
 
           <div className="buttonGroup updateJobCardBtn mt-8">
-            <div onClick={handleUpdateInvoice} className="submitQutationBtn">
+            <div onClick={handleUpdateQuotation} className="submitQutationBtn">
               <button className="">Update Invoice </button>
             </div>
           </div>

@@ -30,7 +30,7 @@
 	height: auto;
 }
 .tkText {
-	width: 92px;
+	width: 100px;
 }
 
 .logoWrap img {
@@ -93,7 +93,7 @@
 }
 
 .receivedField {
-	width: 100%;
+	width: 70%;
 }
 .receivedField b {
 	font-style: italic;
@@ -234,7 +234,7 @@
 }
 .moneyReceiptBtnGroup button {
 	width: 77px;
-	background: #351e97;
+	background: #82017f;
 	margin-right: 5px;
 	border-radius: 20px;
 	color: #fff;
@@ -252,6 +252,9 @@
 	width: 100% !important;
 	margin-right: 5px;
 	border-radius: 3px;
+}
+.wordInTk {
+	width: 90%;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -292,4 +295,23 @@
 	.moneyFormWrap {
 		margin-left: 23px;
 	}
+}
+
+@media print {
+	
+	.receivedBtn button {
+		background: #82017f;
+		color: #fff;
+		width: 200px;
+		height: 35px;
+		border-radius: 20px;
+		margin-top: 5px;
+	}
+	.receivedBtn2 button {
+		width: 156px;
+		height: 30px;
+		font-size: 14px;
+	}	
+
+	
 }

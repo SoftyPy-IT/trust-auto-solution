@@ -177,7 +177,7 @@ const MoneyReceiptView = () => {
               type="text"
             />
           </div>
-          <div className="flex ">
+          <div className="flex">
             <label>Remaining:</label>
             <input
               {...register("remaining", { required: true })}
@@ -194,28 +194,15 @@ const MoneyReceiptView = () => {
             type="text"
           />
         </div>
-        <div className="flex justify-end my-10">
+        {/* <div className="flex justify-end my-10">
           <button className="btn btn-primary w-full">submit</button>
-        </div>
+        </div> */}
+        <div className="receivedBtn my-5">
+        <button type='submit'>Submit</button>
+      </div>
       </form>
       <div>
         <small className="signature">Authorized Signature</small>
-      </div>
-      <div className="customerSignature flex items-center justify-between mt-5">
-        <b>Customer Signature </b>
-        <b>Trust Auto Solution</b>
-      </div>
-      <hr className="my-3" />
-      <div className="text-center mt-5">
-        <p>
-          <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
-          www.trustautosolution.com
-        </p>
-        <p>
-          {" "}
-          <b>Mobile:</b> 01821-216465, 01972-216465 , <b>Email:</b>{" "}
-          trustautosolution@gmail.com{" "}
-        </p>
       </div>
     </div>
   );

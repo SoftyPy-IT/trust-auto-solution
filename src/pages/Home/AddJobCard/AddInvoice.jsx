@@ -8,7 +8,6 @@ const AddServices = () => {
    console.log(data)
       
    };
-
    
   return (
     <div className="mt-10">

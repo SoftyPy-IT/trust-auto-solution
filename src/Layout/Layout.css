@@ -89,10 +89,11 @@
 	background: #2c3136 !important;
 	width: 250px !important;
 	color: #fff !important;
-	transition: all .5s ease-in-out;
+	transition: all 500s ease-in-out;
 }
 .dashboardAccordion:hover {
-	background: #33383e !important;
+	background: #fff !important;
+	color: black !important;
 }
 .accordionTypoGrapy {
 	padding-left: 35px;
@@ -111,15 +112,16 @@
 	font-size: 14px;
 }
 .dashboardItems:hover {
-	background: #33383e;
+	background: #fff;
 	padding: 5px;
 	padding-left: 20px;
 	width: 100%;
+	color: black !important;
 }
 .active {
 	position: relative;
 	z-index: 999;
-	color: #42A1DA;
+	color: #42a1da;
 }
 .scrollToTopBtn {
 	width: 40px;

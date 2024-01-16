@@ -617,7 +617,7 @@ const AddJobCard = () => {
             <div>
               {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
              
-              <TextField className="addJobInputField" onChange={(e) => setChassisNo(e.target.value)} label="Chassis No (T&N)" />
+              <TextField className="addJobInputField" onChange={(e) => setChassisNo(e.target.value)} label="Chassis No (T&N)" required />
             </div>
             <div className="mt-3">
               <div className="flex items-center">
@@ -630,30 +630,30 @@ const AddJobCard = () => {
                   <option value="DM KHA">DM KHA</option>
 							</Select>
 						</FormControl>
-            <TextField onChange={(e) => setRegistration(e.target.value)}  label="Car R (T&N)" />
+            <TextField required onChange={(e) => setRegistration(e.target.value)}  label="Car R (T&N)" />
 					</div>
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model" />
+               <TextField  className="addJobInputField"   onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model (T)" required />
             </div>
 
             <div className="mt-3">
               
-               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand " />
+               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand (T&N)" required />
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"      onChange={(e) => setMileage(e.target.value)} label="Mileage (N) " />
+               <TextField  className="addJobInputField"  required    onChange={(e) => setMileage(e.target.value)} label="Mileage (N) " />
             </div>
 
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setColor(e.target.value)} label="Color & Code (T&N) " />
+               <TextField  className="addJobInputField" required onChange={(e) => setColor(e.target.value)} label="Color & Code (T&N) " />
             </div>
             <div className="mt-3">
-                <TextField  className="addJobInputField" onChange={(e) => setEngineNo(e.target.value)} label="ENGINE NO & CC (T&N) " />
+                <TextField  className="addJobInputField" onChange={(e) => setEngineNo(e.target.value)} label="ENGINE NO & CC (T&N) " required />
             </div>
             
             <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setCompanyName(e.target.value)} label="Company Name (T)" />
+              <TextField  className="addJobInputField"  onChange={(e) => setCompanyName(e.target.value)} label="Company Name (T)" required/>
             </div>
             <div className="mt-3">
               <FormControl className="addJobInputField">
@@ -682,19 +682,19 @@ const AddJobCard = () => {
           <div className="jobCardFieldRightSide">
           <h3 className="text-2xl mb-3 ">Customer Information </h3>
             <div>
-              <TextField  className="addJobInputField"  onChange={(e) => setCustomerName(e.target.value)} label="Customer Name (T)" />
+              <TextField required className="addJobInputField"  onChange={(e) => setCustomerName(e.target.value)} label="Customer Name (T)" />
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setContactNo(e.target.value)} label="Contact No (N)" />
+               <TextField required className="addJobInputField"  onChange={(e) => setContactNo(e.target.value)} label="Contact No (N)" />
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setDriverName(e.target.value)} label="Driver Name (T)" />
+               <TextField  className="addJobInputField" required onChange={(e) => setDriverName(e.target.value)} label="Driver Name (T)" />
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setPhoneNo(e.target.value)} label="Contact No (N)" />
+               <TextField  className="addJobInputField" required onChange={(e) => setPhoneNo(e.target.value)} label="Contact No (N)" />
             </div>
             <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setReference(e.target.value)} label="Reference Name (T) " />
+              <TextField  className="addJobInputField" required onChange={(e) => setReference(e.target.value)} label="Reference Name (T) " />
             </div>
           </div>
          </div>
@@ -802,23 +802,17 @@ const AddJobCard = () => {
               <div className="mt-5">
                 <b className="block mb-1 "> Vehicle Body Report Comments</b>
                 <textarea
-                  // {...register("vehicle_body_report", { required: true })}
                   onChange={(e) => setVehicleBody(e.target.value)}
                   required
                   autoComplete="off"
                 ></textarea>
               </div>
-              {/* <b className="carSideBar">LEFT</b>
-              <b className="carSideBar2">REAR</b>
-              <b className="carSideBar3">FRONT</b>
-              <b className="carSideBar4">RIGHT</b> */}
             </div>
           </div>
-          <div className="jobCardSingleForm">
+          <div className="jobCardSingleForm flex justify-between items-center mt-3 ">
             <div>
               <label>Technician Name </label>
               <input
-                // {...register("technician_name", { required: true })}
                 onChange={(e) => setTechnicianName(e.target.value)}
                 required
                 autoComplete="off"
@@ -829,10 +823,8 @@ const AddJobCard = () => {
             <div>
               <label>Technician Signature </label>
               <input
-                // {...register("technician_signature", { required: true })}
                 onChange={(e) => setTechnicianSignature(e.target.value)}
-                required
-                className="registrationForm"
+            
                 autoComplete="off"
                 type="text"
                 placeholder="Technician Signature"
@@ -852,7 +844,6 @@ const AddJobCard = () => {
             <div>
               <label>For Vehicle Owner</label>
               <input
-                // {...register("vehicle_owner", { required: true })}
                 onChange={(e) => setOwner(e.target.value)}
                 required
                 autoComplete="off"

@@ -7,11 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  FaTrashAlt,
-  FaEdit,
-  FaEye,
-} from "react-icons/fa";
+import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -58,7 +54,6 @@ const AddJobCard = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const formRef = useRef();
   const username = "683231669175";
-
 
   const handleAddToCard = async (e) => {
     e.preventDefault();
@@ -110,10 +105,8 @@ const AddJobCard = () => {
       setReload(!reload);
       toast.success("Add to job card successful.");
       formRef.current.reset();
-      setError(null)
-      
+      setError(null);
     }
-     
   };
 
   const navigate = useNavigate();
@@ -134,7 +127,7 @@ const AddJobCard = () => {
       engine_no: engineNo,
       reference_name: reference,
       company_name: companyName,
-      vehicle_category:vehicleCategory,
+      vehicle_category: vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -156,19 +149,16 @@ const AddJobCard = () => {
       setError("Please fill in all the required fields.");
       return;
     }
-   
+
     const response = await axios.post(
       "http://localhost:5000/api/v1/jobCard",
       values
     );
     if (response.data.message === "Successfully add to card post") {
-     
       const newJobNo = jobNo + 1;
       setJobNo(newJobNo);
       setReload(!reload);
-      fetch(
-        "http://localhost:5000/api/v1/jobCard/recent"
-      )
+      fetch("http://localhost:5000/api/v1/jobCard/recent")
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -179,7 +169,6 @@ const AddJobCard = () => {
       // formRef.current.reset()
       reset();
     }
-     
   };
   const handleQuotation = async (e) => {
     e.preventDefault();
@@ -197,7 +186,7 @@ const AddJobCard = () => {
       engine_no: engineNo,
       reference_name: reference,
       company_name: companyName,
-      vehicle_category:vehicleCategory,
+      vehicle_category: vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -250,7 +239,7 @@ const AddJobCard = () => {
       engine_no: engineNo,
       reference_name: reference,
       company_name: companyName,
-      vehicle_category:vehicleCategory,
+      vehicle_category: vehicleCategory,
       customer_name: customerName,
       contact_number: contactNo,
       driver_name: driverName,
@@ -309,9 +298,7 @@ const AddJobCard = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `http://localhost:5000/api/v1/jobCard/all/${username}`
-    )
+    fetch(`http://localhost:5000/api/v1/jobCard/all/${username}`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -349,7 +336,6 @@ const AddJobCard = () => {
 
     if (willDelete) {
       try {
-        
         const res = await fetch(
           `http://localhost:5000/api/v1/jobCard/one/${id}`,
           {
@@ -360,7 +346,6 @@ const AddJobCard = () => {
 
         if (data.message == "Job card delete successful") {
           setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
-         
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -534,9 +519,7 @@ const AddJobCard = () => {
   const handleFilterType = async () => {
     if (select === "SL No") {
       setSearchLoading(true);
-      fetch(
-        `http://localhost:5000/api/v1/jobCard/all/${username}`
-      )
+      fetch(`http://localhost:5000/api/v1/jobCard/all/${username}`)
         .then((res) => res.json())
         .then((data) => {
           setAllJobCard(data);
@@ -564,13 +547,13 @@ const AddJobCard = () => {
       }
     }
   };
-  const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = new Date().toISOString().split("T")[0];
   useEffect(() => {
     // Get the current date in the format YYYY-MM-DD
-    const currentDate = new Date().toISOString().split('T')[0];
+    const currentDate = new Date().toISOString().split("T")[0];
     setFormattedDate(currentDate);
   }, []);
-  
+
   return (
     <div className="addJobCardWraps">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
@@ -593,7 +576,9 @@ const AddJobCard = () => {
         <div>
           <div className=" jobCardFormWrap">
             <div>
-              <label>Job No: <span className="requiredStart">*</span></label>
+              <label>
+                Job No: <span className="requiredStart">*</span>
+              </label>
               <input
                 value={jobNo}
                 autoComplete="off"
@@ -605,7 +590,9 @@ const AddJobCard = () => {
               <div className="vehicleCard">Vehicle Job Card </div>
             </div>
             <div>
-              <label>Date <span className="requiredStart">*</span></label>
+              <label>
+                Date <span className="requiredStart">*</span>
+              </label>
               <input
                 onChange={handleDateChange}
                 autoComplete="off"
@@ -616,93 +603,160 @@ const AddJobCard = () => {
               />
             </div>
           </div>
-         <div className="jobCardFieldWraps">
-         <div className="jobCardFieldLeftSide">
-          <h3 className="text-2xl mb-3 ">Company Information </h3>
-            <div>
-              {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
-             
-              <TextField className="addJobInputField" onChange={(e) => setChassisNo(e.target.value)} label="Chassis No (T&N)" />
-            </div>
-            <div className="mt-3">
-              <div className="flex items-center">
-						<FormControl className="productField">
-							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select onChange={(e) => setCarReg(e.target.value)} native defaultValue="" id="grouped-native-select" label="Car Registration No  ">
-              <option  value="select">Select </option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-							</Select>
-						</FormControl>
-            <TextField onChange={(e) => setRegistration(e.target.value)}  label="Car R (T&N)" />
-					</div>
-            </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model" />
+          <div className="jobCardFieldWraps">
+            <div className="jobCardFieldLeftSide">
+              <h3 className="text-2xl mb-3 ">Company Information </h3>
+              <div>
+                {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
+
+                <TextField
+                  className={`addJobInputField ${!chassisNo && "border border-red-400"}`}
+                  onChange={(e) => setChassisNo(e.target.value)}
+                  label="Chassis No (T&N)"
+                />
+              </div>
+              <div className="mt-3">
+                <div className="flex items-center">
+                  <FormControl className="productField">
+                    <InputLabel htmlFor="grouped-native-select">
+                      Car Registration No
+                    </InputLabel>
+                    <Select
+                      onChange={(e) => setCarReg(e.target.value)}
+                      native
+                      defaultValue=""
+                      id="grouped-native-select"
+                      label="Car Registration No  "
+                    >
+                      <option value="select">Select </option>
+                      <option value="DM KHA">DM KHA</option>
+                      <option value="DM KHA">DM KHA</option>
+                      <option value="DM KHA">DM KHA</option>
+                    </Select>
+                  </FormControl>
+                  <TextField
+                    onChange={(e) => setRegistration(e.target.value)}
+                    label="Car R (T&N)"
+                  />
+                </div>
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setCarModel(e.target.value)}
+                  label="Vehicle Model"
+                />
+              </div>
+
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setCarMake(e.target.value)}
+                  label="Vehicle Brand "
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setMileage(e.target.value)}
+                  label="Mileage (N) "
+                />
+              </div>
+
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setColor(e.target.value)}
+                  label="Color & Code (T&N) "
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setEngineNo(e.target.value)}
+                  label="ENGINE NO & CC (T&N) "
+                />
+              </div>
+
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  label="Company Name (T)"
+                />
+              </div>
+              <div className="mt-3">
+                <FormControl className="addJobInputField">
+                  <InputLabel htmlFor="grouped-native-select">
+                    Select Vehicle Category{" "}
+                  </InputLabel>
+                  <Select
+                    onChange={(e) => setVehicleCategory(e.target.value)}
+                    native
+                    defaultValue=""
+                    id="grouped-native-select"
+                    label="Select Vehicle Category  "
+                  >
+                    <option value="Select Vehicle Category ">
+                      Select Vehicle Category{" "}
+                    </option>
+                    <option value="Sedans">Sedans</option>
+                    <option value="Crossovers">Crossovers</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Trucks">Trucks</option>
+                    <option value="Coupes">Coupes</option>
+                    <option value="Convertibles">Convertibles</option>
+                    <option value="Diesels">Diesels</option>
+                    <option value="SUVs">SUVs</option>
+                    <option value="Hybrid/Electric">Hybrid/Electric</option>
+                    <option value="Vans/Minivans">Vans/Minivans</option>
+                    <option value="Wagons">Wagons</option>
+                    <option value="Small Cars ">Small Cars </option>
+                    <option value="CPO ">CPO </option>
+                  </Select>
+                </FormControl>
+              </div>
             </div>
 
-            <div className="mt-3">
-              
-               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand " />
+            <div className="jobCardFieldRightSide">
+              <h3 className="text-2xl mb-3 ">Customer Information </h3>
+              <div>
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  label="Customer Name (T)"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setContactNo(e.target.value)}
+                  label="Contact No (N)"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setDriverName(e.target.value)}
+                  label="Driver Name (T)"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                  label="Contact No (N)"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  onChange={(e) => setReference(e.target.value)}
+                  label="Reference Name (T) "
+                />
+              </div>
             </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"      onChange={(e) => setMileage(e.target.value)} label="Mileage (N) " />
-            </div>
-
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setColor(e.target.value)} label="Color & Code (T&N) " />
-            </div>
-            <div className="mt-3">
-                <TextField  className="addJobInputField" onChange={(e) => setEngineNo(e.target.value)} label="ENGINE NO & CC (T&N) " />
-            </div>
-            
-            <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setCompanyName(e.target.value)} label="Company Name (T)" />
-            </div>
-            <div className="mt-3">
-              <FormControl className="addJobInputField">
-							<InputLabel htmlFor="grouped-native-select">Select Vehicle Category </InputLabel>
-							<Select onChange={(e) => setVehicleCategory(e.target.value)} native defaultValue="" id="grouped-native-select" label="Select Vehicle Category  ">
-              <option value="Select Vehicle Category ">Select Vehicle Category </option>
-                <option value="Sedans">Sedans</option>
-                <option value="Crossovers">Crossovers</option>
-                <option value="Sports">Sports</option>
-                <option value="Trucks">Trucks</option>
-                <option value="Coupes">Coupes</option>
-                <option value="Convertibles">Convertibles</option>
-                <option value="Diesels">Diesels</option>
-                <option value="SUVs">SUVs</option>
-                <option value="Hybrid/Electric">Hybrid/Electric</option>
-                <option value="Vans/Minivans">Vans/Minivans</option>
-                <option value="Wagons">Wagons</option>
-                <option value="Small Cars ">Small Cars </option>
-                <option value="CPO ">CPO </option>
-							</Select>
-						</FormControl>
-            </div>
-
           </div>
-         
-          <div className="jobCardFieldRightSide">
-          <h3 className="text-2xl mb-3 ">Customer Information </h3>
-            <div>
-              <TextField  className="addJobInputField"  onChange={(e) => setCustomerName(e.target.value)} label="Customer Name (T)" />
-            </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setContactNo(e.target.value)} label="Contact No (N)" />
-            </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setDriverName(e.target.value)} label="Driver Name (T)" />
-            </div>
-            <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setPhoneNo(e.target.value)} label="Contact No (N)" />
-            </div>
-            <div className="mt-3">
-              <TextField  className="addJobInputField"  onChange={(e) => setReference(e.target.value)} label="Reference Name (T) " />
-            </div>
-          </div>
-         </div>
 
           <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">
@@ -714,7 +768,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value}
                   className="textEditor"
-                  onChange={ setValue }
+                  onChange={setValue}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -741,7 +795,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value2}
                   className="textEditor"
-                  onChange={ setValue2 }
+                  onChange={setValue2}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -761,7 +815,7 @@ const AddJobCard = () => {
                 <ReactQuill
                   value={value3}
                   className="textEditor"
-                  onChange={ setValue3 }
+                  onChange={setValue3}
                   modules={{
                     toolbar: [
                       [{ font: [] }],
@@ -819,9 +873,10 @@ const AddJobCard = () => {
               <b className="carSideBar4">RIGHT</b> */}
             </div>
           </div>
-          <div className="jobCardSingleForm">
+          <div className="block lg:flex justify-between my-5">
             <div>
-              <label>Technician Name </label>
+               
+              {/* <label>Technician Name </label>
               <input
                 // {...register("technician_name", { required: true })}
                 onChange={(e) => setTechnicianName(e.target.value)}
@@ -829,10 +884,16 @@ const AddJobCard = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Technician Name"
+                
+              /> */}
+              <TextField
+                className=" "
+                onChange={(e) => setTechnicianName(e.target.value)}
+                label="Technician Name (T) "
               />
             </div>
             <div>
-              <label>Technician Signature </label>
+              {/* <label>Technician Signature </label>
               <input
                 // {...register("technician_signature", { required: true })}
                 onChange={(e) => setTechnicianSignature(e.target.value)}
@@ -841,10 +902,17 @@ const AddJobCard = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Technician Signature"
+              /> */}
+
+              <TextField
+                className=" "
+                o
+                onChange={(e) => setTechnicianName(e.target.value)}
+                label="Technician Name (T) "
               />
             </div>
             <div>
-              <label>Date </label>
+              {/* <label>Date </label> */}
               <input
                 onChange={(e) => setTechnicianDate(e.target.value)}
                 required
@@ -852,10 +920,17 @@ const AddJobCard = () => {
                 type="date"
                 placeholder="Date"
                 min={currentDate}
+                className="border-2 p-3"
               />
+              {/* <TextField
+                className=" "
+                type="date"
+                onChange={(e) => setTechnicianDate(e.target.value)}
+                min={currentDate}
+              /> */}
             </div>
             <div>
-              <label>For Vehicle Owner</label>
+              {/* <label>For Vehicle Owner</label>
               <input
                 // {...register("vehicle_owner", { required: true })}
                 onChange={(e) => setOwner(e.target.value)}
@@ -863,6 +938,11 @@ const AddJobCard = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="For Vehicle Owner"
+              /> */}
+               <TextField
+                className=" "
+                onChange={(e) => setOwner(e.target.value)}
+                label="Vehicle Owner (T) "
               />
             </div>
           </div>
@@ -873,23 +953,40 @@ const AddJobCard = () => {
           <div className="buttonGroup mt-5">
             <div>
               {/* <Link to={`/dashboard/preview?${id}`}> */}
-              <button disabled={loading} onClick={handlePreview}>Preview</button>
+              <button disabled={loading} onClick={handlePreview}>
+                Preview
+              </button>
               {/* </Link> */}
               {/* <Link to="/dashboard/preview"> */}
-             <Link  to="/dashboard/preview"> <button>Download</button></Link>
+              <Link to="/dashboard/preview">
+                {" "}
+                <button>Download</button>
+              </Link>
               {/* </Link>
               <Link to="/dashboard/preview"> */}
-              <Link  to="/dashboard/preview"> <button>Print</button></Link>
+              <Link to="/dashboard/preview">
+                {" "}
+                <button>Print</button>
+              </Link>
               {/* </Link> */}
               {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
-              <button disabled={loading} onClick={handleQuotation}>Quotation</button>
+              <button disabled={loading} onClick={handleQuotation}>
+                Quotation
+              </button>
               {/* </Link> */}
               {/* <Link to="/dashboard/invoice"> */}{" "}
-              <button disabled={loading} onClick={handleInvoice}>Invoice</button>
+              <button disabled={loading} onClick={handleInvoice}>
+                Invoice
+              </button>
               {/* </Link> */}
             </div>
             <div className="submitQutationBtn">
-              <button disabled={loading} onClick={handleAddToCard} type="submit" className="">
+              <button
+                disabled={loading}
+                onClick={handleAddToCard}
+                type="submit"
+                className=""
+              >
                 Add To Job Card{" "}
               </button>
             </div>
@@ -925,7 +1022,7 @@ const AddJobCard = () => {
 
       {searchLoading ? (
         <div className="flex justify-center items-center text-xl">
-        <Loading/>
+          <Loading />
         </div>
       ) : (
         <div>

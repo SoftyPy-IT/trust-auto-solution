@@ -114,7 +114,6 @@ const UpdateQutation = () => {
     return finalTotal;
   };
 
-  console.log(items);
 
   const handleUpdateQuotation = async (e) => {
     e.preventDefault();
@@ -167,8 +166,8 @@ const UpdateQutation = () => {
     axios
       .put(`http://localhost:5000/api/v1/quotation/${id}`, { index: i })
       .then((response) => {
-        console.log(response.data.message);
-        if (response.data.message === "Description deleted successfully") {
+       
+        if (response.data.message === "Deleted successful") {
           setReload(!reload);
         }
       })
@@ -352,7 +351,7 @@ const UpdateQutation = () => {
                         </div>
                       </div>
 
-                      <div className="addInvoiceItem">
+                      {/* <div className="addInvoiceItem">
                         {specificInvoice?.input_data.length - 1 === i && (
                           <div
                             onClick={handleAddClick}
@@ -363,7 +362,7 @@ const UpdateQutation = () => {
                             </button>
                           </div>
                         )}
-                      </div>
+                      </div> */}
                     </div>
                   );
                 })}

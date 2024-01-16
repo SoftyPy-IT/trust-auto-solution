@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../../../../public/assets/logo.png";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ const UpdateInvoice = () => {
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
   const [error, setError] = useState("");
+  const [reload, setReload] = useState(false);
   const navigate = useNavigate()
   const location = useLocation();
   const id = new URLSearchParams(location.search).get("id");
@@ -45,47 +47,37 @@ const UpdateInvoice = () => {
     fetch(`http://localhost:5000/api/v1/invoice/one/${id}`)
       .then((res) => res.json())
       .then((data) => setSpecificInvoice(data));
-  }, [id]);
+  }, [id,reload]);
+
+  const [items, setItems] = useState([
+    { description: "", quantity: "", rate: "", total: "" },
+  ]);
+
+  useEffect(() => {
+    const totalSum = specificInvoice?.input_data?.reduce((sum, item) => sum + Number(item.total), 0);
+    setGrandTotal(totalSum);
+  }, [specificInvoice.input_data]);
 
   const handleDescriptionChange = (index, value) => {
-    if (value === "") {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = "";
-      setDescriptions(newDescriptions);
-    } else {
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = value;
-      setDescriptions(newDescriptions);
-    }
+    const newItems = [...specificInvoice.input_data];
+    newItems[index].description = value;
+    setItems(newItems);
   };
+
   const handleQuantityChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
-
-    if (!isNaN(parsedValue)) {
-      const newQuantity = [...quantity];
-      newQuantity[index] = parsedValue;
-      setQuantity(newQuantity);
-      updateTotal(index, parsedValue, rate[index]);
-    }
+    const newItems = [...specificInvoice.input_data];
+    newItems[index].quantity = Number(value);
+    // Convert quantity to a number and calculate total
+    newItems[index].total = Number(value) * newItems[index].rate;
+    setItems(newItems);
   };
+
   const handleRateChange = (index, value) => {
-    const parsedValue = value === "" ? "" : parseFloat(value);
-
-    if (!isNaN(parsedValue)) {
-      const newRate = [...rate];
-      newRate[index] = parsedValue;
-      setRate(newRate);
-      updateTotal(index, quantity[index], parsedValue);
-    }
-  };
-
-  const updateTotal = (index, quantityValue, rateValue) => {
-    const newTotal = [...total];
-    // const rateAsPercentage = rateValue / 100; // Convert rate to percentage
-    newTotal[index] = quantityValue * rateValue;
-    setTotal(newTotal);
-    const newGrandTotal = newTotal.reduce((sum, value) => sum + value, 0);
-    setGrandTotal(newGrandTotal);
+    const newItems = [...specificInvoice.input_data];
+    newItems[index].rate = Number(value);
+    // Convert rate to a number and calculate total
+    newItems[index].total = newItems[index].quantity * Number(value);
+    setItems(newItems);
   };
 
   const handleDiscountChange = (value) => {
@@ -106,13 +98,31 @@ const UpdateInvoice = () => {
 
   const calculateFinalTotal = () => {
     const discountAsPercentage = discount;
-    const totalAfterDiscount = grandTotal - discountAsPercentage;
+   
+    let totalAfterDiscount;
+    if (grandTotal) {
+      totalAfterDiscount = grandTotal - discountAsPercentage;
+    } else {
+      totalAfterDiscount = specificInvoice.total_amount - discountAsPercentage;
+    }
 
     const vatAsPercentage = vat / 100;
     const finalTotal =
       totalAfterDiscount + totalAfterDiscount * vatAsPercentage;
 
     return finalTotal;
+  };
+
+  const handleRemoveButton = (i) => {
+    axios
+      .put(`http://localhost:5000/api/v1/invoice/${id}`, { index: i })
+      .then((response) => {
+       
+        if (response.data.message === "Deleted successful") {
+          setReload(!reload);
+        }
+      })
+      .catch((error) => {});
   };
 
   const handleUpdateInvoice = async (e) => {
@@ -179,7 +189,7 @@ const UpdateInvoice = () => {
         </div>
       </div>
       <div className="mt-5">
-        <form onSubmit={handleUpdateInvoice}>
+        <div>
           <div className="qutationForm invoicForm">
             <div>
               <label className="block">Order Number </label>
@@ -244,14 +254,14 @@ const UpdateInvoice = () => {
             <label>Rate</label>
             <label>Amount </label>
           </div>
-          {inputList.map((x, i) => {
+          {specificInvoice?.input_data?.map((item, i) => {
             return (
               <div key={i}>
                 <div className="qutationForm">
                   <div>
-                    {inputList.length !== 0 && (
+                    {specificInvoice?.input_data?.length !== 0 && (
                       <button
-                        onClick={() => handleRemove(i)}
+                        onClick={() => handleRemoveButton(i)}
                         className="  bg-[#42A1DA] hover:bg-[#42A1DA] text-white rounded-md px-2 py-2"
                       >
                         Remove
@@ -277,6 +287,7 @@ const UpdateInvoice = () => {
                       onChange={(e) =>
                         handleDescriptionChange(i, e.target.value)
                       }
+                      defaultValue={item.description}
                       required
                     />
                   </div>
@@ -288,6 +299,7 @@ const UpdateInvoice = () => {
                       placeholder="Quantity "
                       onChange={(e) => handleQuantityChange(i, e.target.value)}
                       required
+                      defaultValue={item.quantity}
                     />
                   </div>
                   <div>
@@ -298,6 +310,7 @@ const UpdateInvoice = () => {
                       placeholder="Rate "
                       onChange={(e) => handleRateChange(i, e.target.value)}
                       required
+                      defaultValue={item.rate}
                     />
                   </div>
                   <div>
@@ -306,12 +319,12 @@ const UpdateInvoice = () => {
                       autoComplete="off"
                       type="text"
                       placeholder="Amount"
-                      defaultValue={total[i]}
+                      defaultValue={item.total}
                     />
                   </div>
                 </div>
 
-                <div className="addInvoiceItem">
+                {/* <div className="addInvoiceItem">
                   {inputList.length - 1 === i && (
                     <div
                       onClick={handleAddClick}
@@ -322,14 +335,14 @@ const UpdateInvoice = () => {
                       </button>
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             );
           })}
           <div className="discountFieldWrap">
           <div className="flex items-center">
               <b> Total Amount: </b>
-              <span>{grandTotal}</span>
+              <span>{grandTotal ? grandTotal : specificInvoice.total_amount}</span>
             </div>
             <div>
               <b> Discount: </b>
@@ -339,6 +352,7 @@ const UpdateInvoice = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Discount"
+                defaultValue={specificInvoice.discount}
               />
             </div>
             <div>
@@ -349,6 +363,7 @@ const UpdateInvoice = () => {
                 autoComplete="off"
                 type="text"
                 placeholder="Vat"
+                defaultValue={specificInvoice.vat}
               />
             </div>
             <div>
@@ -356,7 +371,9 @@ const UpdateInvoice = () => {
                 <strong>
                   Final Total:{" "}
                   <span>
-                    {calculateFinalTotal()}
+                  {calculateFinalTotal()
+                        ? calculateFinalTotal()
+                        : specificInvoice.net_total}
                   </span>
                 </strong>
                 {/* <b>Net Total: </b> */}
@@ -366,14 +383,14 @@ const UpdateInvoice = () => {
           </div>
 
           <div className="buttonGroup updateJobCardBtn mt-8">
-            <div className="submitQutationBtn">
-              <button className="">Update Invoice </button>
+            <div onClick={handleUpdateInvoice} className="submitQutationBtn">
+              <button  className="">Update Invoice </button>
             </div>
           </div>
           {error && (
             <div className="pt-6 text-red-400 text-center">{error}</div>
           )}
-        </form>
+        </div>
       </div>
     </div>
   );

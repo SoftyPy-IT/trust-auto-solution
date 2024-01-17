@@ -443,7 +443,7 @@ const AddQuotation = () => {
               </td>
               <td>
                 <div className="editIconWrap edit">
-                  <Link to={`/dashboard/update-qutation?id=${card._id}`}>
+                  <Link to={`/dashboard/update-quotation?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>

@@ -1,46 +1,46 @@
-/* eslint-disable no-undef */
 /* eslint-disable react/no-unescaped-entities */
-import "./MoneyReceived.css";
-import logo from "../../../../public/assets/logo.png";
-import { Email, Home, WhatsApp, LocalPhone } from "@mui/icons-material";
-import { useEffect, useRef, useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import { usePDF } from "react-to-pdf";
-import { Link, useLocation } from "react-router-dom";
-import generatePDF, { Resolution, Margin } from "react-to-pdf";
-
+import React, { useRef, useEffect, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { usePDF } from 'react-to-pdf';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Email, Home, WhatsApp, LocalPhone } from '@mui/icons-material';
+import { Link, useLocation } from 'react-router-dom';
+import generatePDF, { Resolution, Margin } from 'react-to-pdf';
+import logo from '../../../../public/assets/logo.png';
+import './MoneyReceived.css';
+import './PrintStyle.css'
 const PdfGenerator = () => {
   const location = useLocation();
-  const id = new URLSearchParams(location.search).get("id");
-  const [specificMoneyReceipt, setSpecificMoneyReceipt] = useState({})
+  const id = new URLSearchParams(location.search).get('id');
+  const [specificMoneyReceipt, setSpecificMoneyReceipt] = useState({});
   const componentRef = useRef();
-  const { targetRef } = usePDF({ filename: "page.pdf" });
+  const { targetRef } = usePDF({ filename: 'page.pdf' });
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
   const options = {
-    resolution: Resolution.NORMAL,
+    resolution: Resolution.HIGH, // You can set the resolution as needed
     page: {
       margin: Margin.SMALL,
-      format: "letter",
-      orientation: "landscape",
+      format: 'a4', // Set to 'a4' for A4 size
+      orientation: 'portrait', // 'portrait' or 'landscape'
     },
     canvas: {
-      mimeType: "image/png",
+      mimeType: 'image/png',
       qualityRatio: 1,
     },
-    overrides: {
-      pdf: {
-        compress: true,
-      },
-      canvas: {
-        useCORS: true,
-      },
+    pdf: {
+      compress: true,
+    },
+    canvas: {
+      useCORS: true,
     },
   };
+  
 
   // Function to get the target element
-  const getTargetElement = () => document.getElementById("content-id");
+  const getTargetElement = () => document.getElementById('content-id');
 
   useEffect(() => {
     if (id) {
@@ -53,8 +53,39 @@ const PdfGenerator = () => {
     }
   }, [id]);
 
- console.log(specificMoneyReceipt)
-
+  const downloadPdf = async () => {
+    const targetElement = componentRef.current;
+  
+    if (!targetElement) {
+      console.error(`Ref for target element not found`);
+      return;
+    }
+  
+    const canvas = await html2canvas(targetElement, {
+      scale: 2, // Increase scale for better quality
+    });
+  
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({
+      orientation: 'portrait', // Set to 'portrait' for A4 size
+      unit: 'mm',
+      format: 'a4',
+    });
+  
+    // Set a fixed height of 500px
+    const pdfWidth = 210; // A4 width in mm
+    const pdfHeight = 500; // Set to your desired height in px
+  
+    const imgWidth = pdfWidth - 20; // Adjusted width after subtracting left and right padding
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+    // Add image to PDF with padding and fixed height
+    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight, null, null, null, pdfHeight);
+  
+    pdf.save('downloaded.pdf');
+  };
+  
+  
   return (
     <section className="viewMoneyReceiptWrap">
       <div className="moneyWraps">
@@ -97,9 +128,10 @@ const PdfGenerator = () => {
                 </div>
               </div>
             </div>
-            <div className="receivedBtn receivedBtn2">
-              <button>Receipt</button>
-            </div>
+            <div className="receivedBtn2 mt-2">
+  <button className="print-button">Receipt</button>
+</div>
+
             <div className="flex justify-between ">
               <small>Serial No: 01</small>
               <small>Date: 12/01/2023 </small>
@@ -171,9 +203,7 @@ const PdfGenerator = () => {
       </div>
       <div className="moneyReceiptBtnGroup mt-5">
         <button onClick={handlePrint}>Print </button>
-        <button onClick={() => generatePDF(getTargetElement, options)}>
-          Pdf{" "}
-        </button>
+        <button onClick={downloadPdf}>Pdf </button>
         <Link to={`/dashboard/money-receipt-update?id=${id}`}>
           <button> Edit </button>
         </Link>

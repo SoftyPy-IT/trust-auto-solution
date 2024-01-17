@@ -13,7 +13,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
 import Loading from "../../../components/Loading/Loading";
-const Qutation = () => {
+const AddQuotation = () => {
   const [select, setSelect] = useState(null);
 
   const [inputList, setInputList] = useState([
@@ -290,14 +290,14 @@ const Qutation = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            navigate(`/dashboard/details?id=${data._id}`);
+            navigate(`/dashboard/quotation-view?id=${data._id}`);
           }
         });
     }
   };
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/details?id=${e}`);
+    navigate(`/dashboard/quotation-view?id=${e}`);
   };
 
   useEffect(() => {
@@ -963,4 +963,4 @@ const Qutation = () => {
   );
 };
 
-export default Qutation;
+export default AddQuotation;

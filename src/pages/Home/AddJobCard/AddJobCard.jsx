@@ -607,16 +607,14 @@ const AddJobCard = () => {
          <div className="jobCardFieldLeftSide">
           <h3 className="text-2xl mb-3 ">Company Information </h3>
             <div>
-              {/* <label>Chassis No  <span className="requiredStart">*</span></label> */}
-             
               <TextField className="addJobInputField" onChange={(e) => setChassisNo(e.target.value)} label="Chassis No (T&N)" />
             </div>
             <div className="mt-3">
               <div className="flex items-center">
 						<FormControl className="productField">
 							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select onChange={(e) => setCarReg(e.target.value)} native defaultValue="" id="grouped-native-select" label="Car Registration No  ">
-              <option  value="select">Select </option>
+							<Select onChange={(e) => setCarReg(e.target.value)} native  id="grouped-native-select" label="Car Registration No  ">
+              <option  value="select">Select Reg </option>
                   <option value="DM KHA">DM KHA</option>
                   <option value="DM KHA">DM KHA</option>
                   <option value="DM KHA">DM KHA</option>
@@ -626,12 +624,12 @@ const AddJobCard = () => {
 					</div>
             </div>
             <div className="mt-3">
-               <TextField  className="addJobInputField"  onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model" />
+               <TextField  className="addJobInputField"  onChange={(e) => setCarModel(e.target.value)} label="Vehicle Model (N)" />
             </div>
 
             <div className="mt-3">
               
-               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand " />
+               <TextField  className="addJobInputField"   onChange={(e) => setCarMake(e.target.value)} label="Vehicle Brand (T&N)" />
             </div>
             <div className="mt-3">
                <TextField  className="addJobInputField"      onChange={(e) => setMileage(e.target.value)} label="Mileage (N) " />
@@ -801,18 +799,8 @@ const AddJobCard = () => {
               </div>
             </div>
           </div>
-          <div className="jobCardSingleForm">
+          <div className="flex items-center justify-between mt-3">
             <div>
-               
-              {/* <label>Technician Name </label>
-              <input
-                onChange={(e) => setTechnicianName(e.target.value)}
-                required
-                autoComplete="off"
-                type="text"
-                placeholder="Technician Name"
-                
-              /> */}
               <TextField
                 className=" "
                 onChange={(e) => setTechnicianName(e.target.value)}
@@ -820,14 +808,6 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              {/* <label>Technician Signature </label>
-              <input
-                onChange={(e) => setTechnicianSignature(e.target.value)}
-            
-                autoComplete="off"
-                type="text"
-                placeholder="Technician Signature"
-              /> */}
 
               <TextField
                 className=" "
@@ -837,7 +817,7 @@ const AddJobCard = () => {
               />
             </div>
             <div>
-              {/* <label>Date </label> */}
+        
               <input
                 onChange={(e) => setTechnicianDate(e.target.value)}
                 required
@@ -847,22 +827,8 @@ const AddJobCard = () => {
                 min={currentDate}
                 className="border-2 p-3"
               />
-              {/* <TextField
-                className=" "
-                type="date"
-                onChange={(e) => setTechnicianDate(e.target.value)}
-                min={currentDate}
-              /> */}
             </div>
             <div>
-              {/* <label>For Vehicle Owner</label>
-              <input
-                onChange={(e) => setOwner(e.target.value)}
-                required
-                autoComplete="off"
-                type="text"
-                placeholder="For Vehicle Owner"
-              /> */}
                <TextField
                 className=" "
                 onChange={(e) => setOwner(e.target.value)}

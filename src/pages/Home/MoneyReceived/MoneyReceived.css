@@ -71,11 +71,7 @@
 	border-radius: 20px;
 	margin-top: 5px;
 }
-.receivedBtn2 button {
-	width: 156px;
-	height: 30px;
-	font-size: 14px;
-}
+
 .receivedTitle {
 	font-size: 45px;
 	font-weight: bold;
@@ -93,7 +89,7 @@
 }
 
 .receivedField {
-	width: 70%;
+	width: 100%;
 }
 .receivedField b {
 	font-style: italic;
@@ -102,8 +98,6 @@
 	width: 100%;
 	border-bottom: 1px dashed;
 	border-color: #81027e;
-	padding-left: 5px;
-	margin-top: 10px;
 }
 
 .payAdvance {
@@ -122,7 +116,7 @@
 	width: 615px;
 }
 .advance2 {
-	width: 419px;
+	width: 448px;
 }
 .payAdvance {
 	display: flex;
@@ -132,7 +126,7 @@
 	width: 122px;
 }
 .vehicleText2 {
-	width: 81px;
+	width: 84px;
 }
 .checqueText {
 	width: 228px;
@@ -257,6 +251,20 @@
 	width: 90%;
 }
 
+.receivedBtn2 button {
+	width: 156px;
+	height: 30px;
+	font-size: 14px;
+	background: #82017f;
+	color: #fff;
+	border-radius: 20px;
+	margin: 0 auto;
+	text-align: center;
+	display: grid;
+	place-content: center;
+	place-items: center;
+}
+
 @media only screen and (max-width: 1024px) {
 	.moneyHead {
 		width: 432px;
@@ -298,20 +306,17 @@
 }
 
 @media print {
-	
-	.receivedBtn button {
-		background: #82017f;
-		color: #fff;
-		width: 200px;
-		height: 35px;
-		border-radius: 20px;
-		margin-top: 5px;
+	@page {
+		size: A4;
+		margin: 0;
 	}
-	.receivedBtn2 button {
-		width: 156px;
-		height: 30px;
-		font-size: 14px;
-	}	
 
-	
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+	}
 }

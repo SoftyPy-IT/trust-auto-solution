@@ -7,7 +7,6 @@ import "react-quill/dist/quill.snow.css";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FormControl, InputLabel, Select, TextField } from "@mui/material";
 const UpdateJobCard = () => {
   const [carRegNo, setCarRegNo] = useState(null);
   const [vehicleCategory, setVehicleCategory] = useState(null);
@@ -114,7 +113,7 @@ const UpdateJobCard = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div className="jobCardFormWrap">
+          <div className=" jobCardFormWrap">
             <div>
               <label>
                 Job No: <span className="requiredStart">*</span>{" "}
@@ -143,6 +142,7 @@ const UpdateJobCard = () => {
                   >
                     {singleCard.date}{" "}
                   </div>
+                  <div>Calender icon</div>
                 </>
               )}
 
@@ -158,72 +158,159 @@ const UpdateJobCard = () => {
               )}
             </div>
           </div>
-          <div className="jobCardFieldWraps">
-          <div className="jobCardFieldLeftSide">
-          <h3 className="text-2xl mb-3 ">Company Information </h3>
+          <div className="jobCardSingleForm jobCardSingleForm2 mt-8">
             <div>
-               <TextField  {...register("chassis_no")} className="addJobInputField"  label={singleCard.chassis_no} defaultValue={singleCard.chassis_no} />
+              <label>
+                Chassis No <span className="requiredStart">*</span>{" "}
+              </label>
+              <input
+                {...register("chassis_no")}
+                autoComplete="off"
+                type="text"
+                placeholder="Chassis No"
+                defaultValue={singleCard.chassis_no}
+              />
             </div>
-              {/* <div className="flex items-center mt-3">
+            <div>
+              <label>
+                Car Registration No <span className="requiredStart">*</span>{" "}
+              </label>
+
+              <div className="flex items-center inputSelectWrap">
                 {!select && !carRegNo && (
                   <div onClick={handleSelectReg} className="px-7 text-sm">
                     {singleCard.carReg_no}
                   </div>
                 )}
                 {select && (
-                  <FormControl className="productField">
-							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select value={singleCard.carReg_no} onChange={(e) => setCarRegNo(e.target.value)}   id="grouped-native-select" label="Car Registration No  ">
-              <option value="Reg">Car Registration No </option>
+                  <select value={singleCard.carReg_no} onChange={(e) => setCarRegNo(e.target.value)}>
+                    <option value="Reg">Select </option>
                     <option value="Reg">DM KHA</option>
                     <option value="Reg">DM KHA</option>
                     <option value="Reg">DM KHA</option>
-							</Select>
-             
-						</FormControl>
+                  </select>
                 )}
-            <TextField  label={singleCard.car_registration_no} />
-              </div> */}
-               <div className="flex items-center">
-						<FormControl className="productField">
-							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select onChange={(e) => setCarRegNo(e.target.value)} native  id="grouped-native-select" label="Car Registration No  ">
-              <option  value="select">Select Reg </option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-							</Select>
-						</FormControl>
-            <TextField   label="Car R (T&N)" />
-					</div>
-            <div className="mt-3">
-               <TextField  {...register("car_model")}  className="addJobInputField" label={singleCard.vehicle_model} />
+
+                <input
+                  className="registrationForm"
+                  autoComplete="off"
+                  type="text"
+                  placeholder="Car Registration"
+                  defaultValue={singleCard.car_registration_no}
+                />
+              </div>
             </div>
-            <div className="mt-3">
-              <TextField {...register("car_make")} className="addJobInputField" label={singleCard.vehicle_brand} />
-           </div>
-            <div className="mt-3">
-               <TextField {...register("mileage")} className="addJobInputField"  label={singleCard.mileage} />
+            <div>
+              <label>
+                Vehicle Model <span className="requiredStart">*</span>{" "}
+              </label>
+              <input
+                {...register("car_model")}
+                // name="carmodel"
+                autoComplete="off"
+                type="text"
+                placeholder="Vehicle Model"
+                defaultValue={singleCard.vehicle_model}
+              />
             </div>
-            <div className="mt-3">
-               <TextField   {...register("engine_no")} className="addJobInputField" label={singleCard.engine_no} />
+
+            <div>
+              <label>
+                Vehicle Brand <span className="requiredStart">*</span>{" "}
+              </label>
+              <input
+                {...register("car_make")}
+                // name="carmake"
+                autoComplete="off"
+                type="text"
+                placeholder="Cehicle Brand"
+                defaultValue={singleCard.vehicle_brand}
+              />
             </div>
-            <div className="mt-3">
-               <TextField  {...register("color")} className="addJobInputField" label={singleCard.color} />
+            <div>
+              <label>
+                Mileage <span className="requiredStart">*</span>{" "}
+              </label>
+              <input
+                {...register("mileage")}
+                // name="meleage"
+                autoComplete="off"
+                type="text"
+                placeholder="Mileage"
+                defaultValue={singleCard.mileage}
+              />
             </div>
-            <div className="mt-3">
-               <TextField    {...register("company_name")}  label={singleCard.company_name} className="addJobInputField"/>
+          </div>
+          <div className="jobCardSingleForm jobCardSingleForm2">
+            <div>
+              <label>
+                Color & Code <span className="requiredStart">*</span>{" "}
+              </label>
+              <input
+                {...register("color")}
+                // name="color"
+                autoComplete="off"
+                type="text"
+                placeholder="Color & Code "
+                defaultValue={singleCard.color}
+              />
             </div>
-            <div className="mt-3">
-              <FormControl className="addJobInputField">
-							<InputLabel htmlFor="grouped-native-select"> Select Vehicle Category</InputLabel>
-              {/* vvalue={
+            <div>
+              <label>Engine No & CC </label>
+              <input
+                {...register("engine_no")}
+                // name="engine"
+                className="registrationForm"
+                autoComplete="off"
+                type="text"
+                placeholder="Engine No & CC"
+                defaultValue={singleCard.engine_no}
+              />
+            </div>
+            <div>
+              <label>Reference Name </label>
+              <input
+                {...register("reference_name")}
+                // name="reference"
+                autoComplete="off"
+                type="text"
+                placeholder="Reference Name "
+                defaultValue={singleCard.reference_name}
+              />
+            </div>
+            <div>
+              <label>Company Name </label>
+              <input
+                {...register("company_name")}
+                // name="reference"
+                autoComplete="off"
+                type="text"
+                placeholder="Company Name "
+                defaultValue={singleCard.company_name}
+              />
+            </div>
+            <div>
+              <label>
+                Vehicle Category <span className="requiredStart">*</span>{" "}
+              </label>
+              {/* <input
+                {...register("company_name")}
+                // name="cname"
+                autoComplete="off"
+                type="text"
+                placeholder="Company Name"
+                defaultValue={singleCard.company_name}
+              /> */}
+              <select
+                value={
                   vehicleCategory
                     ? vehicleCategory
                     : singleCard.vehicle_category
-                } */}
-							<Select onChange={(e) => setVehicleCategory(e.target.value)}  id="grouped-native-select" native label=" Select Vehicle Category ">
-              <option >
+                }
+                onChange={(e) => setVehicleCategory(e.target.value)}
+                autoComplete="off"
+              >
+                <option value="Select Vehicle Category ">
                   Select Vehicle Category{" "}
                 </option>
                 <option value="Sedans">Sedans</option>
@@ -239,30 +326,57 @@ const UpdateJobCard = () => {
                 <option value="Wagons">Wagons</option>
                 <option value="Small Cars ">Small Cars </option>
                 <option value="CPO ">CPO </option>
-							</Select>
-             
-						</FormControl>
+              </select>
             </div>
           </div>
-          <div className="jobCardFieldRightSide">  
-          <h3 className="text-2xl mb-3 ">Customer Information </h3>  
+          <div className="jobCardSingleForm">
             <div>
-               <TextField  {...register("reference_name")} label={singleCard.reference_name} className="addJobInputField"/>
+              <label>Customer name </label>
+              <input
+                {...register("customer_name")}
+                // name="username"
+                autoComplete="off"
+                type="text"
+                placeholder="Customer name "
+                defaultValue={singleCard.customer_name}
+              />
             </div>
-            <div className="mt-3">
-               <TextField {...register("customer_name")} label={singleCard.customer_name} className="addJobInputField"/>
+            <div>
+              <label>Contact No </label>
+              <input
+                {...register("contact_number")}
+                // name="contact"
+                className="registrationForm"
+                autoComplete="off"
+                type="text"
+                placeholder="Contact No "
+                defaultValue={singleCard.contact_number}
+              />
             </div>
-            <div className="mt-3">
-               <TextField {...register("contact_number")} label={singleCard.contact_number} className="addJobInputField"/>
+            <div>
+              <label>Driver Name </label>
+              <input
+                {...register("driver_name")}
+                // name="driver"
+                autoComplete="off"
+                type="text"
+                placeholder="Driver Name  "
+                defaultValue={singleCard.driver_name}
+              />
             </div>
-             <div className="mt-3">
-               <TextField {...register("driver_name")} label={singleCard.driver_name} className="addJobInputField"/>
-            </div>
-            <div className="mt-3">
-               <TextField  {...register("phone_number")} label={singleCard.phone_number} className="addJobInputField"/>
+            <div>
+              <label>Phone No </label>
+              <input
+                {...register("phone_number")}
+                // name="Phone"
+                autoComplete="off"
+                type="text"
+                placeholder="Contact No"
+                defaultValue={singleCard.phone_number}
+              />
             </div>
           </div>
-          </div>
+
           <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">
               <div className=" vehicleTextField">

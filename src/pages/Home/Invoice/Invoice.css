@@ -360,4 +360,16 @@
 	margin: 0 !important;
 	font-size: 12px !important;
 	text-align: center !important;
+
+	body.print-mode {
+		color: #000; /* Set the desired text color for print */
+	  }
 }
+
+@media print {
+	body.print-mode {
+	  color: #000; /* Set the desired text color for print */
+	}
+	
+  }
+  

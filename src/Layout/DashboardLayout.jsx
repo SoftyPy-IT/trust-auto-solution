@@ -126,7 +126,7 @@ const DashboardLayout = () => {
 								<Typography>
 									<div className="flex items-center justify-center">
 										<FaCarAlt />
-										<span className="ml-2">Qutation Card</span>
+										<span className="ml-2">Quotation</span>
 									</div>
 								</Typography>
 							</AccordionSummary>
@@ -134,13 +134,13 @@ const DashboardLayout = () => {
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaPlus className="mr-2" />
-										<NavLink to="/dashboard/qutation">Add Qutation Card</NavLink>
+										<NavLink to="/dashboard/qutation">Add Quotation</NavLink>
 									</span>
 								</Typography>
 								<Typography className='accordionTypoGrapy'>
 									<span className="flex items-center">
 										<FaThLarge className="mr-2" />
-										<NavLink to="/dashboard/qutation-view">View Qutation List</NavLink>
+										<NavLink to="/dashboard/quotaiton-list">View Qutation List</NavLink>
 									</span>
 								</Typography>
 							</AccordionDetails>

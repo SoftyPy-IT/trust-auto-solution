@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../../../components/Loading/Loading";
 import { NotificationAdd } from "@mui/icons-material";
-const QutationList = () => {
+const QuotationList = () => {
   const [select, setSelect] = useState(null);
   const [getAllQuotation, setGetAllQuotation] = useState([]);
   const [filterType, setFilterType] = useState("");
@@ -400,4 +400,4 @@ const QutationList = () => {
   );
 };
 
-export default QutationList;
+export default QuotationList;

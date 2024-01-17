@@ -3,7 +3,7 @@ import axios from "axios";
 import logo from "../../../../public/assets/logo.png";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-const UpdateQutation = () => {
+const UpdateQuotation = () => {
   const [specificInvoice, setSpecificInvoice] = useState({});
   const [orderNo, setOrderNo] = useState(null);
   const [customerName, setCustomerName] = useState(null);
@@ -518,4 +518,4 @@ const UpdateQutation = () => {
   );
 };
 
-export default UpdateQutation;
+export default UpdateQuotation;

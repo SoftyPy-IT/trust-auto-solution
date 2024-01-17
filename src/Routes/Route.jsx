@@ -7,10 +7,6 @@ import ViewInvoice from "../pages/Home/Invoice/ViewInvoice";
 import Detail from "../pages/Home/Invoice/Detail";
 import UpdateInvoice from "../pages/Home/Invoice/UpdateInvoice";
 import Invoice from "../pages/Home/Invoice/Invoice";
-import QutationList from "../pages/Home/AddJobCard/QutationList";
-import Details from "../pages/Home/AddJobCard/Details";
-import UpdateQutation from "../pages/Home/AddJobCard/UpdateQutation";
-import Qutation from "../pages/Home/AddJobCard/Qutation";
 import AddRole from "../pages/Home/Role/AddRole";
 import Role from "../pages/Home/Role/Role";
 import Employee from "../pages/Home/Employee/Employee";
@@ -34,6 +30,10 @@ import MoneyReceived from "../pages/Home/MoneyReceived/MoneyReceived";
 import MoneyReceiptList from "../pages/Home/MoneyReceived/MoneyReceiptList";
 import MoneyReceiptView from "../pages/Home/MoneyReceived/MoneyReceiptView";
 import UpdateMoneyReceipt from "../pages/Home/MoneyReceived/UpdateMoneyReceipt";
+import AddQuotation from "../pages/Home/Quotation/AddQuotation";
+import QuotationView from "../pages/Home/Quotation/QuotationView";
+import QuotationList from "../pages/Home/Quotation/QuotationList";
+import UpdateQuotation from "../pages/Home/Quotation/UpdateQuotation";
 
 
 export const router = createBrowserRouter([
@@ -135,19 +135,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "qutation",
-        element: <Qutation />,
+        element: <AddQuotation/>,
       },
       {
-        path: "update-qutation",
-        element: <UpdateQutation />,
+        path: "update-quotation",
+        element: <UpdateQuotation/>,
       },
       {
-        path: "details",
-        element: <Details />,
+        path: "quotation-view",
+        element: <QuotationView/>,
       },
       {
-        path: "qutation-view",
-        element: <QutationList />,
+        path: "quotaiton-list",
+        element: <QuotationList />,
       },
       {
         path: "invoice",

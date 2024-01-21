@@ -14,6 +14,7 @@ import swal from "sweetalert";
 import Loading from "../../../components/Loading/Loading";
 import { NotificationAdd } from "@mui/icons-material";
 import { FaUserGear } from "react-icons/fa6";
+import { toast } from "react-toastify";
 const ViewInvoice = () => {
   const [select, setSelect] = useState(null);
   const [getAllInvoice, setGetAllInvoice] = useState([]);
@@ -27,7 +28,6 @@ const ViewInvoice = () => {
     navigate(`/dashboard/detail?id=${e}`);
   };
 
-  
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:5000/api/v1/invoice/all`)
@@ -137,58 +137,58 @@ const ViewInvoice = () => {
 
   const renderData = (getAllInvoice) => {
     return (
-     <div className="px-5 py-14 bg-[#F1F3F6] ">
-       <table className="table bg-[#fff]">
-        <thead className="tableWrap">
-          <tr>
-            <th>SL No</th>
-            <th>Customer Name</th>
-            <th>Order Number </th>
-            <th>Car Number </th>
-            <th>Mobile Number</th>
-            <th>Date</th>
-            <th colSpan={3}>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {getAllInvoice?.map((card, index) => (
-            <tr key={card._id}>
-              <td>{index + 1}</td>
-              <td>{card.customer_name}</td>
-              <td>{card.job_no}</td>
-              <td>{card.car_registration_no}</td>
-              <td> {card.contact_number} </td>
-              <td>{card.date}</td>
-              <td>
-                <div
-                  onClick={() => handleIconPreview(card._id)}
-                  className="editIconWrap edit2"
-                >
-                  {/* <Link to="/dashboard/preview"> */}
-                  <FaEye className="editIcon" />
-                  {/* </Link> */}
-                </div>
-              </td>
-              <td>
-                <div className="editIconWrap edit">
-                  <Link to={`/dashboard/update-invoice?id=${card._id}`}>
-                    <FaEdit className="editIcon" />
-                  </Link>
-                </div>
-              </td>
-              <td>
-                <div
-                  onClick={() => deletePackage(card._id)}
-                  className="editIconWrap"
-                >
-                  <FaTrashAlt className="deleteIcon" />
-                </div>
-              </td>
+      <div className="px-5 py-14 bg-[#F1F3F6] ">
+        <table className="table bg-[#fff]">
+          <thead className="tableWrap">
+            <tr>
+              <th>SL No</th>
+              <th>Customer Name</th>
+              <th>Order Number </th>
+              <th>Car Number </th>
+              <th>Mobile Number</th>
+              <th>Date</th>
+              <th colSpan={3}>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-     </div>
+          </thead>
+          <tbody>
+            {getAllInvoice?.map((card, index) => (
+              <tr key={card._id}>
+                <td>{index + 1}</td>
+                <td>{card.customer_name}</td>
+                <td>{card.job_no}</td>
+                <td>{card.car_registration_no}</td>
+                <td> {card.contact_number} </td>
+                <td>{card.date}</td>
+                <td>
+                  <div
+                    onClick={() => handleIconPreview(card._id)}
+                    className="editIconWrap edit2"
+                  >
+                    {/* <Link to="/dashboard/preview"> */}
+                    <FaEye className="editIcon" />
+                    {/* </Link> */}
+                  </div>
+                </td>
+                <td>
+                  <div className="editIconWrap edit">
+                    <Link to={`/dashboard/update-invoice?id=${card._id}`}>
+                      <FaEdit className="editIcon" />
+                    </Link>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    onClick={() => deletePackage(card._id)}
+                    className="editIconWrap"
+                  >
+                    <FaTrashAlt className="deleteIcon" />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   };
 
@@ -238,18 +238,8 @@ const ViewInvoice = () => {
   }
 
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      setLoading(true);
-      fetch(`http://localhost:5000/api/v1/invoice/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGetAllInvoice(data);
-          setNoMatching(null);
-          setLoading(false);
-        });
-    } else {
+    try {
       const data = {
-        select,
         filterType,
       };
       setLoading(true);
@@ -257,7 +247,7 @@ const ViewInvoice = () => {
         `http://localhost:5000/api/v1/invoice/all`,
         data
       );
-      console.log(response.data);
+
       if (response.data.message === "Filter successful") {
         setGetAllInvoice(response.data.result);
         setNoMatching(null);
@@ -266,45 +256,65 @@ const ViewInvoice = () => {
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
       }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  const handleAllInvoice = () => {
+    try {
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGetAllInvoice(data);
+          setNoMatching(null);
+        });
+    } catch (error) {
+      toast.error("Something went wrong");
     }
   };
   return (
     <div className="overflow-x-auto mt-5">
-       <div className="flex justify-between border-b-2 pb-3">
-    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
-				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
-				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
-				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
-			</div>
-      <div className="flex  justify-end items-end">
-        <NotificationAdd size={30} className="mr-2"/>
-        <FaUserGear size={30} />
+      <div className="flex justify-between border-b-2 pb-3">
+        <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+          <Link to="/dashboard/addjob">
+            <button> Add Job </button>
+          </Link>
+          <Link to="/dashboard/qutation">
+            <button>Qutation </button>
+          </Link>
+          <Link to="/dashboard/invoice">
+            <button>Invoice </button>
+          </Link>
+        </div>
+        <div className="flex  justify-end items-end">
+          <NotificationAdd size={30} className="mr-2" />
+          <FaUserGear size={30} />
+        </div>
       </div>
-    </div>
-			<div className="flex items-center justify-between mt-5 mb-8">
-				<div className="flex items-center justify-center ">
-					<FaFileInvoice className="invoicIcon" />
-					<div className="ml-2">
-						<h3 className="text-2xl font-bold"> Invoice </h3>
-						<span>Manage Invoice </span>
-					</div>
-				</div>
-				<div className="productHome">
-					<span>Home / </span>
-					<span>Product / </span>
-					<span>New Product </span>
-				</div>
-			</div>
+      <div className="flex items-center justify-between mt-5 mb-8">
+        <div className="flex items-center justify-center ">
+          <FaFileInvoice className="invoicIcon" />
+          <div className="ml-2">
+            <h3 className="text-2xl font-bold"> Invoice </h3>
+            <span>Manage Invoice </span>
+          </div>
+        </div>
+        <div className="productHome">
+          <span>Home / </span>
+          <span>Product / </span>
+          <span>New Product </span>
+        </div>
+      </div>
       <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
         <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
         <div className="flex items-center searcList">
-          <select onChange={(e) => setSelect(e.target.value)}>
-            <option value="SL No"> SL No</option>
-            <option value="Customer Name"> Customer Name</option>
-            <option value="Order Number"> Order Number</option>
-            <option value="Car Number"> Car Number</option>
-            <option value="Mobile Number"> Mobile Number</option>
-          </select>
+          <div
+            onClick={handleAllInvoice}
+            className="mx-6 font-semibold cursor-pointer bg-[#42A1DA] px-2 py-1 rounded-md text-white"
+          >
+            All
+          </div>
           <div className="searchGroup">
             <input
               onChange={(e) => setFilterType(e.target.value)}
@@ -320,9 +330,9 @@ const ViewInvoice = () => {
       </div>
 
       {loading ? (
-         <div className="flex justify-center items-center text-xl">
-         <Loading/>
-         </div>
+        <div className="flex justify-center items-center text-xl">
+          <Loading />
+        </div>
       ) : (
         <div>
           {getAllInvoice?.length === 0 || currentItems.length === 0 ? (

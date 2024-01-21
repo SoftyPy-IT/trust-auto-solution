@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./AddJobCard.css";
 import car from "../../../../public/assets/car2.jpeg";
 import logo from "../../../../public/assets/logo.png";
@@ -159,11 +160,16 @@ const UpdateJobCard = () => {
             </div>
           </div>
           <div className="jobCardFieldWraps">
-          <div className="jobCardFieldLeftSide">
-          <h3 className="text-2xl mb-3 ">Company Information </h3>
-            <div>
-               <TextField  {...register("chassis_no")} className="addJobInputField"  label={singleCard.chassis_no} defaultValue={singleCard.chassis_no} />
-            </div>
+            <div className="jobCardFieldLeftSide">
+              <h3 className="text-2xl mb-3 ">Company Information </h3>
+              <div>
+                <TextField
+                  {...register("chassis_no")}
+                  className="addJobInputField"
+                  label={singleCard.chassis_no}
+                  defaultValue={singleCard.chassis_no}
+                />
+              </div>
               {/* <div className="flex items-center mt-3">
                 {!select && !carRegNo && (
                   <div onClick={handleSelectReg} className="px-7 text-sm">
@@ -184,84 +190,141 @@ const UpdateJobCard = () => {
                 )}
             <TextField  label={singleCard.car_registration_no} />
               </div> */}
-               <div className="flex items-center">
-						<FormControl className="productField">
-							<InputLabel htmlFor="grouped-native-select">Car Registration No</InputLabel>
-							<Select onChange={(e) => setCarRegNo(e.target.value)} native  id="grouped-native-select" label="Car Registration No  ">
-              <option  value="select">Select Reg </option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-                  <option value="DM KHA">DM KHA</option>
-							</Select>
-						</FormControl>
-            <TextField   label="Car R (T&N)" />
-					</div>
-            <div className="mt-3">
-               <TextField  {...register("car_model")}  className="addJobInputField" label={singleCard.vehicle_model} />
-            </div>
-            <div className="mt-3">
-              <TextField {...register("car_make")} className="addJobInputField" label={singleCard.vehicle_brand} />
-           </div>
-            <div className="mt-3">
-               <TextField {...register("mileage")} className="addJobInputField"  label={singleCard.mileage} />
-            </div>
-            <div className="mt-3">
-               <TextField   {...register("engine_no")} className="addJobInputField" label={singleCard.engine_no} />
-            </div>
-            <div className="mt-3">
-               <TextField  {...register("color")} className="addJobInputField" label={singleCard.color} />
-            </div>
-            <div className="mt-3">
-               <TextField    {...register("company_name")}  label={singleCard.company_name} className="addJobInputField"/>
-            </div>
-            <div className="mt-3">
-              <FormControl className="addJobInputField">
-							<InputLabel htmlFor="grouped-native-select"> Select Vehicle Category</InputLabel>
-              {/* vvalue={
+              <div className="flex items-center">
+                <FormControl className="productField">
+                  <InputLabel htmlFor="grouped-native-select">
+                    Car Registration No
+                  </InputLabel>
+                  <Select
+                    onChange={(e) => setCarRegNo(e.target.value)}
+                    native
+                    id="grouped-native-select"
+                    label="Car Registration No"
+                    value={singleCard.carReg_no}
+                  >
+                    <option value="select">Select Reg </option>
+                    <option value="DM KHA">DM KHA</option>
+                    <option value="DM KHA">DM KHA</option>
+                    <option value="DM KHA">DM KHA</option>
+                  </Select>
+                </FormControl>
+                <TextField label="Car R (T&N)" />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("car_model")}
+                  className="addJobInputField"
+                  label={singleCard.car_registration_no}
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("car_make")}
+                  className="addJobInputField"
+                  label={singleCard.vehicle_brand}
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("mileage")}
+                  className="addJobInputField"
+                  label={singleCard.mileage}
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("engine_no")}
+                  className="addJobInputField"
+                  label={singleCard.engine_no}
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("color")}
+                  className="addJobInputField"
+                  label={singleCard.color}
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("company_name")}
+                  label={singleCard.company_name}
+                  className="addJobInputField"
+                />
+              </div>
+              <div className="mt-3">
+                <FormControl className="addJobInputField">
+                  <InputLabel htmlFor="grouped-native-select">
+                    {" "}
+                    Select Vehicle Category
+                  </InputLabel>
+                  {/* vvalue={
                   vehicleCategory
                     ? vehicleCategory
                     : singleCard.vehicle_category
                 } */}
-							<Select onChange={(e) => setVehicleCategory(e.target.value)}  id="grouped-native-select" native label=" Select Vehicle Category ">
-              <option >
-                  Select Vehicle Category{" "}
-                </option>
-                <option value="Sedans">Sedans</option>
-                <option value="Crossovers">Crossovers</option>
-                <option value="Sports">Sports</option>
-                <option value="Trucks">Trucks</option>
-                <option value="Coupes">Coupes</option>
-                <option value="Convertibles">Convertibles</option>
-                <option value="Diesels">Diesels</option>
-                <option value="SUVs">SUVs</option>
-                <option value="Hybrid/Electric">Hybrid/Electric</option>
-                <option value="Vans/Minivans">Vans/Minivans</option>
-                <option value="Wagons">Wagons</option>
-                <option value="Small Cars ">Small Cars </option>
-                <option value="CPO ">CPO </option>
-							</Select>
-             
-						</FormControl>
+                  <Select
+                    onChange={(e) => setVehicleCategory(e.target.value)}
+                    id="grouped-native-select"
+                    native
+                    label=" Select Vehicle Category "
+                  >
+                    <option>Select Vehicle Category </option>
+                    <option value="Sedans">Sedans</option>
+                    <option value="Crossovers">Crossovers</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Trucks">Trucks</option>
+                    <option value="Coupes">Coupes</option>
+                    <option value="Convertibles">Convertibles</option>
+                    <option value="Diesels">Diesels</option>
+                    <option value="SUVs">SUVs</option>
+                    <option value="Hybrid/Electric">Hybrid/Electric</option>
+                    <option value="Vans/Minivans">Vans/Minivans</option>
+                    <option value="Wagons">Wagons</option>
+                    <option value="Small Cars ">Small Cars </option>
+                    <option value="CPO ">CPO </option>
+                  </Select>
+                </FormControl>
+              </div>
             </div>
-          </div>
-          <div className="jobCardFieldRightSide">  
-          <h3 className="text-2xl mb-3 ">Customer Information </h3>  
-            <div>
-               <TextField  {...register("reference_name")} label={singleCard.reference_name} className="addJobInputField"/>
+            <div className="jobCardFieldRightSide">
+              <h3 className="text-2xl mb-3 ">Customer Information </h3>
+              <div>
+                <TextField
+                  {...register("reference_name")}
+                  label={singleCard.reference_name}
+                  className="addJobInputField"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("customer_name")}
+                  label={singleCard.customer_name}
+                  className="addJobInputField"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("contact_number")}
+                  label={singleCard.contact_number}
+                  className="addJobInputField"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("driver_name")}
+                  label={singleCard.driver_name}
+                  className="addJobInputField"
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  {...register("phone_number")}
+                  label={singleCard.phone_number}
+                  className="addJobInputField"
+                />
+              </div>
             </div>
-            <div className="mt-3">
-               <TextField {...register("customer_name")} label={singleCard.customer_name} className="addJobInputField"/>
-            </div>
-            <div className="mt-3">
-               <TextField {...register("contact_number")} label={singleCard.contact_number} className="addJobInputField"/>
-            </div>
-             <div className="mt-3">
-               <TextField {...register("driver_name")} label={singleCard.driver_name} className="addJobInputField"/>
-            </div>
-            <div className="mt-3">
-               <TextField  {...register("phone_number")} label={singleCard.phone_number} className="addJobInputField"/>
-            </div>
-          </div>
           </div>
           <div className="vehicleReport mt-10">
             <div className="vehicleReportLeftSide">

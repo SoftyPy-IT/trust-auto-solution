@@ -32,9 +32,7 @@ const Invoice = () => {
   useEffect(() => {
     if (job_no) {
       setLoading(true);
-      fetch(
-        `http://localhost:5000/api/v1/jobCard/invoice/${job_no}`
-      )
+      fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
           setJobCardData(data);
@@ -64,14 +62,13 @@ const Invoice = () => {
 
   //  add to invoice
 
-  const [descriptions, setDescriptions] = useState([]);
-  const [quantity, setQuantity] = useState([]);
-  const [rate, setRate] = useState([]);
-  const [total, setTotal] = useState([]);
+  // const [descriptions, setDescriptions] = useState([]);
+  // const [quantity, setQuantity] = useState([]);
+  // const [rate, setRate] = useState([]);
+  // const [total, setTotal] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
-
 
   const [items, setItems] = useState([
     { description: "", quantity: "", rate: "", total: "" },
@@ -103,7 +100,6 @@ const Invoice = () => {
     newItems[index].total = newItems[index].quantity * Number(value);
     setItems(newItems);
   };
-
 
   // const handleDescriptionChange = (index, value) => {
   //   if (value === "") {
@@ -178,7 +174,7 @@ const Invoice = () => {
 
     try {
       const values = {
-        username: jobCardData.username,
+        username: jobCardData?.username,
         // serial_no: formattedSerialNo,
         job_no: job_no,
         date: jobCardData.date,
@@ -190,7 +186,7 @@ const Invoice = () => {
         discount: discount,
         vat: vat,
         net_total: calculateFinalTotal(),
-        input_data: items
+        input_data: items,
       };
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
@@ -478,18 +474,8 @@ const Invoice = () => {
   }
 
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      setLoading(true);
-      fetch(`http://localhost:5000/api/v1/invoice/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGetAllInvoice(data);
-          setNoMatching(null);
-          setLoading(false);
-        });
-    } else {
+    try {
       const data = {
-        select,
         filterType,
       };
       setLoading(true);
@@ -505,6 +491,22 @@ const Invoice = () => {
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
       }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+
+  const handleAllInvoice = () => {
+    try {
+      fetch(`http://localhost:5000/api/v1/invoice/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetAllInvoice(data);
+        setNoMatching(null);
+      });
+    } catch (error) {
+      toast.error("Something went wrong")
     }
   };
   return (
@@ -572,7 +574,6 @@ const Invoice = () => {
               <input
                 defaultValue={jobCardData?.date}
                 autoComplete="off"
-          
                 placeholder="Date"
                 className="orderNumber"
                 // onChange={handleDateChange}
@@ -729,13 +730,12 @@ const Invoice = () => {
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
           <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
-              <option value="SL No"> SL No</option>
-              <option value="Customer Name"> Customer Name</option>
-              <option value="Order Number"> Order Number</option>
-              <option value="Car Number"> Car Number</option>
-              <option value="Mobile Number"> Mobile Number</option>
-            </select>
+          <div
+            onClick={handleAllInvoice}
+            className="mx-6 font-semibold cursor-pointer bg-[#42A1DA] px-2 py-1 rounded-md text-white"
+          >
+            All
+          </div>
             <div className="searchGroup">
               <input
                 onChange={(e) => setFilterType(e.target.value)}
@@ -749,62 +749,64 @@ const Invoice = () => {
             </button>
           </div>
         </div>
-       {
-        loading ? <div className="flex justify-center items-center text-xl">
-        Loading...
-      </div> :  <div>
-        {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
-          <div className="text-xl text-center flex justify-center items-center h-full">
-            No matching card found.
+        {loading ? (
+          <div className="flex justify-center items-center text-xl">
+            Loading...
           </div>
         ) : (
-          <>
-            <section>
-              {renderData(currentItems)}
-              <ul
-                className={
-                  minPageNumberLimit < 5
-                    ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
-                    : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
-                }
-              >
-                <button
-                  onClick={handlePrevious}
-                  disabled={currentPage === pages[0] ? true : false}
-                  className={
-                    currentPage === pages[0]
-                      ? "text-gray-600"
-                      : "text-gray-300"
-                  }
-                >
-                  Previous
-                </button>
-                <span
-                  className={minPageNumberLimit < 5 ? "hidden" : "inline"}
-                >
-                  {pageDecrementBtn}
-                </span>
-                {renderPagesNumber}
-                {pageIncrementBtn}
-                <button
-                  onClick={handleNext}
-                  disabled={
-                    currentPage === pages[pages?.length - 1] ? true : false
-                  }
-                  className={
-                    currentPage === pages[pages?.length - 1]
-                      ? "text-gray-700"
-                      : "text-gray-300 pl-1"
-                  }
-                >
-                  Next
-                </button>
-              </ul>
-            </section>
-          </>
+          <div>
+            {getAllInvoice?.length === 0 || currentItems.length === 0 ? (
+              <div className="text-xl text-center flex justify-center items-center h-full">
+                No matching card found.
+              </div>
+            ) : (
+              <>
+                <section>
+                  {renderData(currentItems)}
+                  <ul
+                    className={
+                      minPageNumberLimit < 5
+                        ? "flex justify-center gap-2 md:gap-4 pb-5 mt-6"
+                        : "flex justify-center gap-[5px] md:gap-2 pb-5 mt-6"
+                    }
+                  >
+                    <button
+                      onClick={handlePrevious}
+                      disabled={currentPage === pages[0] ? true : false}
+                      className={
+                        currentPage === pages[0]
+                          ? "text-gray-600"
+                          : "text-gray-300"
+                      }
+                    >
+                      Previous
+                    </button>
+                    <span
+                      className={minPageNumberLimit < 5 ? "hidden" : "inline"}
+                    >
+                      {pageDecrementBtn}
+                    </span>
+                    {renderPagesNumber}
+                    {pageIncrementBtn}
+                    <button
+                      onClick={handleNext}
+                      disabled={
+                        currentPage === pages[pages?.length - 1] ? true : false
+                      }
+                      className={
+                        currentPage === pages[pages?.length - 1]
+                          ? "text-gray-700"
+                          : "text-gray-300 pl-1"
+                      }
+                    >
+                      Next
+                    </button>
+                  </ul>
+                </section>
+              </>
+            )}
+          </div>
         )}
-      </div>
-       }
       </div>
 
       {/* <div className="pagination">

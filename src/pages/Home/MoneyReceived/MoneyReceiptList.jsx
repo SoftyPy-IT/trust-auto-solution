@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { FaUserGear } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import swal from "sweetalert";
 const MoneyReceiptList = () => {
   const [select, setSelect] = useState(null);
@@ -233,22 +234,25 @@ const MoneyReceiptList = () => {
 
   const handleFilterType = async () => {
     
-    const data = {
-      filterType,
-    };
-    console.log(data);
-    const response = await axios.post(
-      `http://localhost:5000/api/v1/money_receipt/all`,
-      data
-    );
-  
-    if (response.data.message === "Filter successful") {
-      setGetMoneyReceipt(response.data.result);
-      setNoMatching(null);
-    }
-    if (response.data.message === "No matching found") {
-      setGetMoneyReceipt([])
-      setNoMatching(response.data.message);
+    try {
+      const data = {
+        filterType,
+      };
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/money_receipt/all`,
+        data
+      );
+    
+      if (response.data.message === "Filter successful") {
+        setGetMoneyReceipt(response.data.result);
+        setNoMatching(null);
+      }
+      if (response.data.message === "No matching found") {
+        setGetMoneyReceipt([])
+        setNoMatching(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Something went wrong")
     }
   };
 

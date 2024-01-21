@@ -24,9 +24,7 @@ const JobCardList = () => {
   const username = "683231669175";
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `http://localhost:5000/api/v1/jobCard/all/${username}`
-    )
+    fetch(`http://localhost:5000/api/v1/jobCard/all`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -55,7 +53,6 @@ const JobCardList = () => {
 
     if (willDelete) {
       try {
-        
         const res = await fetch(
           `http://localhost:5000/api/v1/jobCard/one/${id}`,
           {
@@ -66,7 +63,6 @@ const JobCardList = () => {
 
         if (data.message == "Job card delete successful") {
           setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
-         
         }
         swal("Deleted!", "Card delete successful.", "success");
       } catch (error) {
@@ -157,7 +153,7 @@ const JobCardList = () => {
               <td>{card.customer_name}</td>
               <td>{card.job_no}</td>
               <td>{card.car_registration_no}</td>
-              <td> {card.phone_number} </td>
+              <td> {card.contact_number} </td>
               <td>{card.date}</td>
               <td>
                 <div
@@ -237,25 +233,14 @@ const JobCardList = () => {
   }
 
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      setLoading(true);
-      fetch(
-        `http://localhost:5000/api/v1/jobCard/all/${username}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setAllJobCard(data);
-          setNoMatching(null);
-          setLoading(false);
-        });
-    } else {
+    try {
       const data = {
         select,
         filterType,
       };
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/v1/jobCard/all/${username}`,
+        `http://localhost:5000/api/v1/jobCard/all`,
         data
       );
 
@@ -267,49 +252,62 @@ const JobCardList = () => {
       if (response.data.message === "No matching found") {
         setNoMatching(response.data.message);
       }
+    } catch (error) {
+      setLoading(false);
     }
   };
-
+  const handleAllAddToJobCard = () => {
+    fetch(`http://localhost:5000/api/v1/jobCard/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllJobCard(data);
+        setNoMatching(null);
+      });
+  };
   return (
     <div>
       <div className="overflow-x-auto mt-5">
-      <div className="flex justify-between border-b-2 pb-3">
-    <div className="flex items-center mr-[80px]  justify-center topProductBtn">
-				<Link to='/dashboard/addjob'><button> Add Job </button></Link>
-				<Link to='/dashboard/qutation'><button>Qutation </button></Link>
-				<Link to='/dashboard/invoice'><button>Invoice </button></Link>
-			</div>
-      <div className="flex  justify-end items-end">
-        <NotificationAdd size={30} className="mr-2"/>
-        <FaUserGear size={30} />
-      </div>
-    </div>
-      <div className="flex items-center justify-between my-3 mb-8">
-				<div className="flex items-center justify-center ">
-					<FaFileInvoice className="invoicIcon" />
-					<div className="ml-2">
-						<h3 className="text-2xl font-bold"> Job Card </h3>
-						<span>Manage Job Card </span>
-					</div>
-				</div>
-				<div className="productHome">
-					<span>Home / </span>
-					<span>Product / </span>
-					<span>New Product </span>
-				</div>
-			</div>
-			
-       
+        <div className="flex justify-between border-b-2 pb-3">
+          <div className="flex items-center mr-[80px]  justify-center topProductBtn">
+            <Link to="/dashboard/addjob">
+              <button> Add Job </button>
+            </Link>
+            <Link to="/dashboard/qutation">
+              <button>Quotation </button>
+            </Link>
+            <Link to="/dashboard/invoice">
+              <button>Invoice </button>
+            </Link>
+          </div>
+          <div className="flex  justify-end items-end">
+            <NotificationAdd size={30} className="mr-2" />
+            <FaUserGear size={30} />
+          </div>
+        </div>
+        <div className="flex items-center justify-between my-3 mb-8">
+          <div className="flex items-center justify-center ">
+            <FaFileInvoice className="invoicIcon" />
+            <div className="ml-2">
+              <h3 className="text-2xl font-bold"> Job Card </h3>
+              <span>Manage Job Card </span>
+            </div>
+          </div>
+          <div className="productHome">
+            <span>Home / </span>
+            <span>Product / </span>
+            <span>New Product </span>
+          </div>
+        </div>
+
         <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
           <h3 className="text-3xl font-bold mb-3">All Job Card List:</h3>
           <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
-              <option value="SL No"> SL No</option>
-              <option value="Customer Name"> Customer Name</option>
-              <option value="Order Number"> Order Number</option>
-              <option value="Car Number"> Car Number</option>
-              <option value="Mobile Number"> Mobile Number</option>
-            </select>
+          <div
+              onClick={handleAllAddToJobCard}
+              className="mx-6 font-semibold cursor-pointer bg-[#42A1DA] px-2 py-1 rounded-md text-white"
+            >
+              All
+            </div>
             <div className="searchGroup">
               <input
                 onChange={(e) => setFilterType(e.target.value)}
@@ -325,7 +323,7 @@ const JobCardList = () => {
         </div>
         {loading ? (
           <div className="flex justify-center items-center text-xl">
-               <Loading/>
+            <Loading />
           </div>
         ) : (
           <div>
@@ -385,21 +383,7 @@ const JobCardList = () => {
         )}
       </div>
 
-      {/* <div className="pagination">
-        <div className="paginationBtn">
-          <button>
-            <FaArrowLeft className="arrowLeft" />
-          </button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>
-            <FaArrowRight className="arrowRight" />
-          </button>
-        </div>
-      </div> */}
+       
     </div>
   );
 };

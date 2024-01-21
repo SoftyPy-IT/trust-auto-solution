@@ -85,11 +85,11 @@ const PreviewJobCard = () => {
             </div>
             <div className="flex items-center justify-between inputGroup">
               <div>
-                <label className="block">VIN No</label>
+                <label className="block">chassis_no</label>
                 <input
                   type="text"
                   placeholder="VIN No"
-                  defaultValue={previewData.vin_no}
+                  defaultValue={previewData.chassis_no}
                   readOnly
                 />
               </div>
@@ -107,7 +107,7 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Vehicle Model"
-                  defaultValue={previewData.car_model}
+                  defaultValue={previewData.vehicle_model}
                   readOnly
                 />
               </div>
@@ -116,7 +116,7 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Vehicle Brand "
-                  defaultValue={previewData.car_make}
+                  defaultValue={previewData.vehicle_brand}
                   readOnly
                 />
               </div>

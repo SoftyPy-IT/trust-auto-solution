@@ -14,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../../../components/Loading/Loading";
 import { NotificationAdd } from "@mui/icons-material";
+import { toast } from "react-toastify";
 const QuotationList = () => {
   const [select, setSelect] = useState(null);
   const [getAllQuotation, setGetAllQuotation] = useState([]);
@@ -22,10 +23,10 @@ const QuotationList = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const username = "683231669175";
+ 
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/details?id=${e}`);
+    navigate(`/dashboard/quotation-view?id=${e}`);
   };
   useEffect(() => {
     setLoading(true);
@@ -35,7 +36,7 @@ const QuotationList = () => {
         setGetAllQuotation(data);
         setLoading(false);
       });
-  }, [username]);
+  }, [ ]);
 
   // pagination
 
@@ -172,7 +173,7 @@ const QuotationList = () => {
               </td>
               <td>
                 <div className="editIconWrap edit">
-                  <Link to={`/dashboard/update-qutation?id=${card._id}`}>
+                  <Link to={`/dashboard/update-quotation?id=${card._id}`}>
                     <FaEdit className="editIcon" />
                   </Link>
                 </div>
@@ -239,33 +240,73 @@ const QuotationList = () => {
     );
   }
 
+  // const handleFilterType = async () => {
+  //   if (select === "SL No") {
+  //     fetch(
+  //       `http://localhost:5000/api/v1/quotation/all `
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setGetAllQuotation(data);
+  //         setNoMatching(null);
+  //       });
+  //   } else {
+  //     const data = {
+  //       select,
+  //       filterType,
+  //     };
+  //     const response = await axios.post(
+  //       `http://localhost:5000/api/v1/quotation/all `,
+  //       data
+  //     );
+  //     console.log(response.data);
+  //     if (response.data.message === "Filter successful") {
+  //       setGetAllQuotation(response.data.result);
+  //       setNoMatching(null);
+  //     }
+  //     if (response.data.message === "No matching found") {
+  //       setNoMatching(response.data.message);
+  //     }
+  //   }
+  // };
+
+
+
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      fetch(
-        `http://localhost:5000/api/v1/quotation/all `
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setGetAllQuotation(data);
-          setNoMatching(null);
-        });
-    } else {
+    
+    try {
       const data = {
-        select,
         filterType,
       };
       const response = await axios.post(
-        `http://localhost:5000/api/v1/quotation/all `,
+        `http://localhost:5000/api/v1/quotation/all`,
         data
       );
-      console.log(response.data);
+    
       if (response.data.message === "Filter successful") {
         setGetAllQuotation(response.data.result);
         setNoMatching(null);
       }
       if (response.data.message === "No matching found") {
+        setGetAllQuotation([])
         setNoMatching(response.data.message);
       }
+    } catch (error) {
+      toast.error("Something went wrong")
+    }
+  };
+
+  const handleAllQuotation = () => {
+    try {
+      fetch(`http://localhost:5000/api/v1/quotation/all`)
+      .then((res) => res.json())
+      .then((data) => {
+       
+        setGetAllQuotation(data );
+        setNoMatching(null);
+      });
+    } catch (error) {
+      toast.error("Something went wrong.")
     }
   };
   return (
@@ -299,15 +340,22 @@ const QuotationList = () => {
 			</div>
 			
         <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
-          <h3 className="text-3xl font-bold mb-3">Qutation List:</h3>
+          <h3 className="text-3xl font-bold mb-3">Quotation List:</h3>
+          
           <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
+            {/* <select onChange={(e) => setSelect(e.target.value)}>
               <option value="SL No"> SL No</option>
               <option value="Customer Name"> Customer Name</option>
               <option value="Order Number"> Order Number</option>
               <option value="Car Number"> Car Number</option>
               <option value="Mobile Number"> Mobile Number</option>
-            </select>
+            </select> */}
+            <div
+            onClick={handleAllQuotation}
+            className="mx-6 font-semibold cursor-pointer bg-[#42A1DA] px-2 py-1 rounded-md text-white"
+          >
+            All
+          </div>
             <div className="searchGroup">
               <input
                 onChange={(e) => setFilterType(e.target.value)}

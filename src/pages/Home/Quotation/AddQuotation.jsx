@@ -509,103 +509,38 @@ const AddQuotation = () => {
   }
 
   const handleFilterType = async () => {
-    if (select === "SL No") {
-      setLoading(true);
-      fetch(`http://localhost:5000/api/v1/quotation/all`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGetAllQuotation(data);
-          setNoMatching(null);
-          setLoading(false);
-        });
-    } else {
+    try {
       const data = {
-        select,
         filterType,
       };
-      setLoading(true);
       const response = await axios.post(
         `http://localhost:5000/api/v1/quotation/all`,
         data
       );
-      console.log(response.data);
+
       if (response.data.message === "Filter successful") {
         setGetAllQuotation(response.data.result);
         setNoMatching(null);
-        setLoading(false);
       }
       if (response.data.message === "No matching found") {
+        setGetAllQuotation([]);
         setNoMatching(response.data.message);
       }
+    } catch (error) {
+      toast.error("Something went wrong");
     }
   };
 
-  // Function to handle changes for a specific set of inputs
-  // const handleInputChange = (index, field, value) => {
-  //   const newData = [...inputData];
-  //   newData[index] = {
-  //     ...newData[index],
-  //     [field]: value,
-  //   };
-  //   setInputData(newData);
+  const handleAllQuotation = () => {
+    fetch(`http://localhost:5000/api/v1/quotation/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetAllQuotation(data);
+        setNoMatching(null);
+      });
+  };
 
-  //   // Handle specific field changes based on the provided field name
-  //   switch (field) {
-  //     case "descriptions":
-  //       handleDescriptionChange(index, value);
-  //       break;
-  //     case "quantity":
-  //       handleQuantityChange(index, value);
-  //       break;
-  //     case "rate":
-  //       handleRateChange(index, value);
-  //       break;
-  //     case "amount":
-  //       updateTotal(index, value);
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-
-  //   // Update total, discount, VAT, and final total
-  //   updateTotal(index, newData[index].quantity, newData[index].rate);
-  //   calculateFinalTotal();
-  // };
-  // const handleInputChange = (index, field, value) => {
-  //   const newData = [...inputData];
-  //   console.log(newData)
-  //   newData[index] = {
-  //     ...newData[index],
-  //     [field]: value,
-  //   };
-  //   setInputData(newData);
-
-  //   // Handle specific field changes based on the provided field name
-  //   switch (field) {
-  //     case "descriptions":
-  //       handleDescriptionChange(index, value);
-  //       break;
-  //     case "quantity":
-  //       handleQuantityChange(index, value);
-  //       break;
-  //     case "rate":
-  //       handleRateChange(index, value);
-  //       break;
-  //     case "total":
-  //       // Update total with additional checks for quantity and rate
-  //       updateTotal(index, newData[index].quantity, newData[index].rate, value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-
-  //   // Update total, discount, VAT, and final total
-  //   updateTotal(index, newData[index].quantity, newData[index].rate);
-  //   calculateFinalTotal();
-  // };
-
-  // console.log(inputData);
+   
 
   const [items, setItems] = useState([
     { description: "", quantity: "", rate: "", total: "" },
@@ -658,7 +593,8 @@ const AddQuotation = () => {
       </div>
       <div className="mt-5">
         <form>
-          <div>
+         <div className="lg:flex gap-x-2">
+         <div>
             <label className="block">Order Number </label>
             <input
               onChange={(e) => setJob_no(e.target.value)}
@@ -666,13 +602,13 @@ const AddQuotation = () => {
               type="text"
               placeholder="Order Number"
               defaultValue={orderNo}
-              className="orderNumber"
+              className="orderNumber border border-[#42A1DA] w-full px-1 py-[10px] rounded"
             />
           </div>
           {jobLoading ? (
             <div>Loading...</div>
           ) : (
-            <div className="qutationForm invoicForm">
+            <div className="qutationForm invoicForm flex gap-x-3">
               <div>
                 <label className="block">Customer Name </label>
                 <input
@@ -713,6 +649,7 @@ const AddQuotation = () => {
               </div>
             </div>
           )}
+         </div>
 
           <div className="vehicleCard">Quotation Card </div>
           <div className="flex items-center justify-around labelWrap">
@@ -864,13 +801,19 @@ const AddQuotation = () => {
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-3xl font-bold mb-3">Invoice List:</h3>
           <div className="flex items-center searcList">
-            <select onChange={(e) => setSelect(e.target.value)}>
+            {/* <select onChange={(e) => setSelect(e.target.value)}>
               <option value="SL No"> SL No</option>
               <option value="Customer Name"> Customer Name</option>
               <option value="Order Number"> Order Number</option>
               <option value="Car Number"> Car Number</option>
               <option value="Mobile Number"> Mobile Number</option>
-            </select>
+            </select> */}
+            <div
+              onClick={handleAllQuotation}
+              className="mx-6 font-semibold cursor-pointer bg-[#42A1DA] px-2 py-1 rounded-md text-white"
+            >
+              All
+            </div>
             <div className="searchGroup">
               <input
                 onChange={(e) => setFilterType(e.target.value)}

@@ -237,6 +237,7 @@ const Invoice = () => {
       discount: discount,
       vat: vat,
       net_total: calculateFinalTotal(),
+      input_data: items,
     };
     const hasPreviewNullValues = Object.values(values).some(
       (val) => val === null

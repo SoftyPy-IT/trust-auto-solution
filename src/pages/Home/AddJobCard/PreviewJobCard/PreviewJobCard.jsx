@@ -64,70 +64,76 @@ const PreviewJobCard = () => {
           </div>
           <div>
             <div className="flex items-center justify-between my-2">
-              <input
+              {/* <input
                 readOnly
                 type="text"
                 placeholder="Job No"
                 autoComplete="off"
                 className="jobInput"
                 defaultValue={previewData.job_no}
-              />
+              /> */} <h2>{previewData.job_no}</h2>
 
               <div className="vehicleJobCard">Vehicle Job Card </div>
-              <input
+              {/* <input
                 readOnly
                 type="text"
                 placeholder="Date"
                 autoComplete="off"
                 className="jobInput"
                 defaultValue={previewData.date}
-              />
+              /> */}
+              <h2>{previewData.date}</h2>
             </div>
             <div className="flex items-center justify-between inputGroup">
               <div>
                 <label className="block">chassis_no</label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="VIN No"
                   defaultValue={previewData.chassis_no}
                   readOnly
-                />
+                /> */}
+                <h2>{previewData.chassis_no}</h2>
               </div>
               <div>
                 <label className="block">Car Registration No</label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Registration"
                   defaultValue={previewData.car_registration_no}
                   readOnly
-                />
+                /> */}
+                <h2>{previewData.car_registration_no}</h2>
               </div>
               <div>
                 <label className="block">Vehicle Model </label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Vehicle Model"
                   defaultValue={previewData.vehicle_model}
                   readOnly
-                />
+                /> */}
+                <h2>{previewData.vehicle_model}</h2>
               </div>
               <div>
                 <label className="block">Vehicle Brand </label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Vehicle Brand "
                   defaultValue={previewData.vehicle_brand}
                   readOnly
-                />
+                /> */}
+                <h2>{previewData.vehicle_brand}</h2>
               </div>
               <div>
                 <label className="block">Mileage</label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Mileage"
                   defaultValue={previewData.mileage}
                   readOnly
-                />
+                /> */}
+                <h2>{previewData.mileage}</h2>
               </div>
             </div>
             <div className="flex items-center justify-between inputGroup">
@@ -136,7 +142,7 @@ const PreviewJobCard = () => {
                 <input
                   type="text"
                   placeholder="Color"
-                  defaultValue={previewData.color}
+                  defaultValue={previewData.color}z
                   readOnly
                 />
               </div>

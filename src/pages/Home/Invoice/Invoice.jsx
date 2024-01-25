@@ -74,9 +74,18 @@ const Invoice = () => {
     { description: "", quantity: "", rate: "", total: "" },
   ]);
 
+  // useEffect(() => {
+  //   const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
+  //   setGrandTotal(totalSum);
+  // }, [items]);
+
   useEffect(() => {
     const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
-    setGrandTotal(totalSum);
+  
+    // Limiting totalSum to two decimal places
+    const roundedTotalSum = parseFloat(totalSum.toFixed(2));
+  
+    setGrandTotal(roundedTotalSum);
   }, [items]);
 
   const handleDescriptionChange = (index, value) => {
@@ -87,17 +96,50 @@ const Invoice = () => {
 
   const handleQuantityChange = (index, value) => {
     const newItems = [...items];
-    newItems[index].quantity = value;
+    const roundedValue = Math.round(value);
+    newItems[index].quantity = roundedValue;
+    // newItems[index].quantity = value;
     // Convert quantity to a number and calculate total
-    newItems[index].total = Number(value) * newItems[index].rate;
+  
+    newItems[index].total = roundedValue * newItems[index].rate;
+  
     setItems(newItems);
+    // newItems[index].total = Number(value) * newItems[index].rate;
+    // setItems(newItems);
   };
+
+  // const handleQuantityChange = (index, value) => {
+  //   const newItems = [...items];
+  
+  //   // Round the value to the nearest integer
+  //   const roundedValue = Math.round(value);
+  
+  //   newItems[index].quantity = roundedValue;
+  //   newItems[index].total = roundedValue * newItems[index].rate;
+  
+  //   setItems(newItems);
+  // };
+
+  // const handleRateChange = (index, value) => {
+  //   const newItems = [...items];
+  //   newItems[index].rate = value;
+  //   // Convert rate to a number and calculate total
+  //   newItems[index].total = newItems[index].quantity * Number(value);
+  //   setItems(newItems);
+  // };
 
   const handleRateChange = (index, value) => {
     const newItems = [...items];
-    newItems[index].rate = value;
-    // Convert rate to a number and calculate total
-    newItems[index].total = newItems[index].quantity * Number(value);
+  
+    // Convert rate to a number
+    newItems[index].rate = parseFloat(value);
+  
+    // Calculate total with the updated rate
+    newItems[index].total = newItems[index].quantity * newItems[index].rate;
+  
+    // Round total to two decimal places
+    newItems[index].total = parseFloat(newItems[index].total.toFixed(2));
+  
     setItems(newItems);
   };
 
@@ -163,11 +205,14 @@ const Invoice = () => {
     const totalAfterDiscount = grandTotal - discountAsPercentage;
 
     const vatAsPercentage = vat / 100;
-    const finalTotal =
+    let finalTotal =
       totalAfterDiscount + totalAfterDiscount * vatAsPercentage;
+      finalTotal = parseFloat(finalTotal.toFixed(2));
 
     return finalTotal;
   };
+
+   
 
   const handleAddToInvoice = async (e) => {
     e.preventDefault();

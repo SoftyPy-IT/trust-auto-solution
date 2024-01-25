@@ -15,6 +15,7 @@ const UpdateQuotation = () => {
   const [rate, setRate] = useState([]);
   const [total, setTotal] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
+
   const [discount, setDiscount] = useState(0);
   const [vat, setVAT] = useState(0);
   const [error, setError] = useState("");
@@ -47,7 +48,12 @@ const UpdateQuotation = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/quotation/one/${id}`)
       .then((res) => res.json())
-      .then((data) => setSpecificInvoice(data));
+      .then((data) => {
+        setSpecificInvoice(data);
+
+        setDiscount(data.discount);
+        setVAT(data.vat);
+      });
   }, [id, reload]);
 
   const [items, setItems] = useState([
@@ -55,9 +61,12 @@ const UpdateQuotation = () => {
   ]);
 
   useEffect(() => {
-    const totalSum = specificInvoice?.input_data?.reduce((sum, item) => sum + Number(item.total), 0);
+    const totalSum = specificInvoice.input_data?.reduce(
+      (sum, item) => sum + Number(item.total),
+      0
+    );
     setGrandTotal(totalSum);
-  }, [specificInvoice.input_data]);
+  }, [items, specificInvoice.input_data]);
 
   const handleDescriptionChange = (index, value) => {
     const newItems = [...specificInvoice.input_data];
@@ -99,7 +108,7 @@ const UpdateQuotation = () => {
 
   const calculateFinalTotal = () => {
     const discountAsPercentage = discount;
-   
+
     let totalAfterDiscount;
     if (grandTotal) {
       totalAfterDiscount = grandTotal - discountAsPercentage;
@@ -114,7 +123,6 @@ const UpdateQuotation = () => {
     return finalTotal;
   };
 
-
   const handleUpdateQuotation = async (e) => {
     e.preventDefault();
 
@@ -127,15 +135,20 @@ const UpdateQuotation = () => {
         car_registration_no: carNumber || specificInvoice.car_registration_no,
         customer_name: customerName || specificInvoice?.customer_name,
         contact_number: mobileNumber || specificInvoice?.contact_number,
-        descriptions: descriptions,
-        quantity: quantity,
-        rate: rate,
-        amount: total,
-        total_amount: grandTotal,
-        discount: discount,
-        vat: vat,
+        // descriptions: descriptions,
+        // quantity: quantity,
+        // rate: rate,
+        // amount: total,
+        total_amount: grandTotal || setSpecificInvoice.total_amount,
+        discount: discount || specificInvoice?.discount,
+        vat: vat || specificInvoice?.vat,
         net_total: calculateFinalTotal(),
-        input_data: items,
+        input_data: specificInvoice?.input_data.map((item) => ({
+          description: item.description,
+          quantity: item.quantity,
+          rate: item.rate,
+          total: item.total,
+        })),
       };
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
@@ -153,7 +166,7 @@ const UpdateQuotation = () => {
 
       if (response.data.message === "Successfully update card.") {
         setError("");
-        navigate("/dashboard/qutation-view");
+        navigate("/dashboard/quotaiton-list");
       }
     } catch (error) {
       if (error.response) {
@@ -166,7 +179,6 @@ const UpdateQuotation = () => {
     axios
       .put(`http://localhost:5000/api/v1/quotation/${id}`, { index: i })
       .then((response) => {
-       
         if (response.data.message === "Deleted successful") {
           setReload(!reload);
         }
@@ -506,7 +518,7 @@ const UpdateQuotation = () => {
 
           <div className="buttonGroup updateJobCardBtn mt-8">
             <div onClick={handleUpdateQuotation} className="submitQutationBtn">
-              <button className="">Update Invoice </button>
+              <button className="">Update Quotation </button>
             </div>
           </div>
           {error && (

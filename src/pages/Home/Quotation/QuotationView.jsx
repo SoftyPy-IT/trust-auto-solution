@@ -398,21 +398,24 @@ const QuotationView = () => {
                 </div>
               </div>
             </div>
+            {
+              page === lastValue &&  <div className="printInvoiceBtnGroup pb-20">
+              <button onClick={handlePrint}>Print </button>
+              <button onClick={() => toPDF()}>Pdf </button>
+      
+              <Link to="/dashboard/invoice">
+                <button> Edit </button>
+              </Link>
+      
+              <Link to="/dashboard/qutation">
+                {" "}
+                <button> Qutation </button>
+              </Link>
+            </div>
+            }
           </main>
         ))}
-      <div className="printInvoiceBtnGroup pb-20">
-        <button onClick={handlePrint}>Print </button>
-        <button onClick={() => toPDF()}>Pdf </button>
-
-        <Link to="/dashboard/invoice">
-          <button> Edit </button>
-        </Link>
-
-        <Link to="/dashboard/qutation">
-          {" "}
-          <button> Qutation </button>
-        </Link>
-      </div>
+     
     </div>
   );
 };

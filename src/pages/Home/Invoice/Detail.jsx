@@ -438,7 +438,8 @@ const Detail = () => {
                   </div>
                 </div>
               </div>
-              <div className="printInvoiceBtnGroup">
+              {
+                page === lastValue && <div className="printInvoiceBtnGroup">
                 <button onClick={handlePrint}>Print </button>
                 <button onClick={() => toPDF()}>Pdf </button>
 
@@ -451,6 +452,7 @@ const Detail = () => {
                   <button> Qutation </button>
                 </Link>
               </div>
+              }
             </main>
           ))}
       </div>

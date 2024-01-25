@@ -36,7 +36,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { FaCarOn } from "react-icons/fa6";
-import './Home.css'
+import "./Home.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineBriefcase } from "react-icons/hi";
@@ -143,108 +143,124 @@ const Home = () => {
     );
   };
 
-
-
-
   return (
-    <div className='mt-10'>
+    <div className="mt-10">
       <div className="dashBoardRight  ">
         <div className="md:flex items-center justify-between md:p-[0px] lg:p-[18px]">
-        <div className="flex items-center justify-center ">
+          <div className="flex items-center justify-center ">
             {/* <input autoComplete="off" type="text" placeholder='Search' /> */}
-            <TextField className="searchInptu" id="outlined-basic" label="Search..." variant="outlined" />
+            <TextField
+              className="searchInptu"
+              id="outlined-basic"
+              label="Search..."
+              variant="outlined"
+            />
             <button className="searchBtn">Search </button>
           </div>
           <div className="mt-3 md:mt-0 flex items-center">
-            <Link to='/dashboard/addjob'><button className="btn btn-outline border-0 border-b-4  ">Job Card </button></Link>
-            <Link to='/dashboard/qutation'> <button className="mx-2 btn btn-outline border-0 border-b-4">Qutation</button></Link>
-            <Link to='/dashboard/invoice'> <button className="btn btn-outline border-0 border-b-4 ">Invoice</button></Link>
+            <Link to="/dashboard/addjob">
+              <button className="btn btn-outline border-0 border-b-4  ">
+                Job Card{" "}
+              </button>
+            </Link>
+            <Link to="/dashboard/qutation">
+              {" "}
+              <button className="mx-2 btn btn-outline border-0 border-b-4">
+                Qutation
+              </button>
+            </Link>
+            <Link to="/dashboard/invoice">
+              {" "}
+              <button className="btn btn-outline border-0 border-b-4 ">
+                Invoice
+              </button>
+            </Link>
           </div>
-         
-
         </div>
         <div className="nameWrap px-3 py-3">
           <div className="projectName">
-            <h2 className="text-[#654FC3] font-bold text-2xl">Admin Dashboard</h2>
+            <h2 className="text-[#654FC3] font-bold text-2xl">
+              Admin Dashboard
+            </h2>
           </div>
         </div>
-        <div className="flex justify-between mb-5 ">
-        <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#37A248] text-white ">
-              <div className="mr-5">
-                <div>Completed Services</div>
-                <span className="text-2xl font-bold">99 </span>
-              </div>
-              <div className="valueRight">
-               <HiOutlineBriefcase size={50} />
-              </div>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 place-content-center gap-10  mb-5">
+          <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#37A248] text-white ">
+            <div className="mr-5">
+              <div>Completed Services</div>
+              <span className="text-2xl font-bold">99 </span>
             </div>
-            <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#42A1DA] text-white">
-              <div className="mr-5">
-                <div>Running Services</div>
-                <span className="text-2xl font-bold">200 </span>
-              </div>
-              <div className="valueRight">
-               <FaWrench size={50} />
-              </div>
+            <div className="valueRight">
+              <HiOutlineBriefcase size={50} />
             </div>
-           
-            <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#48cae4] text-white">
-              <div className="mr-5">
-                <div>Total Sale </div>
-                <span className="text-2xl font-bold">99 </span>
-              </div>
-              <div className="valueRight">
-               <FaPercent size={50} />
-              </div>
+          </div>
+          <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#42A1DA] text-white">
+            <div className="mr-5">
+              <div>Running Services</div>
+              <span className="text-2xl font-bold">200 </span>
             </div>
-            <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#03045e] text-white">
-              <div className="mr-5">
-                <div>Total Product </div>
-                <span className="text-2xl font-bold">99 </span>
-              </div>
-              <div className="valueRight">
-               <FaCarSide size={50} />
-              </div>
+            <div className="valueRight">
+              <FaWrench size={50} />
             </div>
+          </div>
+
+          <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#48cae4] text-white">
+            <div className="mr-5">
+              <div>Total Sale </div>
+              <span className="text-2xl font-bold">99 </span>
+            </div>
+            <div className="valueRight">
+              <FaPercent size={50} />
+            </div>
+          </div>
+          <div className="completedServiceCards flex justify-between items-center  rounded-lg bg-[#03045e] text-white">
+            <div className="mr-5">
+              <div>Total Product </div>
+              <span className="text-2xl font-bold">99 </span>
+            </div>
+            <div className="valueRight">
+              <FaCarSide size={50} />
+            </div>
+          </div>
         </div>
-        <div className="flex justify-between">
-        <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#f77f00] text-white">
-              <div className="mr-5">
-                <div>Paid Services Bill</div>
-                <span className="text-2xl font-bold">856৳</span>
-              </div>
-              <div className="valueRight">
-               <FaFileInvoice size={50} />
-              </div>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 place-content-center gap-10  mb-5">
+          <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#f77f00] text-white">
+            <div className="mr-5">
+              <div>Paid Services Bill</div>
+              <span className="text-2xl font-bold">856৳</span>
             </div>
-           
-            <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#ef233c] text-white">
-              <div className="mr-5">
-                <div>Due Service Bill </div>
-                <span className="text-2xl font-bold">8106৳ </span>
-              </div>
-              <div className="valueRight">
-               <FaFileInvoiceDollar size={50} />
-              </div>
+            <div className="valueRight">
+              <FaFileInvoice size={50} />
             </div>
-            <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#0a9396] text-white">
-              <div className="mr-5">
-                <div>Our Customer </div>
-                <span className="text-2xl font-bold">159 </span>
-              </div>
-              <div className="valueRight">
-               <FaUsers  size={50} />
-              </div>
+          </div>
+
+          <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#ef233c] text-white">
+            <div className="mr-5">
+              <div>Due Service Bill </div>
+              <span className="text-2xl font-bold">8106৳ </span>
             </div>
-            <div className=" completedServiceCards flex justify-between items-center rounded-lg bg-[#3a0ca3] text-white">
-              <div className="mr-5">
-                <div>About Trust Auto Solution</div>
-                <span className="text-2xl font-bold">99 </span>
-              </div>
-              <div className="valueRight">
-               <FaCarOn size={50} />
-              </div>
+            <div className="valueRight">
+              <FaFileInvoiceDollar size={50} />
             </div>
+          </div>
+          <div className="completedServiceCards flex justify-between items-center rounded-lg bg-[#0a9396] text-white">
+            <div className="mr-5">
+              <div>Our Customer </div>
+              <span className="text-2xl font-bold">159 </span>
+            </div>
+            <div className="valueRight">
+              <FaUsers size={50} />
+            </div>
+          </div>
+          <div className=" completedServiceCards flex justify-between items-center rounded-lg bg-[#3a0ca3] text-white">
+            <div className="mr-5">
+              <div>About Trust Auto Solution</div>
+              <span className="text-2xl font-bold">99 </span>
+            </div>
+            <div className="valueRight">
+              <FaCarOn size={50} />
+            </div>
+          </div>
         </div>
 
         <div className="flex justify-between px-5 mt-24">

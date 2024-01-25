@@ -3,6 +3,7 @@ import axios from "axios";
 import logo from "../../../../public/assets/logo.png";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const UpdateQuotation = () => {
   const [specificInvoice, setSpecificInvoice] = useState({});
   const [orderNo, setOrderNo] = useState(null);
@@ -183,7 +184,7 @@ const UpdateQuotation = () => {
           setReload(!reload);
         }
       })
-      .catch((error) => {});
+      .catch((error) => {toast.error("Something went wrong")});
   };
 
   return (

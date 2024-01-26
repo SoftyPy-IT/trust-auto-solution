@@ -137,19 +137,11 @@
 	margin: 28px auto;
 }
 
-.trustAutoTitle {
+/* .trustAutoTitle {
 	font-size: 56px !important;
 	color: #426ea0;
-}
+} */
 
-.invoiceOrderBtn {
-	width: 65px;
-	height: 27px;
-	background: #4671a1;
-	color: #fff;
-	border-radius: 4px;
-	font-size: 13px;
-}
 
 .invoicTable td,
 .invoicTable th,

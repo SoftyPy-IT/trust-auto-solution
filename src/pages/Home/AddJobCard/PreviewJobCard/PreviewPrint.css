@@ -1,0 +1,89 @@
+
+/* 
+@media print {
+	.jobCardPrint {
+		max-width: 8.27in;
+		margin: 0 auto;
+		background-color: #fff;
+		height: 11in;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.carImgWrap {
+		width: 380px;
+		height: 495px;
+		border: 1px solid black;
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	.carImgWrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.leftSide textarea,
+	.rightSide textarea {
+		width: 100%;
+		border: 1px solid #42a1da;
+		border-radius: 5px;
+		padding: 10px;
+		resize: none;
+		height: 100px;
+	}
+
+	.inputGroup input {
+		border: 1px solid #42a1da;
+		padding: 3px;
+		margin-right: 3px;
+		border-radius: 5px;
+		height: 30px;
+		width: 100%;
+		margin-bottom: 3px;
+		color: black;
+	}
+
+	.inputGroup input::placeholder {
+		font-size: 12px;
+		color: black;
+	}
+
+	.inputGroup label,
+	.leftSide label,
+	.rightSide label {
+		font-size: 10px;
+	}
+} */
+@media print {
+	.jobCardPrint {
+        margin-top:10px;
+		margin-bottom:5px;
+        margin-right:20px;
+        margin-left:20px;
+        height: 10.5in;
+   
+	}
+    .trustAutoTitle {
+        font-size: 58px
+    }
+    .leftSide textarea,
+.rightSide textarea {
+	width: 360px;
+	height: 90px;
+}
+.carImgWrap {
+	width: 362px;
+	height: 465px;
+    margin-top:15px;
+}
+.inputGroup input, .inputGroup2 input {
+	height: 25px;
+	width: 136px;
+}
+
+
+
+}

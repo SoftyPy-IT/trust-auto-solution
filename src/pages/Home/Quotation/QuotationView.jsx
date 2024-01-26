@@ -185,26 +185,30 @@ const QuotationView = () => {
               >
                 {/* Add 'print-mode' class to apply print styles */}
                 <div>
-                  <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-                    <div className="flex justify-between items-center mb-2">
-                      <img className="w-[150px] " src={logo} alt="logo" />
-                      <h2 className="trustAutoTitle">Trust Auto Solution </h2>
+                <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+                      <div className="flex  justify-between items-center mb-2">
+                        <img className="w-[150px] " src={logo} alt="logo" />
+                        <div>
+                      <h2 className="trustAutoTitle ">
+                          Trust Auto Solution{" "}
+                        </h2>
+                      <p className="text-[#426EA0] italic text-sm -mt-3">
+                        It's trusted computerized Organization for all kinds of
+                        vehicle check up & maintenance such as computerized
+                        Engine Analysis, Engine tune up, Denting, Painting,
+                        Engine, AC, Electrical Works & Car Wash.{" "}
+                      </p>
+                      </div>
+                      </div>
+                      
+                     
                     </div>
-                    <p className="text-[#426EA0] italic text-sm">
-                      It's trusted computerized Organization for all kinds of
-                      vehicle check up & maintenance such as computerized Engine
-                      Analysis, Engine tune up, Denting, Painting, Engine, AC,
-                      Electrical Works & Car Wash.{" "}
-                    </p>
-                  </div>
 
                   {page === 1 && (
                     <div>
                       <div className="flex items-center justify-between mt-5 ">
-                        <button className="invoiceOrderBtn">
-                          SL: {quotationPreview.job_no}
-                        </button>
-                        <b>Date: {quotationPreview.date} </b>
+                        <span><b>SL:</b> {quotationPreview.job_no}</span>
+                        <span><b>Date:</b> {quotationPreview.date} </span>
                       </div>
                       <div className="flex items-center justiyf-between">
                         <table className="invoicTable inVoiceTables mt-5">

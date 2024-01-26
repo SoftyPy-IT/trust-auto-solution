@@ -40,6 +40,12 @@ const DashboardLayout = () => {
     setToggle((toggle) => !toggle);
   };
 
+  const containerRef = useRef()
+  const handleToggleCloseBtn = ()=>{
+    setToggle(false); 
+    
+  }
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -65,7 +71,7 @@ const DashboardLayout = () => {
   return (
     <main>
       <div className=" ">
-        <div className={`${toggle ? `drawer-content` : `activeDrawer`}`}>
+        <div ref={containerRef} onClick={handleToggleCloseBtn} className={`${toggle ? `drawer-content` : `activeDrawer`}`}>
           <Outlet />
         </div>
 

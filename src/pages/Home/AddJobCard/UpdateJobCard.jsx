@@ -115,26 +115,18 @@ const UpdateJobCard = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div className="jobCardFormWrap">
+          <div className=" flex justify-between items-center my-5">
             <div>
-              <label>
+              <b>
                 Job No: <span className="requiredStart">*</span>{" "}
-              </label>
-              <input
-                autoComplete="off"
-                type="text"
-                placeholder="Job No"
-                defaultValue={singleCard.job_no}
-                readOnly
-              />
+              </b>
+              <span>{singleCard.job_no}</span>
             </div>
+            <div className="vehicleCard">Update Job Card </div>
             <div>
-              <div className="vehicleCard">Update Job Card </div>
-            </div>
-            <div>
-              <label>
+              <b>
                 Date <span className="requiredStart">*</span>{" "}
-              </label>
+              </b>
 
               {!dateSelect && (
                 <>
@@ -161,7 +153,7 @@ const UpdateJobCard = () => {
           </div>
           <div className="jobCardFieldWraps">
             <div className="jobCardFieldLeftSide">
-              <h3 className="text-2xl mb-3 ">Company Information </h3>
+              <h3 className="text-xl mb-5 font-bold">Company Information </h3>
               <div>
                 <TextField
                   {...register("chassis_no")}
@@ -288,7 +280,7 @@ const UpdateJobCard = () => {
               </div>
             </div>
             <div className="jobCardFieldRightSide">
-              <h3 className="text-2xl mb-3 ">Customer Information </h3>
+              <h3 className="text-xl mb-5 font-bold ">Customer Information </h3>
               <div>
                 <TextField
                   {...register("reference_name")}

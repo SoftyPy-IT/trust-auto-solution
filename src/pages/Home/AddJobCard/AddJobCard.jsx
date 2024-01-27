@@ -586,7 +586,7 @@ const AddJobCard = () => {
             <h2 className=" font-bold text-center trustAuto word-sp">
               Trust Auto Solution{" "}
             </h2>
-            <p className=" text-sm">
+            <p className=" -mt-5 text-sm">
               It is trusted computerized Organization for all the kinds of
               vehicle check up & maintenance such as computerized Engine
               Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical

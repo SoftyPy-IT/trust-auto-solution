@@ -604,10 +604,10 @@ const AddQuotation = () => {
         <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
-            <h2 className=" font-bold text-center trustAuto word-sp">
+            <h2 className="  trustAutoTitle trustAutoTitleQutation ">
               Trust Auto Solution{" "}
             </h2>
-            <p className=" text-sm">
+            <p className="-mt-3 text-sm">
               It is trusted computerized Ogranizetion for all the kinds of
               vehicle check up & maintenance such as computerized Engine
               Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical

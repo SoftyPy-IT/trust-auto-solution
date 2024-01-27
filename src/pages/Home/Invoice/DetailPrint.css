@@ -1,14 +1,6 @@
-/* DetailPrint.css */
 
 @media print {
-	.invoicePrint {
-		color: #426ea0 !important;
-	}
-	.trustAutoTitle {
-		color: #426ea0;
-	}
-	h2,
-	p {
-		color: #42a1da !important;
-	}
-}
+
+	
+
+} 

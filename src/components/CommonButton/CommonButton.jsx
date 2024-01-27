@@ -8,7 +8,7 @@ const CommonButton = () => {
         <div>
             <div className="printBtnGroup">
                 <button onClick={handlePrint}>Print </button>
-                <button onClick={() => toPDF()}>Pdf </button>
+                <button onClick={() => toPDF()}>Download </button>
                 <Link to='/dashboard/addjob'><button >Edit </button></Link>
             </div>
         </div>

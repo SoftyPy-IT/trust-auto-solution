@@ -46,12 +46,9 @@ const Detail = () => {
   const itemsPerPages = 24;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const secondEndIndex = startIndex + itemsPerPages
+  const secondEndIndex = startIndex + itemsPerPages;
 
-  const firstPageData = invoicePreview?.input_data?.slice(
-    startIndex,
-    endIndex
-  );
+  const firstPageData = invoicePreview?.input_data?.slice(startIndex, endIndex);
 
   // Calculate the start index for the second page
   const secondPageStartIndex = endIndex;
@@ -200,89 +197,87 @@ const Detail = () => {
     };
 
     const takaInWords = convert(amount);
-    return `${takaInWords} only`;
+    return `${takaInWords} only`
   };
 
   const totalAmountInWords = amountInWords(invoicePreview.total_amount);
 
   return (
     <div ref={componentRef} className="h-screen">
-      <div>
-        {pages.length > 0 &&
-          pages.map((page) => (
-            <main ref={targetRef} key={page} className="invoicePrintWrap">
-              <div>
-                <div className="py-5 px-5 invoicePrint">
-                  <div>
-                  <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-                      <div className="flex  justify-between items-center mb-2">
-                        <img className="w-[150px] " src={logo} alt="logo" />
-                        <div>
-                      <h2 className="trustAutoTitle ">
-                          Trust Auto Solution{" "}
-                        </h2>
-                      <p className="text-[#426EA0] italic text-sm -mt-3">
-                        It's trusted computerized Organization for all kinds of
-                        vehicle check up & maintenance such as computerized
-                        Engine Analysis, Engine tune up, Denting, Painting,
-                        Engine, AC, Electrical Works & Car Wash.{" "}
-                      </p>
-                      </div>
-                      </div>
-                      
-                     
-                    </div>
-
-                    {page === 1 && (
+      {pages.length > 0 &&
+        pages.map((page) => (
+          <main ref={targetRef} key={page} className="invoicePrintWrap">
+            <div>
+              <div className="pb-5 px-14 invoicePrint">
+                <div>
+                <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+                    <div className="flex justify-between items-center mb-2 mt-5">
+                      <img className="w-[150px] " src={logo} alt="logo" />
                       <div>
-                        <div className="flex items-center justify-between mt-5 ">
-                          <span><b>SL:</b> {invoicePreview?.job_no}</span>
-                          <span><b>Date:</b> {invoicePreview?.date} </span>
-                        </div>
-                        <div className="flex items-center justiyf-between">
-                          <table className="invoicTable inVoiceTables mt-5">
-                            <tr>
-                              <th> Name </th>
-                              <th> Address </th>
-                            </tr>
-                            <tbody>
-                              <tr className="borderNone">
-                                <td> {invoicePreview?.customer_name} </td>
-                              </tr>
-                              <tr>
-                                <td>Kuril Bishawroad, Dhaka-1229 </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <table className="invoicTable mt-5">
-                            <tr>
-                              <th> Vehicle No </th>
-                              <th> Mileage </th>
-                            </tr>
-                            <tbody>
-                              <tr>
-                                <td>{invoicePreview?.car_registration_no}</td>
-                              </tr>
-                              <tr>
-                                <td> {invoicePreview?.mileage} </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                      <h2 className="trustAutoTitle qoutationTitle">Trust Auto Solution </h2>
+                      <p className="-mt-3 text-[#426EA0] italic text-sm">
+                      It's trusted computerized Organization for all kinds of
+                      vehicle check up & maintenance such as computerized Engine
+                      Analysis, Engine tune up, Denting, Painting, Engine, AC,
+                      Electrical Works & Car Wash.{" "}
+                    </p>
                       </div>
-                    )}
+                    </div>
+                    
+                  </div>
 
-                    <table className=" invoiceTable2 qutationTables mt-5">
-                      <thead className="tableWrap">
-                        <tr>
-                          <th>SL No</th>
-                          <th>Description</th>
-                          <th>Quantity </th>
-                          <th>Rate</th>
-                          <th>Amount </th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                  {page === 1 && (
+                    <div>
+                      <div className="flex items-center justify-between mt-5 ">
+                        <button className="invoiceOrderBtn">
+                          SL: {invoicePreview?.job_no}
+                        </button>
+                        <b>Date: {invoicePreview?.date} </b>
+                      </div>
+                      <div className="flex items-center justiyf-between">
+                        <table className="invoicTable inVoiceTables mt-5">
+                          <tr>
+                            <th> Name </th>
+                            <th> Address </th>
+                          </tr>
+                          <tbody>
+                            <tr className="borderNone">
+                              <td> {invoicePreview?.customer_name} </td>
+                            </tr>
+                            <tr>
+                              <td>Kuril Bishawroad, Dhaka-1229 </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table className="invoicTable mt-5">
+                          <tr>
+                            <th> Vehicle </th>
+                            <th> Mileage </th>
+                          </tr>
+                          <tbody>
+                            <tr>
+                              <td>{invoicePreview?.car_registration_no}</td>
+                            </tr>
+                            <tr>
+                              <td> {invoicePreview?.mileage} </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+
+                  <table className=" invoiceTable2 qutationTables mt-5">
+                    <thead className="tableWrap">
+                      <tr>
+                        <th>SL No</th>
+                        <th>Description</th>
+                        <th>Quantity </th>
+                        <th>Rate</th>
+                        <th>Amount </th>
+                      </tr>
+                    </thead>
+                    <tbody>
                       {page === 1 && (
                         <>
                           {firstPageData
@@ -373,59 +368,59 @@ const Detail = () => {
                             ))}
                         </>
                       )}
-                        {page === lastValue && (
-                          <>
-                            <tr>
-                              <td colSpan={4}>
-                                {" "}
-                                <b>Discount=</b>{" "}
-                              </td>
+                      {page === lastValue && (
+                        <>
+                          <tr>
+                            <td colSpan={4}>
+                              {" "}
+                              <b>Discount=</b>{" "}
+                            </td>
 
-                              <td> {invoicePreview?.discount}/=</td>
-                            </tr>
-                            <tr>
-                              <td colSpan={4}>
-                                {" "}
-                                <b>Vat=</b>{" "}
-                              </td>
+                            <td> {invoicePreview?.discount}/=</td>
+                          </tr>
+                          <tr>
+                            <td colSpan={4}>
+                              {" "}
+                              <b>Vat=</b>{" "}
+                            </td>
 
-                              <td> {invoicePreview?.vat}/=</td>
-                            </tr>
-                            <tr>
-                              <td></td>
-                              <td className="py-2" colSpan={3}>
-                                {" "}
-                                <b>Total Amount</b>{" "}
-                              </td>
-                              <td className="py-2">
-                                {" "}
-                                {invoicePreview?.total_amount}/=
-                              </td>
-                            </tr>
-                          </>
-                        )}
-                      </tbody>
-                    </table>
-                    {page === lastValue && (
-                      <p className="mt-1 text-sm">
-                        <b className="text-base">In words:</b>{" "}
-                        {totalAmountInWords}
-                      </p>
-                    )}
-                  </div>
+                            <td> {invoicePreview?.vat}/=</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td className="py-2" colSpan={3}>
+                              {" "}
+                              <b>Total Amount</b>{" "}
+                            </td>
+                            <td className="py-2">
+                              {" "}
+                              {invoicePreview?.total_amount}/=
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                    </tbody>
+                  </table>
+                  {page === lastValue && (
+                    <p className="mt-[2px] text-sm">
+                      <b className="text-base">In words:</b>{" "}
+                      {totalAmountInWords}
+                    </p>
+                  )}
+                </div>
 
-                  
+                
                   <div>
                     {page === lastValue && (
-                      <div className="customerSignatureWrap  ">
-                        <b className="customerSignatur">
-                          Customer Signature :
+                      <div className="customerSignatureWrap">
+                        <b className="customerSignatur text-sm">
+                          Customer Signature :{" "}
                         </b>
-                        <b className="customerSignatur">Trust Auto Solution</b>
+                        <b className="customerSignatur text-sm">Trust Auto Solution</b>
                       </div>
                     )}
-                    <hr className="my-3" />
-                    <div className="text-center mt-3 text-sm">
+                    <hr className="mb-1 border border-[#110255]" />
+                    <div className="text-center  text-sm">
                       <p>
                         <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
                         www.trustautosolution.com
@@ -438,10 +433,10 @@ const Detail = () => {
                     </div>
                   </div>
                
-                </div>
               </div>
-              {
-                page === lastValue && <div className="printInvoiceBtnGroup">
+            </div>
+            {page === lastValue && (
+              <div className="printInvoiceBtnGroup">
                 <button onClick={handlePrint}>Print </button>
                 <button onClick={() => toPDF()}>Pdf </button>
 
@@ -454,10 +449,9 @@ const Detail = () => {
                   <button> Qutation </button>
                 </Link>
               </div>
-              }
-            </main>
-          ))}
-      </div>
+            )}
+          </main>
+        ))}
     </div>
   );
 };

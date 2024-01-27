@@ -48,7 +48,7 @@ const QuotationView = () => {
   const itemsPerPages = 24;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const secondEndIndex = startIndex + itemsPerPages
+  const secondEndIndex = startIndex + itemsPerPages;
 
   const firstPageData = quotationPreview?.input_data?.slice(
     startIndex,
@@ -92,122 +92,156 @@ const QuotationView = () => {
 
   const lastValue = pages[pages.length - 1];
 
-
-
   const amountInWords = (amount) => {
     const numberWords = [
-      'Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
-      'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'
+      "Zero",
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine",
+      "Ten",
+      "Eleven",
+      "Twelve",
+      "Thirteen",
+      "Fourteen",
+      "Fifteen",
+      "Sixteen",
+      "Seventeen",
+      "Eighteen",
+      "Nineteen",
     ];
-  
+
     const tensWords = [
-      '', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'
+      "",
+      "",
+      "Twenty",
+      "Thirty",
+      "Forty",
+      "Fifty",
+      "Sixty",
+      "Seventy",
+      "Eighty",
+      "Ninety",
     ];
-  
+
     const convertLessThanOneThousand = (num) => {
       if (num === 0) {
-        return '';
+        return "";
       }
-  
-      let result = '';
-  
+
+      let result = "";
+
       if (num >= 100) {
-        result += numberWords[Math.floor(num / 100)] + ' Hundred ';
+        result += numberWords[Math.floor(num / 100)] + " Hundred ";
         num %= 100;
       }
-  
+
       if (num >= 20) {
-        result += tensWords[Math.floor(num / 10)] + ' ';
+        result += tensWords[Math.floor(num / 10)] + " ";
         num %= 10;
       }
-  
+
       if (num > 0) {
-        result += numberWords[num] + ' ';
+        result += numberWords[num] + " ";
       }
-  
+
       return result;
     };
-  
+
     const convert = (num) => {
       if (num === 0) {
-        return 'Zero';
+        return "Zero";
       }
-  
-      let result = '';
-  
+
+      let result = "";
+
       let integerPart = Math.floor(num);
       const decimalPart = Math.round((num - integerPart) * 100);
-  
+
       if (integerPart >= 10000000) {
-        result += convertLessThanOneThousand(Math.floor(integerPart / 10000000)) + 'Crore ';
+        result +=
+          convertLessThanOneThousand(Math.floor(integerPart / 10000000)) +
+          "Crore ";
         integerPart %= 10000000;
       }
-  
+
       if (integerPart >= 100000) {
-        result += convertLessThanOneThousand(Math.floor(integerPart / 100000)) + 'Lakh ';
+        result +=
+          convertLessThanOneThousand(Math.floor(integerPart / 100000)) +
+          "Lakh ";
         integerPart %= 100000;
       }
-  
+
       if (integerPart >= 1000) {
-        result += convertLessThanOneThousand(Math.floor(integerPart / 1000)) + 'Thousand ';
+        result +=
+          convertLessThanOneThousand(Math.floor(integerPart / 1000)) +
+          "Thousand ";
         integerPart %= 1000;
       }
-  
+
       result += convertLessThanOneThousand(integerPart);
-  
+
       if (decimalPart > 0) {
-        result += 'Taka ' + " " + "and" + " " + convertLessThanOneThousand(decimalPart) + 'Paisa ';
+        result +=
+          "Taka " +
+          " " +
+          "and" +
+          " " +
+          convertLessThanOneThousand(decimalPart) +
+          "Paisa ";
       } else {
-        result += 'Taka';
+        result += "Taka";
       }
-  
+
       return result;
     };
-  
+
     const takaInWords = convert(amount);
-    return   `${takaInWords} only`;
+    return `${takaInWords} only`
   };
-  
+
   // Example usage:
   const totalAmountInWords = amountInWords(quotationPreview.total_amount);
- 
-  
 
   return (
     <div ref={componentRef} className="h-screen">
       {pages.length > 0 &&
         pages.map((page) => (
           <main key={page} className="invoicePrintWrap">
-            <div >
+            <div>
               <div
                 ref={targetRef}
-                className="py-5 px-5 invoicePrint print-mode"
+                className="py-5 px-14 invoicePrint print-mode"
               >
                 {/* Add 'print-mode' class to apply print styles */}
                 <div>
-                <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-                      <div className="flex  justify-between items-center mb-2">
-                        <img className="w-[150px] " src={logo} alt="logo" />
-                        <div>
-                      <h2 className="trustAutoTitle ">
-                          Trust Auto Solution{" "}
-                        </h2>
-                      <p className="text-[#426EA0] italic text-sm -mt-3">
-                        It's trusted computerized Organization for all kinds of
-                        vehicle check up & maintenance such as computerized
-                        Engine Analysis, Engine tune up, Denting, Painting,
-                        Engine, AC, Electrical Works & Car Wash.{" "}
-                      </p>
+                  <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+                    <div className="flex justify-between items-center mb-2 mt-5">
+                      <img className="w-[150px] " src={logo} alt="logo" />
+                      <div>
+                      <h2 className="trustAutoTitle qoutationTitle">Trust Auto Solution </h2>
+                      <p className="-mt-3 text-[#426EA0] italic text-sm">
+                      It's trusted computerized Organization for all kinds of
+                      vehicle check up & maintenance such as computerized Engine
+                      Analysis, Engine tune up, Denting, Painting, Engine, AC,
+                      Electrical Works & Car Wash.{" "}
+                    </p>
                       </div>
-                      </div>
-                      
-                     
                     </div>
+                    
+                  </div>
+
 
                   {page === 1 && (
                     <div>
-                      <div className="flex items-center justify-between mt-5 ">
+                      <div className="flex items-center justify-between">
                         <span><b>SL:</b> {quotationPreview.job_no}</span>
+                      
                         <span><b>Date:</b> {quotationPreview.date} </span>
                       </div>
                       <div className="flex items-center justiyf-between">
@@ -227,7 +261,7 @@ const QuotationView = () => {
                         </table>
                         <table className="invoicTable mt-5">
                           <tr>
-                            <th> Vehicle No </th>
+                            <th> Vehicle </th>
                             <th> Mileage </th>
                           </tr>
                           <tbody>
@@ -351,7 +385,7 @@ const QuotationView = () => {
                               {" "}
                               <b>Discount=</b>{" "}
                             </td>
-                            
+
                             <td> {quotationPreview?.discount}/=</td>
                           </tr>
                           <tr>
@@ -359,7 +393,7 @@ const QuotationView = () => {
                               {" "}
                               <b>Vat=</b>{" "}
                             </td>
-                            
+
                             <td> {quotationPreview.vat}/=</td>
                           </tr>
                           <tr>
@@ -375,7 +409,8 @@ const QuotationView = () => {
                   </table>
                   {page === lastValue && (
                     <p className="mt-1 text-sm">
-                      <b className="text-base">In words:</b> {totalAmountInWords}
+                      <b className="text-base">In words:</b>{" "}
+                      {totalAmountInWords}
                     </p>
                   )}
                 </div>
@@ -387,7 +422,7 @@ const QuotationView = () => {
                       <b className="customerSignatur">Trust Auto Solution</b>
                     </div>
                   )}
-                  <hr className="my-3" />
+                  <hr className="my-3 border border-[#110255]" />
                   <div className="text-center mt-3 text-sm">
                     <p>
                       <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
@@ -402,24 +437,23 @@ const QuotationView = () => {
                 </div>
               </div>
             </div>
-            {
-              page === lastValue &&  <div className="printInvoiceBtnGroup pb-20">
-              <button onClick={handlePrint}>Print </button>
-              <button onClick={() => toPDF()}>Pdf </button>
-      
-              <Link to="/dashboard/invoice">
-                <button> Edit </button>
-              </Link>
-      
-              <Link to="/dashboard/qutation">
-                {" "}
-                <button> Qutation </button>
-              </Link>
-            </div>
-            }
+            {page === lastValue && (
+              <div className="printInvoiceBtnGroup pb-20">
+                <button onClick={handlePrint}>Print </button>
+                <button onClick={() => toPDF()}>Pdf </button>
+
+                <Link to="/dashboard/invoice">
+                  <button> Edit </button>
+                </Link>
+
+                <Link to="/dashboard/qutation">
+                  {" "}
+                  <button> Qutation </button>
+                </Link>
+              </div>
+            )}
           </main>
         ))}
-     
     </div>
   );
 };

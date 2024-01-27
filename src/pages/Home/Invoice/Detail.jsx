@@ -230,7 +230,7 @@ const Detail = () => {
                     <div>
                       <div className="flex items-center justify-between">
                         <span>  <b>SL:</b> {invoicePreview?.job_no}</span>
-                        <b className=" border-b-2 border-black">Quotation</b>
+                        <b className=" border-b-2 border-black">Invoice</b>
                         <b>Date: {invoicePreview?.date} </b>
                       </div>
                       <div className="flex items-center justiyf-between">

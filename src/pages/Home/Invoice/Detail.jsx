@@ -228,10 +228,9 @@ const Detail = () => {
 
                   {page === 1 && (
                     <div>
-                      <div className="flex items-center justify-between mt-5 ">
-                        <button className="invoiceOrderBtn">
-                          SL: {invoicePreview?.job_no}
-                        </button>
+                      <div className="flex items-center justify-between">
+                        <span>  <b>SL:</b> {invoicePreview?.job_no}</span>
+                        <b className=" border-b-2 border-black">Quotation</b>
                         <b>Date: {invoicePreview?.date} </b>
                       </div>
                       <div className="flex items-center justiyf-between">

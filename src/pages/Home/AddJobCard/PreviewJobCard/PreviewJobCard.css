@@ -38,11 +38,11 @@
 }
 .carImgWrap {
 	width: 365px;
-	height: 475px;
+	height: 465px;
 	border: 1px solid black;
 	padding: 5px;
 	border-radius: 5px;
-	margin-top:30px;
+	margin-top:10px;
 }
 .carImgWrap img {
 	width: 100%;
@@ -62,6 +62,7 @@
 	padding-top:5px;
 	resize: none;
 	height: 95px;
+	font-size: 13px;
 }
 .leftSide textarea:focus,
 .rightSide textarea:focus {
@@ -73,7 +74,7 @@
 	margin-right: 5px;
 	border-radius: 5px;
 	height: 25px;
-	width: 140px;
+	width: 130px;
 	margin-bottom: 3px;
 	color: black;
 	font-size: 12px;
@@ -87,7 +88,15 @@
 }
 .inputGroup label,
 .leftSide label,
-.rightSide label {
-	font-size: 13px;
+.rightSide label, .inputGroup2 label{
+	font-size: 11px;
+	text-transform: capitalize;
+	font-weight: bold;
 }
 
+.previwCard2{
+	font-size: .8rem;
+	width:10rem;
+	text-transform: uppercase;
+	margin:0px;
+}

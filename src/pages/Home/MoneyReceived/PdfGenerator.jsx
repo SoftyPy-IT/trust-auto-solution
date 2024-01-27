@@ -108,7 +108,7 @@ const PdfGenerator = () => {
               </div>
             </div>
             <div className="receivedBtn2 mt-2">
-              <button className="print-button">Receipt</button>
+              <button className="print-button">Money Receipt</button>
             </div>
 
             <div className="flex justify-between ">

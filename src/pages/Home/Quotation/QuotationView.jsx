@@ -241,7 +241,7 @@ const QuotationView = () => {
                     <div>
                       <div className="flex items-center justify-between">
                         <span><b>SL:</b> {quotationPreview.job_no}</span>
-                      
+                      <b className=" border-b-2 border-black">Quotation</b>
                         <span><b>Date:</b> {quotationPreview.date} </span>
                       </div>
                       <div className="flex items-center justiyf-between">

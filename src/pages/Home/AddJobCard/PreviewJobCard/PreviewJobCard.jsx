@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 const PreviewJobCard = () => {
   const { componentRef, targetRef } = useContext(PrintContext);
   const [previewData, setPreviewData] = useState({});
+  console.log(previewData)
   // const componentRef = useRef();
   // const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   // const handlePrint = useReactToPrint({
@@ -64,9 +65,27 @@ const PreviewJobCard = () => {
             </div>
           </div>
           <div>
-          <div className="flex mt-3 justify-between">
+          <div className=" flex justify-between items-center my-2">
+            <div>
+              <b>
+                Job No: <span>{previewData.job_no}</span>
+              </b>
+            
+            </div>
+            <div>
+              <div className="vehicleCard previwCard2">Vehicle Job Card </div>
+            </div>
+            <div>
+              <b>
+                Date: <span>{previewData.date}</span>
+              </b>
+              
+            </div>
+          </div>
+
+          <div className="flex  justify-between">
                 <div className="  inputGroup">
-                  <h3 className="mb-2 font-bold">Vehicle Information </h3>
+                <h6 className="mb-2 font-bold">Vehicle Information </h6>
                   <div className="flex">
                   <div>
                   <div>
@@ -164,7 +183,7 @@ const PreviewJobCard = () => {
                   </div>
                 </div>
                 <div className=" inputGroup">
-                  <h3 className=" mb-2 font-bold ">Customer Information </h3>
+                  <h6 className=" mb-2 font-bold ">Customer Information </h6>
                   <div className="flex">
                   <div>
                  <div>
@@ -230,20 +249,20 @@ const PreviewJobCard = () => {
                 </div>
                 <div>
                   <label>                   
-                    reported_defect
+                    Reported Defect
                   </label>
 
                   <textarea defaultValue={reportedDefect} readOnly />
                 </div>
                 <div>
-                  <label> reported_action
+                  <label> Reported Action
                   </label>
                   <textarea defaultValue={reportedAction} readOnly></textarea>
                 </div>
                 <div className="mt-">
                   <label>
                     {/* Vehicle Interior Parts, */}
-                    vehicle_body_report
+                   Vehicle Body Report Comments
                   </label>
                   <textarea
                     defaultValue={previewData.vehicle_body_report}
@@ -261,21 +280,21 @@ const PreviewJobCard = () => {
 
           <div className="flex items-center mb-3 justify-between inputGroup2">
             <div>
-              <label className="block">Technician Name</label>
+              <label className="block ">Technician Name</label>
               <input
-                defaultValue={previewData.technician_name}
-                readOnly
+                // defaultValue={previewData.technician_name}
+               
                 type="text"
-                placeholder="Technician Name"
+                // placeholder="Technician Name"
               />
             </div>
             <div>
               <label className="block">Technician Signature </label>
               <input
-                defaultValue={previewData.technician_signature}
-                readOnly
+                // defaultValue={previewData.technician_signature}
+            
                 type="text"
-                placeholder="Technician Signature"
+                // placeholder="Technician Signature"
               />
             </div>
             <div>
@@ -290,10 +309,10 @@ const PreviewJobCard = () => {
             <div>
               <label className="block">For Vehicle Owner </label>
               <input
-                defaultValue={previewData.vehicle_owner}
-                readOnly
+                // defaultValue={previewData.vehicle_owner}
+            
                 type="text"
-                placeholder="For Vehicle Owner "
+               
               />
             </div>
           </div>

@@ -178,20 +178,13 @@
 	font-size: 14px;
 }
 
-.customerSignatureWrap {
+.customerSignatureWrap, .customerSignatureWrap2{
 	display: flex;
 	justify-content: space-between;
 	margin: 5px 0;
 	margin-top: 25px;
 }
-@media print {
-	.customerSignatureWrap {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 -15px 0 0;
-		margin-top: 25px;
-	}
-}
+
 
 .customerSignatur {
 	position: relative;

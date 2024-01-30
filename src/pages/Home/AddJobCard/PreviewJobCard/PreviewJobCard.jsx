@@ -4,7 +4,7 @@ import "./PreviewJobCard.css";
 import './PreviewPrint.css'
 import { PrintContext } from "../../../context/PrintProvider";
 import CommonButton from "../../../../components/CommonButton/CommonButton";
-import car from "../../../../../public/assets/car2.jpeg";
+import car from "../../../../../public/assets/car3.jpeg";
 import { useLocation } from "react-router-dom";
 const PreviewJobCard = () => {
   const { componentRef, targetRef } = useContext(PrintContext);
@@ -84,7 +84,7 @@ const PreviewJobCard = () => {
           </div>
 
           <div className="flex  justify-between">
-                <div className="  inputGroup">
+                <div className="inputGroup">
                 <h6 className="mb-2 font-bold">Vehicle Information </h6>
                   <div className="flex">
                   <div>
@@ -145,8 +145,7 @@ const PreviewJobCard = () => {
                           disabled
                         />
                       </div>
-                    </div>
-                   
+                    </div>                  
                       
                     <div>
                    
@@ -238,15 +237,17 @@ const PreviewJobCard = () => {
                 
                 </div>
               </div>
-            <div className="flex items-center justify-between ">
-              <div className="leftSide">
-                <div>
+              <div className="fullTextArea mt-2">
                   <label>
                     {" "}
                     Vehicle Interior Parts, Papers, Tools, Meter Light & Others
                   </label>                 
-                  <textarea defaultValue={vehicleInterior} readOnly></textarea>
+                  <textarea disabled  defaultValue={vehicleInterior} ></textarea>
                 </div>
+            <div className="flex  justify-between ">
+           
+              <div className="leftSide">
+                
                 <div>
                   <label>                   
                     Reported Defect
@@ -283,7 +284,7 @@ const PreviewJobCard = () => {
               <label className="block ">Technician Name</label>
               <input
                 // defaultValue={previewData.technician_name}
-               
+               disabled
                 type="text"
                 // placeholder="Technician Name"
               />
@@ -292,7 +293,7 @@ const PreviewJobCard = () => {
               <label className="block">Technician Signature </label>
               <input
                 // defaultValue={previewData.technician_signature}
-            
+                disabled
                 type="text"
                 // placeholder="Technician Signature"
               />
@@ -310,7 +311,7 @@ const PreviewJobCard = () => {
               <label className="block">For Vehicle Owner </label>
               <input
                 // defaultValue={previewData.vehicle_owner}
-            
+                disabled
                 type="text"
                
               />
@@ -319,11 +320,13 @@ const PreviewJobCard = () => {
          </div>
 
          <div className="footerContainer">
-         <div className="customerSignatureWrap">
+         <div className="customerSignatureWrap2">
             <b className="customerSignatur">Customer Signature : </b>
             <b className="customerSignatur">Trust Auto Solution</b>
           </div>
-          <hr className="my-3 border border-[#110255]" />
+        <div className="px-[8px]">
+        <hr className="my-3 border border-[#110255]" />
+        </div>
           <div className="text-center  ">
             <p className="text-xs">
               <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,

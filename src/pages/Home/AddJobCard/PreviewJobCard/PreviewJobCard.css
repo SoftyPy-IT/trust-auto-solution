@@ -37,12 +37,13 @@
 	padding:20px 35px;
 }
 .carImgWrap {
-	width: 365px;
-	height: 465px;
-	border: 1px solid black;
-	padding: 5px;
-	border-radius: 5px;
-	margin-top:10px;
+	width: 270px;
+    height: 345px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 19px;
+
 }
 .carImgWrap img {
 	width: 100%;
@@ -54,8 +55,8 @@
 	margin-bottom: 5px;
 }
 .leftSide textarea,
-.rightSide textarea {
-	width: 355px;
+.rightSide textarea, .fullTextArea textarea{
+	width: 445px;
 	border: 1px solid black;
 	border-radius: 5px;
 	padding-left:5px;
@@ -63,6 +64,10 @@
 	resize: none;
 	height: 95px;
 	font-size: 13px;
+}
+.fullTextArea textarea{
+	width:100%;
+
 }
 .leftSide textarea:focus,
 .rightSide textarea:focus {
@@ -88,7 +93,7 @@
 }
 .inputGroup label,
 .leftSide label,
-.rightSide label, .inputGroup2 label{
+.rightSide label, .inputGroup2 label, .fullTextArea label{
 	font-size: 11px;
 	text-transform: capitalize;
 	font-weight: bold;
@@ -99,4 +104,7 @@
 	width:10rem;
 	text-transform: uppercase;
 	margin:0px;
+}
+.customerSignatureWrap2{
+	padding:0 8px;
 }

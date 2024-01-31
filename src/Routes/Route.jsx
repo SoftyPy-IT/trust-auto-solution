@@ -34,6 +34,7 @@ import QuotationView from "../pages/Home/Quotation/QuotationView";
 import QuotationList from "../pages/Home/Quotation/QuotationList";
 import UpdateQuotation from "../pages/Home/Quotation/UpdateQuotation";
 import CustomerList from "../pages/Home/Customer/CustomerList";
+import CustomerProfile from "../pages/Home/Customer/CustomerProfile";
 
 
 export const router = createBrowserRouter([
@@ -102,8 +103,16 @@ export const router = createBrowserRouter([
         element: <CustomerList />,
       },
       {
+        path: "update-customer",
+        element: <UpdateCustomer />,
+      },
+      {
         path: "add-customer",
         element: <AddCustomer />,
+      },
+      {
+        path: "customer-profile",
+        element: <CustomerProfile/>,
       },
       {
         path: "expense",
@@ -113,10 +122,7 @@ export const router = createBrowserRouter([
         path: "add-expense",
         element: <AddExpense />,
       },
-      {
-        path: "update-customer",
-        element: <UpdateCustomer />,
-      },
+    
       {
         path: "employee",
         element: <Employee />,

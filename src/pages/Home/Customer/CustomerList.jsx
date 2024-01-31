@@ -1,6 +1,6 @@
-import { FaTrashAlt, FaEdit, FaEye,  FaUserTie } from "react-icons/fa";
+import { FaTrashAlt, FaEdit,  FaUserTie } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { NotificationAdd, Search } from "@mui/icons-material";
+import { NotificationAdd } from "@mui/icons-material";
 import { FaUserGear } from "react-icons/fa6";
 import { styled, alpha } from "@mui/material/styles"
 import InputBase from "@mui/material/InputBase"
@@ -113,15 +113,15 @@ const CustomerList = () => {
               <td>BMW2343</td>
               <td>BDT1005</td>
               <td >
-                <div className='editIconWrap edit2'>
-                  <Link to='/dashboard/update-product'>
-                    <FaEye className='editIcon' />
+                <div className='editIconWrap '>
+                  <Link to='/dashboard/customer-profile'>
+                  <FaUserTie className="invoicIcon" />
                   </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap edit'>
-                  <Link to='/dashboard/update-product'>
+                  <Link to='/dashboard/update-customer'>
                     <FaEdit className='editIcon' />
                   </Link>
                 </div>

@@ -1,16 +1,58 @@
 /* eslint-disable react/jsx-no-undef */
 
 import TextField from '@mui/material/TextField'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-import { FaFileInvoice, FaEye, FaReddit, FaTrashAlt} from 'react-icons/fa'
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered'
+import { FaFileInvoice, FaEye, FaTrashAlt, FaEdit} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import img from "../../../../public/assets/service2.png";
-
+import { styled, alpha } from "@mui/material/styles"
+import InputBase from "@mui/material/InputBase"
+import SearchIcon from "@mui/icons-material/Search"
 
 const AddCustomer = () => {
+
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }))
+
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }))
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    width: "100%",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }))
+
+
+
 	return (
 		<section>
 			<div className=" addProductWraps">
@@ -33,16 +75,7 @@ const AddCustomer = () => {
 					<span>New Customer </span>
 				</div>
 			</div>
-			<div className="my-3 flex justify-end mr-[80px] ">
-				<Link to='/dashboard/product'>
-				<div className="manageProduct">
-					<FormatListNumberedIcon className="listIcon" />
-					<h2>Customer List </h2>
-				</div>
-
-				</Link>
-				
-			</div>
+			
 			<div className="addProductWrap">
 				<form>
           <div className="flex">
@@ -97,21 +130,18 @@ const AddCustomer = () => {
       
       <div className="flex items-center justify-between  mb-5">
 			<h3 className="text-3xl font-bold text-center "> Customer List: </h3>
-      <div className="productFieldWrap productSearch">
-						<FormControl className="searchProductField">
-							<InputLabel htmlFor="grouped-native-select">Select Category </InputLabel>
-							<Select native defaultValue="" id="grouped-native-select" label="Select Category ">
-								<option aria-label="None" value="" />
-								<option value="Select Category  "> Select Category  </option>
-								<option value="Product Name "> Product Name </option>
-								<option value="Supplier Name "> Supplier Name </option>
-								<option value="Product Model "> Product Model </option>
-							</Select>
-						</FormControl>
-        <button className="SearchBtn searchBtn2">
-              Search{" "}
-            </button>
-		</div>
+      <div className="flex items-center">
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon className="searchIcon" />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Search>
+                 <button className="bg-[#42A1DA] text-white px-2 py-2 rounded-sm ml-2">Search</button>
+                </div>
         
       </div>
       <div className="overflow-x-auto ">
@@ -119,41 +149,29 @@ const AddCustomer = () => {
           <thead className='tableWrap'>
             <tr>
               <th>SL</th>
-              <th>Image</th>
-              <th>Product Name </th>
-              <th>Product Model </th>
-              <th>Supplier Name </th>
-              <th>Price </th>
-              <th>Supplier Price  </th>
+              <th>Customer Name </th>
+              <th>Phone Number </th>
+              <th>Reference Name </th>
               <th colSpan={3}>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>01</td>
-              <td>
-                <div className="mask   h-[100px] w-[100px] mx-auto ">
-                  <img
-                    className=" h-full w-full object-cover text-center"
-                    src={img}
-                    alt="img"
-                  />
-                </div>
-              </td>
               <td>Car  </td>
               <td>BMW2343</td>
-              <td>Aminul Hoque </td>
-              <td>BDT405</td>
               <td>BDT1005</td>
               <td >
-                <div className='editIconWrap edit'>
-				<FaEye className='editIcon' />
+                <div className='editIconWrap edit2'>
+                  <Link to='/dashboard/update-product'>
+                    <FaEye className='editIcon' />
+                  </Link>
                 </div>
               </td>
               <td >
                 <div className='editIconWrap edit'>
-                  <Link to='/dashboard/update-product'>
-                    <FaReddit className='editIcon' />
+                  <Link to='/dashboard/update-customer'>
+                    <FaEdit className='editIcon' />
                   </Link>
                 </div>
               </td>

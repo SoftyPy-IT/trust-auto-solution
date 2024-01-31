@@ -73,16 +73,17 @@
 .rightSide textarea:focus {
 	outline: none;
 }
+
+
 .inputGroup input, .inputGroup2 input {
-	border: 1px solid black;
-	padding: 3px;
-	margin-right: 5px;
-	border-radius: 5px;
-	height: 25px;
-	width: 130px;
-	margin-bottom: 3px;
-	color: black;
-	font-size: 12px;
+    border: 1px solid black;
+    margin-right: 5px;
+    border-radius: 5px;
+    width: 130px;
+    margin-bottom: 3px;
+    color: black;
+    font-size: 12px;
+    padding: 1px 0px 1px 3px;
 }
 .inputGroup2 input{
 	width:175px !important;

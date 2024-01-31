@@ -8,29 +8,29 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Invoice/Invoice.css"; // Add a separate CSS file for print styles
 
-const QuotationView = () => {
+const Detail = () => {
   const componentRef = useRef();
   const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+
   const navigate = useNavigate();
   const location = useLocation();
   const id = new URLSearchParams(location.search).get("id");
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  const [quotationPreview, setQuotationPreview] = useState({});
+  const [invoicePreview, setInvoicePreview] = useState({});
   const [pages, setPages] = useState([]);
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (id) {
       setLoading(true);
-      fetch(`http://localhost:5000/api/v1/quotation/${id}`)
+          fetch(`http://localhost:5000/api/v1/quotation/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          // console.log(data);
-          setQuotationPreview(data);
+          setInvoicePreview(data);
           setLoading(false);
           const p = Math.ceil(data?.input_data?.length / 20);
           const arr = Array.from({ length: p }, (_, index) => index + 1);
@@ -40,8 +40,6 @@ const QuotationView = () => {
     }
   }, [id]);
 
-  // console.log(quotationPreview.input_data.length);
-
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 20;
@@ -50,42 +48,39 @@ const QuotationView = () => {
   const endIndex = startIndex + itemsPerPage;
   const secondEndIndex = startIndex + itemsPerPages;
 
-  const firstPageData = quotationPreview?.input_data?.slice(
-    startIndex,
-    endIndex
-  );
+  const firstPageData = invoicePreview?.input_data?.slice(startIndex, endIndex);
 
   // Calculate the start index for the second page
   const secondPageStartIndex = endIndex;
-  const secondPageData = quotationPreview?.input_data?.slice(
+  const secondPageData = invoicePreview?.input_data?.slice(
     secondPageStartIndex,
     secondPageStartIndex + itemsPerPages
   );
 
   // Calculate the start index for the third page
   const thirdPageStartIndex = secondPageStartIndex + itemsPerPage;
-  const thirdPageData = quotationPreview?.input_data?.slice(
+  const thirdPageData = invoicePreview?.input_data?.slice(
     thirdPageStartIndex,
     thirdPageStartIndex + itemsPerPages
   );
 
   // Calculate the start index for the fourth page
   const fourthPageStartIndex = thirdPageStartIndex + itemsPerPage;
-  const fourthPageData = quotationPreview?.input_data?.slice(
+  const fourthPageData = invoicePreview?.input_data?.slice(
     fourthPageStartIndex,
     fourthPageStartIndex + itemsPerPages
   );
 
   // Calculate the start index for the fifth page
   const fifthPageStartIndex = fourthPageStartIndex + itemsPerPage;
-  const fifthPageData = quotationPreview?.input_data?.slice(
+  const fifthPageData = invoicePreview?.input_data?.slice(
     fifthPageStartIndex,
     fifthPageStartIndex + itemsPerPages
   );
 
   // Calculate the start index for the sixth page
   const sixthPageStartIndex = fifthPageStartIndex + itemsPerPage;
-  const sixthPageData = quotationPreview?.input_data?.slice(
+  const sixthPageData = invoicePreview?.input_data?.slice(
     sixthPageStartIndex,
     sixthPageStartIndex + itemsPerPage
   );
@@ -205,82 +200,85 @@ const QuotationView = () => {
     return `${takaInWords} only`
   };
 
-  // Example usage:
-  const totalAmountInWords = amountInWords(quotationPreview.total_amount);
+  const totalAmountInWords = amountInWords(invoicePreview?.total_amount);
 
   return (
     <div ref={componentRef} className="h-screen">
       {pages.length > 0 &&
         pages.map((page) => (
-          <main key={page} className="invoicePrintWrap">
+          <main ref={targetRef} key={page} className="invoicePrintWrap">
             <div>
-              <div
-                ref={targetRef}
-                className="py-5 px-14 invoicePrint print-mode"
-              >
-                {/* Add 'print-mode' class to apply print styles */}
+              <div className="pb-5 px-14 invoicePrint">
                 <div>
-                  <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
-                    <div className="flex justify-between items-center mb-2 mt-5">
-                      <img className="w-[150px] " src={logo} alt="logo" />
+                <div className=" mb-2 mx-auto text-center border-b-2 border-[#351E98] pb-2">
+                    <div className="w-full flex justify-between items-center mb-2 mt-5">
+                      <img className="w-[120px] " src={logo} alt="logo" />
                       <div>
                       <h2 className="trustAutoTitle qoutationTitle">Trust Auto Solution </h2>
-                      <p className="-mt-3 text-[#426EA0] italic text-sm">
-                      It's trusted computerized Organization for all kinds of
-                      vehicle check up & maintenance such as computerized Engine
-                      Analysis, Engine tune up, Denting, Painting, Engine, AC,
-                      Electrical Works & Car Wash.{" "}
-                    </p>
+                        <small>Office: Ka-93/4/C, Kuril Bishawroad, Dhaka-1229</small>
+                      </div>
+                      <div className="text-left">
+                        <small className="block"><small className="font-bold">Mobile:</small> 345689789666</small>
+                        <small className="block"><small className="font-bold">Email:</small> trustautosolution@gmail.com</small>
+                        <small className="block font-bold ">trustautosolution.com</small>
                       </div>
                     </div>
                     
                   </div>
 
-
                   {page === 1 && (
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span><b>SL:</b> {quotationPreview.job_no}</span>
-                      <b className=" border-b-2 border-black">Quotation</b>
-                        <span><b>Date:</b> {quotationPreview.date} </span>
+                      <div className="px-10">
+                      <div className="flex items-center justify-between border-b-2 pb-1 border-[#351E98]">
+                        <span>  <b>Customer ID:</b> TSA001</span>
+                        <b className="uppercase mr-5">Invoice</b>
+                        <b>Date: {invoicePreview?.date} </b>
                       </div>
-                      <div className="flex items-center justiyf-between">
-                        <table className="invoicTable inVoiceTables mt-5">
-                          <tr>
-                            <th>Name </th>
-                            <th>Address </th>
-                          </tr>
-                          <tbody>
-                            <tr className="borderNone">
-                              <td> {quotationPreview.customer_name} </td>
-                            </tr>
-                            <tr>
-                              <td>Kuril Bishawroad, Dhaka-1229 </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table className="invoicTable mt-5">
-                          <tr>
-                            <th> Vehicle </th>
-                            <th> Mileage </th>
-                          </tr>
-                          <tbody>
-                            <tr>
-                              <td>{quotationPreview.car_registration_no}</td>
-                            </tr>
-                            <tr>
-                              <td> {quotationPreview.mileage} </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                     
+                      <div className="flex invoiceInformaiton mx-auto  items-center justify-between mt-2">
+                      <div className="flex justify-between w-[40%]">
+                        <div className="invoiceCustomerInfo">
+                          <b>SL NO</b>
+                          <b>Company</b>
+                          <b>Customer</b>
+                          <b>Phone</b>
+                          <b>Address</b>
+                        </div>
+                        <div className="invoiceCustomerInfo">
+                          <small>: 03</small>
+                          <small>: SoftyPy PVT LTD </small>
+                          <small>: Customer</small>
+                          <small>: 3456789044</small>
+                          <small>: Kuril Bishawroad </small>
+                        </div>
                       </div>
+                      <div className="invoiceLine"></div>
+                      <div className="flex w-[40%] justify-between ">
+                        <div className="invoiceCustomerInfo">
+                          <b>Vehicle BN </b>
+                          <b>Vehicle Model </b>
+                          <b>Chassis No </b>
+                          <b>Engine No </b>
+                          <b>KM</b>
+                        </div>
+                        <div className="invoiceCustomerInfo">
+                          <small>: 03</small>
+                          <small>: 85456 </small>
+                          <small>: 456</small>
+                          <small>: 3454</small>
+                          <small>: 765</small>
+                        </div>
+                      </div>
+
+                      </div>
+                     
+
                     </div>
                   )}
 
                   <table className=" invoiceTable2 qutationTables mt-5">
-                    <thead className="tableWrap">
+                    <thead className="tableWrap">                    
                       <tr>
-                        <th>SL No</th>
+                        <th className="serialNo">SL No</th>
                         <th>Description</th>
                         <th>Quantity </th>
                         <th>Rate</th>
@@ -378,67 +376,48 @@ const QuotationView = () => {
                             ))}
                         </>
                       )}
-                      {page === lastValue && (
-                        <>
-                          <tr>
-                            <td colSpan={4}>
-                              {" "}
-                              <b>Discount=</b>{" "}
-                            </td>
-
-                            <td> {quotationPreview?.discount}/=</td>
-                          </tr>
-                          <tr>
-                            <td colSpan={4}>
-                              {" "}
-                              <b>Vat=</b>{" "}
-                            </td>
-
-                            <td> {quotationPreview.vat}/=</td>
-                          </tr>
-                          <tr>
-                            <td colSpan={4}>
-                              {" "}
-                              <b>Total Amount=</b>{" "}
-                            </td>
-                            <td> {quotationPreview.total_amount}/=</td>
-                          </tr>
-                        </>
-                      )}
+                      
                     </tbody>
                   </table>
-                  {page === lastValue && (
-                    <p className="mt-1 text-sm">
+                 <div className="flex justify-between">
+                 <div className="mt-[2px] text-sm">
                       <b className="text-base">In words:</b>{" "}
                       {totalAmountInWords}
-                    </p>
-                  )}
+                    </div>
+                    <div className="flex netTotalAmounts">
+                      <div className="">
+                        <b> Total Amount </b>
+                        <b> Discount </b>
+                        <b> VAT </b>
+                        <b> Net Total </b>
+                      </div>
+                      <div>
+                        <small> : 57896</small>
+                        <small> : 5%</small>
+                        <small> : 56</small>
+                        <small> : 57896</small>
+                      </div>
+                    </div>
+                 </div>
                 </div>
 
-                <div>
-                  {page === lastValue && (
-                    <div className="customerSignatureWrap">
-                      <b className="customerSignatur">Customer Signature : </b>
-                      <b className="customerSignatur">Trust Auto Solution</b>
-                    </div>
-                  )}
-                  <hr className="my-3 border border-[#110255]" />
-                  <div className="text-center mt-3 text-sm">
-                    <p>
-                      <b>Office: </b>Ka-93/4/C, Kuril Bishawroad, Dhaka-1229,
-                      www.trustautosolution.com
-                    </p>
-                    <p>
-                      {" "}
-                      <b>Mobile:</b> 01821-216465, 01972-216465 , <b>Email:</b>{" "}
-                      trustautosolution@gmail.com{" "}
-                    </p>
+                
+                  <div>
+                    {page === lastValue && (
+                      <div className="customerSignatureWrap">
+                        <b className="customerSignatur text-sm">
+                          Customer Signature :{" "}
+                        </b>
+                        <b className="customerSignatur text-sm">Trust Auto Solution</b>
+                      </div>
+                    )}
+                    
                   </div>
-                </div>
+               
               </div>
             </div>
             {page === lastValue && (
-              <div className="printInvoiceBtnGroup pb-20">
+              <div className="printInvoiceBtnGroup">
                 <button onClick={handlePrint}>Print </button>
                 <button onClick={() => toPDF()}>Pdf </button>
 
@@ -458,4 +437,4 @@ const QuotationView = () => {
   );
 };
 
-export default QuotationView;
+export default Detail;

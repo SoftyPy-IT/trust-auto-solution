@@ -60,16 +60,17 @@ const PreviewJobCard = () => {
             <div className="flex  justify-between items-center">
               <img className="w-[150px] " src={logo} alt="logo" />
               <h2 className="trustAutoTitle ">
-                Trust Auto Solution{" "}
+                Trust Auto Solution
               </h2>
             </div>
           </div>
           <div>
-          <div className=" flex justify-between items-center my-2">
+          <div className=" flex text-[12px] justify-between items-center my-2">
             <div>
               <b>
                 Job No: <span>{previewData.job_no}</span>
               </b>
+              <div><b>Customer ID:</b> TAS000</div>
             
             </div>
             <div>
@@ -212,6 +213,7 @@ const PreviewJobCard = () => {
                       disabled
                     />
                   </div>
+                
                  </div>
                   <div>
                   <div>
@@ -232,6 +234,14 @@ const PreviewJobCard = () => {
                         disabled
                       />
                     </div>
+                    <div>
+                    <label className="block">Car Driver Name </label>
+                    <input
+                      type="text"
+                      placeholder="Customer Address "                  
+                      disabled
+                    />
+                  </div>
                   </div>
                   </div>
                 

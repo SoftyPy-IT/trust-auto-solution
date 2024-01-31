@@ -1,66 +1,70 @@
 /* eslint-disable no-unused-vars */
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../../../../public/assets/logo.png";
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import logo from "../../../../public/assets/logo.png"
 import {
   FaTrashAlt,
   FaEdit,
   FaArrowRight,
   FaArrowLeft,
   FaEye,
-} from "react-icons/fa";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import swal from "sweetalert";
-import { toast } from "react-toastify";
-import Loading from "../../../components/Loading/Loading";
+} from "react-icons/fa"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import swal from "sweetalert"
+import { toast } from "react-toastify"
+import Loading from "../../../components/Loading/Loading"
+import { styled, alpha } from "@mui/material/styles"
+import InputBase from "@mui/material/InputBase"
+import SearchIcon from "@mui/icons-material/Search"
+
 const AddQuotation = () => {
-  const [select, setSelect] = useState(null);
+  const [select, setSelect] = useState(null)
 
   const [inputList, setInputList] = useState([
     { flyingFrom: "", flyingTo: "", date: "" },
-  ]);
+  ])
 
-  const location = useLocation();
-  const orderNo = new URLSearchParams(location.search).get("order_no");
-  const navigate = useNavigate();
-  const [job_no, setJob_no] = useState(orderNo);
-  const [jobCardData, setJobCardData] = useState({});
-  const [error, setError] = useState("");
-  const [postError, setPostError] = useState("");
-  const [getAllQuotation, setGetAllQuotation] = useState([]);
-  const [filterType, setFilterType] = useState("");
-  const [noMatching, setNoMatching] = useState(null);
-  const [reload, setReload] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [jobLoading, setJobLoading] = useState(false);
+  const location = useLocation()
+  const orderNo = new URLSearchParams(location.search).get("order_no")
+  const navigate = useNavigate()
+  const [job_no, setJob_no] = useState(orderNo)
+  const [jobCardData, setJobCardData] = useState({})
+  const [error, setError] = useState("")
+  const [postError, setPostError] = useState("")
+  const [getAllQuotation, setGetAllQuotation] = useState([])
+  const [filterType, setFilterType] = useState("")
+  const [noMatching, setNoMatching] = useState(null)
+  const [reload, setReload] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [jobLoading, setJobLoading] = useState(false)
 
   useEffect(() => {
     if (job_no) {
-      setJobLoading(true);
+      setJobLoading(true)
       fetch(`http://localhost:5000/api/v1/jobCard/invoice/${job_no}`)
         .then((res) => res.json())
         .then((data) => {
-          setJobCardData(data);
-          setJobLoading(false);
-        });
+          setJobCardData(data)
+          setJobLoading(false)
+        })
     }
-  }, [job_no]);
+  }, [job_no])
 
   const handleRemove = (index) => {
     if (!index) {
-      const list = [...items];
+      const list = [...items]
 
-      setItems(list);
+      setItems(list)
     } else {
-      const list = [...items];
-      list.splice(index, 1);
-      setItems(list);
+      const list = [...items]
+      list.splice(index, 1)
+      setItems(list)
     }
-  };
+  }
 
   const handleAddClick = () => {
-    setItems([...items, { flyingFrom: "", flyingTo: "", date: "" }]);
-  };
+    setItems([...items, { flyingFrom: "", flyingTo: "", date: "" }])
+  }
 
   //  add to quotation
 
@@ -73,9 +77,9 @@ const AddQuotation = () => {
   // const [quantity, setQuantity] = useState([]);
   // const [rate, setRate] = useState([]);
   // const [total, setTotal] = useState([]);
-  const [grandTotal, setGrandTotal] = useState(0);
-  const [discount, setDiscount] = useState(0);
-  const [vat, setVAT] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0)
+  const [discount, setDiscount] = useState(0)
+  const [vat, setVAT] = useState(0)
 
   // const handleDescriptionChange = (index, value) => {
   //   if (value === "") {
@@ -173,34 +177,33 @@ const AddQuotation = () => {
   // };
 
   const handleDiscountChange = (value) => {
-    const parsedValue = value === "" ? 0 : parseFloat(value);
+    const parsedValue = value === "" ? 0 : parseFloat(value)
 
     if (!isNaN(parsedValue)) {
-      setDiscount(parsedValue);
+      setDiscount(parsedValue)
     }
-  };
+  }
 
   const handleVATChange = (value) => {
-    const parsedValue = value === "" ? 0 : parseFloat(value);
+    const parsedValue = value === "" ? 0 : parseFloat(value)
 
     if (!isNaN(parsedValue)) {
-      setVAT(parsedValue);
+      setVAT(parsedValue)
     }
-  };
+  }
 
   const calculateFinalTotal = () => {
-    const discountAsPercentage = discount;
-    const totalAfterDiscount = grandTotal - discountAsPercentage;
+    const discountAsPercentage = discount
+    const totalAfterDiscount = grandTotal - discountAsPercentage
 
-    const vatAsPercentage = vat / 100;
-    let finalTotal =
-      totalAfterDiscount + totalAfterDiscount * vatAsPercentage;
-      finalTotal = parseFloat(finalTotal.toFixed(2));
-    return finalTotal;
-  };
+    const vatAsPercentage = vat / 100
+    let finalTotal = totalAfterDiscount + totalAfterDiscount * vatAsPercentage
+    finalTotal = parseFloat(finalTotal.toFixed(2))
+    return finalTotal
+  }
 
   const handleAddToQuotation = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const values = {
@@ -220,40 +223,40 @@ const AddQuotation = () => {
         vat: vat,
         net_total: calculateFinalTotal(),
         input_data: items,
-      };
+      }
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
-      );
+      )
 
       if (hasPreviewNullValues) {
-        setError("Please fill in all the required fields.");
-        setPostError("");
-        return;
+        setError("Please fill in all the required fields.")
+        setPostError("")
+        return
       }
-      setLoading(true);
+      setLoading(true)
       const response = await axios.post(
         "http://localhost:5000/api/v1/quotation",
         values
-      );
+      )
 
-      console.log(response);
+      console.log(response)
       if (response.data.message === "Successfully quotation post") {
-        setPostError("");
-        setError("");
-        toast.success("Quotation added successful.");
-        setReload(!reload);
-        setLoading(false);
+        setPostError("")
+        setError("")
+        toast.success("Quotation added successful.")
+        setReload(!reload)
+        setLoading(false)
       }
     } catch (error) {
       if (error.response) {
-        setPostError(error.response.data.message);
-        setError("");
+        setPostError(error.response.data.message)
+        setError("")
       }
     }
-  };
+  }
 
   const handlePreview = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const values = {
       username: jobCardData?.username,
       // serial_no: formattedSerialNo,
@@ -272,53 +275,53 @@ const AddQuotation = () => {
       vat: vat,
       net_total: calculateFinalTotal(),
       input_data: items,
-    };
+    }
     const hasPreviewNullValues = Object.values(values).some(
       (val) => val === null
-    );
+    )
 
     if (hasPreviewNullValues) {
-      setError("Please fill in all the required fields.");
-      return;
+      setError("Please fill in all the required fields.")
+      return
     }
     const response = await axios.post(
       "http://localhost:5000/api/v1/quotation",
       values
-    );
+    )
     if (response.data.message === "Successfully quotation post") {
       fetch("http://localhost:5000/api/v1/quotation")
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            navigate(`/dashboard/quotation-view?id=${data._id}`);
+            navigate(`/dashboard/quotation-view?id=${data._id}`)
           }
-        });
+        })
     }
-  };
+  }
 
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/quotation-view?id=${e}`);
-  };
+    navigate(`/dashboard/quotation-view?id=${e}`)
+  }
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
-        setGetAllQuotation(data);
-        setLoading(false);
-      });
-  }, [reload]);
+        setGetAllQuotation(data)
+        setLoading(false)
+      })
+  }, [reload])
 
   // pagination
 
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(10)
   const [currentPage, setCurrentPage] = useState(
     Number(sessionStorage.getItem("q_n")) || 1
-  );
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
-  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+  )
+  const [pageNumberLimit, setPageNumberLimit] = useState(5)
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5)
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0)
 
   const deletePackage = async (id) => {
     const willDelete = await swal({
@@ -326,7 +329,7 @@ const AddQuotation = () => {
       text: "Are you sure that you want to delete this card?",
       icon: "warning",
       dangerMode: true,
-    });
+    })
 
     if (willDelete) {
       try {
@@ -335,46 +338,46 @@ const AddQuotation = () => {
           {
             method: "DELETE",
           }
-        );
-        const data = await res.json();
+        )
+        const data = await res.json()
 
         if (data.message == "Quotation card delete successful") {
-          setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id));
-          setReload(!reload);
+          setGetAllQuotation(getAllQuotation?.filter((pkg) => pkg._id !== id))
+          setReload(!reload)
         }
-        swal("Deleted!", "Card delete successful.", "success");
+        swal("Deleted!", "Card delete successful.", "success")
       } catch (error) {
-        swal("Error", "An error occurred while deleting the card.", "error");
+        swal("Error", "An error occurred while deleting the card.", "error")
       }
     }
-  };
+  }
 
   useEffect(() => {
-    sessionStorage.setItem("q_n", currentPage.toString());
-  }, [currentPage]);
+    sessionStorage.setItem("q_n", currentPage.toString())
+  }, [currentPage])
   // ...
 
   useEffect(() => {
-    const storedPage = Number(sessionStorage.getItem("q_n")) || 1;
-    setCurrentPage(storedPage);
+    const storedPage = Number(sessionStorage.getItem("q_n")) || 1
+    setCurrentPage(storedPage)
     setMaxPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
-    );
+    )
     setMinPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
-    );
-  }, [pageNumberLimit]);
+    )
+  }, [pageNumberLimit])
 
   // ...
 
   const handleClick = (e) => {
-    const pageNumber = Number(e.target.id);
-    setCurrentPage(pageNumber);
-    sessionStorage.setItem("q_n", pageNumber.toString());
-  };
-  const pages = [];
+    const pageNumber = Number(e.target.id)
+    setCurrentPage(pageNumber)
+    sessionStorage.setItem("q_n", pageNumber.toString())
+  }
+  const pages = []
   for (let i = 1; i <= Math.ceil(getAllQuotation?.length / limit); i++) {
-    pages.push(i);
+    pages.push(i)
   }
 
   const renderPagesNumber = pages?.map((number) => {
@@ -392,20 +395,20 @@ const AddQuotation = () => {
         >
           {number}
         </li>
-      );
+      )
     } else {
-      return null;
+      return null
     }
-  });
+  })
 
-  const lastIndex = currentPage * limit;
-  const startIndex = lastIndex - limit;
+  const lastIndex = currentPage * limit
+  const startIndex = lastIndex - limit
 
-  let currentItems;
+  let currentItems
   if (Array.isArray(getAllQuotation)) {
-    currentItems = getAllQuotation.slice(startIndex, lastIndex);
+    currentItems = getAllQuotation.slice(startIndex, lastIndex)
   } else {
-    currentItems = [];
+    currentItems = []
   }
 
   const renderData = (getAllQuotation) => {
@@ -460,31 +463,31 @@ const AddQuotation = () => {
           ))}
         </tbody>
       </table>
-    );
-  };
+    )
+  }
 
   const handlePrevious = () => {
-    const newPage = currentPage - 1;
-    setCurrentPage(newPage);
-    sessionStorage.setItem("q_n", newPage.toString());
+    const newPage = currentPage - 1
+    setCurrentPage(newPage)
+    sessionStorage.setItem("q_n", newPage.toString())
 
     if (newPage % pageNumberLimit === 0) {
-      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
-  };
+  }
   const handleNext = () => {
-    const newPage = currentPage + 1;
-    setCurrentPage(newPage);
-    sessionStorage.setItem("q_n", newPage.toString());
+    const newPage = currentPage + 1
+    setCurrentPage(newPage)
+    sessionStorage.setItem("q_n", newPage.toString())
 
     if (newPage > maxPageNumberLimit) {
-      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
     }
-  };
+  }
 
-  let pageIncrementBtn = null;
+  let pageIncrementBtn = null
   if (pages?.length > maxPageNumberLimit) {
     pageIncrementBtn = (
       <li
@@ -493,10 +496,10 @@ const AddQuotation = () => {
       >
         &hellip;
       </li>
-    );
+    )
   }
 
-  let pageDecrementBtn = null;
+  let pageDecrementBtn = null
   if (currentPage > pageNumberLimit) {
     pageDecrementBtn = (
       <li
@@ -505,75 +508,71 @@ const AddQuotation = () => {
       >
         &hellip;
       </li>
-    );
+    )
   }
 
   const handleFilterType = async () => {
     try {
       const data = {
         filterType,
-      };
+      }
       const response = await axios.post(
         `http://localhost:5000/api/v1/quotation/all`,
         data
-      );
+      )
 
       if (response.data.message === "Filter successful") {
-        setGetAllQuotation(response.data.result);
-        setNoMatching(null);
+        setGetAllQuotation(response.data.result)
+        setNoMatching(null)
       }
       if (response.data.message === "No matching found") {
-        setGetAllQuotation([]);
-        setNoMatching(response.data.message);
+        setGetAllQuotation([])
+        setNoMatching(response.data.message)
       }
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong")
     }
-  };
+  }
 
   const handleAllQuotation = () => {
     fetch(`http://localhost:5000/api/v1/quotation/all`)
       .then((res) => res.json())
       .then((data) => {
-        setGetAllQuotation(data);
-        setNoMatching(null);
-      });
-  };
-
-   
+        setGetAllQuotation(data)
+        setNoMatching(null)
+      })
+  }
 
   const [items, setItems] = useState([
     { description: "", quantity: "", rate: "", total: "" },
-  ]);
+  ])
 
   useEffect(() => {
-    const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0);
-  
+    const totalSum = items.reduce((sum, item) => sum + Number(item.total), 0)
+
     // Limiting totalSum to two decimal places
-    const roundedTotalSum = parseFloat(totalSum.toFixed(2));
-  
-    setGrandTotal(roundedTotalSum);
-  }, [items]);
-  
+    const roundedTotalSum = parseFloat(totalSum.toFixed(2))
+
+    setGrandTotal(roundedTotalSum)
+  }, [items])
 
   const handleDescriptionChange = (index, value) => {
-    const newItems = [...items];
-    newItems[index].description = value;
-    setItems(newItems);
-  };
+    const newItems = [...items]
+    newItems[index].description = value
+    setItems(newItems)
+  }
 
   const handleQuantityChange = (index, value) => {
-    const newItems = [...items];
-  
+    const newItems = [...items]
+
     // Round the value to the nearest integer
-    const roundedValue = Math.round(value);
-  
-    newItems[index].quantity = roundedValue;
-    newItems[index].total = roundedValue * newItems[index].rate;
-  
-    setItems(newItems);
-  };
-  
+    const roundedValue = Math.round(value)
+
+    newItems[index].quantity = roundedValue
+    newItems[index].total = roundedValue * newItems[index].rate
+
+    setItems(newItems)
+  }
 
   // const handleRateChange = (index, value) => {
   //   const newItems = [...items];
@@ -584,24 +583,66 @@ const AddQuotation = () => {
   // };
 
   const handleRateChange = (index, value) => {
-    const newItems = [...items];
-  
+    const newItems = [...items]
+
     // Convert rate to a number
-    newItems[index].rate = parseFloat(value);
-  
+    newItems[index].rate = parseFloat(value)
+
     // Calculate total with the updated rate
-    newItems[index].total = newItems[index].quantity * newItems[index].rate;
-  
+    newItems[index].total = newItems[index].quantity * newItems[index].rate
+
     // Round total to two decimal places
-    newItems[index].total = parseFloat(newItems[index].total.toFixed(2));
-  
-    setItems(newItems);
-  };
+    newItems[index].total = parseFloat(newItems[index].total.toFixed(2))
+
+    setItems(newItems)
+  }
+
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }))
+
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }))
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    width: "100%",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }))
 
   return (
     <div className="py-10 px-5">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
             <h2 className="  trustAutoTitle trustAutoTitleQutation ">
@@ -614,69 +655,108 @@ const AddQuotation = () => {
               Works & Car Wash.
             </p>
           </div>
+        </div> */}
+        <div className="w-full flex justify-between items-center mb-2 mt-5">
+        <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
+          <div>
+          <h2 className="  trustAutoTitle trustAutoTitleQutation ">
+              Trust Auto Solution{" "}
+            </h2>
+            <span>Office: Ka-93/4/C, Kuril Bishawroad, Dhaka-1229</span>
+          </div>
+          <div className="text-left">
+            <span className="block">
+              <span className="font-bold">Mobile:</span> 345689789666
+            </span>
+            <span className="block">
+              <small className="font-bold">Email:</small>{" "}
+              trustautosolution@gmail.com
+            </span>
+            <span className="block font-bold ">trustautosolution.com</span>
+          </div>
         </div>
       </div>
       <div className="mt-5">
         <form>
-         <div className="lg:flex gap-x-2">
-         <div>
-            <label className="block">Order Number </label>
-            <input
-              onChange={(e) => setJob_no(e.target.value)}
-              autoComplete="off"
-              type="text"
-              placeholder="Order Number"
-              defaultValue={orderNo}
-              className="orderNumber border border-[#42A1DA] w-full px-1 py-[10px] rounded"
-            />
-          </div>
-          {jobLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <div className="qutationForm invoicForm flex gap-x-3">
-              <div>
-                <label className="block">Customer Name </label>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="Customer Name"
-                  defaultValue={jobCardData?.customer_name}
-                />
-              </div>
-
-              <div>
-                <label className="block">Car Number </label>
-                <input
-                  defaultValue={jobCardData?.car_registration_no}
-                  autoComplete="off"
-                  type="text"
-                  placeholder="Car Number"
-                />
-              </div>
-              <div>
-                <label className="block">Mobile Number </label>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="Mobile Number "
-                  defaultValue={jobCardData?.contact_number}
-                />
-              </div>
-              <div>
-                <label className="block">Date</label>
-                <input
-                  defaultValue={jobCardData?.date}
-                  autoComplete="off"
-                  placeholder="Date"
-                  className="orderNumber"
-                  readOnly
-                />
-              </div>
+          <div className="lg:flex gap-x-2">
+            <div>
+              <label className="block">Order Number </label>
+              <input
+                onChange={(e) => setJob_no(e.target.value)}
+                autoComplete="off"
+                type="text"
+                placeholder="Order Number"
+                defaultValue={orderNo}
+                className="orderNumber border border-[#42A1DA] w-full px-1 py-[10px] rounded"
+              />
             </div>
-          )}
-         </div>
+            {jobLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <div className="qutationForm invoicForm flex gap-x-3">
+                <div>
+                  <label className="block">Customer Name </label>
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    placeholder="Customer Name"
+                    defaultValue={jobCardData?.customer_name}
+                  />
+                </div>
+
+                <div>
+                  <label className="block">Car Number </label>
+                  <input
+                    defaultValue={jobCardData?.car_registration_no}
+                    autoComplete="off"
+                    type="text"
+                    placeholder="Car Number"
+                  />
+                </div>
+                <div>
+                  <label className="block">Mobile Number </label>
+                  <input
+                    autoComplete="off"
+                    type="text"
+                    placeholder="Mobile Number "
+                    defaultValue={jobCardData?.contact_number}
+                  />
+                </div>
+                <div>
+                  <label className="block">Date</label>
+                  <input
+                    defaultValue={jobCardData?.date}
+                    autoComplete="off"
+                    placeholder="Date"
+                    className="orderNumber"
+                    readOnly
+                  />
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="vehicleCard">Quotation Card </div>
+          <div className="mb-5">
+            <span>
+              {" "}
+              <b>Customer ID:</b> TAS000
+            </span>
+            <div className="flex items-center">
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon className="searchIcon" />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+              <button className="bg-[#42A1DA] text-white px-2 py-2 rounded-sm ml-2">
+                Add Customer
+              </button>
+            </div>
+          </div>
           <div className="flex items-center justify-around labelWrap">
             <label>SL No </label>
             <label>Description </label>
@@ -765,7 +845,7 @@ const AddQuotation = () => {
                   )}
                 </div>
               </div>
-            );
+            )
           })}
           <div className="discountFieldWrap">
             <div className="flex items-center ">
@@ -928,7 +1008,7 @@ const AddQuotation = () => {
         </div>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default AddQuotation;
+export default AddQuotation

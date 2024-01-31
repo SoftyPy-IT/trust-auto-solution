@@ -297,12 +297,45 @@ const DashboardLayout = () => {
               </AccordionDetails>
             </Accordion>
 
-            <NavLink to="/dashboard/services">
-              <div className="flex items-center dashboardItems">
-                <FaUserTie className="dashboardIcon" />
-                Customer List
-              </div>
-            </NavLink>
+
+            <Accordion
+              className="dashboardAccordion"
+              expanded={expanded === "panel2"}
+              onChange={handleChange("panel2")}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon className="accordionExpandIcon" />}
+                aria-controls="panel2a-content"
+                id="panel2a-header"
+                className="dashboardAccordionSummary"
+              >
+
+                <Typography>
+                <div className="flex items-center justify-center">
+                  <FaUserTie className="dashboardIcon" />
+                  <span className="ml-2">  Customer List</span>
+                  </div>
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography className="accordionTypoGrapy">
+                  <span className="flex items-center">
+                    <FaPlus className="mr-2" />
+                    <NavLink to="/dashboard/add-customer">Add Customer </NavLink>
+                  </span>
+                </Typography>
+                <Typography className="accordionTypoGrapy">
+                  <span className="flex items-center">
+                    <FaThLarge className="mr-2" />
+                    <NavLink to="/dashboard/customer-list">
+                     All Customer
+                    </NavLink>
+                  </span>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+
+          
             <NavLink to="/dashboard/expense">
               <div className="flex items-center dashboardItems">
                 <FaCriticalRole className="dashboardIcon" />

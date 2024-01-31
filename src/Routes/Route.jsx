@@ -14,7 +14,6 @@ import UpdateCustomer from "../pages/Home/Customer/UpdateCustomer";
 import AddExpense from "../pages/Home/Expense/AddExpense";
 import Expense from "../pages/Home/Expense/Expense";
 import AddCustomer from "../pages/Home/Customer/AddCustomer";
-import Customer from "../pages/Home/Customer/Customer";
 import Product from "../pages/Home/Products/Product";
 import AddProduct from "../pages/Home/Products/AddProduct";
 import Profile from "../pages/Home/Profile/Profile";
@@ -34,6 +33,7 @@ import AddQuotation from "../pages/Home/Quotation/AddQuotation";
 import QuotationView from "../pages/Home/Quotation/QuotationView";
 import QuotationList from "../pages/Home/Quotation/QuotationList";
 import UpdateQuotation from "../pages/Home/Quotation/UpdateQuotation";
+import CustomerList from "../pages/Home/Customer/CustomerList";
 
 
 export const router = createBrowserRouter([
@@ -98,8 +98,8 @@ export const router = createBrowserRouter([
         element: <UpdateProduct />,
       },
       {
-        path: "customer",
-        element: <Customer />,
+        path: "customer-list",
+        element: <CustomerList />,
       },
       {
         path: "add-customer",

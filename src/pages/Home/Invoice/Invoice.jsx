@@ -558,7 +558,7 @@ const Invoice = () => {
   return (
     <div className="py-10 px-5">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[160px]" />
           <div className="invoiceHead">
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center trustAuto word-sp">
@@ -570,6 +570,25 @@ const Invoice = () => {
               Analysis Engine tune up, Denting, Painting, Engine, AC, Electrical
               Works & Car Wash.
             </p>
+          </div>
+        </div> */}
+         <div className="w-full flex justify-between items-center mb-2 mt-5">
+        <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
+          <div>
+          <h2 className="  trustAutoTitle trustAutoTitleQutation ">
+              Trust Auto Solution{" "}
+            </h2>
+            <span>Office: Ka-93/4/C, Kuril Bishawroad, Dhaka-1229</span>
+          </div>
+          <div className="text-left">
+            <span className="block">
+              <span className="font-bold">Mobile:</span> 345689789666
+            </span>
+            <span className="block">
+              <small className="font-bold">Email:</small>{" "}
+              trustautosolution@gmail.com
+            </span>
+            <span className="block font-bold ">trustautosolution.com</span>
           </div>
         </div>
       </div>

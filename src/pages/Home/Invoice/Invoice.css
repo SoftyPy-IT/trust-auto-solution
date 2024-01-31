@@ -137,12 +137,9 @@
 	margin: 28px auto;
 }
 
-.trustAutoTitleQutation {
-	font-size: 65px !important;
+.qoutationTitle {
+	font-size: 30px !important;
 	
-}
-.qoutationTitle{
-	font-size: 52px !important;
 }
 
 
@@ -200,32 +197,10 @@
 	background: black;
 	left: 0;
 }
-.invoicTable {
-	display: flex;
-}
-.invoicTable th,
-.invoicTable tr {
-	display: block !important;
-	padding: 1px 5px;
-}
-.inVoiceTables td,
-.invoicTable td {
-	border: none;
-}
-.invoicTable td {
-	width: 275px;
-}
 
-.inVoiceTables td {
-	width: 600px !important;
-	border: none;
-}
-.invoicTable th {
-	border: none;
-}
-.invoicTable th:first-child {
-	border-bottom: 1px solid;
-}
+
+
+
 
 
 @media only screen and (max-width: 1024px) {
@@ -354,19 +329,58 @@
 .invoiceTable2 tr,
 .invoiceTable2 th,
 .invoiceTable2 td {
-	padding-top: 3px !important  ;
-	padding-bottom: 3px !important  ;
+	padding:3px !important;
 	margin: 0 !important;
-	font-size: 10px !important;
-	text-align: center !important;
-
-	body.print-mode {
-		color: #000;
-		padding-top: -15px !important ;
-		font-size: 10px !important;  
-		height: 15px !important ; 
-	  }
+	font-size: 13px !important;
+	text-align: center !important;	
 }
+
+.invoiceCustomerInfo small, .invoiceCustomerInfo b, .netTotalAmounts b, .netTotalAmounts small{
+	display: block;
+	font-size: 14px;
+}
+.netTotalAmounts b, .netTotalAmounts small{
+	font-size: 12px;
+}
+.invoiceLine{
+	width:1px ;
+	height:80px;
+	background:black;
+}
+.invoiceTable2 th:first-child{
+	width:50px !important;
+
+}
+.invoiceTable2 th:nth-child(3){
+	width:60px !important;
+}
+.invoiceTable2 th:nth-child(4){
+	width:55px !important;
+}
+.invoiceTable2 th:nth-child(5){
+	width:70px !important;
+}
+.invoiceTable2 th:nth-child(2){
+	width:100%;
+}
+
+
+.flex.netTotalAmounts {
+    width: 172px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+.invoiceInformaiton{
+	width:90% !important;
+	margin:0 auto;
+}
+
+
+
+
+
 
 @media print {
 	body.print-mode {

@@ -1,62 +1,64 @@
 /* eslint-disable no-unused-vars */
-import "./AddJobCard.css";
-import car from "../../../../public/assets/car2.jpeg";
-import logo from "../../../../public/assets/logo.png";
-import swal from "sweetalert";
-import { useEffect, useRef, useState } from "react";
-
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { toast } from "react-toastify";
-import Loading from "../../../components/Loading/Loading";
-import { FormControl, InputLabel, Select, TextField } from "@mui/material";
+import "./AddJobCard.css"
+import car from "../../../../public/assets/car2.jpeg"
+import logo from "../../../../public/assets/logo.png"
+import swal from "sweetalert"
+import { useEffect, useRef, useState } from "react"
+import { styled, alpha } from "@mui/material/styles"
+import InputBase from "@mui/material/InputBase"
+import SearchIcon from "@mui/icons-material/Search"
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
+import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa"
+import { Link, useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import axios from "axios"
+import { toast } from "react-toastify"
+import Loading from "../../../components/Loading/Loading"
+import { FormControl, InputLabel, Select, TextField } from "@mui/material"
 const AddJobCard = () => {
-  const [previousPostData, setPreviousPostData] = useState({});
-  const [jobNo, setJobNo] = useState(previousPostData.job_no);
-  const [allJobCard, setAllJobCard] = useState([]);
-  const [noMatching, setNoMatching] = useState(null);
-  const [chassisNo, setChassisNo] = useState(null);
-  const [registration, setRegistration] = useState(null);
-  const [carRegNo, setCarReg] = useState(null);
-  const [vehicleModel, setCarModel] = useState(null);
-  const [vehicleBrand, setVehicleBrand] = useState(null);
-  const [mileage, setMileage] = useState(null);
-  const [color, setColor] = useState(null);
-  const [engineNo, setEngineNo] = useState(null);
-  const [reference, setReference] = useState(null);
-  const [companyName, setCompanyName] = useState(null);
-  const [vehicleCategory, setVehicleCategory] = useState(null);
-  const [customerName, setCustomerName] = useState(null);
-  const [contactNo, setContactNo] = useState(null);
-  const [driverName, setDriverName] = useState(null);
-  const [phoneNo, setPhoneNo] = useState(null);
-  const [vehicleBody, setVehicleBody] = useState(null);
-  const [technicianName, setTechnicianName] = useState(null);
-  const [technicianSignature, setTechnicianSignature] = useState(null);
-  const [technicianDate, setTechnicianDate] = useState(null);
-  const [owner, setOwner] = useState(null);
-  const [error, setError] = useState(null);
+  const [previousPostData, setPreviousPostData] = useState({})
+  const [jobNo, setJobNo] = useState(previousPostData.job_no)
+  const [allJobCard, setAllJobCard] = useState([])
+  const [noMatching, setNoMatching] = useState(null)
+  const [chassisNo, setChassisNo] = useState(null)
+  const [registration, setRegistration] = useState(null)
+  const [carRegNo, setCarReg] = useState(null)
+  const [vehicleModel, setCarModel] = useState(null)
+  const [vehicleBrand, setVehicleBrand] = useState(null)
+  const [mileage, setMileage] = useState(null)
+  const [color, setColor] = useState(null)
+  const [engineNo, setEngineNo] = useState(null)
+  const [reference, setReference] = useState(null)
+  const [companyName, setCompanyName] = useState(null)
+  const [vehicleCategory, setVehicleCategory] = useState(null)
+  const [customerName, setCustomerName] = useState(null)
+  const [contactNo, setContactNo] = useState(null)
+  const [driverName, setDriverName] = useState(null)
+  const [phoneNo, setPhoneNo] = useState(null)
+  const [vehicleBody, setVehicleBody] = useState(null)
+  const [technicianName, setTechnicianName] = useState(null)
+  const [technicianSignature, setTechnicianSignature] = useState(null)
+  const [technicianDate, setTechnicianDate] = useState(null)
+  const [owner, setOwner] = useState(null)
+  const [error, setError] = useState(null)
 
-  const [select, setSelect] = useState("SL No");
-  const [value, setValue] = useState("");
-  const [value2, setValue2] = useState("");
-  const [value3, setValue3] = useState("");
-  const [reload, setReload] = useState(false);
-  const { register, handleSubmit, reset } = useForm();
-  const [formattedDate, setFormattedDate] = useState("");
-  const [filterType, setFilterType] = useState("");
+  const [select, setSelect] = useState("SL No")
+  const [value, setValue] = useState("")
+  const [value2, setValue2] = useState("")
+  const [value3, setValue3] = useState("")
+  const [reload, setReload] = useState(false)
+  const { register, handleSubmit, reset } = useForm()
+  const [formattedDate, setFormattedDate] = useState("")
+  const [filterType, setFilterType] = useState("")
 
-  const [loading, setLoading] = useState(false);
-  const [searchLoading, setSearchLoading] = useState(false);
-  const formRef = useRef();
-  const username = "683231669175";
+  const [loading, setLoading] = useState(false)
+  const [searchLoading, setSearchLoading] = useState(false)
+  const formRef = useRef()
+  const username = "683231669175"
 
   const handleAddToCard = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const values = {
         // username: username,
@@ -85,41 +87,41 @@ const AddJobCard = () => {
         technician_signature: technicianSignature,
         technician_date: technicianDate,
         vehicle_owner: owner,
-      };
+      }
       const hasQuotationNullValues = Object.values(values).some(
         (val) => val === null
-      );
+      )
 
       if (hasQuotationNullValues) {
-        setError("Please fill in all the required fields.");
-        return;
+        setError("Please fill in all the required fields.")
+        return
       }
-      setLoading(true);
+      setLoading(true)
       const response = await axios.post(
         "http://localhost:5000/api/v1/jobCard",
         values
-      );
+      )
 
-      console.log(response);
+      console.log(response)
       if (response.data.message === "Successfully add to card post") {
-        setLoading(false);
-        const newJobNo = jobNo + 1;
-        setJobNo(newJobNo);
-        setReload(!reload);
-        toast.success("Add to job card successful.");
-        formRef.current.reset();
-        setError(null);
+        setLoading(false)
+        const newJobNo = jobNo + 1
+        setJobNo(newJobNo)
+        setReload(!reload)
+        toast.success("Add to job card successful.")
+        formRef.current.reset()
+        setError(null)
       }
     } catch (error) {
-      setLoading(false);
+      setLoading(false)
       toast.error("Something went wrong.")
     }
-  };
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handlePreview = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const values = {
         username: username,
@@ -148,41 +150,41 @@ const AddJobCard = () => {
         technician_signature: technicianSignature,
         technician_date: technicianDate,
         vehicle_owner: owner,
-      };
+      }
       const hasPreviewNullValues = Object.values(values).some(
         (val) => val === null
-      );
+      )
 
       if (hasPreviewNullValues) {
-        setError("Please fill in all the required fields.");
-        return;
+        setError("Please fill in all the required fields.")
+        return
       }
 
       const response = await axios.post(
         "http://localhost:5000/api/v1/jobCard",
         values
-      );
+      )
       if (response.data.message === "Successfully add to card post") {
-        const newJobNo = jobNo + 1;
-        setJobNo(newJobNo);
-        setReload(!reload);
+        const newJobNo = jobNo + 1
+        setJobNo(newJobNo)
+        setReload(!reload)
         fetch("http://localhost:5000/api/v1/jobCard/recent")
           .then((res) => res.json())
           .then((data) => {
             if (data) {
-              navigate(`/dashboard/preview?id=${data._id}`);
+              navigate(`/dashboard/preview?id=${data._id}`)
             }
-          });
+          })
 
         // formRef.current.reset()
-        reset();
+        reset()
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
-  };
+  }
   const handleQuotation = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const values = {
         username: username,
@@ -211,36 +213,36 @@ const AddJobCard = () => {
         technician_signature: technicianSignature,
         technician_date: technicianDate,
         vehicle_owner: owner,
-      };
+      }
 
       const hasQuotationNullValues = Object.values(values).some(
         (val) => val === null
-      );
+      )
 
       if (hasQuotationNullValues) {
-        setError("Please fill in all the required fields.");
-        return;
+        setError("Please fill in all the required fields.")
+        return
       }
-      setLoading(true);
+      setLoading(true)
       const response = await axios.post(
         "http://localhost:5000/api/v1/jobCard",
         values
-      );
+      )
       if (response.data.message === "Successfully add to card post") {
-        const newJobNo = jobNo + 1;
-        setJobNo(newJobNo);
-        setReload(!reload);
-        navigate(`/dashboard/qutation?order_no=${jobNo}`);
+        const newJobNo = jobNo + 1
+        setJobNo(newJobNo)
+        setReload(!reload)
+        navigate(`/dashboard/qutation?order_no=${jobNo}`)
         // formRef.current.reset()
-        setLoading(false);
+        setLoading(false)
       }
     } catch (error) {
-      setLoading(false);
+      setLoading(false)
       toast.error("Something went wrong.")
     }
-  };
+  }
   const handleInvoice = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const values = {
         username: username,
@@ -269,83 +271,82 @@ const AddJobCard = () => {
         technician_signature: technicianSignature,
         technician_date: technicianDate,
         vehicle_owner: owner,
-      };
+      }
 
       const hasQuotationNullValues = Object.values(values).some(
         (val) => val === null
-      );
+      )
 
       if (hasQuotationNullValues) {
-        setError("Please fill in all the required fields.");
-        return;
+        setError("Please fill in all the required fields.")
+        return
       }
-      setLoading(true);
+      setLoading(true)
       const response = await axios.post(
         "http://localhost:5000/api/v1/jobCard",
         values
-      );
+      )
       if (response.data.message === "Successfully add to card post") {
-        const newJobNo = jobNo + 1;
-        setJobNo(newJobNo);
-        setReload(!reload);
-        setLoading(false);
-        navigate(`/dashboard/invoice?order_no=${jobNo}`);
+        const newJobNo = jobNo + 1
+        setJobNo(newJobNo)
+        setReload(!reload)
+        setLoading(false)
+        navigate(`/dashboard/invoice?order_no=${jobNo}`)
         // formRef.current.reset()
       }
     } catch (error) {
-      setLoading(false);
+      setLoading(false)
       toast.error("Something went wrong.")
     }
-  };
+  }
   const handleIconPreview = async (e) => {
-    navigate(`/dashboard/preview?id=${e}`);
-  };
+    navigate(`/dashboard/preview?id=${e}`)
+  }
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     fetch(`http://localhost:5000/api/v1/jobCard`)
       .then((res) => res.json())
       .then((data) => {
-        setPreviousPostData(data);
-        setLoading(false);
-         
-      });
-  }, [jobNo, reload]);
+        setPreviousPostData(data)
+        setLoading(false)
+      })
+  }, [jobNo, reload])
   useEffect(() => {
     if (previousPostData.job_no && !jobNo) {
-      setJobNo(previousPostData.job_no + 1);
+      setJobNo(previousPostData.job_no + 1)
     }
-  }, [previousPostData, jobNo, reload]);
+  }, [previousPostData, jobNo, reload])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     fetch(`http://localhost:5000/api/v1/jobCard/all`)
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false);
-        setAllJobCard(data);
-      });
-  }, [username, reload]);
+        setLoading(false)
+        setAllJobCard(data)
+      })
+  }, [username, reload])
 
   const handleDateChange = (event) => {
-    const rawDate = event.target.value;
-    const parsedDate = new Date(rawDate);
-    const day = parsedDate.getDate().toString().padStart(2, "0");
-    const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0");
-    const year = parsedDate.getFullYear();
-    const formattedDate = `${day}-${month}-${year}`;
-    setFormattedDate(formattedDate);
-  };
+    const rawDate = event.target.value
+    const parsedDate = new Date(rawDate)
+    const day = parsedDate.getDate().toString().padStart(2, "0")
+    const month = (parsedDate.getMonth() + 1).toString().padStart(2, "0")
+    const year = parsedDate.getFullYear()
+    const formattedDate = `${day}-${month}-${year}`
+    setFormattedDate(formattedDate)
+  }
 
   // pagination
 
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(10)
   const [currentPage, setCurrentPage] = useState(
     Number(sessionStorage.getItem("job")) || 1
-  );
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
-  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+  )
+  const [pageNumberLimit, setPageNumberLimit] = useState(5)
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5)
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0)
 
   const deletePackage = async (id) => {
     const willDelete = await swal({
@@ -353,7 +354,7 @@ const AddJobCard = () => {
       text: "Are you sure that you want to delete this card?",
       icon: "warning",
       dangerMode: true,
-    });
+    })
 
     if (willDelete) {
       try {
@@ -362,45 +363,45 @@ const AddJobCard = () => {
           {
             method: "DELETE",
           }
-        );
-        const data = await res.json();
+        )
+        const data = await res.json()
 
         if (data.message == "Job card delete successful") {
-          setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id));
+          setAllJobCard(allJobCard?.filter((pkg) => pkg._id !== id))
         }
-        swal("Deleted!", "Card delete successful.", "success");
+        swal("Deleted!", "Card delete successful.", "success")
       } catch (error) {
-        swal("Error", "An error occurred while deleting the card.", "error");
+        swal("Error", "An error occurred while deleting the card.", "error")
       }
     }
-  };
+  }
 
   useEffect(() => {
-    sessionStorage.setItem("job", currentPage.toString());
-  }, [currentPage]);
+    sessionStorage.setItem("job", currentPage.toString())
+  }, [currentPage])
   // ...
 
   useEffect(() => {
-    const storedPage = Number(sessionStorage.getItem("job")) || 1;
-    setCurrentPage(storedPage);
+    const storedPage = Number(sessionStorage.getItem("job")) || 1
+    setCurrentPage(storedPage)
     setMaxPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit) * pageNumberLimit
-    );
+    )
     setMinPageNumberLimit(
       Math.ceil(storedPage / pageNumberLimit - 1) * pageNumberLimit
-    );
-  }, [pageNumberLimit]);
+    )
+  }, [pageNumberLimit])
 
   // ...
 
   const handleClick = (e) => {
-    const pageNumber = Number(e.target.id);
-    setCurrentPage(pageNumber);
-    sessionStorage.setItem("job", pageNumber.toString());
-  };
-  const pages = [];
+    const pageNumber = Number(e.target.id)
+    setCurrentPage(pageNumber)
+    sessionStorage.setItem("job", pageNumber.toString())
+  }
+  const pages = []
   for (let i = 1; i <= Math.ceil(allJobCard?.length / limit); i++) {
-    pages.push(i);
+    pages.push(i)
   }
 
   const renderPagesNumber = pages?.map((number) => {
@@ -418,20 +419,20 @@ const AddJobCard = () => {
         >
           {number}
         </li>
-      );
+      )
     } else {
-      return null;
+      return null
     }
-  });
+  })
 
-  const lastIndex = currentPage * limit;
-  const startIndex = lastIndex - limit;
+  const lastIndex = currentPage * limit
+  const startIndex = lastIndex - limit
 
-  let currentItems;
+  let currentItems
   if (Array.isArray(allJobCard)) {
-    currentItems = allJobCard.slice(startIndex, lastIndex);
+    currentItems = allJobCard.slice(startIndex, lastIndex)
   } else {
-    currentItems = [];
+    currentItems = []
   }
 
   // ...
@@ -489,31 +490,31 @@ const AddJobCard = () => {
           ))}
         </tbody>
       </table>
-    );
-  };
+    )
+  }
 
   const handlePrevious = () => {
-    const newPage = currentPage - 1;
-    setCurrentPage(newPage);
-    sessionStorage.setItem("job", newPage.toString());
+    const newPage = currentPage - 1
+    setCurrentPage(newPage)
+    sessionStorage.setItem("job", newPage.toString())
 
     if (newPage % pageNumberLimit === 0) {
-      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
-  };
+  }
   const handleNext = () => {
-    const newPage = currentPage + 1;
-    setCurrentPage(newPage);
-    sessionStorage.setItem("job", newPage.toString());
+    const newPage = currentPage + 1
+    setCurrentPage(newPage)
+    sessionStorage.setItem("job", newPage.toString())
 
     if (newPage > maxPageNumberLimit) {
-      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
     }
-  };
+  }
 
-  let pageIncrementBtn = null;
+  let pageIncrementBtn = null
   if (pages?.length > maxPageNumberLimit) {
     pageIncrementBtn = (
       <li
@@ -522,10 +523,10 @@ const AddJobCard = () => {
       >
         &hellip;
       </li>
-    );
+    )
   }
 
-  let pageDecrementBtn = null;
+  let pageDecrementBtn = null
   if (currentPage > pageNumberLimit) {
     pageDecrementBtn = (
       <li
@@ -534,53 +535,95 @@ const AddJobCard = () => {
       >
         &hellip;
       </li>
-    );
+    )
   }
 
   const handleFilterType = async () => {
     try {
       const data = {
         filterType,
-      };
-      setSearchLoading(true);
+      }
+      setSearchLoading(true)
       const response = await axios.post(
         `http://localhost:5000/api/v1/jobCard/all`,
         data
-      );
+      )
 
       if (response.data.message === "Filter successful") {
-        setAllJobCard(response.data.result);
-        setNoMatching(null);
-        setSearchLoading(false);
+        setAllJobCard(response.data.result)
+        setNoMatching(null)
+        setSearchLoading(false)
       }
       if (response.data.message === "No matching found") {
-        setNoMatching(response.data.message);
+        setNoMatching(response.data.message)
       }
     } catch (error) {
-      setSearchLoading(false);
+      setSearchLoading(false)
     }
-  };
+  }
 
   const handleAllAddToJobCard = () => {
     fetch(`http://localhost:5000/api/v1/jobCard/all`)
       .then((res) => res.json())
       .then((data) => {
-        setAllJobCard(data);
-        setNoMatching(null);
-      });
-  };
+        setAllJobCard(data)
+        setNoMatching(null)
+      })
+  }
 
-  const currentDate = new Date().toISOString().split("T")[0];
+  const currentDate = new Date().toISOString().split("T")[0]
   useEffect(() => {
     // Get the current date in the format YYYY-MM-DD
-    const currentDate = new Date().toISOString().split("T")[0];
-    setFormattedDate(currentDate);
-  }, []);
+    const currentDate = new Date().toISOString().split("T")[0]
+    setFormattedDate(currentDate)
+  }, [])
+
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }))
+
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }))
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    width: "100%",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }))
 
   return (
     <div className="addJobCardWraps">
       <div className=" mb-5 pb-5 mx-auto text-center border-b-2 border-[#42A1DA]">
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
           <div className="invoiceHead">
             <h2 className=" font-bold text-center trustAuto word-sp">
@@ -593,17 +636,56 @@ const AddJobCard = () => {
               Works & Car Wash.
             </p>
           </div>
+        </div> */}
+         <div className="w-full flex justify-between items-center mb-2 mt-5">
+        <img src={logo} alt="logo" className="w-[70px] md:w-[210px]" />
+          <div>
+          <h2 className="  trustAutoTitle trustAutoTitleQutation ">
+              Trust Auto Solution{" "}
+            </h2>
+            <span>Office: Ka-93/4/C, Kuril Bishawroad, Dhaka-1229</span>
+          </div>
+          <div className="text-left">
+            <span className="block">
+              <span className="font-bold">Mobile:</span> 345689789666
+            </span>
+            <span className="block">
+              <small className="font-bold">Email:</small>{" "}
+              trustautosolution@gmail.com
+            </span>
+            <span className="block font-bold ">trustautosolution.com</span>
+          </div>
         </div>
       </div>
       <form ref={formRef}>
         <div>
-          
-        <div className=" flex justify-between items-center my-5">
+          <div className=" flex  justify-between items-center my-5">
             <div>
-              <b>
-                Job No: <span className="requiredStart">*</span>
-              </b>
-              <span>{jobNo}</span>
+              <div>
+                <b>
+                  Job No: <span className="requiredStart">*</span>
+                </b>
+                <span>{jobNo}</span>
+              </div>
+              <div>
+                <span>
+                  {" "}
+                  <b>Customer ID:</b> TAS000
+                </span>
+                <div className="flex items-center">
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon className="searchIcon" />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Search>
+                 <button className="bg-[#42A1DA] text-white px-2 py-2 rounded-sm ml-2">Add Customer</button>
+                </div>
+                
+              </div>
             </div>
             <div>
               <div className="vehicleCard">Vehicle Job Card </div>
@@ -613,7 +695,7 @@ const AddJobCard = () => {
                 Date <span className="requiredStart">*</span>
               </b>
               <input
-              className="outline-none"
+                className="outline-none"
                 onChange={handleDateChange}
                 autoComplete="off"
                 type="date"
@@ -623,9 +705,10 @@ const AddJobCard = () => {
               />
             </div>
           </div>
+
           <div className="jobCardFieldWraps">
             <div className="jobCardFieldLeftSide">
-              <h3 className="text-xl mb-5 font-bold">Company Information </h3>
+              <h3 className="text-xl mb-5 font-bold">Vehicle Information </h3>
               <div>
                 <TextField
                   className="addJobInputField"
@@ -770,6 +853,12 @@ const AddJobCard = () => {
                   className="addJobInputField"
                   onChange={(e) => setReference(e.target.value)}
                   label="Reference Name (T) "
+                />
+              </div>
+              <div className="mt-3">
+                <TextField
+                  className="addJobInputField"
+                  label="Customer Address (T) "
                 />
               </div>
             </div>
@@ -932,10 +1021,8 @@ const AddJobCard = () => {
               </button>
               {/* </Link> */}
               {/* <Link to="/dashboard/preview"> */}
-             
               {/* </Link>
               <Link to="/dashboard/preview"> */}
-             
               {/* </Link> */}
               {/* <Link to={`/dashboard/qutation?order_no=${jobNo}`}> */}{" "}
               <button disabled={loading} onClick={handleQuotation}>
@@ -1048,7 +1135,7 @@ const AddJobCard = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default AddJobCard;
+export default AddJobCard

@@ -18,6 +18,9 @@
     .selectForm{
         width:100px !important;
     }
+    .carRegNo{
+        width:100%;
+    }
 
 
     @media only screen and (max-width:1024px){

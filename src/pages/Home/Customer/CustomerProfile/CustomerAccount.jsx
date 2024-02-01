@@ -102,7 +102,7 @@ const CustomerAccount = () => {
             <h3 className="text-2xl font-semibold">Recent Quotations </h3>
             <FaRegEdit size={30} />
           </div>
-          <div className="flex items-center justify-between">
+          <div className=" mt-10 flex items-center justify-between">
             <div className="flex items-center my-3">
               <div className="cardIcon bg-[#03045E] ">
                 <b className="block">Feb</b>

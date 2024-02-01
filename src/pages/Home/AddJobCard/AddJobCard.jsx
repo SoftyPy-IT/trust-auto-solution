@@ -42,7 +42,6 @@ const AddJobCard = () => {
   const [technicianDate, setTechnicianDate] = useState(null)
   const [owner, setOwner] = useState(null)
   const [error, setError] = useState(null)
-
   const [select, setSelect] = useState("SL No")
   const [value, setValue] = useState("")
   const [value2, setValue2] = useState("")

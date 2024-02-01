@@ -8,6 +8,7 @@ import CustomerQoutationList from "./CustomerQoutationList"
 import CustomerInvoiceList from "./CustomerInvoiceList"
 import CustomerMoneyList from "./CustomerMoneyList"
 import CustomerAccount from "./CustomerAccount"
+import VehicleDetails from "./VehicleDetails"
 
 const CustomerProfile = () => {
   return (
@@ -41,8 +42,7 @@ const CustomerProfile = () => {
         </div>
       </div>
 
-      <div className="my-32 text-black">
-      
+      <div className="mt-32 text-black">
         <Tabs className="tabList">
           <TabList>
             <Tab>Account</Tab>
@@ -52,7 +52,7 @@ const CustomerProfile = () => {
             <Tab>Invoice </Tab>
             <Tab>Money Reciept </Tab>
             <Tab>Payment</Tab>
-           {/* <Tab>
+            {/* <Tab>
            <div className="bg-[#42A1DA] p-2 cursor-pointer ">
                 <HiOutlinePlus size="30" className="text-white" />
               </div>
@@ -60,31 +60,32 @@ const CustomerProfile = () => {
           </TabList>
 
           <TabPanel>
-            <CustomerAccount/>
+            <CustomerAccount />
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+           <VehicleDetails/>
           </TabPanel>
           <TabPanel>
-            <CustomerJobCardList/>
+            <CustomerJobCardList />
           </TabPanel>
           <TabPanel>
-            <CustomerQoutationList/>
+            <CustomerQoutationList />
           </TabPanel>
           <TabPanel>
-            <CustomerInvoiceList/>
+            <CustomerInvoiceList />
           </TabPanel>
           <TabPanel>
-           <CustomerMoneyList/>
+            <CustomerMoneyList />
           </TabPanel>
           <TabPanel>
-          <h3>Payment</h3>
+            <h3>Payment</h3>
           </TabPanel>
         </Tabs>
 
-
         <div>
-
+          <p className="text-center my-5">
+            © Copyright 2023 | Garage Master | All Rights Reserved
+          </p>
         </div>
       </div>
     </div>

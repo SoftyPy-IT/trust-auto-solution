@@ -1,4 +1,4 @@
-import { FaTrashAlt, FaEdit  } from "react-icons/fa"
+import { FaTrashAlt, FaEdit } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { styled, alpha } from "@mui/material/styles"
 import InputBase from "@mui/material/InputBase"
@@ -48,42 +48,45 @@ const CustomerQoutationList = () => {
 
   const jobData = [
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
     {
-        id: 1,
-        customerName: "Rahim Ullah",
-        carNumber: '33566'
+      id: 1,
+      customerName: "Rahim Ullah",
+      carNumber: "33566",
     },
-
   ]
 
   return (
     <div className=" mb-24 mt-10 w-full">
       <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
-        <h3 className="text-3xl font-bold mb-3"> Quotation List:</h3>
+      <Link to='/dashboard/qutation'>
+         <button className="bg-[#42A1DA] text-white px-2 py-3 rounded-sm ">
+            Add Quotation
+          </button>
+          </Link>
         <div className="flex items-center">
           <Search>
             <SearchIconWrapper>
@@ -114,9 +117,9 @@ const CustomerQoutationList = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                jobData.map((data,i)=><tr key={data.id}>
-                <td>{i+1}</td>
+            {jobData.map((data, i) => (
+              <tr key={data.id}>
+                <td>{i + 1}</td>
                 <td>Rahim Ullah </td>
                 <td>555</td>
                 <td>478444</td>
@@ -134,9 +137,8 @@ const CustomerQoutationList = () => {
                     <FaTrashAlt className="deleteIcon" />
                   </div>
                 </td>
-              </tr>)
-            }
-           
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

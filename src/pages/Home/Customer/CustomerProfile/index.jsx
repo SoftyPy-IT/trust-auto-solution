@@ -1,5 +1,6 @@
 import { HiLocationMarker } from "react-icons/hi"
-import { HiEnvelope, HiMiniPhone, HiMiniUserPlus } from "react-icons/hi2"
+import { HiEnvelope, HiMiniPhone } from "react-icons/hi2"
+import { ImUserTie } from "react-icons/im";
 import "../Customer.css"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
@@ -18,7 +19,7 @@ const CustomerProfile = () => {
           <div className="bg-[#F77F00] border rounded-md py-5 px-3 relative top-20 left-5 ">
             <div className="flex  ml-5">
               <div className="w-24 h-24 bg-[#42A1DA] border rounded-xl mr-3 p-3 ">
-                <HiMiniUserPlus size="80" className="text-white" />
+                <ImUserTie size="80" className="text-white" />
               </div>
               <div>
                 <h3 className="text-2xl">Trust Auto Solution </h3>
@@ -84,7 +85,7 @@ const CustomerProfile = () => {
 
         <div>
           <p className="text-center my-5">
-            © Copyright 2023 | Garage Master | All Rights Reserved
+            © Copyright 2024 | Trust Auto Solution | All Rights Reserved
           </p>
         </div>
       </div>

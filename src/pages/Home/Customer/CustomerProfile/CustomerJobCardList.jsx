@@ -83,7 +83,11 @@ const CustomerJobCardList = () => {
   return (
     <div className=" mb-24 mt-10 w-full">
       <div className="flex items-center justify-between mb-5 bg-[#F1F3F6] py-5 px-3">
-        <h3 className="text-3xl font-bold mb-3"> Jobs Card List:</h3>
+      <Link to='/dashboard/addjob'>
+         <button className="bg-[#42A1DA] text-white px-2 py-3 rounded-sm ">
+            Add Job Card
+          </button>
+          </Link>
         <div className="flex items-center">
           <Search>
             <SearchIconWrapper>

@@ -7,6 +7,7 @@ import CustomerJobCardList from "./CustomerJobCardList"
 import CustomerQoutationList from "./CustomerQoutationList"
 import CustomerInvoiceList from "./CustomerInvoiceList"
 import CustomerMoneyList from "./CustomerMoneyList"
+import CustomerAccount from "./CustomerAccount"
 
 const CustomerProfile = () => {
   return (
@@ -40,7 +41,7 @@ const CustomerProfile = () => {
         </div>
       </div>
 
-      <div className="mt-32 text-black">
+      <div className="my-32 text-black">
       
         <Tabs className="tabList">
           <TabList>
@@ -50,6 +51,7 @@ const CustomerProfile = () => {
             <Tab>Quotation </Tab>
             <Tab>Invoice </Tab>
             <Tab>Money Reciept </Tab>
+            <Tab>Payment</Tab>
            {/* <Tab>
            <div className="bg-[#42A1DA] p-2 cursor-pointer ">
                 <HiOutlinePlus size="30" className="text-white" />
@@ -58,7 +60,7 @@ const CustomerProfile = () => {
           </TabList>
 
           <TabPanel>
-            <h2>Any content 1</h2>
+            <CustomerAccount/>
           </TabPanel>
           <TabPanel>
             <h2>Any content 2</h2>
@@ -75,7 +77,15 @@ const CustomerProfile = () => {
           <TabPanel>
            <CustomerMoneyList/>
           </TabPanel>
+          <TabPanel>
+          <h3>Payment</h3>
+          </TabPanel>
         </Tabs>
+
+
+        <div>
+
+        </div>
       </div>
     </div>
   )

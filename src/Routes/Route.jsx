@@ -36,6 +36,7 @@ import CustomerList from "../pages/Home/Customer/CustomerList";
 import CustomerProfile from "../pages/Home/Customer/CustomerProfile";
 import EmployeeList from "../pages/Home/Employee/EmployeeList";
 import UpdateEmployee from "../pages/Home/Employee/UpdateEmployee";
+import EmployeeProfile from "../pages/Home/Employee/EmployeeProfile";
 
 
 export const router = createBrowserRouter([
@@ -135,6 +136,11 @@ export const router = createBrowserRouter([
       {
         path: "update-employee",
         element: <UpdateEmployee />,
+
+      },
+      {
+        path: "employee-profile",
+        element: <EmployeeProfile/>
 
       },
       {
